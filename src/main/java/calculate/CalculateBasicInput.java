@@ -168,8 +168,7 @@ public class CalculateBasicInput {
 
         doubleResult = dResult.doubleValue();
 
-//System.out.println("ответ - "+dResult);
-//System.out.println("ответ - "+doubleResult);
+
         return doubleResult;
     }
 

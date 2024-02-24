@@ -314,6 +314,8 @@ public class ButtonsBasic {
                         } else              // begining with [-+*/] or number [-+*/]
                             PanelText.textInput.setText(PanelText.strInput = Operations.printNumber(dResult) + name);
 
+
+
                     else // func!=null
                         switch (PanelText.strInput.substring(PanelText.strInput.length() - 3)) {
                             case " √ " -> {

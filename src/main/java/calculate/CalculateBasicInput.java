@@ -30,7 +30,7 @@ public class CalculateBasicInput {
      * @return double result of calculation
      */
     public double calculateInput (String strInput) {
-
+        wasNegativeNumber=false;
         func=null;
         strNumber = "0";
 
@@ -48,7 +48,8 @@ public class CalculateBasicInput {
         arrSign=new ArrayList<>();
 
                 //begin from Negative number
-        if (strInput.charAt(0)=='-') {
+        if (strInput.charAt(0)=='-')
+        {
             strInput = strInput.substring(1);
             wasNegativeNumber = true;
         }
@@ -79,17 +80,20 @@ public class CalculateBasicInput {
                     }
 
                     wasNumber = true;
-                }case'√'->{
-
+                }
+                case'√'->
+                {
                     if (wasNumber) {
                         //if the last sign sqrt
-                        if ((i + 1) == strInput.length()) {
+                        if ((i + 1) == strInput.length())
+                        {
                             arrD.add(dNumber);
                         }
                         else             // dNumber * √
                             dNSqrt = dNumber;
 
-                    }else           // если знак после sqrt
+                    }
+                    else           // если знак после sqrt
 
                         if (wasSqrt) // если несколько sqrt подряд
                             figureSqrt++;
@@ -98,53 +102,38 @@ public class CalculateBasicInput {
                     wasSqrt=true;
                     strNumber=" ";
 
-                }case '+' -> {
-                    arrSign.add(Operations::plus);
-                    arrD.add(dNumber);
-                    strNumber=" ";
-                    wasNumber=false;
-                    wasSqrt=false;
-                    dNSqrt=new BigDecimal(1);
-                }case '-' -> {
-                    arrSign.add(Operations::minus);
-                    arrD.add(dNumber);
-                    strNumber=" ";
-                    wasNumber=false;
-                    wasSqrt=false;
-                    dNSqrt=new BigDecimal(1);
-                }case '*' -> {
-                    arrSign.add(Operations::multiply);
-                    arrD.add(dNumber);
-                    strNumber=" ";
-                    wasNumber=false;
-                    wasSqrt=false;
-                    dNSqrt=new BigDecimal(1);
-                }case '/' -> {
-                    arrSign.add(Operations::divide);
-                    arrD.add(dNumber);
-                    strNumber=" ";
-                    wasNumber=false;
-                    wasSqrt=false;
-                    dNSqrt=new BigDecimal(1);
                 }
-
+                case '+' ->
+                {
+                    arrSign.add(Operations::plus);
+                    getReadyGoOn ();
+                }
+                case '-' -> {
+                    arrSign.add(Operations::minus);
+                    getReadyGoOn ();
+                }
+                case '*' -> {
+                    arrSign.add(Operations::multiply);
+                    getReadyGoOn ();
+                }
+                case '/' -> {
+                    arrSign.add(Operations::divide);
+                    getReadyGoOn ();
+                }
             }
         }
 
-/*
-        System.out.println("+Number ="+dNumber);
-        System.out.println(func);
-
-        System.out.print("arrD.size()>1= " );
-        System.out.println(arrD.size()>1);
-
-        for (int i = 0; i<arrD.size(); i++)
-            System.out.println(i+" - "+ arrD.get(i));
-
-        for (int i = 0; i<arrSign.size(); i++)
-            System.out.println(i+" - "+ arrSign.get(i));
-*/
-
+//        System.out.println("+Number ="+dNumber);
+//        System.out.println(func);
+//
+//        System.out.print("arrD.size()>1= " );
+//        System.out.println(arrD.size()>1);
+//
+//        for (int i = 0; i<arrD.size(); i++)
+//            System.out.println(i+" - "+ arrD.get(i));
+//
+//        for (int i = 0; i<arrSign.size(); i++)
+//            System.out.println(i+" - "+ arrSign.get(i));
 
             //calculator.calculate.calculate the resultate
         if (arrD.size()>0) {
@@ -152,8 +141,6 @@ public class CalculateBasicInput {
             if(wasNegativeNumber)       //begin from Negative number
                 dResult=dResult.negate();
         }
-
-
 
         if (arrD.size()>1){
             int j;
@@ -168,10 +155,15 @@ public class CalculateBasicInput {
 
         doubleResult = dResult.doubleValue();
 
-
         return doubleResult;
     }
-
+    void getReadyGoOn () {
+        arrD.add(dNumber);
+        strNumber = " ";
+        wasNumber = false;
+        wasSqrt = false;
+        dNSqrt = new BigDecimal(1);
+    }
     /**
      * calculator.calculate.calculate result Percent
      * @param funcPerc precеding function to Percent

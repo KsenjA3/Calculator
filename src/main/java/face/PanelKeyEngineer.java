@@ -12,9 +12,10 @@ import java.util.Set;
 public class PanelKeyEngineer extends PanelKeyGeneral{
 
      private JPanel keyPanelEngineer, keyPanel;
+    PanelTextLog textPanel;
 
-     PanelKeyEngineer() {
-
+     PanelKeyEngineer(PanelTextLog textPanel) {
+         this.textPanel=textPanel;
 
          /**
           * create Engineer KeyPanel
@@ -27,7 +28,7 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
          /**
           * create engineer buttons
           */
-         var buttonsEngineer =  new ButtonsEngineer();
+         var buttonsEngineer =  new ButtonsEngineer(textPanel);
           HashMap<String,JButton> listButtons= buttonsEngineer.getButtons();
           Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
 

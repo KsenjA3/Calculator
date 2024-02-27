@@ -8,9 +8,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public  class ButtonsEngineer extends ButtonsBasic {
+    private PanelTextLog textPanel;
 
-
-    ButtonsEngineer() {
+    protected ButtonsEngineer(PanelTextLog textPanel) {
+        super(textPanel);
+        this.textPanel=textPanel;
         makeButtons();
         makeEngineerButtons();
 
@@ -70,24 +72,33 @@ public  class ButtonsEngineer extends ButtonsBasic {
         public void actionPerformed(ActionEvent e) {
             switch (name){
                 case "±"-> {
-                    PanelTextLog.sbLog.append(PanelText.strInput).append("\n").append(PanelText.strResult).append("\n");
-                    PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
+
+                    textPanel.setSbLog(textPanel.getStrInput());
+                    textPanel.setSbLog("\n");
+                    textPanel.setSbLog(textPanel.getStrResult());
+                    textPanel.setSbLog("\n");
+                    textPanel.setTextLog( textPanel.getSbLog().toString());
+//                    PanelTextLog.sbLog.append(PanelText.strInput).append("\n").append(PanelText.strResult).append("\n");
+//                    PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
 
 
                     dResult = -dResult;
 
-                    PanelText.strResult = "=" + Operations.printNumber(dResult);
-                    PanelText.setFontBoldResult ();          //alter font
-                    PanelText.textRezult.setText(PanelText.strResult);
-                    PanelText.textInput.setText(PanelText.strInput= Operations.printNumber(dResult));
-
-
+//                    PanelText.strResult = "=" + Operations.printNumber(dResult);
+                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
+                    textPanel.setFontBoldResult ();          //alter font
+//                    PanelText.textRezult.setText(PanelText.strResult);
+//                    PanelText.textInput.setText(PanelText.strInput= Operations.printNumber(dResult));
+                    textPanel.setTextRezult(textPanel.getStrResult());
+                    textPanel.setStrInput(Operations.printNumber(dResult));
+                    textPanel.setTextInput(textPanel.getStrInput());
 
        //             unblockedAll(bPercent);       // work  % without mistakes
 
                     strNumber = "0";              // if after = go "."
                     func = null;
-                    PanelText.strInput = "   ";   // input number after =
+                    textPanel.setStrInput("   ");
+//                    PanelText.strInput = "   ";   // input number after =
                 }
             }
         }

@@ -12,9 +12,10 @@ import java.util.Set;
 
 public  class PanelKeyIT extends PanelKeyGeneral{
      private JPanel keyPanelIT, keyPanel;
+    PanelTextLog textPanel;
 
-     PanelKeyIT() {
-
+     PanelKeyIT(PanelTextLog textPanel) {
+         this.textPanel=textPanel;
 
          /**
           * create IT KeyPanel
@@ -27,7 +28,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          /**
           * create IT buttons
           */
-         var buttonsIT =  new ButtonsIT();
+         var buttonsIT =  new ButtonsIT(textPanel);
          HashMap<String,JButton> listButtons= buttonsIT.getButtons();
          Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
 

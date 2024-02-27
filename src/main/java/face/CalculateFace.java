@@ -46,10 +46,11 @@ public class CalculateFace extends JFrame {
         frame.setContentPane(container);
 
             // create Panels
+//        private PanelTextLog textPanel;
         textPanel = new PanelTextLog();
-        keyPanelBasic = new PanelKeyBasic();
-        keyPanelEngineer = new PanelKeyEngineer();
-        keyPanelIT= new PanelKeyIT();
+        keyPanelBasic = new PanelKeyBasic(textPanel);
+        keyPanelEngineer = new PanelKeyEngineer(textPanel);
+        keyPanelIT= new PanelKeyIT(textPanel);
 
 
         cardTypeCalc = new CardLayout();            //компоновка
@@ -59,7 +60,7 @@ public class CalculateFace extends JFrame {
             cardPanel.add(keyPanelEngineer.getKeyPanel(),"Engineer");
             cardPanel.add(keyPanelIT.getKeyPanel(),"IT");
 
-          new KeyboardInput();
+          new KeyboardInput(textPanel);
 
 
         container.add(textPanel.getTextPanel(widthSize));
@@ -74,7 +75,7 @@ public class CalculateFace extends JFrame {
 
         //make and set PopupMenu
         makePopupMenu();
-        mouseListenerPopupMenu(PanelTextLog.textLog,PanelText.textInput,PanelText.textRezult);
+        mouseListenerPopupMenu(textPanel.getTextLog(),textPanel.getTextInput(),textPanel.getTextRezult());
 
 
         /*
@@ -103,19 +104,22 @@ public class CalculateFace extends JFrame {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Обычный" -> {
-                    PanelText.strInput=PanelText.strResult.substring(1);
+//                    PanelText.strInput=PanelText.strResult.substring(1);
+                    textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     repack();
                 }
                 case "Инженерный" -> {
-                    PanelText.strInput=PanelText.strResult.substring(1);
+//                    PanelText.strInput=PanelText.strResult.substring(1);
+                    textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     repack();
                 }
                 case "IT" -> {
-                    PanelText.strInput=PanelText.strResult.substring(1);
+//                    PanelText.strInput=PanelText.strResult.substring(1);
+                    textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "IT");
                     widthSize = keyPanelIT.getWidthKeyPanel();
                     repack();

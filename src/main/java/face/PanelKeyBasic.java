@@ -6,16 +6,17 @@ import javax.swing.*;
 import java.util.HashMap;
 
 public class PanelKeyBasic extends PanelKeyGeneral{
-
+    PanelTextLog textPanel;
     ButtonsBasic buttonsBasic;
     private JPanel keyPanelBasic;
 
     /**
      * Basic PanelKey
      */
-    PanelKeyBasic() {
+    PanelKeyBasic(PanelTextLog textPanel) {
+        this.textPanel=textPanel;
 
-        buttonsBasic =  new ButtonsBasic ();
+        buttonsBasic =  new ButtonsBasic (textPanel);
         HashMap<String,JButton> listButtons= buttonsBasic.getButtons();
 
         keyPanelBasic = makePanelGeneral(listButtons);

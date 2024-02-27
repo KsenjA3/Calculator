@@ -7,8 +7,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class ButtonsIT extends ButtonsBasic{
-
-    ButtonsIT() {
+    private PanelTextLog textPanel;
+    ButtonsIT(PanelTextLog textPanel) {
+        super(textPanel);
+        this.textPanel=textPanel;
         makeButtons();
         makeITButtons();
     }

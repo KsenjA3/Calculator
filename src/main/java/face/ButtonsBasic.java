@@ -15,12 +15,14 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
-import static face.PanelText.strInput;
-import static face.PanelText.textInput;
-import static face.PanelText.strResult;
-import static face.PanelText.textRezult;
+//import static face.PanelText.strInput;
+//import static face.PanelText.textInput;
+//import static face.PanelText.strResult;
+//import static face.PanelText.textRezult;
 
 public class ButtonsBasic {
+
+    private PanelTextLog textPanel;
 
     /**
      * button simple calculation
@@ -73,7 +75,9 @@ public class ButtonsBasic {
 
     private HashMap<String,JButton> listButtons;
 
-    protected ButtonsBasic() {
+    protected ButtonsBasic(PanelTextLog textPanel) {
+        this.textPanel=textPanel;
+
         N = 0;
         strNumber = "0";
         dNumber = 0.0;
@@ -225,7 +229,7 @@ public class ButtonsBasic {
             String name = e.getActionCommand();
 
             //alter fonts
-            PanelText.setFontBoldInput ();
+            textPanel.setFontBoldInput ();
 
             if (N < 15) {
                 N++;
@@ -234,22 +238,26 @@ public class ButtonsBasic {
                 dNumber = Double.parseDouble(strNumber);  // from String to Double
 
 
-                if (strNumber.equals("0.") && name.equals("."))     //output in begining
-                    textInput.setText(strInput = strInput + strNumber);
-                else
-                    textInput.setText(strInput = strInput + name);
-
+                if (strNumber.equals("0.") && name.equals(".")) {    //output in begining
+//                    textInput.setText(strInput = strInput + strNumber);
+                    textPanel.setStrInput(textPanel.getStrInput() + strNumber);
+                    textPanel.setTextInput(textPanel.getStrInput());
+                }else {
+//                    textInput.setText(strInput = strInput + name);
+                    textPanel.setStrInput(textPanel.getStrInput() + name);
+                    textPanel.setTextInput(textPanel.getStrInput());
+                }
                 // except divide for 0
                 if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
-                    strResult = "деление на 0 не возможно";
+//                    strResult = "деление на 0 не возможно";
+                    textPanel.setStrResult("деление на 0 не возможно");
                     blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                 } else {
-
-                    dResult = calculateCurrent.calculateInput(strInput);
-
-                    strResult = "=" + Operations.printNumber(dResult);
+                    dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
+//                    strResult = "=" + Operations.printNumber(dResult);
+                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     unblockedAll(bPercent);       // work  % without mistakes
                 }
 
@@ -261,8 +269,8 @@ public class ButtonsBasic {
                             bResult, bMemoryAdd, bMemoryDel, bDel,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
                 }
-                textRezult.setText(strResult);
-
+//                textRezult.setText(strResult);
+                    textPanel.setTextRezult(textPanel.getStrResult());
             }
 
         }
@@ -283,7 +291,7 @@ public class ButtonsBasic {
         public void actionPerformed(ActionEvent e) {
 
             //alter fonts
-            PanelText.setFontBoldInput ();
+            textPanel.setFontBoldInput ();
 
             strNumber = "0";                      //prepare to input new number
             N = 0;
@@ -293,8 +301,9 @@ public class ButtonsBasic {
 
             switch (name) {
                 case " √ " -> {
-                    textInput.setText( strInput=strInput+name);
-
+//                    textInput.setText( strInput=strInput+name);
+                    textPanel.setStrInput(textPanel.getStrInput() + name);
+                    textPanel.setTextInput(textPanel.getStrInput());
                 }
                 case " + " -> {
                     Print_and_replaceRepeatedSign();
@@ -319,54 +328,73 @@ public class ButtonsBasic {
                     if (func == null) {
                         dResult = calculateCurrent.calculatePersent(func, nameSign,
                                 dResultPercent, dNumber);
-                         textInput.setText(Operations.printNumber(dResult));
+//                         textInput.setText(Operations.printNumber(dResult));
+                        textPanel.setTextInput(Operations.printNumber(dResult));
                     } else {
                         dResult = calculateCurrent.calculatePersent(func, nameSign,
                                 dResultPercent, dNumber);
 
-                        textInput.setText( strInput =strInputFormerSign+Operations.printNumber(dNumber)+"%");
-
+//                        textInput.setText( strInput =strInputFormerSign+Operations.printNumber(dNumber)+"%");
+                        textPanel.setStrInput(strInputFormerSign+Operations.printNumber(dNumber)+"%");
+                        textPanel.setTextInput(textPanel.getStrInput());
                     }
-                     strResult = "=" + Operations.printNumber(dResult);
-                     textRezult.setText( strResult);
+//                     strResult = "=" + Operations.printNumber(dResult);
+//                     textRezult.setText( strResult);
 
+                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
+                    textPanel.setTextRezult(textPanel.getStrResult());
                     func = null;
-                     strInput = "   ";            // input number after %
+//                     strInput = "   ";            // input number after %
+                    textPanel.setStrInput("   ");
                 }
                 case " = " -> {
-                    PanelText.setFontBoldResult ();          //alter font
-                     textRezult.setText( strResult);
-                     textInput.setText( strInput);
+                    textPanel.setFontBoldResult ();          //alter font
+//                     textRezult.setText( strResult);
+                    textPanel.setTextRezult(textPanel.getStrResult());
+//                     textInput.setText( strInput);
+                    textPanel.setTextInput(textPanel.getStrInput());
 
-                    PanelTextLog.sbLog.append( strInput).append("\n").append( strResult).append("\n");
-                    PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
+
+                    textPanel.setSbLog(textPanel.getStrInput());
+                    textPanel.setSbLog("\n");
+                    textPanel.setSbLog(textPanel.getStrResult());
+                    textPanel.setSbLog("\n");
+                    textPanel.setTextLog( textPanel.getSbLog().toString());
+//                    PanelTextLog.sbLog     .append(strInput).    append("\n").     append( strResult).     append("\n");
+//                    PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
 
                     unblockedAll(bPercent);       // work  % without mistakes
 
                     strNumber = "0";              // if after = go "."
                     func = null;
-                     strInput = "   ";   // input number after =
+//                     strInput = "   ";   // input number after =
+                    textPanel.setStrInput("   ");
                 }
             }
             nameSign = name;
-            strInputFormerSign =  strInput;
-
+//            strInputFormerSign =  strInput;
+            strInputFormerSign = textPanel.getStrInput();
         }
 
         void Print_and_replaceRepeatedSign () {
-            strInput=StringUtils.removeEnd(strInput, " √ ");
-            strInput=StringUtils.removeEnd(strInput, " √ ");
-            strInput=StringUtils.removeEnd(strInput, " √ ");
-            strInput=StringUtils.removeEnd(strInput," + " );
-            strInput=StringUtils.removeEnd(strInput, " - ");
-            strInput=StringUtils.removeEnd(strInput, " * ");
-            strInput=StringUtils.removeEnd(strInput, " / ");
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," + " ));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " - "));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " * "));
+            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
 
-            if (func==null)
-                textInput.setText(strInput = Operations.printNumber(dResult) + name);
-            else
-                textInput.setText( strInput= strInput+name);
 
+            if (func==null) {
+//                textInput.setText(strInput = Operations.printNumber(dResult) + name);
+                textPanel.setStrInput(Operations.printNumber(dResult) + name);
+                textPanel.setTextInput(textPanel.getStrInput());
+            }else {
+//                textInput.setText(strInput = strInput + name);
+                textPanel.setStrInput(textPanel.getStrInput() + name);
+                textPanel.setTextInput(textPanel.getStrInput());
+            }
             dResultPercent = dResult;
         }
 
@@ -399,36 +427,43 @@ public class ButtonsBasic {
                 case "MR" -> {
                     dNumber = memory;
 
-                    switch ( strInput.substring( strInput.length() - 1)) {
+                    switch ( textPanel.getStrInput().substring( textPanel.getStrInput().length() - 1)) {
                                     // before MR was number
                         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." -> {
                             boolean isFormerNumber = true;
 
                             while (isFormerNumber) {
-                                 strInput =  strInput.substring(0,  strInput.length() - 1);
+                                textPanel.setStrInput( textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 1));
 
-                                switch ( strInput.substring( strInput.length() - 1)) {
+                                switch ( textPanel.getStrInput().substring( textPanel.getStrInput().length() - 1)) {
                                     case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." -> isFormerNumber = true;
                                     default -> isFormerNumber = false;
                                 }
                             }
-                             textInput.setText( strInput =  strInput + Operations.printNumber(memory));
+
+                            textPanel.setStrInput(textPanel.getStrInput() + Operations.printNumber(memory));
+                            textPanel.setTextInput(textPanel.getStrInput());
                         }
                                 // before MR was sign
-                        default ->  textInput.setText( strInput =  strInput + Operations.printNumber(memory));
+                        default ->  {
+                            textPanel.setStrInput(textPanel.getStrInput() + Operations.printNumber(memory));
+                            textPanel.setTextInput( textPanel.getStrInput());
+                        }
                     }
                                 // except divide for 0
                     if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
-                         strResult = "деление на 0 не возможно";
+//                         strResult = "деление на 0 не возможно";
+                         textPanel.setStrResult("деление на 0 не возможно");
                         blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                                 bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                                 bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     } else {
-                        dResult = calculateCurrent.calculateInput( strInput);
-                         strResult = "=" + Operations.printNumber(dResult);
+                        dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
+//                         strResult = "=" + Operations.printNumber(dResult);
+                        textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     }
-
-                     textRezult.setText( strResult);
+//                     textRezult.setText( strResult);
+                    textPanel.setTextRezult(textPanel.getStrResult());
 
                     unblockedAll(bPercent);       // work  % without mistakes
 
@@ -444,34 +479,46 @@ public class ButtonsBasic {
                     dNumber = 0.0;
                     strNumber = "0";
 
-                     textRezult.setText("0");
-                     textInput.setText( strInput = " ");
+//                     textRezult.setText("0");
+//                     textInput.setText( strInput = " ");
+
+                    textPanel.setTextRezult("0");
+                    textPanel.setStrInput(" ");
+                    textPanel.setTextInput( textPanel.getStrInput());
+
 
                     func = null;
                     dResult = 0.0;                // sign after АС
-                     strInput = "   ";   //number after АС
-                     strResult = "0";    // AC then =, textRez
+//                     strInput = "   ";   //number after АС
+//                     strResult = "0";    // AC then =, textRez
                     nameSign = " ";               //after sqrt
+
+                    textPanel.setStrInput(" ");
+                    textPanel.setStrResult("0");
                 }
                 case "C" -> {
                                     // input window
-                    switch ( strInput.charAt( strInput.length() - 1)) {
+                    switch ( textPanel.getStrInput().charAt( textPanel.getStrInput().length() - 1)) {
                         case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
-                             textInput.setText( strInput =  strInput.substring(0,  strInput.length() - 1));
-                            dResult = calculateCurrent.calculateInput( strInput);
+                            textPanel.setStrInput(textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 1));
+                            textPanel.setTextInput(textPanel.getStrInput());
+                            dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
                             if (strNumber.length() > 1)
                                 strNumber = strNumber.substring(0, strNumber.length() - 1);
                         }
                         default -> {
-                             textInput.setText( strInput =  strInput.substring(0,  strInput.length() - 3));
-                            dResult = calculateCurrent.calculateInput( strInput);
+                            textPanel.setStrInput(textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 3));
+                            textPanel.setTextInput(textPanel.getStrInput());
+                            dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
                                             //begining work
-                            if ( strInput.length()< 3)
+                            if ( textPanel.getStrInput().length()< 3)
                                 func=null;
                         }
                     }
-                     strResult = "=" + Operations.printNumber(dResult);
-                     textRezult.setText( strResult);
+                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
+                    textPanel.setTextRezult(textPanel.getStrResult());
+//                     strResult = "=" + Operations.printNumber(dResult);
+//                     textRezult.setText( strResult);
 
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
                             bMemoryAdd, bMemoryDel, bMemoryHold, bDel,

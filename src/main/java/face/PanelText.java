@@ -16,28 +16,32 @@ public class PanelText {
      * elements of Result window
      */
     private JPanel panelRezult;
-    static JLabel textRezult;
-    static String strResult;
+//    static JLabel textRezult;
+//    static String strResult;
+    private JLabel textRezult;
+    private String strResult;
 
     /**
      * elements of Input window
      */
     private JScrollPane scrollinput;
-    static JTextPane textInput;
-    static String strInput;
+//    static JTextPane textInput;
+//    static String strInput;
+    private JTextPane textInput;
+    private String strInput;
 
 
     /**
      * FONTs
      */
-    private static SimpleAttributeSet textInputAttributes;
-
+//    private static SimpleAttributeSet textInputAttributes;
+    private  SimpleAttributeSet textInputAttributes;
 
 
     /**
      *show up Result font
      */
-    static void setFontBoldResult (){
+     void setFontBoldResult (){
         textRezult.setFont(MyFonts.FONT_TEXT_INPUT.get());
 
         StyleConstants.setAlignment(textInputAttributes, StyleConstants.ALIGN_RIGHT);
@@ -49,7 +53,7 @@ public class PanelText {
     /**
      *show up InputPanel font
      */
-    static void setFontBoldInput (){
+     void setFontBoldInput (){
         textRezult.setFont(MyFonts.FONT_TEXT_RESULT.get());
 
         StyleConstants.setAlignment(textInputAttributes, StyleConstants.ALIGN_RIGHT);
@@ -122,7 +126,31 @@ public class PanelText {
      *get Height TextPanel
      * @return Height TextPanel
      */
-    int getHeightTextPanel (){ return MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()
-            + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get(); }
+    int getHeightTextPanel ()
+    {               return MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()
+                        + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get();
+    }
 
+
+
+     JLabel getTextRezult() { return textRezult; }
+     String getStrResult() { return strResult; }
+     JTextPane getTextInput() { return textInput ;}
+     String getStrInput() { return strInput; }
+
+     void setTextRezult(JLabel textRezult) {  this.textRezult=textRezult; }
+    void setStrResult(String strResult) {  this.strResult=strResult; }
+    void setTextInput(JTextPane textInput) {  this.textInput=textInput ;}
+    void  setStrInput(String strInput) {  this.strInput=strInput; }
+
+
+    String getAndSetTextInput(String strInput){
+       return this.strInput= strInput;
+    }
+
+    void setTextInput(String strInput) {
+        this.textInput.setText(strInput); }
+
+    void setTextRezult(String strResult) {
+        this.textRezult.setText(strResult); }
 }

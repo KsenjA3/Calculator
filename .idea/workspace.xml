@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="Rid_of_static">
-      <change afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateBasicInputTest.java" afterDir="false" />
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="CreateActionNumberButton">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CalculateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CalculateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/CalculateFace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/KeyboardInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/KeyboardInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelKeyEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelKeyEngineer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelKeyIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelKeyIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelTextLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelTextLog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="workStatic" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,16 +47,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/JavaProjects/Calculator"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JavaProjects/Calculator&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProjects\Calculator\src\main\java" />
@@ -60,7 +68,14 @@
       <recent name="calculate" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CalculateBasicInputTest">
+  <component name="RunManager" selected="Application.CalculateDemo">
+    <configuration name="CalculateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CalculateDemo" />
+      <module name="Calculator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <option name="PACKAGE_NAME" value="" />
@@ -69,33 +84,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateBasicInputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="calculate.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="calculate" />
-      <option name="MAIN_CLASS_NAME" value="calculate.CalculateBasicInputTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CalculateTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CalculateBasicInputTest.ends_with_sign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="calculate.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="calculate" />
-      <option name="MAIN_CLASS_NAME" value="calculate.CalculateBasicInputTest" />
-      <option name="METHOD_NAME" value="ends_with_sign(java.lang.String,double)" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,11 +103,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateTest.calculatePersent1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateTest.ends_with_number" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CalculateTest" />
-      <option name="METHOD_NAME" value="calculatePersent1(calculate.calculate,java.lang.String,double,double,double)" />
+      <option name="METHOD_NAME" value="ends_with_number(java.lang.String,double)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,11 +115,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CalculateBasicInputTest" />
-        <item itemvalue="JUnit.CalculateBasicInputTest.ends_with_sign" />
-        <item itemvalue="JUnit.All in Calculator" />
-        <item itemvalue="JUnit.CalculateTest.calculatePersent1" />
+        <item itemvalue="Application.CalculateDemo" />
+        <item itemvalue="JUnit.CalculateTest.ends_with_number" />
         <item itemvalue="JUnit.CalculateTest.calculatePersent (1)" />
+        <item itemvalue="JUnit.CalculateTest" />
+        <item itemvalue="JUnit.All in Calculator" />
       </list>
     </recent_temporary>
   </component>
@@ -199,125 +192,114 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelTextLog.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelTextLog.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="24" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="39" />
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelKeyBasic.java</url>
-          <line>16</line>
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/CalculateFace.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
+          <line>14</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>20</line>
-          <properties field="textRezult" class="face.PanelText" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>27</line>
-          <properties field="scrollinput" class="face.PanelText" />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelTextLog.java</url>
-          <line>19</line>
-          <properties field="sbLog" class="face.PanelTextLog" />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>32</line>
-          <properties field="textInput" class="face.PanelText" />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>33</line>
-          <properties field="textInput" class="face.PanelText" />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
-          <line>23</line>
-          <properties field="textPanel" class="face.ButtonsBasic" />
+          <line>140</line>
+          <properties class="face.PanelText" method="setTextRezult">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelKeyBasic.java</url>
-          <line>8</line>
-          <properties field="textPanel" class="face.PanelKeyBasic" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
+          <line>142</line>
+          <properties class="face.PanelText" method="setTextInput">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
+          <line>12</line>
+          <properties class="face.ButtonsEngineer" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>39</line>
-          <properties class="face.PanelText">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>51</line>
-          <properties class="face.PanelText">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelKeyBasic.java</url>
-          <line>15</line>
-          <properties class="face.PanelKeyBasic" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="41" />
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
+          <line>10</line>
+          <properties field="textPanel" class="face.ButtonsEngineer" />
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$CalculateTest.ic" NAME="CalculateTest Coverage Results" MODIFIED="1708281899642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Calculator$CalculateBasicInputTest.ic" NAME="CalculateBasicInputTest Coverage Results" MODIFIED="1709023352102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Calculator$CalculateBasicInputTest.ic" NAME="CalculateBasicInputTest Coverage Results" MODIFIED="1709023576684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>calculate.*</FILTER>
     </SUITE>
   </component>

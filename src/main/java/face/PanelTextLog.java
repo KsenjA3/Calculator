@@ -15,8 +15,10 @@ public class PanelTextLog extends PanelText{
     /**
      * for writing to calculator.face.PanelTextLog
      */
-    static StringBuffer sbLog;
-    static JTextPane  textLog;
+//    static StringBuffer sbLog;
+//    static JTextPane  textLog;
+    private StringBuffer sbLog;
+    private JTextPane  textLog;
 
     /**
      * elements calculator.face.PanelTextLog
@@ -81,6 +83,15 @@ public class PanelTextLog extends PanelText{
      */
     JTextPane getTextLog() { return textLog; }
 
+    void setTextLog(String strSbLog) {
+        textLog.setText(strSbLog);
+    }
+
+
+
+
+
+
 
     /**
      * manage visibility of Log
@@ -110,5 +121,12 @@ public class PanelTextLog extends PanelText{
     }
 
 
+    void setSbLog(String strLog) {
+        sbLog = sbLog.append(strLog);
+    }
+
+    StringBuffer getSbLog () {
+        return  sbLog;
+    }
 
 }

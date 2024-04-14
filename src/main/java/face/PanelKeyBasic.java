@@ -18,17 +18,14 @@ public class PanelKeyBasic extends PanelKeyGeneral{
 
         buttonsBasic =  new ButtonsBasic (textPanel);
         HashMap<String,JButton> listButtons= buttonsBasic.getButtons();
-
         keyPanelBasic = makePanelGeneral(listButtons);
     }
-
 
     /**
      * get  KeyPanel
      * @return Basic KeyPanel
      */
     JPanel getKeyPanel() {
-
         return keyPanelBasic;
     }
 

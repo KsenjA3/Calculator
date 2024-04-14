@@ -56,7 +56,6 @@ public  class PanelKeyIT extends PanelKeyGeneral{
             makeGridBagConstraints(0, 0, 3, 1, 0, 0);
             keyPanelIT.add(digitPanel, gbc);
 
-
          /**
           * locate buttons to IT KeyPanel
           */

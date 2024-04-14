@@ -123,18 +123,6 @@ public class CalculateBasicInput {
             }
         }
 
-//        System.out.println("+Number ="+dNumber);
-//        System.out.println(func);
-//
-//        System.out.print("arrD.size()>1= " );
-//        System.out.println(arrD.size()>1);
-//
-//        for (int i = 0; i<arrD.size(); i++)
-//            System.out.println(i+" - "+ arrD.get(i));
-//
-//        for (int i = 0; i<arrSign.size(); i++)
-//            System.out.println(i+" - "+ arrSign.get(i));
-
             //calculator.calculate.calculate the resultate
         if (arrD.size()>0) {
             dResult = arrD.get(0);

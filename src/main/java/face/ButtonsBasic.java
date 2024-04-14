@@ -15,11 +15,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
-//import static face.PanelText.strInput;
-//import static face.PanelText.textInput;
-//import static face.PanelText.strResult;
-//import static face.PanelText.textRezult;
-
 public class ButtonsBasic {
 
     private PanelTextLog textPanel;
@@ -84,17 +79,11 @@ public class ButtonsBasic {
         dResult=0.0;
         func = null;
 
-        /*
-         * for calculator.calculate.calculate Percent
-         * % and divide for 0, input number after %
-         * for % because number changed after %
-         * for % under mltidigited number
-         */
         nameSign = "";
         strInputFormerSign = "";
         dResultPercent = 0.0;
 
-        //create object for calculation
+                        //create object for calculation
         calculateCurrent = new CalculateBasicInput();
 
         listButtons =new  HashMap <String,JButton> ();
@@ -116,7 +105,7 @@ public class ButtonsBasic {
 
         //SIMPLE CALCULATOR
 
-        //Numbers
+                            //Numbers
         b1 = createButton(new CreateActionNumberButton("1"),
                 "1", KeyStroke.getKeyStroke('1') , MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b2 = createButton(new CreateActionNumberButton("2"),
@@ -141,7 +130,7 @@ public class ButtonsBasic {
                 ".", KeyStroke.getKeyStroke('.'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
 
 
-        //calculator.calculate.Operations
+                            //calculator.calculate.Operations
         bPlus = createButton(new CreateSignButton(" + "),
                 " + ", KeyStroke.getKeyStroke('+'), MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
         bMinus = createButton(new CreateSignButton(" - "),
@@ -158,7 +147,7 @@ public class ButtonsBasic {
                 " √ ",  MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
 
 
-        //Delete and Memory
+                                //Delete and Memory
         bClear = createButton(new CreateWorkButton("AC"),
                 "AC", KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), MyColors.COLOR_BUTTON_MEMORY.get(), MyFonts.FONT_BUTTON_MEMORY.get());
         bDel = createButton(new CreateWorkButton("C"),
@@ -228,7 +217,7 @@ public class ButtonsBasic {
         public void actionPerformed(ActionEvent e) {
             String name = e.getActionCommand();
 
-            //alter fonts
+                            //alter fonts
             textPanel.setFontBoldInput ();
 
             if (N < 15) {
@@ -239,24 +228,20 @@ public class ButtonsBasic {
 
 
                 if (strNumber.equals("0.") && name.equals(".")) {    //output in begining
-//                    textInput.setText(strInput = strInput + strNumber);
                     textPanel.setStrInput(textPanel.getStrInput() + strNumber);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }else {
-//                    textInput.setText(strInput = strInput + name);
                     textPanel.setStrInput(textPanel.getStrInput() + name);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }
-                // except divide for 0
+                                                        // except divide for 0
                 if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
-//                    strResult = "деление на 0 не возможно";
                     textPanel.setStrResult("деление на 0 не возможно");
                     blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                 } else {
                     dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
-//                    strResult = "=" + Operations.printNumber(dResult);
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     unblockedAll(bPercent);       // work  % without mistakes
                 }
@@ -264,12 +249,11 @@ public class ButtonsBasic {
                 if (name.equals(".")) {
                     blockedAll(bPoint);   //two points couldn't bу in one number
 
-                    // unblocked keys during attempt divide to  ziro
+                                    // unblocked keys during attempt divide to  ziro
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                             bResult, bMemoryAdd, bMemoryDel, bDel,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
                 }
-//                textRezult.setText(strResult);
                     textPanel.setTextRezult(textPanel.getStrResult());
             }
 
@@ -290,7 +274,7 @@ public class ButtonsBasic {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            //alter fonts
+                            //alter fonts
             textPanel.setFontBoldInput ();
 
             strNumber = "0";                      //prepare to input new number
@@ -301,7 +285,6 @@ public class ButtonsBasic {
 
             switch (name) {
                 case " √ " -> {
-//                    textInput.setText( strInput=strInput+name);
                     textPanel.setStrInput(textPanel.getStrInput() + name);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }
@@ -328,51 +311,39 @@ public class ButtonsBasic {
                     if (func == null) {
                         dResult = calculateCurrent.calculatePersent(func, nameSign,
                                 dResultPercent, dNumber);
-//                         textInput.setText(Operations.printNumber(dResult));
                         textPanel.setTextInput(Operations.printNumber(dResult));
                     } else {
                         dResult = calculateCurrent.calculatePersent(func, nameSign,
                                 dResultPercent, dNumber);
-
-//                        textInput.setText( strInput =strInputFormerSign+Operations.printNumber(dNumber)+"%");
                         textPanel.setStrInput(strInputFormerSign+Operations.printNumber(dNumber)+"%");
                         textPanel.setTextInput(textPanel.getStrInput());
                     }
-//                     strResult = "=" + Operations.printNumber(dResult);
-//                     textRezult.setText( strResult);
 
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     textPanel.setTextRezult(textPanel.getStrResult());
                     func = null;
-//                     strInput = "   ";            // input number after %
+                                    // input number after %
                     textPanel.setStrInput("   ");
                 }
                 case " = " -> {
                     textPanel.setFontBoldResult ();          //alter font
-//                     textRezult.setText( strResult);
                     textPanel.setTextRezult(textPanel.getStrResult());
-//                     textInput.setText( strInput);
                     textPanel.setTextInput(textPanel.getStrInput());
-
 
                     textPanel.setSbLog(textPanel.getStrInput());
                     textPanel.setSbLog("\n");
                     textPanel.setSbLog(textPanel.getStrResult());
                     textPanel.setSbLog("\n");
                     textPanel.setTextLog( textPanel.getSbLog().toString());
-//                    PanelTextLog.sbLog     .append(strInput).    append("\n").     append( strResult).     append("\n");
-//                    PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
 
                     unblockedAll(bPercent);       // work  % without mistakes
-
                     strNumber = "0";              // if after = go "."
                     func = null;
-//                     strInput = "   ";   // input number after =
+                                    // input number after =
                     textPanel.setStrInput("   ");
                 }
             }
             nameSign = name;
-//            strInputFormerSign =  strInput;
             strInputFormerSign = textPanel.getStrInput();
         }
 
@@ -387,17 +358,14 @@ public class ButtonsBasic {
 
 
             if (func==null) {
-//                textInput.setText(strInput = Operations.printNumber(dResult) + name);
                 textPanel.setStrInput(Operations.printNumber(dResult) + name);
                 textPanel.setTextInput(textPanel.getStrInput());
             }else {
-//                textInput.setText(strInput = strInput + name);
                 textPanel.setStrInput(textPanel.getStrInput() + name);
                 textPanel.setTextInput(textPanel.getStrInput());
             }
             dResultPercent = dResult;
         }
-
     }
 
     /**
@@ -452,21 +420,16 @@ public class ButtonsBasic {
                     }
                                 // except divide for 0
                     if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
-//                         strResult = "деление на 0 не возможно";
                          textPanel.setStrResult("деление на 0 не возможно");
                         blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                                 bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                                 bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     } else {
                         dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
-//                         strResult = "=" + Operations.printNumber(dResult);
                         textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     }
-//                     textRezult.setText( strResult);
                     textPanel.setTextRezult(textPanel.getStrResult());
-
                     unblockedAll(bPercent);       // work  % without mistakes
-
                 }
                 case "AC" -> {
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
@@ -479,22 +442,14 @@ public class ButtonsBasic {
                     dNumber = 0.0;
                     strNumber = "0";
 
-//                     textRezult.setText("0");
-//                     textInput.setText( strInput = " ");
-
                     textPanel.setTextRezult("0");
                     textPanel.setStrInput(" ");
                     textPanel.setTextInput( textPanel.getStrInput());
-
-
                     func = null;
                     dResult = 0.0;                // sign after АС
-//                     strInput = "   ";   //number after АС
-//                     strResult = "0";    // AC then =, textRez
                     nameSign = " ";               //after sqrt
-
-                    textPanel.setStrInput(" ");
-                    textPanel.setStrResult("0");
+                    textPanel.setStrInput(" ");   //number after АС
+                    textPanel.setStrResult("0");  // AC then =, textRez
                 }
                 case "C" -> {
                                     // input window
@@ -517,8 +472,6 @@ public class ButtonsBasic {
                     }
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     textPanel.setTextRezult(textPanel.getStrResult());
-//                     strResult = "=" + Operations.printNumber(dResult);
-//                     textRezult.setText( strResult);
 
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
                             bMemoryAdd, bMemoryDel, bMemoryHold, bDel,

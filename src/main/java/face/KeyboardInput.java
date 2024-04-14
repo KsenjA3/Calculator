@@ -31,9 +31,7 @@ public class KeyboardInput {
     private class TextPanelInputKeysAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
-//            String str = PanelText.textInput.getText();
             String str = textPanel.getTextInput().getText();
-
             str = str.replace("+", " + ");
             str = str.replace("-", " - ");
             str = str.replace("/", " / ");
@@ -55,25 +53,19 @@ public class KeyboardInput {
             textPanel.setFontBoldResult();
             textPanel.setStrInput(str);
             textPanel.setTextInput(textPanel.getStrInput());
-//            PanelText.textInput.setText(PanelText.strInput = str);
 
             dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
             textPanel.setStrResult("=" + Operations.printNumber(dResult));
-//            PanelText.strResult = "=" + Operations.printNumber(dResult);
             textPanel.setTextRezult(textPanel.getStrResult());
-//            PanelText.textRezult.setText(PanelText.strResult);
 
             textPanel.setSbLog(textPanel.getStrInput());
             textPanel.setSbLog("\n");
             textPanel.setSbLog(textPanel.getStrResult());
             textPanel.setSbLog("\n");
             textPanel.setTextLog( textPanel.getSbLog().toString());
-//            PanelTextLog.sbLog.append(PanelText.strInput).append("\n").append(PanelText.strResult).append("\n");
-//            PanelTextLog.textLog.setText(PanelTextLog.sbLog.toString());
 
             //focus to visible keyPenel
           //  focusVisibleKeyPenel ();
-
         }
     }
 
@@ -88,13 +80,6 @@ public class KeyboardInput {
 
         textPanel.getTextInput().getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, 0), "correctInput");
         textPanel.getTextInput().getActionMap().put("correctInput", textPanelInputKeysAction);
-
-
-
-//        PanelText.textInput.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "focusKeyPanel");
-//        PanelText.textInput.getActionMap().put("focusKeyPanel", textPanelInputKeysAction);
-//        PanelText.textInput.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, 0), "correctInput");
-//        PanelText.textInput.getActionMap().put("correctInput", textPanelInputKeysAction);
 
         ignoreLetter(
                 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm',
@@ -112,7 +97,6 @@ public class KeyboardInput {
     private void ignoreLetter(char... var) {
         for (char c : var) {
             textPanel.getTextInput().getInputMap().put(KeyStroke.getKeyStroke(c), "none");
-//            PanelText.textInput.getInputMap().put(KeyStroke.getKeyStroke(c), "none");
         }
     }
 

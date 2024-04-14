@@ -11,13 +11,10 @@ import java.awt.*;
 public class PanelText {
 
     private JPanel textPanel;
-
     /**
      * elements of Result window
      */
     private JPanel panelRezult;
-//    static JLabel textRezult;
-//    static String strResult;
     private JLabel textRezult;
     private String strResult;
 
@@ -25,16 +22,12 @@ public class PanelText {
      * elements of Input window
      */
     private JScrollPane scrollinput;
-//    static JTextPane textInput;
-//    static String strInput;
     private JTextPane textInput;
     private String strInput;
-
 
     /**
      * FONTs
      */
-//    private static SimpleAttributeSet textInputAttributes;
     private  SimpleAttributeSet textInputAttributes;
 
 
@@ -61,8 +54,6 @@ public class PanelText {
         StyleConstants.setFontSize(textInputAttributes,MyFontSizes.FRONT_SIZE_TEXT_INPUT.get());
         textInput.setParagraphAttributes(textInputAttributes, true);
     }
-
-
 
     PanelText(){
 
@@ -131,8 +122,6 @@ public class PanelText {
                         + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get();
     }
 
-
-
      JLabel getTextRezult() { return textRezult; }
      String getStrResult() { return strResult; }
      JTextPane getTextInput() { return textInput ;}
@@ -142,7 +131,6 @@ public class PanelText {
     void setStrResult(String strResult) {  this.strResult=strResult; }
     void setTextInput(JTextPane textInput) {  this.textInput=textInput ;}
     void  setStrInput(String strInput) {  this.strInput=strInput; }
-
 
     String getAndSetTextInput(String strInput){
        return this.strInput= strInput;

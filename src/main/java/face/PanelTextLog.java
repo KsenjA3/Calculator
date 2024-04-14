@@ -15,8 +15,6 @@ public class PanelTextLog extends PanelText{
     /**
      * for writing to calculator.face.PanelTextLog
      */
-//    static StringBuffer sbLog;
-//    static JTextPane  textLog;
     private StringBuffer sbLog;
     private JTextPane  textLog;
 
@@ -26,9 +24,7 @@ public class PanelTextLog extends PanelText{
     private JScrollPane  scrollLog;
     private JPanel textPanelLog;
 
-
     PanelTextLog () {
-
         super();
         sbLog = new StringBuffer();
 
@@ -70,7 +66,6 @@ public class PanelTextLog extends PanelText{
             + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()
             + MySizePanel.HIEGHT_SIZE_TEXT_LOG.get();}
 
-
     /**
      * get LogPanel
      * @return LogPanel
@@ -86,9 +81,6 @@ public class PanelTextLog extends PanelText{
     void setTextLog(String strSbLog) {
         textLog.setText(strSbLog);
     }
-
-
-
 
 
 
@@ -116,8 +108,6 @@ public class PanelTextLog extends PanelText{
 
             return super.getHeightTextPanel();
         }
-
-
     }
 
 

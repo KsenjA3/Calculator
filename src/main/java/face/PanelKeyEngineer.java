@@ -51,8 +51,6 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
                        keyPanelEngineer.add(button.getValue(), gbc);
                     }
 
-
-
                    // line 2
                     case "sin" -> {
                         makeGridBagConstraints(1, 0, 1, 1, 12, 10);
@@ -64,7 +62,6 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
                        makeGridBagConstraints(1, 2, 1, 1, 5, 15);
                        keyPanelEngineer.add(button.getValue(), gbc);
                     }
-
 
                    // line 3
                     case "cos" -> {
@@ -78,7 +75,6 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
                        keyPanelEngineer.add(button.getValue(), gbc);
                     }
 
-
                    // line 4
                     case "tg"-> {
                         makeGridBagConstraints(3, 0, 1, 1, 5, 10);
@@ -90,7 +86,6 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
                        makeGridBagConstraints(3, 2, 1, 1, 5, 10);
                        keyPanelEngineer.add(button.getValue(), gbc);
                     }
-
 
                    // line 5
                     case "π"-> {

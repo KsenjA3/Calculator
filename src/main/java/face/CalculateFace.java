@@ -104,21 +104,18 @@ public class CalculateFace extends JFrame {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Обычный" -> {
-//                    PanelText.strInput=PanelText.strResult.substring(1);
                     textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     repack();
                 }
                 case "Инженерный" -> {
-//                    PanelText.strInput=PanelText.strResult.substring(1);
                     textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     repack();
                 }
                 case "IT" -> {
-//                    PanelText.strInput=PanelText.strResult.substring(1);
                     textPanel.setStrInput(textPanel.getStrResult().substring(1));
                     cardTypeCalc.show(cardPanel, "IT");
                     widthSize = keyPanelIT.getWidthKeyPanel();

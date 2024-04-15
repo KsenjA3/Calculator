@@ -357,7 +357,7 @@ public class ButtonsBasic {
             textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
 
 
-            if (func==null) {
+            if (func==null && textPanel.getStrInput()=="   ") {
                 textPanel.setStrInput(Operations.printNumber(dResult) + name);
                 textPanel.setTextInput(textPanel.getStrInput());
             }else {
@@ -443,12 +443,11 @@ public class ButtonsBasic {
                     strNumber = "0";
 
                     textPanel.setTextRezult("0");
-                    textPanel.setStrInput(" ");
+                    textPanel.setStrInput("   ");   //number after АС
                     textPanel.setTextInput( textPanel.getStrInput());
                     func = null;
                     dResult = 0.0;                // sign after АС
                     nameSign = " ";               //after sqrt
-                    textPanel.setStrInput(" ");   //number after АС
                     textPanel.setStrResult("0");  // AC then =, textRez
                 }
                 case "C" -> {

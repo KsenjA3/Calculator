@@ -46,7 +46,6 @@ public class CalculateFace extends JFrame {
         frame.setContentPane(container);
 
             // create Panels
-//        private PanelTextLog textPanel;
         textPanel = new PanelTextLog();
         keyPanelBasic = new PanelKeyBasic(textPanel);
         keyPanelEngineer = new PanelKeyEngineer(textPanel);
@@ -105,12 +104,14 @@ public class CalculateFace extends JFrame {
             switch (e.getActionCommand()) {
                 case "Обычный" -> {
                     textPanel.setStrInput(textPanel.getStrResult().substring(1));
+                    textPanel.setTextInput(textPanel.getStrInput());
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     repack();
                 }
                 case "Инженерный" -> {
                     textPanel.setStrInput(textPanel.getStrResult().substring(1));
+                    textPanel.setTextInput(textPanel.getStrInput());
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     repack();

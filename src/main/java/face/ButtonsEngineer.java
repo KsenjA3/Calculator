@@ -63,27 +63,134 @@ public  class ButtonsEngineer extends ButtonsBasic {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
+            double b ;
+            double scale= Math.pow(10,15);
+
+
             switch (name){
                 case "±"-> {
-                    textPanel.setSbLog(textPanel.getStrInput());
-                    textPanel.setSbLog("\n");
-                    textPanel.setSbLog(textPanel.getStrResult());
-                    textPanel.setSbLog("\n");
-                    textPanel.setTextLog( textPanel.getSbLog().toString());
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
                     dResult = -dResult;
+                    printResult ();
+                    textPanel.setSbLog("±"+textPanel.getStrInput().trim());
+                    printSbLog();
+                }
+                case "x²" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    dResult = dResult*dResult;
+                    printResult ();
+                    textPanel.setSbLog(textPanel.getStrInput()+"²");
+                    printSbLog();
+                }
+                case  "x³" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    dResult = dResult*dResult*dResult;
+                    printResult ();
+                    textPanel.setSbLog(textPanel.getStrInput()+"³");
+                    printSbLog();
+                }
+                case "xⁿ" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    dResult = Math.pow(dResult,dNumber);
+                    printResult ();
+                    textPanel.setSbLog(textPanel.getStrInput()+"n");
+                    printSbLog();
+                }
+                case  "³√" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    dResult=Math.cbrt(dResult);
+                    printResult ();
+                    textPanel.setSbLog("³√"+textPanel.getStrInput().trim());
+                    printSbLog();
+                }
+                case ")" ->{
 
-                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
-                    textPanel.setFontBoldResult ();          //alter font
-                    textPanel.setTextRezult(textPanel.getStrResult());
-                    textPanel.setStrInput(Operations.printNumber(dResult));
-                    textPanel.setTextInput(textPanel.getStrInput());
+                }
+                case "(" ->{
 
-       //             unblockedAll(bPercent);       // work  % without mistakes
-                    strNumber = "0";              // if after = go "."
-                    func = null;
-                    textPanel.setStrInput("   ");    // input number after =
+                }
+                case "ln" ->{
+
+                }
+                case "lg" ->{
+
+                }
+                case "x!" ->{
+                    int n;
+                    try {
+                        n = Integer.parseInt(textPanel.getStrResult().substring(1));
+                        dResult = 1.0;
+                        for (int k = 1; k <= n; k++) {
+                            dResult = dResult * k;
+                        }
+                        printResult ();
+                        textPanel.setSbLog(textPanel.getStrInput()+"!");
+                        printSbLog();
+                    } catch (NumberFormatException exc) {
+                        textPanel.setStrResult("факториал дробного числа не существует");
+//                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog(textPanel.getStrInput());
+                        printSbLog();
+                    }
+                }
+                case "1/x" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    if (dResult==0.0){
+                        textPanel.setStrResult("делить на ноль нельзя");
+//                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog(textPanel.getStrInput());
+                        printSbLog();
+                    }else {
+                        dResult = 1 / dResult;
+                        printResult ();
+                        textPanel.setSbLog("1 / "+textPanel.getStrInput().trim());
+                        printSbLog();
+                    }
+                }
+                case "π" ->{
+
+                }
+                case "sin" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    b = Math.toRadians(dResult);
+                    dResult = Math.round(Math.sin(b)*scale)/scale;
+                    printResult ();
+                    textPanel.setSbLog("sin("+textPanel.getStrInput().trim()+")");
+                    printSbLog();
+                }
+                case "cos" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    b = Math.toRadians(dResult);
+                    dResult = Math.round(Math.cos(b)*scale)/scale;
+                    printResult ();
+                    textPanel.setSbLog("cos("+textPanel.getStrInput().trim()+")");
+                    printSbLog();
+                }
+                case "tg" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    b = Math.toRadians(dResult);
+                    dResult = Math.round(Math.tan(b)*scale)/scale;
+                    printResult ();
+                    textPanel.setSbLog("tg("+textPanel.getStrInput().trim()+")");
+                    printSbLog();
                 }
             }
+
+//            unblockedAll(bPercent);       // work  % without mistakes
+            strNumber = "0";              // if after = go "."
+            func = null;
+            textPanel.setStrInput("   ");    // input number after =
         }
+
     }
 }

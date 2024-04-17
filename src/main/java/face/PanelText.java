@@ -58,7 +58,7 @@ public class PanelText {
     PanelText(){
 
         strInput = "   ";
-        strResult = " ";
+        strResult = "0.0";
         textInputAttributes = new SimpleAttributeSet();
 
         GridBagLayout gbag = new GridBagLayout();

@@ -309,6 +309,7 @@ public class ButtonsBasic {
                     unblockedAll(bPercent);       // work  % without mistakes
 
                     if (func == null) {
+                        dNumber=Double.parseDouble(textPanel.getStrResult().substring(1));
                         dResult = calculateCurrent.calculatePersent(func, nameSign,
                                 dResultPercent, dNumber);
                         textPanel.setTextInput(Operations.printNumber(dResult));
@@ -321,20 +322,21 @@ public class ButtonsBasic {
 
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     textPanel.setTextRezult(textPanel.getStrResult());
-                    func = null;
+
+                    if (textPanel.getStrInput().endsWith("%"))
+                        textPanel.setSbLog(textPanel.getStrInput());
+                    else
+                        textPanel.setSbLog(textPanel.getStrInput()+"%");
+
+                    printSbLog ();
                                     // input number after %
+                    func = null;
                     textPanel.setStrInput("   ");
                 }
                 case " = " -> {
-                    textPanel.setFontBoldResult ();          //alter font
-                    textPanel.setTextRezult(textPanel.getStrResult());
-                    textPanel.setTextInput(textPanel.getStrInput());
-
+                     printResult ();
                     textPanel.setSbLog(textPanel.getStrInput());
-                    textPanel.setSbLog("\n");
-                    textPanel.setSbLog(textPanel.getStrResult());
-                    textPanel.setSbLog("\n");
-                    textPanel.setTextLog( textPanel.getSbLog().toString());
+                     printSbLog ();
 
                     unblockedAll(bPercent);       // work  % without mistakes
                     strNumber = "0";              // if after = go "."
@@ -448,7 +450,7 @@ public class ButtonsBasic {
                     func = null;
                     dResult = 0.0;                // sign after АС
                     nameSign = " ";               //after sqrt
-                    textPanel.setStrResult("0");  // AC then =, textRez
+                    textPanel.setStrResult("0.0");  // AC then =, textRez
                 }
                 case "C" -> {
                                     // input window
@@ -496,6 +498,20 @@ public class ButtonsBasic {
     private static void unblockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(true);
+    }
+    void printResult (){
+        textPanel.setStrResult("=" + Operations.printNumber(dResult));
+        textPanel.setFontBoldResult ();          //alter font
+        textPanel.setTextRezult(textPanel.getStrResult());
+    }
+    void printSbLog (){
+        textPanel.setSbLog("\n");
+        textPanel.setSbLog(textPanel.getStrResult());
+        textPanel.setSbLog("\n");
+        textPanel.setTextLog( textPanel.getSbLog().toString());
+
+        textPanel.setStrInput(Operations.printNumber(dResult));
+        textPanel.setTextInput(textPanel.getStrInput());
     }
 
 }

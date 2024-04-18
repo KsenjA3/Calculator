@@ -9,12 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class PanelKeyEngineer extends PanelKeyGeneral{
+ class PanelKeyEngineer extends PanelKeyGeneral{
 
      private JPanel keyPanelEngineer, keyPanel;
+     ButtonsEngineer buttonsEngineer;
     PanelTextLog textPanel;
 
-     PanelKeyEngineer(PanelTextLog textPanel) {
+     public PanelKeyEngineer(PanelTextLog textPanel) {
          this.textPanel=textPanel;
 
          /**
@@ -28,7 +29,7 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
          /**
           * create engineer buttons
           */
-         var buttonsEngineer =  new ButtonsEngineer(textPanel);
+         buttonsEngineer =  new ButtonsEngineer(textPanel);
           HashMap<String,JButton> listButtons= buttonsEngineer.getButtons();
           Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
 
@@ -119,7 +120,9 @@ public class PanelKeyEngineer extends PanelKeyGeneral{
      JPanel getKeyPanel() {
           return keyPanel;
      }
-
+    public JPanel getKeyPanelEngineer() {
+        return keyPanelEngineer;
+    }
 
      /**
       * get Width Engineer KeyPanel

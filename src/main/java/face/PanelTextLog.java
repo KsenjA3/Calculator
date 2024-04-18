@@ -10,7 +10,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 
-public class PanelTextLog extends PanelText{
+ class PanelTextLog extends PanelText{
 
     /**
      * for writing to calculator.face.PanelTextLog
@@ -24,7 +24,7 @@ public class PanelTextLog extends PanelText{
     private JScrollPane  scrollLog;
     private JPanel textPanelLog;
 
-    PanelTextLog () {
+    public PanelTextLog() {
         super();
         sbLog = new StringBuffer();
 

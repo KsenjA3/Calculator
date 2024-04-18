@@ -6,7 +6,23 @@ import fitting.MyFonts;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public  class ButtonsEngineer extends ButtonsBasic {
+  class ButtonsEngineer extends ButtonsBasic {
+    protected double b ;
+    protected JButton braceOpen;
+    protected JButton braceClose;
+    protected JButton bx2;
+    protected JButton bx3;
+    protected JButton bxn;
+    protected JButton bSqrt3;
+    protected JButton bLn;
+    protected JButton bLg;
+    protected JButton bFactorial;
+    protected JButton bDevX;
+    protected JButton bChageSign;
+    protected JButton bSin;
+    protected JButton bCos;
+    protected JButton bTg;
+    protected JButton bPi;
     private PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
@@ -20,37 +36,37 @@ public  class ButtonsEngineer extends ButtonsBasic {
      * create engineer Buttons
      */
      void makeEngineerButtons() {
-        createButton(new CreateEngineerButton(")"),")",
+        braceClose=createButton(new CreateEngineerButton(")"),")",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get() );
-        createButton(new CreateEngineerButton("x²"),"x²",
+        bx2=createButton(new CreateEngineerButton("x²"),"x²",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("x³"),"x³",
+        bx3=createButton(new CreateEngineerButton("x³"),"x³",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("xⁿ"),"xⁿ",
+        bxn=createButton(new CreateEngineerButton("xⁿ"),"xⁿ",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("³√"),"³√",
+        bSqrt3=createButton(new CreateEngineerButton("³√"),"³√",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
 
-        createButton(new CreateEngineerButton("("),"(",
+        braceOpen=createButton(new CreateEngineerButton("("),"(",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get() );
-        createButton(new CreateEngineerButton("ln"),"ln",
+        bLn=createButton(new CreateEngineerButton("ln"),"ln",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("lg"),"lg",
+        bLg=createButton(new CreateEngineerButton("lg"),"lg",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("x!"),"x!",
+        bFactorial=createButton(new CreateEngineerButton("x!"),"x!",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("1/x"),"1/x",
+        bDevX=createButton(new CreateEngineerButton("1/x"),"1/x",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
 
-        createButton(new CreateEngineerButton("±"),"±",
+        bChageSign=createButton(new CreateEngineerButton("±"),"±",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("sin"),"sin",
+        bSin=createButton(new CreateEngineerButton("sin"),"sin",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_LOW.get() );
-        createButton(new CreateEngineerButton("cos"),"cos",
+        bCos=createButton(new CreateEngineerButton("cos"),"cos",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_LOW.get() );
-        createButton(new CreateEngineerButton("tg"),"tg",
+        bTg=createButton(new CreateEngineerButton("tg"),"tg",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        createButton(new CreateEngineerButton("π"),"π",
+        bPi=createButton(new CreateEngineerButton("π"),"π",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
     }
 
@@ -63,7 +79,7 @@ public  class ButtonsEngineer extends ButtonsBasic {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            double b ;
+
             double scale= Math.pow(10,15);
 
 
@@ -91,6 +107,7 @@ public  class ButtonsEngineer extends ButtonsBasic {
                 }
                 case "xⁿ" ->{
                     dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+
                     dResult = Math.pow(dResult,dNumber);
                     printResult ();
                     textPanel.setSbLog(textPanel.getStrInput()+"n");
@@ -186,7 +203,7 @@ public  class ButtonsEngineer extends ButtonsBasic {
                 }
             }
 
-//            unblockedAll(bPercent);       // work  % without mistakes
+            unblockedAll(bPercent);       // work  % without mistakes
             strNumber = "0";              // if after = go "."
             func = null;
             textPanel.setStrInput("   ");    // input number after =

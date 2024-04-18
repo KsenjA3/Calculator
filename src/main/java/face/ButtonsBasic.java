@@ -65,7 +65,7 @@ public class ButtonsBasic {
     /**
      * result of calculation
      */
-    protected Double dResult;
+     protected Double dResult;
 
 
     private HashMap<String,JButton> listButtons;
@@ -349,7 +349,7 @@ public class ButtonsBasic {
             strInputFormerSign = textPanel.getStrInput();
         }
 
-        void Print_and_replaceRepeatedSign () {
+        private void Print_and_replaceRepeatedSign () {
             textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
             textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
             textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
@@ -456,6 +456,7 @@ public class ButtonsBasic {
                                     // input window
                     switch ( textPanel.getStrInput().charAt( textPanel.getStrInput().length() - 1)) {
                         case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
+System.out.println(textPanel.getStrInput());
                             textPanel.setStrInput(textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 1));
                             textPanel.setTextInput(textPanel.getStrInput());
                             dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
@@ -486,7 +487,7 @@ public class ButtonsBasic {
      * block keys on panel calculator
      * @param v blocking keys
      */
-    private static void blockedAll(JButton... v) {
+     static void blockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(false);
     }
@@ -495,11 +496,11 @@ public class ButtonsBasic {
      * unblock keys on panel calculator
      * @param v unblocking keys
      */
-    private static void unblockedAll(JButton... v) {
+     static void unblockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(true);
     }
-    void printResult (){
+     void printResult (){
         textPanel.setStrResult("=" + Operations.printNumber(dResult));
         textPanel.setFontBoldResult ();          //alter font
         textPanel.setTextRezult(textPanel.getStrResult());

@@ -106,8 +106,8 @@ public class CalculateFace extends JFrame {
                     if (textPanel.getStrResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setStrInput(textPanel.getStrResult().substring(1));
                         textPanel.setTextInput(textPanel.getStrInput());
+                        textPanel.setTextRezult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
@@ -117,8 +117,8 @@ public class CalculateFace extends JFrame {
                     if (textPanel.getStrResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setStrInput(textPanel.getStrResult().substring(1));
                         textPanel.setTextInput(textPanel.getStrInput());
+                        textPanel.setTextRezult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
@@ -128,8 +128,8 @@ public class CalculateFace extends JFrame {
                     if (textPanel.getStrResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setStrInput(textPanel.getStrResult().substring(1));
                         textPanel.setTextInput(textPanel.getStrInput());
+                        textPanel.setTextRezult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "IT");
                     widthSize = keyPanelIT.getWidthKeyPanel();

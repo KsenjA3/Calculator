@@ -127,14 +127,8 @@ public class PanelText {
      JTextPane getTextInput() { return textInput ;}
      String getStrInput() { return strInput; }
 
-     void setTextRezult(JLabel textRezult) {  this.textRezult=textRezult; }
     void setStrResult(String strResult) {  this.strResult=strResult; }
-    void setTextInput(JTextPane textInput) {  this.textInput=textInput ;}
     void  setStrInput(String strInput) {  this.strInput=strInput; }
-
-    String getAndSetTextInput(String strInput){
-       return this.strInput= strInput;
-    }
 
     void setTextInput(String strInput) {
         this.textInput.setText(strInput); }

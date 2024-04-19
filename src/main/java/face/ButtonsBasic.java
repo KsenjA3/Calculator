@@ -29,7 +29,7 @@ public class ButtonsBasic {
     /**
      * restriction amount  input figures to number
      */
-    private int N;
+    protected int N;
 
     /**
      * inly number
@@ -78,7 +78,6 @@ public class ButtonsBasic {
         dNumber = 0.0;
         dResult=0.0;
         func = null;
-
         nameSign = "";
         strInputFormerSign = "";
         dResultPercent = 0.0;
@@ -222,7 +221,7 @@ public class ButtonsBasic {
 
             if (N < 15) {
                 N++;
-
+// ??? System.out.println(func==null);   почему  func (xⁿ)==null   ???
                 strNumber = strNumber + name;             // create input number type String
                 dNumber = Double.parseDouble(strNumber);  // from String to Double
 
@@ -231,9 +230,11 @@ public class ButtonsBasic {
                     textPanel.setStrInput(textPanel.getStrInput() + strNumber);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }else {
-                    textPanel.setStrInput(textPanel.getStrInput() + name);
+// ??? почему не работает???     textPanel.setStrInput(textPanel.getStrInput() + name);
+                    textPanel.setStrInput(textPanel.getTextInput().getText()+name);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }
+
                                                         // except divide for 0
                 if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
                     textPanel.setStrResult("деление на 0 не возможно");
@@ -273,7 +274,6 @@ public class ButtonsBasic {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
                             //alter fonts
             textPanel.setFontBoldInput ();
 
@@ -289,19 +289,19 @@ public class ButtonsBasic {
                     textPanel.setTextInput(textPanel.getStrInput());
                 }
                 case " + " -> {
-                    Print_and_replaceRepeatedSign();
+                    Print_and_replaceRepeatedSign(" + ");
                     func = Operations::plus;
                 }
                 case " - " -> {
-                    Print_and_replaceRepeatedSign();
+                    Print_and_replaceRepeatedSign(" - ");
                     func = Operations::minus;
                 }
                 case " * " -> {
-                    Print_and_replaceRepeatedSign();
+                    Print_and_replaceRepeatedSign(" * ");
                     func = Operations::multiply;
                 }
                 case " / " -> {
-                    Print_and_replaceRepeatedSign();
+                    Print_and_replaceRepeatedSign(" / ");
                     func = Operations::divide;
                 }
 
@@ -334,6 +334,7 @@ public class ButtonsBasic {
                     textPanel.setStrInput("   ");
                 }
                 case " = " -> {
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
                      printResult ();
                     textPanel.setSbLog(textPanel.getStrInput());
                      printSbLog ();
@@ -349,27 +350,27 @@ public class ButtonsBasic {
             strInputFormerSign = textPanel.getStrInput();
         }
 
-        private void Print_and_replaceRepeatedSign () {
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," + " ));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " - "));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " * "));
-            textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
 
-
-            if (func==null && textPanel.getStrInput()=="   ") {
-                textPanel.setStrInput(Operations.printNumber(dResult) + name);
-                textPanel.setTextInput(textPanel.getStrInput());
-            }else {
-                textPanel.setStrInput(textPanel.getStrInput() + name);
-                textPanel.setTextInput(textPanel.getStrInput());
-            }
-            dResultPercent = dResult;
-        }
     }
+    void Print_and_replaceRepeatedSign (String name) {
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," + " ));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " - "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " * "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
+        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," ^ " ));
 
+        if (func==null && textPanel.getStrInput()=="   ") {
+            textPanel.setStrInput(Operations.printNumber(dResult) + name);
+            textPanel.setTextInput(textPanel.getStrInput());
+        }else {
+            textPanel.setStrInput(textPanel.getStrInput() + name);
+            textPanel.setTextInput(textPanel.getStrInput());
+        }
+        dResultPercent = dResult;
+    }
     /**
      * behavior  remember and delete Buttons
      */
@@ -453,10 +454,10 @@ public class ButtonsBasic {
                     textPanel.setStrResult("0.0");  // AC then =, textRez
                 }
                 case "C" -> {
+                    if (textPanel.getStrInput().length()==0) break;
                                     // input window
                     switch ( textPanel.getStrInput().charAt( textPanel.getStrInput().length() - 1)) {
                         case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
-System.out.println(textPanel.getStrInput());
                             textPanel.setStrInput(textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 1));
                             textPanel.setTextInput(textPanel.getStrInput());
                             dResult = calculateCurrent.calculateInput( textPanel.getStrInput());

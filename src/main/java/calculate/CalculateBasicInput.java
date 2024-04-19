@@ -44,8 +44,13 @@ public class CalculateBasicInput {
             // delete space
         strInput= strInput.replaceAll(" ", "");
 
+        if (strInput.equals(""))
+            return 0;
+
         arrD = new ArrayList<>();
         arrSign=new ArrayList<>();
+
+
 
                 //begin from Negative number
         if (strInput.charAt(0)=='-')
@@ -70,7 +75,7 @@ public class CalculateBasicInput {
                             dNumber = Operations.sqrt(dNumber);
                         }
                         dNumber= Operations.multiply(dNSqrt,dNumber);
-                    } else {          // число после -+*/
+                    } else {          // number after -+*/^
                         doubleNumber= Double.parseDouble(strNumber);
                         dNumber = new BigDecimal (doubleNumber);
                     }
@@ -120,6 +125,10 @@ public class CalculateBasicInput {
                     arrSign.add(Operations::divide);
                     getReadyGoOn ();
                 }
+                case '^' -> {
+                    arrSign.add(Operations::pow);
+                    getReadyGoOn();
+                }
             }
         }
 
@@ -134,8 +143,10 @@ public class CalculateBasicInput {
             int j;
             for (int i = 1; i<arrD.size(); i++) {
                 j = i - 1;
-                if (j < arrSign.size())
+                if (j < arrSign.size()){
                     dResult = Operations.result(arrSign.get(j), dResult, arrD.get(i));
+                }
+
             }
         }
 

@@ -8,21 +8,8 @@ import java.awt.event.ActionEvent;
 
   class ButtonsEngineer extends ButtonsBasic {
     protected double b ;
-    protected JButton braceOpen;
-    protected JButton braceClose;
-    protected JButton bx2;
-    protected JButton bx3;
-    protected JButton bxn;
-    protected JButton bSqrt3;
-    protected JButton bLn;
-    protected JButton bLg;
-    protected JButton bFactorial;
-    protected JButton bDevX;
-    protected JButton bChageSign;
-    protected JButton bSin;
-    protected JButton bCos;
-    protected JButton bTg;
-    protected JButton bPi;
+    protected JButton braceOpen, braceClose, bx2, bx3, bxn, bSqrt3, bLn, bLg,
+                    bFactorial, bDevX, bChageSign, bSin, bCos, bTg, bPi;
     private PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
@@ -106,12 +93,17 @@ import java.awt.event.ActionEvent;
                     printSbLog();
                 }
                 case "xⁿ" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    textPanel.setFontBoldInput ();
+                    strNumber = "0";                      //prepare to input new number
+                    N = 0;
+                    unblockedAll(bPoint);       // allow double
+                    blockedAll(bPercent);       // work  % without mistakes
 
-                    dResult = Math.pow(dResult,dNumber);
-                    printResult ();
-                    textPanel.setSbLog(textPanel.getStrInput()+"n");
-                    printSbLog();
+                    Print_and_replaceRepeatedSign(" ^ ");
+                    func = Operations::pow;
+
+                    nameSign = " ^ ";
+                    strInputFormerSign = textPanel.getStrInput();
                 }
                 case  "³√" ->{
                     dResult= Double.parseDouble(textPanel.getStrResult().substring(1));

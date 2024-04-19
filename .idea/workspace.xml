@@ -9,15 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="Log+someEngBut">
-      <change afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" afterDir="false" />
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="ButtonsEngineerTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateBasicInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateBasicInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/Operations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/Operations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelKeyEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelKeyEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelTextLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelTextLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/face/CalculateFaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/CalculateFaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/CalculateFace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/face/PanelText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/PanelText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +73,14 @@
       <recent name="calculate" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CalculateBasicInputTest">
+  <component name="RunManager" selected="Application.CalculateDemo">
+    <configuration name="CalculateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CalculateDemo" />
+      <module name="Calculator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ButtonsEngineerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
@@ -86,22 +92,6 @@
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ButtonsEngineerTest.testChangeX2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="face.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="face" />
-      <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="testChangeX2(java.lang.String,double)" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CalculateDemo" />
         <item itemvalue="JUnit.CalculateBasicInputTest" />
         <item itemvalue="JUnit.ButtonsEngineerTest" />
         <item itemvalue="JUnit.ButtonsEngineerTest.testSqrt3" />
         <item itemvalue="JUnit.ButtonsEngineerTest.testChangeX3" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.testChangeX2" />
       </list>
     </recent_temporary>
   </component>
@@ -235,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713339324553</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ButtonsEngineerTest">
+      <created>1713471832355</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713471832355</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,7 +254,8 @@
     <MESSAGE value="clean" />
     <MESSAGE value="beginWhenExchangeTypeCalculator" />
     <MESSAGE value="Log+someEngBut" />
-    <option name="LAST_COMMIT_MESSAGE" value="Log+someEngBut" />
+    <MESSAGE value="ButtonsEngineerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="ButtonsEngineerTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -303,77 +301,54 @@
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
-          <line>361</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
-          <line>364</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>176</line>
+          <line>169</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>131</line>
+          <line>124</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>128</line>
+          <line>121</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>125</line>
+          <line>118</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>122</line>
+          <line>115</line>
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>107</line>
+          <line>94</line>
           <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/PanelKeyEngineer.java</url>
           <line>123</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>129</line>
-          <properties class="face.PanelText" method="setTextRezult">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="38" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateBasicInput.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/face/PanelText.java</url>
-          <line>131</line>
-          <properties class="face.PanelText" method="setTextInput">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="39" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>223</line>
+          <option name="timeStamp" value="99" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

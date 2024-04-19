@@ -28,6 +28,7 @@ public class Operations {
         return f.func(d1, d2);
     }
 
+
     public static BigDecimal plus (BigDecimal d1, BigDecimal d2) {
         return d1.add(d2, mathContext);
     }
@@ -47,6 +48,9 @@ public class Operations {
     public static  BigDecimal sqrt (BigDecimal d1) { return d1.sqrt(mathContext);}
 
 
-
+    public static  BigDecimal pow (BigDecimal d1, BigDecimal d2) {
+        int i2= Integer.parseInt(d2.toString());
+        return d1.pow(i2, mathContext);
+    }
 
 }

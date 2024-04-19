@@ -91,6 +91,18 @@ class CalculateBasicInputTest {
 
     @ParameterizedTest
     @CsvSource ( value =  {
+            " 2 ^ 3 +4,   12",
+            " 2*2^2,  16",
+            " 2^ 4*√4, 32",
+            " 0 ^8, 0"
+    })
+    void pow (String strInput, double expectedResult)
+    {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+
+    @ParameterizedTest
+    @CsvSource ( value =  {
             " -25+15,  -10",
             " -25-15,  -40",
             " -2*5,  -10",

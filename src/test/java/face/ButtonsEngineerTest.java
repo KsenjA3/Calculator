@@ -61,7 +61,7 @@ class ButtonsEngineerTest {
             " =270,   -1.0",
             " =180,   0.0",
     })
-    public void testSin(String strResult, double expectedResult)  {
+    public void sin(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bSin.getLocationOnScreen();
@@ -86,7 +86,7 @@ class ButtonsEngineerTest {
             " =180,   -1.0",
             " =150,   -0.866025403",
     })
-    public void testCos(String strResult, double expectedResult)  {
+    public void cos(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bCos.getLocationOnScreen();
@@ -109,7 +109,7 @@ class ButtonsEngineerTest {
             " =150,  -0.577350269",
             " =180,  0.0",
     })
-    public void testTg(String strResult, double expectedResult)  {
+    public void tg(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bTg.getLocationOnScreen();
@@ -128,7 +128,7 @@ class ButtonsEngineerTest {
             " =45.55,   -45.55",
             " =-66.25,   66.25",
     })
-    public void testChangeSign(String strResult, double expectedResult)  {
+    public void changeSign(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bChageSign.getLocationOnScreen();
@@ -185,10 +185,50 @@ class ButtonsEngineerTest {
             " =15.625,   2.5",
             " =-15.625,   -2.5",
     })
-    public void testSqrt3(String strResult, double expectedResult)  {
+    public void sqrt3(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bSqrt3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " =100,   2",
+            " =20,   1.301029995",
+            " =10000,   4",
+            " =25,   1.397940008",
+            " =0.25,   -0.602059991",
+    })
+    public void lg(String strResult, double expectedResult)  {
+        Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
+
+        locate=panelKey.buttonsEngineer.bLg.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " =1,   0",
+            " =2.718281828459,   1",
+            " =25,   3.218875824",
+            " =0.25,   -1.386294361",
+
+    })
+    public void ln(String strResult, double expectedResult)  {
+        Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
+
+        locate=panelKey.buttonsEngineer.bLn.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);

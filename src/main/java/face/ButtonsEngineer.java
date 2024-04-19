@@ -119,10 +119,42 @@ import java.awt.event.ActionEvent;
 
                 }
                 case "ln" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    if (dResult>0) {
+                        dResult=Math.log(dResult);
+                        printResult();
+                        textPanel.setSbLog("ln" + textPanel.getStrInput().trim());
+                        printSbLog();
+                    }else {
+                        textPanel.setStrResult("неверный ввод");
+//                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
 
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog(textPanel.getStrInput());
+                        printSbLog();
+                    }
                 }
                 case "lg" ->{
+                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
+                    if (dResult>0) {
+                        dResult=Math.log10(dResult);
+                        printResult();
+                        textPanel.setSbLog("lg" + textPanel.getStrInput().trim());
+                        printSbLog();
+                    }else {
+                        textPanel.setStrResult("неверный ввод");
+//                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
 
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog(textPanel.getStrInput());
+                        printSbLog();
+                    }
                 }
                 case "x!" ->{
                     int n;

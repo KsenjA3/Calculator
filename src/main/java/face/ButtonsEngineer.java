@@ -199,7 +199,17 @@ import java.awt.event.ActionEvent;
                     }
                 }
                 case "π" ->{
+                    String str=textPanel.getTextInput().getText();
+                    str=str.substring(0,str.length()-strNumber.length());
+                    dNumber = Math.PI;
 
+                    textPanel.setStrInput(str+dNumber.toString());
+                    textPanel.setTextInput(textPanel.getStrInput());
+
+                    dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
+                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
+                        unblockedAll(bPercent);       // work  % without mistakes
+                    textPanel.setTextRezult(textPanel.getStrResult());
                 }
                 case "sin" ->{
                     dResult= Double.parseDouble(textPanel.getStrResult().substring(1));

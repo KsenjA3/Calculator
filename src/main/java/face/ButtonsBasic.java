@@ -60,7 +60,7 @@ public class ButtonsBasic {
     /**
      * object for calculation
      */
-    private CalculateBasicInput calculateCurrent;
+    protected CalculateBasicInput calculateCurrent;
 
     /**
      * result of calculation

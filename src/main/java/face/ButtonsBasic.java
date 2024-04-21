@@ -32,7 +32,7 @@ public class ButtonsBasic {
     protected int N;
 
     /**
-     * inly number
+     * in number
      */
     protected String strNumber;
     protected Double dNumber;
@@ -66,6 +66,7 @@ public class ButtonsBasic {
      * result of calculation
      */
      protected Double dResult;
+    protected int countBrace;
 
 
     private HashMap<String,JButton> listButtons;
@@ -82,10 +83,11 @@ public class ButtonsBasic {
         strInputFormerSign = "";
         dResultPercent = 0.0;
 
+
                         //create object for calculation
         calculateCurrent = new CalculateBasicInput();
 
-        listButtons =new  HashMap <String,JButton> ();
+        listButtons = new HashMap<>();
         makeButtons();
     }
 
@@ -226,7 +228,7 @@ public class ButtonsBasic {
                 dNumber = Double.parseDouble(strNumber);  // from String to Double
 
 
-                if (strNumber.equals("0.") && name.equals(".")) {    //output in begining
+                if (strNumber.equals("0.") && name.equals(".")) {    //output in beginning
                     textPanel.setStrInput(textPanel.getStrInput() + strNumber);
                     textPanel.setTextInput(textPanel.getStrInput());
                 }else {
@@ -250,7 +252,7 @@ public class ButtonsBasic {
                 if (name.equals(".")) {
                     blockedAll(bPoint);   //two points couldn't bу in one number
 
-                                    // unblocked keys during attempt divide to  ziro
+                                    // unblocked keys during attempt divide to  zero
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                             bResult, bMemoryAdd, bMemoryDel, bDel,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
@@ -328,7 +330,7 @@ public class ButtonsBasic {
                     else
                         textPanel.setSbLog(textPanel.getStrInput()+"%");
 
-                    printSbLog ();
+                    print_SbLog_Input ();
                                     // input number after %
                     func = null;
                     textPanel.setStrInput("   ");
@@ -336,14 +338,9 @@ public class ButtonsBasic {
                 case " = " -> {
                     dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
                      printResult ();
-                    textPanel.setSbLog(textPanel.getStrInput());
-                     printSbLog ();
-
-                    unblockedAll(bPercent);       // work  % without mistakes
-                    strNumber = "0";              // if after = go "."
-                    func = null;
-                                    // input number after =
-                    textPanel.setStrInput("   ");
+                    textPanel.setSbLog(textPanel.getTextInput().getText().trim());
+//   ??? don't work    textPanel.setSbLog(textPanel.getStrInput());
+                    print_SbLog_Input ();
                 }
             }
             nameSign = name;
@@ -362,7 +359,7 @@ public class ButtonsBasic {
         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," ^ " ));
 
-        if (func==null && textPanel.getStrInput()=="   ") {
+        if (func==null && textPanel.getStrInput().equals("   ")) {
             textPanel.setStrInput(Operations.printNumber(dResult) + name);
             textPanel.setTextInput(textPanel.getStrInput());
         }else {
@@ -407,7 +404,8 @@ public class ButtonsBasic {
                                 textPanel.setStrInput( textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 1));
 
                                 switch ( textPanel.getStrInput().substring( textPanel.getStrInput().length() - 1)) {
-                                    case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." -> isFormerNumber = true;
+                                    case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." ->
+                                                isFormerNumber = true;
                                     default -> isFormerNumber = false;
                                 }
                             }
@@ -468,7 +466,7 @@ public class ButtonsBasic {
                             textPanel.setStrInput(textPanel.getStrInput().substring(0,  textPanel.getStrInput().length() - 3));
                             textPanel.setTextInput(textPanel.getStrInput());
                             dResult = calculateCurrent.calculateInput( textPanel.getStrInput());
-                                            //begining work
+                                            //beginning work
                             if ( textPanel.getStrInput().length()< 3)
                                 func=null;
                         }
@@ -505,8 +503,13 @@ public class ButtonsBasic {
         textPanel.setStrResult("=" + Operations.printNumber(dResult));
         textPanel.setFontBoldResult ();          //alter font
         textPanel.setTextRezult(textPanel.getStrResult());
+
+         unblockedAll(bPercent);       // work  % without mistakes
+         strNumber = "0";              // if after = go "."
+         func = null;
+         textPanel.setStrInput("   ");    // input number after =
     }
-    void printSbLog (){
+    void print_SbLog_Input (){
         textPanel.setSbLog("\n");
         textPanel.setSbLog(textPanel.getStrResult());
         textPanel.setSbLog("\n");
@@ -515,5 +518,6 @@ public class ButtonsBasic {
         textPanel.setStrInput(Operations.printNumber(dResult));
         textPanel.setTextInput(textPanel.getStrInput());
     }
+
 
 }

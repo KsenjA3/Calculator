@@ -42,10 +42,11 @@ public class CalculateBasicInput {
         wasSqrt = false;
 
             // delete space
+
         strInput= strInput.replaceAll(" ", "");
 
         if (strInput.equals(""))
-            return 0;
+            return 0.0;
 
         arrD = new ArrayList<>();
         arrSign=new ArrayList<>();

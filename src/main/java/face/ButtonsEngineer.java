@@ -7,9 +7,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
   class ButtonsEngineer extends ButtonsBasic {
+    private   String str;
     protected double b ;
     protected JButton braceOpen, braceClose, bx2, bx3, bxn, bSqrt3, bLn, bLg,
-                    bFactorial, bDevX, bChageSign, bSin, bCos, bTg, bPi;
+                    bFactorial, bDivX, bChageSign, bSin, bCos, bTg, bPi;
     private PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
@@ -17,6 +18,9 @@ import java.awt.event.ActionEvent;
         this.textPanel=textPanel;
         makeButtons();
         makeEngineerButtons();
+
+        countBrace=0;
+        blockedAll(braceClose);
     }
 
     /**
@@ -42,7 +46,7 @@ import java.awt.event.ActionEvent;
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
         bFactorial=createButton(new CreateEngineerButton("x!"),"x!",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
-        bDevX=createButton(new CreateEngineerButton("1/x"),"1/x",
+        bDivX=createButton(new CreateEngineerButton("1/x"),"1/x",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
 
         bChageSign=createButton(new CreateEngineerButton("±"),"±",
@@ -72,26 +76,27 @@ import java.awt.event.ActionEvent;
 
             switch (name){
                 case "±"-> {
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    dResult = -dResult;
-                    printResult ();
-                    textPanel.setSbLog("±"+textPanel.getStrInput().trim());
-                    printSbLog();
+                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        dResult = -dResult;
+                        printResult ();
+                        textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
                 }
                 case "x²" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    dResult = dResult*dResult;
-                    printResult ();
-                    textPanel.setSbLog(textPanel.getStrInput()+"²");
-                    printSbLog();
+                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        dResult = dResult*dResult;
+                        printResult ();
+                        textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")²");
+                        print_SbLog_Input();
                 }
                 case  "x³" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    dResult = dResult*dResult*dResult;
-                    printResult ();
-                    textPanel.setSbLog(textPanel.getStrInput()+"³");
-                    printSbLog();
+                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        dResult = dResult*dResult*dResult;
+                        printResult ();
+                        textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")³");
+                        print_SbLog_Input();
                 }
+  // пересмотреть Log и м.б. сам алгоритм расчета с учетом скобок
                 case "xⁿ" ->{
                     textPanel.setFontBoldInput ();
                     strNumber = "0";                      //prepare to input new number
@@ -100,106 +105,28 @@ import java.awt.event.ActionEvent;
                     blockedAll(bPercent);       // work  % without mistakes
 
                     Print_and_replaceRepeatedSign(" ^ ");
+//                    if (func==null && textPanel.getStrInput()=="   ") {
+//                        textPanel.setStrInput(Operations.printNumber(dResult) + name);
+//                        textPanel.setTextInput(textPanel.getStrInput());
+//                    }else {
+//                        textPanel.setStrInput(textPanel.getStrInput() + name);
+//                        textPanel.setTextInput(textPanel.getStrInput());
+//                    }
+//                    dResultPercent = dResult;
                     func = Operations::pow;
 
                     nameSign = " ^ ";
                     strInputFormerSign = textPanel.getStrInput();
                 }
                 case  "³√" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    dResult=Math.cbrt(dResult);
-                    printResult ();
-                    textPanel.setSbLog("³√"+textPanel.getStrInput().trim());
-                    printSbLog();
-                }
-                case ")" ->{
-
-                }
-                case "(" ->{
-
-                }
-                case "ln" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    if (dResult>0) {
-                        dResult=Math.log(dResult);
-                        printResult();
-                        textPanel.setSbLog("ln" + textPanel.getStrInput().trim());
-                        printSbLog();
-                    }else {
-                        textPanel.setStrResult("неверный ввод");
-//                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog(textPanel.getStrInput());
-                        printSbLog();
-                    }
-                }
-                case "lg" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    if (dResult>0) {
-                        dResult=Math.log10(dResult);
-                        printResult();
-                        textPanel.setSbLog("lg" + textPanel.getStrInput().trim());
-                        printSbLog();
-                    }else {
-                        textPanel.setStrResult("неверный ввод");
-//                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog(textPanel.getStrInput());
-                        printSbLog();
-                    }
-                }
-                case "x!" ->{
-                    int n;
-                    try {
-                        n = Integer.parseInt(textPanel.getStrResult().substring(1));
-                        dResult = 1.0;
-                        for (int k = 1; k <= n; k++) {
-                            dResult = dResult * k;
-                        }
+                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        dResult=Math.cbrt(dResult);
                         printResult ();
-                        textPanel.setSbLog(textPanel.getStrInput()+"!");
-                        printSbLog();
-                    } catch (NumberFormatException exc) {
-                        textPanel.setStrResult("факториал дробного числа не существует");
-//                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog(textPanel.getStrInput());
-                        printSbLog();
-                    }
-                }
-                case "1/x" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    if (dResult==0.0){
-                        textPanel.setStrResult("делить на ноль нельзя");
-//                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog(textPanel.getStrInput());
-                        printSbLog();
-                    }else {
-                        dResult = 1 / dResult;
-                        printResult ();
-                        textPanel.setSbLog("1 / "+textPanel.getStrInput().trim());
-                        printSbLog();
-                    }
+                        textPanel.setSbLog("³√("+textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
                 }
                 case "π" ->{
-                    String str=textPanel.getTextInput().getText();
+                    str=textPanel.getTextInput().getText();
                     str=str.substring(0,str.length()-strNumber.length());
                     dNumber = Math.PI;
 
@@ -208,39 +135,175 @@ import java.awt.event.ActionEvent;
 
                     dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
-                        unblockedAll(bPercent);       // work  % without mistakes
+                    unblockedAll(bPercent);       // work  % without mistakes
                     textPanel.setTextRezult(textPanel.getStrResult());
                 }
+                case ")"  ->{
+                    countBrace--;
+                    textPanel.setStrInput(textPanel.getTextInput().getText() + name);
+                    textPanel.setTextInput(textPanel.getStrInput());
+                    if (countBrace>0) {
+
+                    }
+                    else {
+                        blockedAll(braceClose);
+
+                    }
+
+                }
+                case "(" ->{
+                    countBrace ++;
+                    textPanel.setStrInput(textPanel.getTextInput().getText()+name);
+                    textPanel.setTextInput(textPanel.getStrInput());
+                    unblockedAll(braceClose);
+                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
+                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx2, bx2, bxn,
+                            bChageSign, bFactorial, bDivX,  bSqrt3);
+
+
+                }
+                case "ln" ->{
+                    try {
+                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        if (dResult>0) {
+                            dResult=Math.log(dResult);
+                            printResult();
+                            textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
+                            print_SbLog_Input();
+                        }else {
+                            throw new ArithmeticException();
+                        }
+                    } catch (ArithmeticException ex) {
+                        textPanel.setStrResult("не существует");
+                        //                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
+                    }
+                }
+                case "lg" ->{
+                    try {
+                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        if (dResult>0) {
+                            dResult=Math.log10(dResult);
+                            printResult();
+                            textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
+                            print_SbLog_Input();
+                        }else {
+                            throw new ArithmeticException();
+                        }
+                    } catch (ArithmeticException ex) {
+                        textPanel.setStrResult("не существует");
+                        //                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
+                    }
+                }
+                case "x!" ->{
+                    int n;
+                    try {
+                        n = Integer.parseInt(textPanel.getStrResult().substring(1));
+                        if (n<0) {
+                            throw new NumberFormatException ();
+                        } else {
+                            dResult = 1.0;
+                            for (int k = 1; k <= n; k++) {
+                                dResult = dResult * k;
+                            }
+                            printResult ();
+                            textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")!");
+                            print_SbLog_Input();
+                        }
+                    } catch (NumberFormatException exc) {
+                        textPanel.setStrResult("неверный формат ввода");
+//                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult)+"!");
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog(textPanel.getStrInput());
+                        print_SbLog_Input();
+                    }
+                }
+                case "1/x" ->{
+                    try {
+                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        if (dResult==0.0){
+                            throw new ArithmeticException();
+                        }else {
+                               dResult = 1 / dResult;
+                               printResult ();
+                               textPanel.setSbLog("1 / ("+textPanel.getTextInput().getText().trim()+")");
+                               print_SbLog_Input();
+                        }
+                    } catch (ArithmeticException ex) {
+                        textPanel.setStrResult("делить на ноль нельзя");
+                        //                        textPanel.setFontBoldResult ();          //alter font
+                        textPanel.setTextRezult(textPanel.getStrResult());
+                        textPanel.setSbLog("1/ ("+textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
+                    }
+
+                }
                 case "sin" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    b = Math.toRadians(dResult);
-                    dResult = Math.round(Math.sin(b)*scale)/scale;
-                    printResult ();
-                    textPanel.setSbLog("sin("+textPanel.getStrInput().trim()+")");
-                    printSbLog();
+                    dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText() );
+                        b = Math.toRadians(dResult);
+                        dResult = Math.round(Math.sin(b)*scale)/scale;
+                        printResult ();
+                        textPanel.setSbLog("sin("+textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
                 }
                 case "cos" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    b = Math.toRadians(dResult);
-                    dResult = Math.round(Math.cos(b)*scale)/scale;
-                    printResult ();
-                    textPanel.setSbLog("cos("+textPanel.getStrInput().trim()+")");
-                    printSbLog();
+                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        b = Math.toRadians(dResult);
+                        dResult = Math.round(Math.cos(b)*scale)/scale;
+                        printResult ();
+                        textPanel.setSbLog("cos("+textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
                 }
                 case "tg" ->{
-                    dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
-                    b = Math.toRadians(dResult);
-                    dResult = Math.round(Math.tan(b)*scale)/scale;
-                    printResult ();
-                    textPanel.setSbLog("tg("+textPanel.getStrInput().trim()+")");
-                    printSbLog();
+                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+
+                    long iRez=Math.round(dResult);
+                    if(Math.abs(iRez)>180)
+                        iRez=iRez%180;
+
+                    try {
+                        if (Math.abs(iRez)==90){
+                            throw new ArithmeticException();
+                        }else {
+                            b = Math.toRadians(dResult);
+                            dResult = Math.round(Math.tan(b) * scale) / scale;
+                            printResult();
+                            textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim() + ")");
+                            print_SbLog_Input();
+                        }
+                    } catch (ArithmeticException ex) {
+                        textPanel.setStrResult("не существует");
+                        textPanel.setTextRezult(textPanel.getStrResult());
+
+                        textPanel.setStrInput(Operations.printNumber(dResult));
+                        textPanel.setTextInput(textPanel.getStrInput());
+
+                        textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim()+")");
+                        print_SbLog_Input();
+                    }
+
                 }
             }
 
-            unblockedAll(bPercent);       // work  % without mistakes
-            strNumber = "0";              // if after = go "."
-            func = null;
-            textPanel.setStrInput("   ");    // input number after =
+
         }
 
     }

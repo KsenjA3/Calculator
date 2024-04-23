@@ -9,8 +9,7 @@ import java.awt.event.ActionEvent;
   class ButtonsEngineer extends ButtonsBasic {
     private   String str;
     protected double b ;
-    protected JButton braceOpen, braceClose, bx2, bx3, bxn, bSqrt3, bLn, bLg,
-                    bFactorial, bDivX, bChageSign, bSin, bCos, bTg, bPi;
+
     private PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
@@ -139,26 +138,47 @@ import java.awt.event.ActionEvent;
                     textPanel.setTextRezult(textPanel.getStrResult());
                 }
                 case ")"  ->{
-                    countBrace--;
-                    textPanel.setStrInput(textPanel.getTextInput().getText() + name);
-                    textPanel.setTextInput(textPanel.getStrInput());
-                    if (countBrace>0) {
-
+                    str=textPanel.getTextInput().getText().trim();
+                    switch (str.charAt(str.length()-1)) {
+                        case '0','1','2','3','4','5','6','7','8','9',')' -> {
+                            countBrace--;
+                            textPanel.setStrInput(textPanel.getTextInput().getText() + name);
+                            textPanel.setTextInput(textPanel.getStrInput());
+                        }
                     }
-                    else {
-                        blockedAll(braceClose);
 
+                    if (countBrace<=0) {
+                        blockedAll(braceClose);
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
+                                bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
+                                bChageSign, bFactorial, bDivX,  bSqrt3);
                     }
 
                 }
                 case "(" ->{
                     countBrace ++;
-                    textPanel.setStrInput(textPanel.getTextInput().getText()+name);
-                    textPanel.setTextInput(textPanel.getStrInput());
+                    str=textPanel.getTextInput().getText().trim();
+                    switch (str.charAt(str.length()-1)) {
+                        case '0','1','2','3','4','5','6','7','8','9',')'-> {
+                            textPanel.setStrInput(str+" * "+name);
+                            textPanel.setTextInput(textPanel.getStrInput());
+                        }
+                        case '.'-> {
+                            textPanel.setStrInput(str+"0 * "+name);
+                            textPanel.setTextInput(textPanel.getStrInput());
+                        }
+                        default -> {
+                            textPanel.setStrInput(str+name);
+                            textPanel.setTextInput(textPanel.getStrInput());
+                        }
+                    }
+
+                    System.out.println("="+str+"=");
                     unblockedAll(braceClose);
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx2, bx2, bxn,
+                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
                             bChageSign, bFactorial, bDivX,  bSqrt3);
 
 
@@ -172,9 +192,12 @@ import java.awt.event.ActionEvent;
                             textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
                             print_SbLog_Input();
                         }else {
-                            throw new ArithmeticException();
+System.out.println("ln");
+                            throw new MyException("ln не существует");
                         }
-                    } catch (ArithmeticException ex) {
+
+                    } catch (MyException ex) {
+System.out.println("перехвачено -" +ex);
                         textPanel.setStrResult("не существует");
                         //                        textPanel.setFontBoldResult ();          //alter font
                         textPanel.setTextRezult(textPanel.getStrResult());
@@ -225,6 +248,7 @@ import java.awt.event.ActionEvent;
                             print_SbLog_Input();
                         }
                     } catch (NumberFormatException exc) {
+System.out.println("factorial catch");
                         textPanel.setStrResult("неверный формат ввода");
 //                        textPanel.setFontBoldResult ();          //alter font
                         textPanel.setTextRezult(textPanel.getStrResult());

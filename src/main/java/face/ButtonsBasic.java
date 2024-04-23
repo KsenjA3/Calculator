@@ -15,16 +15,9 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
-public class ButtonsBasic {
+public class ButtonsBasic extends ButtonsAll{
 
     private PanelTextLog textPanel;
-
-    /**
-     * button simple calculation
-     */
-    protected JButton b, b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint;
-    protected JButton bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult;
-    protected JButton bMemoryAdd, bMemoryDel, bMemoryHold, bClear, bDel;
 
     /**
      * restriction amount  input figures to number
@@ -247,6 +240,10 @@ public class ButtonsBasic {
                     dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     unblockedAll(bPercent);       // work  % without mistakes
+                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
+                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                    unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
+                            bChageSign, bFactorial, bDivX,  bSqrt3);
                 }
 
                 if (name.equals(".")) {
@@ -436,10 +433,16 @@ public class ButtonsBasic {
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
                             bMemoryAdd, bMemoryDel, bDel,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
+                    try {
+                        blockedAll(braceClose);
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
+                                bChageSign, bFactorial, bDivX,  bSqrt3);
+                    }catch (NullPointerException ex){  }
 
                     if (memory != null)
                         unblockedAll(bMemoryHold);
 
+                    countBrace=0;
                     dNumber = 0.0;
                     strNumber = "0";
 

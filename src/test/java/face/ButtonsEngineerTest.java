@@ -1,21 +1,16 @@
 package face;
 
-import calculate.CalculateBasicInput;
-import fitting.MyColors;
-import fitting.MyFonts;
+
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -31,7 +26,7 @@ class ButtonsEngineerTest {
     PanelTextLog textPanel;
 
     @BeforeAll
-    public  void initFrame() throws AWTException {
+      void initFrame() throws AWTException {
         MockitoAnnotations.openMocks(this);
         frame = new JFrame();
         frame.setSize(new Dimension(500, 300));
@@ -50,10 +45,55 @@ class ButtonsEngineerTest {
     }
 
     @AfterAll
-    public void hideFrame() {
+     void hideFrame() {
         frame.setVisible(false);
     }
 
+
+    @Test
+    void ln_Exception(){
+        Throwable ex = assertThrows(
+                MyException.class,
+                ()->{
+                     txt.setText("-2");
+                     Mockito.when(textPanel.getTextInput()).thenReturn(txt);
+
+                    locate=panelKey.buttonsEngineer.bLn.getLocationOnScreen();
+                        bot.mouseMove(locate.x+10,locate.y+10);
+                        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                        try{Thread.sleep(50);}catch(InterruptedException e){}
+                },
+                "no throws"
+        );
+
+        assertEquals("ln не существует", ex.getMessage());
+
+    }
+    @Test
+    void testExpectedExceptionWithParentType() {
+
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            double d =1/0;
+        });
+    }
+
+
+
+    @Test
+    void factorial_Exception()  {
+        Mockito.when(textPanel.getStrResult()).thenReturn("2.5");
+        Throwable ex = assertThrows(
+                NumberFormatException.class,
+                ()->{
+                    locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
+                    bot.mouseMove(locate.x+10,locate.y+10);
+                    bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                    bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                    try{Thread.sleep(50);}catch(InterruptedException e){}
+                }
+        );
+    }
 
 
     @ParameterizedTest
@@ -65,7 +105,7 @@ class ButtonsEngineerTest {
             " =0,   1",
 
     })
-    public void factorial(String strResult, double expectedResult)  {
+     void factorial(String strResult, double expectedResult)  {
         Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
@@ -76,6 +116,7 @@ class ButtonsEngineerTest {
 
         assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
+
     @ParameterizedTest
     @CsvSource( value =  {
             " 2-1,   1",
@@ -84,7 +125,7 @@ class ButtonsEngineerTest {
             " 0.5,   2",
 
     })
-    public void divideForX(String strResult, double expectedResult)  {
+     void divideForX(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -108,7 +149,7 @@ class ButtonsEngineerTest {
             " 270,   -1.0",
             " 180,   0.0",
     })
-    public void sin( String strResult, double expectedResult)  {
+     void sin( String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -134,7 +175,7 @@ class ButtonsEngineerTest {
             " 180,   -1.0",
             " 150,   -0.866025403",
     })
-    public void cos(String strResult, double expectedResult)  {
+     void cos(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -158,7 +199,7 @@ class ButtonsEngineerTest {
             " 150,  -0.577350269",
             " 180,  0.0",
     })
-    public void tg(String strResult, double expectedResult)  {
+     void tg(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -178,7 +219,7 @@ class ButtonsEngineerTest {
             " 45.55,   -45.55",
             " -66.25,   66.25",
     })
-    public void changeSign(String strResult, double expectedResult)  {
+     void changeSign(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -198,7 +239,7 @@ class ButtonsEngineerTest {
             " -2.5,   6.25",
     })
 
-    public void testX2(String strResult, double expectedResult)  {
+     void testX2(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -218,7 +259,7 @@ class ButtonsEngineerTest {
             " 2.5,   15.625",
             " -2.5,   -15.625",
     })
-    public void testX3(String strResult, double expectedResult)  {
+     void testX3(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -238,7 +279,7 @@ class ButtonsEngineerTest {
             " 15.625,   2.5",
             " -15.625,   -2.5",
     })
-    public void sqrt3(String strResult, double expectedResult)  {
+     void sqrt3(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -259,7 +300,7 @@ class ButtonsEngineerTest {
             " 25,   1.397940008",
             " 0.25,   -0.602059991",
     })
-    public void lg(String strResult, double expectedResult)  {
+     void lg(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 
@@ -280,7 +321,7 @@ class ButtonsEngineerTest {
             " 0.25,   -1.386294361",
 
     })
-    public void ln(String strResult, double expectedResult)  {
+     void ln(String strResult, double expectedResult)  {
         txt.setText(strResult);
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 

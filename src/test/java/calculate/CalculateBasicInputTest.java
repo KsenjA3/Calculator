@@ -15,7 +15,7 @@ class CalculateBasicInputTest {
     private static CalculateBasicInput sut;
 
     @BeforeAll
-    public static void setCalculateBasicInput () {
+     static void setCalculateBasicInput () {
         sut = new CalculateBasicInput();
     }
 

@@ -1,6 +1,6 @@
 package face;
 
-import calculate.CalculateBasicInput;
+import calculate.CalculateInput;
 import calculate.Operations;
 import calculate.calculate;
 import fitting.MyColors;
@@ -53,7 +53,7 @@ public class ButtonsBasic extends ButtonsAll{
     /**
      * object for calculation
      */
-    protected CalculateBasicInput calculateCurrent;
+    protected CalculateInput calculateCurrent;
 
     /**
      * result of calculation
@@ -78,7 +78,7 @@ public class ButtonsBasic extends ButtonsAll{
 
 
                         //create object for calculation
-        calculateCurrent = new CalculateBasicInput();
+        calculateCurrent = new CalculateInput();
 
         listButtons = new HashMap<>();
         makeButtons();
@@ -328,6 +328,9 @@ public class ButtonsBasic extends ButtonsAll{
                         textPanel.setSbLog(textPanel.getStrInput()+"%");
 
                     print_SbLog_Input ();
+
+                    textPanel.setStrInput(Operations.printNumber(dResult));
+                    textPanel.setTextInput(textPanel.getStrInput());
                                     // input number after %
                     func = null;
                     textPanel.setStrInput("   ");
@@ -337,7 +340,9 @@ public class ButtonsBasic extends ButtonsAll{
                      printResult ();
                     textPanel.setSbLog(textPanel.getTextInput().getText().trim());
 //   ??? don't work    textPanel.setSbLog(textPanel.getStrInput());
-                    print_SbLog_Input ();
+                    print_SbLog ();
+                    textPanel.setStrInput(Operations.printNumber(dResult));
+                    textPanel.setTextInput(textPanel.getStrInput());
                 }
             }
             nameSign = name;
@@ -512,14 +517,11 @@ public class ButtonsBasic extends ButtonsAll{
          func = null;
          textPanel.setStrInput("   ");    // input number after =
     }
-    void print_SbLog_Input (){
+    void print_SbLog (){
         textPanel.setSbLog("\n");
         textPanel.setSbLog(textPanel.getStrResult());
         textPanel.setSbLog("\n");
         textPanel.setTextLog( textPanel.getSbLog().toString());
-
-        textPanel.setStrInput(Operations.printNumber(dResult));
-        textPanel.setTextInput(textPanel.getStrInput());
     }
 
 

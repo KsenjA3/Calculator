@@ -29,7 +29,7 @@ public class CalculateBasicInput {
      * @param strInput string with task to calculator.calculate.calculate
      * @return double result of calculation
      */
-    public double calculateInput (String strInput) {
+    public double calculateBasicInput (String strInput) {
         wasNegativeNumber=false;
         func=null;
         strNumber = "0";
@@ -43,10 +43,7 @@ public class CalculateBasicInput {
 
             // delete space
 
-        strInput= strInput.replaceAll(" ", "");
 
-        if (strInput.equals(""))
-            return 0.0;
 
         arrD = new ArrayList<>();
         arrSign=new ArrayList<>();

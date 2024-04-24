@@ -5,9 +5,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
-public class CalculateBasicInput {
+public class CalculateBasic {
     private ArrayList<BigDecimal> arrD;
     private ArrayList <calculate> arrSign;
+
+    private ArrayList <String> arrNameSign;
 
     private String strNumber;      //inner number
     calculate func;
@@ -47,7 +49,7 @@ public class CalculateBasicInput {
 
         arrD = new ArrayList<>();
         arrSign=new ArrayList<>();
-
+        arrNameSign=new ArrayList<>();
 
 
                 //begin from Negative number
@@ -107,23 +109,27 @@ public class CalculateBasicInput {
 
                 }
                 case '+' ->
-                {
+                {   arrNameSign.add("+");
                     arrSign.add(Operations::plus);
                     getReadyGoOn ();
                 }
-                case '-' -> {
+                case '-' ->
+                {   arrNameSign.add("-");
                     arrSign.add(Operations::minus);
                     getReadyGoOn ();
                 }
                 case '*' -> {
+                    arrNameSign.add("*");
                     arrSign.add(Operations::multiply);
                     getReadyGoOn ();
                 }
                 case '/' -> {
+                    arrNameSign.add("/");
                     arrSign.add(Operations::divide);
                     getReadyGoOn ();
                 }
                 case '^' -> {
+                    arrNameSign.add("^");
                     arrSign.add(Operations::pow);
                     getReadyGoOn();
                 }
@@ -131,12 +137,29 @@ public class CalculateBasicInput {
         }
 
             //calculator.calculate.calculate the resultate
+
+
+        if (arrD.size()>2   &&   arrSign.size()>1){
+            for (int j = 0; j<arrSign.size(); j++) {
+
+                if (arrD.size()>j+1 &&
+                    (arrNameSign.get(j).equals("*")  |  arrNameSign.get(j).equals("/") | arrNameSign.get(j).equals("^") ))
+                {
+                    dNumber=Operations.result(arrSign.get(j), arrD.get(j), arrD.get(j+1));
+                    arrNameSign.remove(j);
+                    arrSign.remove(j);
+                    arrD.remove(j);
+                    arrD.remove(j);
+                    arrD.add(j,dNumber);
+                }
+            }
+        }
+
         if (arrD.size()>0) {
             dResult = arrD.get(0);
             if(wasNegativeNumber)       //begin from Negative number
                 dResult=dResult.negate();
         }
-
         if (arrD.size()>1){
             int j;
             for (int i = 1; i<arrD.size(); i++) {
@@ -144,7 +167,6 @@ public class CalculateBasicInput {
                 if (j < arrSign.size()){
                     dResult = Operations.result(arrSign.get(j), dResult, arrD.get(i));
                 }
-
             }
         }
 
@@ -163,33 +185,42 @@ public class CalculateBasicInput {
     }
     /**
      * calculator.calculate.calculate result Percent
-     * @param funcPerc precеding function to Percent
      * @param nameSign string presentation precеding function to Percent
      * @param dResultPercentIn result before precеding function to Percent in double format
      * @param dNumberIn number between precеding function and function Percent
      * @return double result of calculation
      */
-    public double calculatePersent (calculate funcPerc, String nameSign, double dResultPercentIn, double dNumberIn) {
+    public double calculatePersent (String nameSign, double dResultPercentIn, double dNumberIn) {
 
         dNumber= new BigDecimal(dNumberIn);
         dResultPercent = new BigDecimal(dResultPercentIn);
-        func=funcPerc;
 
-        if (func == null) {
-            dResult = Operations.divide(dNumber, new BigDecimal(100) );
-
-        } else {
             switch (nameSign) {
-                case " + ", " - " -> dNumber = Operations.divide(
-                        Operations.multiply(dResultPercent,dNumber),
-                        new BigDecimal(100));
+                case "+"-> {
+                    func=Operations::plus;
+                    dNumber = Operations.divide(Operations.multiply(dResultPercent, dNumber),
+                                                new BigDecimal(100));
+                    dResult = Operations.result(func, dResultPercent, dNumber);
+                }
+                case  "-" -> {
+                    func=Operations::minus;
+                    dNumber = Operations.divide(Operations.multiply(dResultPercent, dNumber),
+                                                new BigDecimal(100));
+                    dResult = Operations.result(func, dResultPercent, dNumber);
+                }
+                case "*" -> {
+                    func=Operations::multiply;
+                    dNumber = Operations.divide(dNumber, new BigDecimal(100));
+                    dResult = Operations.result(func, dResultPercent, dNumber);
+                }
+                case "/" -> {
+                    func=Operations::divide;
+                    dNumber = Operations.divide(dNumber, new BigDecimal(100));
+                    dResult = Operations.result(func, dResultPercent, dNumber);
 
-                case " * ", " / " -> dNumber = Operations.divide(dNumber, new BigDecimal(100));
+                }
+                case "no"->  dResult = Operations.divide(dNumber, new BigDecimal(100) );
             }
-            dResult = Operations.result(func, dResultPercent, dNumber);
-
-        }
-
 
         doubleResult = dResult.doubleValue();
         return doubleResult;

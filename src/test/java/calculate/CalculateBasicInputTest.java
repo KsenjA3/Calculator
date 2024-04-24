@@ -12,11 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculateBasicInputTest {
-    private static CalculateBasicInput sut;
+    private static CalculateBasic sut;
 
     @BeforeAll
      static void setCalculateBasicInput () {
-        sut = new CalculateBasicInput();
+        sut = new CalculateBasic();
     }
 
     @ParameterizedTest
@@ -28,7 +28,7 @@ class CalculateBasicInputTest {
             " 9/3, 3"
     })
     void intNumbersCount_PlusMinusDivideMultiply (String strInput, double expectedResult) {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
 
@@ -42,7 +42,7 @@ class CalculateBasicInputTest {
             " 9.9/3, 3.3"
     })
     void doubleNumbersCount_PlusMinusDivideMultiply (String strInput, double expectedResult) {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
     //переполнение
@@ -51,11 +51,11 @@ class CalculateBasicInputTest {
         BigDecimal dResult=new BigDecimal("99999999999999999999999");
 
         BigDecimal dResult1=dResult.add(dResult);
-        assertThat(sut.calculateInput("  99999999999999999999999 +    99999999999999999999999  "))
+        assertThat(sut.calculateBasicInput("  99999999999999999999999 +    99999999999999999999999  "))
                 .isEqualTo(dResult1.doubleValue());
 
         BigDecimal dResult2=dResult.multiply(dResult);
-        assertThat(sut.calculateInput("  99999999999999999999999 *    99999999999999999999999  "))
+        assertThat(sut.calculateBasicInput("  99999999999999999999999 *    99999999999999999999999  "))
                 .isEqualTo(dResult2.doubleValue());
     }
 
@@ -74,7 +74,7 @@ class CalculateBasicInputTest {
             " √√√256, 2",
     })
     void sqrt (String strInput, double expectedResult) {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
     @ParameterizedTest
@@ -86,7 +86,7 @@ class CalculateBasicInputTest {
     })
     void ends_with_sign (String strInput, double expectedResult)
     {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
     @ParameterizedTest
@@ -98,7 +98,7 @@ class CalculateBasicInputTest {
     })
     void pow (String strInput, double expectedResult)
     {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
     @ParameterizedTest
@@ -109,7 +109,7 @@ class CalculateBasicInputTest {
             " -20/2,  -10",
     })
     void begin_with_negativNumber (String strInput, double expectedResult) {
-        assertEquals (expectedResult,sut.calculateInput(strInput));
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
 
     private static Stream<Arguments> dataProvider() {
@@ -119,14 +119,14 @@ class CalculateBasicInputTest {
         calculate divide = Operations::divide;
 
         return Stream.of(
-                Arguments.of(plus, " + ", 200, 5, 210),
-                Arguments.of(minus, " - ", 200, 5, 190),
-                Arguments.of(multiply, " * ", 200, 5, 10),
-                Arguments.of(divide, " / ", 200, 5, 4000),
-                Arguments.of(null, " / ", 200, 100, 1),
-                Arguments.of(null, " + ", 200, 20, 0.2),
-                Arguments.of(null, " - ", 200, 200, 2),
-                Arguments.of(null, " * ", 200, 80, 0.8)
+                Arguments.of( " + ", 200, 5, 210),
+                Arguments.of( " - ", 200, 5, 190),
+                Arguments.of( " * ", 200, 5, 10),
+                Arguments.of( " / ", 200, 5, 4000),
+                Arguments.of( " / ", 200, 100, 1),
+                Arguments.of( " + ", 200, 20, 0.2),
+                Arguments.of( " - ", 200, 200, 2),
+                Arguments.of( " * ", 200, 80, 0.8)
         );
 
     }
@@ -135,6 +135,6 @@ class CalculateBasicInputTest {
     @MethodSource("dataProvider")
     void calculatePersent(calculate funcPerc, String nameSign, double dResultPercentIn, double dNumberIn, double expectedResult)
     {
-        assertEquals(expectedResult, sut.calculatePersent(funcPerc, nameSign, dResultPercentIn, dNumberIn));
+        assertEquals(expectedResult, sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn));
     }
 }

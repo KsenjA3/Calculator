@@ -1,6 +1,6 @@
 package face;
 
-import calculate.CalculateBasicInput;
+import calculate.CalculateBasic;
 import calculate.Operations;
 
 import javax.swing.*;
@@ -16,12 +16,12 @@ public class KeyboardInput {
      */
     private Double dResult;
 
-    private CalculateBasicInput calculateCurrent;
+    private CalculateBasic calculateCurrent;
 
 
     KeyboardInput (PanelTextLog textPanel) {
         this.textPanel=textPanel;
-        calculateCurrent = new CalculateBasicInput();
+        calculateCurrent = new CalculateBasic();
         textPanelInputKeys();
     }
 
@@ -54,7 +54,7 @@ public class KeyboardInput {
             textPanel.setStrInput(str);
             textPanel.setTextInput(textPanel.getStrInput());
 
-            dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
+            dResult = calculateCurrent.calculateBasicInput(textPanel.getStrInput());
             textPanel.setStrResult("=" + Operations.printNumber(dResult));
             textPanel.setTextRezult(textPanel.getStrResult());
 

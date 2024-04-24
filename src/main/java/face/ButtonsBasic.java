@@ -23,6 +23,7 @@ public class ButtonsBasic extends ButtonsAll{
      * restriction amount  input figures to number
      */
     protected int N;
+    protected int countSqrt;        //no more than 3
 
     /**
      * in number
@@ -213,7 +214,7 @@ public class ButtonsBasic extends ButtonsAll{
 
                             //alter fonts
             textPanel.setFontBoldInput ();
-
+            countSqrt=0;
             if (N < 15) {
                 N++;
 // ??? System.out.println(func==null);   почему  func (xⁿ)==null   ???
@@ -233,17 +234,20 @@ public class ButtonsBasic extends ButtonsAll{
                                                         // except divide for 0
                 if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
                     textPanel.setStrResult("деление на 0 не возможно");
-                    blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
-                            bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                 } else {
                     dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
+
                     unblockedAll(bPercent);       // work  % without mistakes
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                    unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                            bChageSign, bFactorial, bDivX,  bSqrt3);
+                    try {
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
+                                bChageSign, bFactorial, bDivX,  bSqrt3);
+                    }catch (NullPointerException ex){  }
+
                 }
 
                 if (name.equals(".")) {
@@ -273,61 +277,88 @@ public class ButtonsBasic extends ButtonsAll{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-                            //alter fonts
-            textPanel.setFontBoldInput ();
-
+            textPanel.setFontBoldInput ();      //alter fonts
             strNumber = "0";                      //prepare to input new number
             N = 0;
-
             unblockedAll(bPoint);       // allow double
             blockedAll(bPercent);       // work  % without mistakes
 
             switch (name) {
                 case " √ " -> {
-                    textPanel.setStrInput(textPanel.getStrInput() + name);
-                    textPanel.setTextInput(textPanel.getStrInput());
+                    if (countSqrt<3) {
+                        textPanel.setStrInput(textPanel.getStrInput() + name.trim());
+                        textPanel.setTextInput(textPanel.getStrInput());
+                    }
+                    countSqrt++;
                 }
                 case " + " -> {
-                    Print_and_replaceRepeatedSign(" + ");
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign(" + ");
                     func = Operations::plus;
                 }
                 case " - " -> {
-                    Print_and_replaceRepeatedSign(" - ");
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign(" - ");
                     func = Operations::minus;
                 }
                 case " * " -> {
-                    Print_and_replaceRepeatedSign(" * ");
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign(" * ");
                     func = Operations::multiply;
                 }
                 case " / " -> {
-                    Print_and_replaceRepeatedSign(" / ");
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign(" / ");
                     func = Operations::divide;
                 }
 
                 case " % " -> {
                     unblockedAll(bPercent);       // work  % without mistakes
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("%");
 
-                    if (func == null) {
-                        dNumber=Double.parseDouble(textPanel.getStrResult().substring(1));
-                        dResult = calculateCurrent.calculatePersent(func, nameSign,
-                                dResultPercent, dNumber);
-                        textPanel.setTextInput(Operations.printNumber(dResult));
-                    } else {
-                        dResult = calculateCurrent.calculatePersent(func, nameSign,
-                                dResultPercent, dNumber);
-                        textPanel.setStrInput(strInputFormerSign+Operations.printNumber(dNumber)+"%");
-                        textPanel.setTextInput(textPanel.getStrInput());
-                    }
+
+
+
+
+
+//                    if (func == null) {
+//                        dNumber=Double.parseDouble(textPanel.getStrResult().substring(1));
+//                        dResult = calculateCurrent.calculatePersent(func, nameSign,
+//                                dResultPercent, dNumber);
+//                        textPanel.setTextInput(Operations.printNumber(dResult));
+//                    } else {
+//                        dResult = calculateCurrent.calculatePersent(func, nameSign,
+//                                dResultPercent, dNumber);
+//                        textPanel.setStrInput(strInputFormerSign+Operations.printNumber(dNumber)+"%");
+//                        textPanel.setTextInput(textPanel.getStrInput());
+//                    }
+
+
+
 
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     textPanel.setTextRezult(textPanel.getStrResult());
 
-                    if (textPanel.getStrInput().endsWith("%"))
-                        textPanel.setSbLog(textPanel.getStrInput());
-                    else
-                        textPanel.setSbLog(textPanel.getStrInput()+"%");
 
-                    print_SbLog_Input ();
+
+
+
+//                    if (textPanel.getStrInput().endsWith("%"))
+//                        textPanel.setSbLog(textPanel.getStrInput());
+//                    else
+//                        textPanel.setSbLog(textPanel.getStrInput()+"%");
+//                    print_SbLog_Input ();
+
+
+
 
                     textPanel.setStrInput(Operations.printNumber(dResult));
                     textPanel.setTextInput(textPanel.getStrInput());
@@ -335,6 +366,15 @@ public class ButtonsBasic extends ButtonsAll{
                     func = null;
                     textPanel.setStrInput("   ");
                 }
+
+
+
+
+
+
+
+
+
                 case " = " -> {
                     dResult= Double.parseDouble(textPanel.getStrResult().substring(1));
                      printResult ();
@@ -351,16 +391,8 @@ public class ButtonsBasic extends ButtonsAll{
 
 
     }
-    void Print_and_replaceRepeatedSign (String name) {
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " √ "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," + " ));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " - "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " * "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
-        textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput()," ^ " ));
 
+    void PrintSign (String name) {
         if (func==null && textPanel.getStrInput().equals("   ")) {
             textPanel.setStrInput(Operations.printNumber(dResult) + name);
             textPanel.setTextInput(textPanel.getStrInput());

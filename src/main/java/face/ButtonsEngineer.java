@@ -75,55 +75,112 @@ import java.awt.event.ActionEvent;
 
             switch (name){
                 case "±"-> {
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        dResult = -dResult;
-                        printResult ();
-                        textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
+//                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+//                        dResult = -dResult;
+//                        printResult ();
+//                        textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
+//                        print_SbLog_Input();
                 }
                 case "x²" ->{
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        dResult = dResult*dResult;
-                        printResult ();
-                        textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")²");
-                        print_SbLog_Input();
-                }
-                case  "x³" ->{
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        dResult = dResult*dResult*dResult;
-                        printResult ();
-                        textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")³");
-                        print_SbLog_Input();
-                }
-  // пересмотреть Log и м.б. сам алгоритм расчета с учетом скобок
-                case "xⁿ" ->{
                     textPanel.setFontBoldInput ();
-                    strNumber = "0";                      //prepare to input new number
-                    N = 0;
-                    unblockedAll(bPoint);       // allow double
-                    blockedAll(bPercent);       // work  % without mistakes
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("²");
 
-                    Print_and_replaceRepeatedSign(" ^ ");
-//                    if (func==null && textPanel.getStrInput()=="   ") {
-//                        textPanel.setStrInput(Operations.printNumber(dResult) + name);
-//                        textPanel.setTextInput(textPanel.getStrInput());
-//                    }else {
-//                        textPanel.setStrInput(textPanel.getStrInput() + name);
-//                        textPanel.setTextInput(textPanel.getStrInput());
-//                    }
-//                    dResultPercent = dResult;
                     func = Operations::pow;
 
-                    nameSign = " ^ ";
+                    nameSign = "²";
                     strInputFormerSign = textPanel.getStrInput();
                 }
-                case  "³√" ->{
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        dResult=Math.cbrt(dResult);
-                        printResult ();
-                        textPanel.setSbLog("³√("+textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
+                case  "x³" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("³");
+
+                    func = Operations::pow;
+
+                    nameSign = "³";
+                    strInputFormerSign = textPanel.getStrInput();
                 }
+
+                case "xⁿ" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("^");
+
+                    func = Operations::pow;
+
+                    nameSign = "^";
+                    strInputFormerSign = textPanel.getStrInput();
+                }
+                case "1/x" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("^(-1)");
+
+                    func = Operations::pow;
+
+                    nameSign = "^(-1)";
+                    strInputFormerSign = textPanel.getStrInput();
+                }
+                case "x!" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    replaceRepeatedSign_simple(textPanel);
+                    PrintSign("!");
+
+                    func = Operations::pow;
+
+                    nameSign = "!";
+                    strInputFormerSign = textPanel.getStrInput();
+                }
+
+                case  "³√" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("³√");
+                }
+
+                case "ln" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("ln(");
+                }
+                case "lg" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("lg(");
+                }
+                case "sin" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("sin(");
+                }
+                case "cos" ->{
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("cos(");
+                }
+                case "tg" -> {
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always (textPanel);
+                    replaceRepeatedSign_exceptSimple(textPanel);
+                    PrintSign("tg(");
+                }
+
                 case "π" ->{
                     str=textPanel.getTextInput().getText();
                     str=str.substring(0,str.length()-strNumber.length());
@@ -183,152 +240,7 @@ import java.awt.event.ActionEvent;
 
 
                 }
-                case "ln" ->{
-                    try {
-                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        if (dResult>0) {
-                            dResult=Math.log(dResult);
-                            printResult();
-                            textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
-                            print_SbLog_Input();
-                        }else {
-System.out.println("ln");
-                            throw new MyException("ln не существует");
-                        }
-
-                    } catch (MyException ex) {
-System.out.println("перехвачено -" +ex);
-                        textPanel.setStrResult("не существует");
-                        //                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                    }
-                }
-                case "lg" ->{
-                    try {
-                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        if (dResult>0) {
-                            dResult=Math.log10(dResult);
-                            printResult();
-                            textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
-                            print_SbLog_Input();
-                        }else {
-                            throw new ArithmeticException();
-                        }
-                    } catch (ArithmeticException ex) {
-                        textPanel.setStrResult("не существует");
-                        //                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                    }
-                }
-                case "x!" ->{
-                    int n;
-                    try {
-                        n = Integer.parseInt(textPanel.getStrResult().substring(1));
-                        if (n<0) {
-                            throw new NumberFormatException ();
-                        } else {
-                            dResult = 1.0;
-                            for (int k = 1; k <= n; k++) {
-                                dResult = dResult * k;
-                            }
-                            printResult ();
-                            textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")!");
-                            print_SbLog_Input();
-                        }
-                    } catch (NumberFormatException exc) {
-System.out.println("factorial catch");
-                        textPanel.setStrResult("неверный формат ввода");
-//                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult)+"!");
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog(textPanel.getStrInput());
-                        print_SbLog_Input();
-                    }
-                }
-                case "1/x" ->{
-                    try {
-                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        if (dResult==0.0){
-                            throw new ArithmeticException();
-                        }else {
-                               dResult = 1 / dResult;
-                               printResult ();
-                               textPanel.setSbLog("1 / ("+textPanel.getTextInput().getText().trim()+")");
-                               print_SbLog_Input();
-                        }
-                    } catch (ArithmeticException ex) {
-                        textPanel.setStrResult("делить на ноль нельзя");
-                        //                        textPanel.setFontBoldResult ();          //alter font
-                        textPanel.setTextRezult(textPanel.getStrResult());
-                        textPanel.setSbLog("1/ ("+textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                    }
-
-                }
-                case "sin" ->{
-                    dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText() );
-                        b = Math.toRadians(dResult);
-                        dResult = Math.round(Math.sin(b)*scale)/scale;
-                        printResult ();
-                        textPanel.setSbLog("sin("+textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                }
-                case "cos" ->{
-                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-                        b = Math.toRadians(dResult);
-                        dResult = Math.round(Math.cos(b)*scale)/scale;
-                        printResult ();
-                        textPanel.setSbLog("cos("+textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                }
-                case "tg" ->{
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-
-                    long iRez=Math.round(dResult);
-                    if(Math.abs(iRez)>180)
-                        iRez=iRez%180;
-
-                    try {
-                        if (Math.abs(iRez)==90){
-                            throw new ArithmeticException();
-                        }else {
-                            b = Math.toRadians(dResult);
-                            dResult = Math.round(Math.tan(b) * scale) / scale;
-                            printResult();
-                            textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim() + ")");
-                            print_SbLog_Input();
-                        }
-                    } catch (ArithmeticException ex) {
-                        textPanel.setStrResult("не существует");
-                        textPanel.setTextRezult(textPanel.getStrResult());
-
-                        textPanel.setStrInput(Operations.printNumber(dResult));
-                        textPanel.setTextInput(textPanel.getStrInput());
-
-                        textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim()+")");
-                        print_SbLog_Input();
-                    }
-
-                }
             }
-
-
         }
-
     }
 }

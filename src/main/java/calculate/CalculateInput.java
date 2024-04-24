@@ -18,7 +18,7 @@ public class CalculateInput {
     public double calculateInput (String strInput) {
 
 //Delete spaces
-        StringUtils.deleteWhitespace(strInput);
+        strInput=StringUtils.deleteWhitespace(strInput);
         if (StringUtils.isEmpty(strInput))
             return 0.0;
 
@@ -76,7 +76,7 @@ public class CalculateInput {
         }
 
 
-
+        System.out.println(strInput);
         dResult=calculateBasic.calculateBasicInput(strInput);
 
 

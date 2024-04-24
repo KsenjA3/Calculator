@@ -1,5 +1,7 @@
 package calculate;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 
 import java.math.RoundingMode;
@@ -32,27 +34,23 @@ public class CalculateBasic {
      * @return double result of calculation
      */
     public double calculateBasicInput (String strInput) {
+
+System.out.println(strInput);
+
         wasNegativeNumber=false;
         func=null;
         strNumber = "0";
-
         dResult=new BigDecimal(0.0);
-
         figureSqrt=1;
         dNSqrt=new BigDecimal(1);
         wasNumber = false;
         wasSqrt = false;
 
-            // delete space
-
-
-
         arrD = new ArrayList<>();
         arrSign=new ArrayList<>();
         arrNameSign=new ArrayList<>();
 
-
-                //begin from Negative number
+//begin from Negative number
         if (strInput.charAt(0)=='-')
         {
             strInput = strInput.substring(1);
@@ -81,6 +79,7 @@ public class CalculateBasic {
                     }
                         //write last number
                     if (i == strInput.length() - 1) {
+                        if (wasNegativeNumber){ dNumber=dNumber.negate(); }
                         arrD.add(dNumber);
                     }
 
@@ -112,33 +111,55 @@ public class CalculateBasic {
                 {   arrNameSign.add("+");
                     arrSign.add(Operations::plus);
                     getReadyGoOn ();
+                    if(i+1<strInput.length()   &&   strInput.charAt(i+1)=='-'){
+                        i++;
+                        wasNegativeNumber=true;
+                    }
                 }
                 case '-' ->
                 {   arrNameSign.add("-");
                     arrSign.add(Operations::minus);
                     getReadyGoOn ();
+                    if(i+1<strInput.length()   &&   strInput.charAt(i+1)=='-'){
+                        i++;
+                        wasNegativeNumber=true;
+                    }
                 }
                 case '*' -> {
                     arrNameSign.add("*");
                     arrSign.add(Operations::multiply);
                     getReadyGoOn ();
+                    if(i+1<strInput.length()   &&   strInput.charAt(i+1)=='-'){
+                        i++;
+                        wasNegativeNumber=true;
+                    }
                 }
                 case '/' -> {
                     arrNameSign.add("/");
                     arrSign.add(Operations::divide);
                     getReadyGoOn ();
+                    if(i+1<strInput.length()   &&   strInput.charAt(i+1)=='-'){
+                        i++;
+                        wasNegativeNumber=true;
+                    }
                 }
                 case '^' -> {
                     arrNameSign.add("^");
                     arrSign.add(Operations::pow);
                     getReadyGoOn();
+                    if(i+1<strInput.length()   &&   strInput.charAt(i+1)=='-'){
+                        i++;
+                        wasNegativeNumber=true;
+                    }
                 }
             }
         }
 
+        System.out.println(arrD);
+        System.out.println(arrNameSign);
+        System.out.println();
+
             //calculator.calculate.calculate the resultate
-
-
         if (arrD.size()>2   &&   arrSign.size()>1){
             for (int j = 0; j<arrSign.size(); j++) {
 
@@ -155,11 +176,9 @@ public class CalculateBasic {
             }
         }
 
-        if (arrD.size()>0) {
+        if (arrD.size()>0)
             dResult = arrD.get(0);
-            if(wasNegativeNumber)       //begin from Negative number
-                dResult=dResult.negate();
-        }
+
         if (arrD.size()>1){
             int j;
             for (int i = 1; i<arrD.size(); i++) {
@@ -177,12 +196,15 @@ public class CalculateBasic {
         return doubleResult;
     }
     void getReadyGoOn () {
+        if (wasNegativeNumber){ dNumber=dNumber.negate(); }
         arrD.add(dNumber);
         strNumber = " ";
         wasNumber = false;
         wasSqrt = false;
         dNSqrt = new BigDecimal(1);
+        wasNegativeNumber=false;
     }
+
     /**
      * calculator.calculate.calculate result Percent
      * @param nameSign string presentation precеding function to Percent

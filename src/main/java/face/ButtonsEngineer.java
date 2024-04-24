@@ -231,7 +231,7 @@ import java.awt.event.ActionEvent;
                         }
                     }
 
-                    System.out.println("="+str+"=");
+//                    System.out.println("="+str+"=");
                     unblockedAll(braceClose);
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);

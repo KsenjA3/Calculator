@@ -1,7 +1,9 @@
 package face;
 
 import calculate.CalculateBasic;
+import calculate.CalculateInput;
 import calculate.Operations;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,12 +18,12 @@ public class KeyboardInput {
      */
     private Double dResult;
 
-    private CalculateBasic calculateCurrent;
+    private CalculateInput calculateCurrent;
 
 
     KeyboardInput (PanelTextLog textPanel) {
         this.textPanel=textPanel;
-        calculateCurrent = new CalculateBasic();
+        calculateCurrent = new CalculateInput();
         textPanelInputKeys();
     }
 
@@ -32,40 +34,55 @@ public class KeyboardInput {
         @Override
         public void actionPerformed(ActionEvent e) {
             String str = textPanel.getTextInput().getText();
-            str = str.replace("+", " + ");
-            str = str.replace("-", " - ");
-            str = str.replace("/", " / ");
-            str = str.replace("*", " * ");
+            str= StringUtils.deleteWhitespace(str);
 
-            while (str.contains("  "))
-                str = str.replaceAll("  ", " ");
 
-            for (int i = 0; i < str.length(); i++) {
+            for (int i = 0; i < str.length()-1; i++) {
                 switch (str.charAt(i)) {
-                    case '+', '-', '/', '*' -> {
-                        switch (str.charAt(i + 2)) {
-                            case '+', '-', '/', '*' -> str = str.substring(0, i) + str.substring(i + 2);
+                    case '+', '-', '/', '*' ,'√' -> {
+                        switch (str.charAt(i + 1)) {
+                            case '+', '-', '/', '*','^','²','³','!' -> str = str.substring(0, i) + str.substring(i + 1);
                         }
                     }
+                    case '^' -> {
+                        switch (str.charAt(i + 1)) {
+                            case '+', '-', '/', '*','^','²','³','!','√' -> str = str.substring(0, i) + str.substring(i + 1);
+                        }
+                    }
+                    case '²','³','!' -> {
+                        switch (str.charAt(i + 1)) {
+                            case '^','²','³','!','√' -> str = str.substring(0, i) + str.substring(i + 1);
+                        }
+                    }
+                    case '1', '2', '3', '4' ,'5', '6', '7', '8', '9' ,'0' -> {
+                        switch (str.charAt(i + 1)) {
+                            case '(' -> str = str.substring(0, i+1) + "*"+str.substring(i+1 );
+                        }
+                    }
+                    case '.' -> {
+                        switch (str.charAt(i + 1)) {
+                            case '(' -> str = str.substring(0, i) + "*"+str.substring(i+1 );
+                        }
+                    }
+
                 }
             }
+
             //Change FONT
             textPanel.setFontBoldResult();
-            textPanel.setStrInput(str);
-            textPanel.setTextInput(textPanel.getStrInput());
+            textPanel.setTextInput(str.trim());
 
-            dResult = calculateCurrent.calculateBasicInput(textPanel.getStrInput());
-            textPanel.setStrResult("=" + Operations.printNumber(dResult));
-            textPanel.setTextResult(textPanel.getStrResult());
+            dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText());
+            textPanel.setTextResult("=" + Operations.printNumber(dResult));
 
-            textPanel.setSbLog(textPanel.getStrInput());
+            textPanel.setSbLog(textPanel.getTextInput().getText());
             textPanel.setSbLog("\n");
-            textPanel.setSbLog(textPanel.getStrResult());
+            textPanel.setSbLog(textPanel.getTextResult().getText());
             textPanel.setSbLog("\n");
             textPanel.setTextLog( textPanel.getSbLog().toString());
 
             //focus to visible keyPenel
-          //  focusVisibleKeyPenel ();
+//            focusVisibleKeyPenel ();
         }
     }
 
@@ -84,7 +101,7 @@ public class KeyboardInput {
         ignoreLetter(
                 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm',
                 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M',
-                '<', '>', '?', '!', '@', '#', '$', '%', '^', '&', '(', ')', ':', ';', '"', ',', '[', ']', '{', '}', '`', '~',
+                '<', '>', '?', '@', '#', '$', '%', '&',  ':', ';', '"', ',', '[', ']', '{', '}', '`', '~',
                 'ё', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю',
                 'Ё', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю'
         );

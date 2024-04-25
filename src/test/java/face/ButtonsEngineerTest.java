@@ -39,7 +39,7 @@ class ButtonsEngineerTest {
         txt =new JTextPane();
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
-        Mockito.when(textPanel.getStrInput()).thenReturn("= ");
+//        Mockito.when(textPanel.getStrInput()).thenReturn("= ");
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
     }
@@ -82,7 +82,7 @@ class ButtonsEngineerTest {
 
     @Test
     void factorial_Exception()  {
-        Mockito.when(textPanel.getStrResult()).thenReturn("2.5");
+//        Mockito.when(textPanel.getStrResult()).thenReturn("2.5");
         Throwable ex = assertThrows(
                 NumberFormatException.class,
                 ()->{
@@ -106,7 +106,7 @@ class ButtonsEngineerTest {
 
     })
      void factorial(String strResult, double expectedResult)  {
-        Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
+//        Mockito.when(textPanel.getStrResult()).thenReturn(strResult);
 
         locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);

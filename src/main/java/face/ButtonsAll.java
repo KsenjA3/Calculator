@@ -15,6 +15,7 @@ import javax.swing.*;
     protected JButton bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult;
     protected JButton bMemoryAdd, bMemoryDel, bMemoryHold, bClear, bDel;
 
+    protected String strInput, strResult;
 
      /**
       * button engineer calculation
@@ -25,28 +26,28 @@ import javax.swing.*;
 
 
      void replaceRepeatedSign_always (PanelTextLog textPanel) {
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "^"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "tg("));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "sin("));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "cos("));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "ln("));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "lg("));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "³√"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "√"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "√"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "√"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "^"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "tg("));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "sin("));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "cos("));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "ln("));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "lg("));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "³√"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "√"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "√"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "√"));
      }
 
      void replaceRepeatedSign_simple (PanelTextLog textPanel) {
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "-"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "+"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "*"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "/"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "-"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "+"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "*"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "/"));
      }
      void replaceRepeatedSign_exceptSimple (PanelTextLog textPanel) {
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "%"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "²"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "³"));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "!"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "%"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "²"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "³"));
+         textPanel.setTextInput(StringUtils.removeEnd(textPanel.getTextInput().getText(), "!"));
      }
 }

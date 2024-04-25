@@ -43,8 +43,6 @@ public class CalculateInput {
                 str = strInput.substring(n + 1);
                 dResult = calculateBasic.calculateBasicInput(str);
             }
-
-
             strInput=strInput.substring(0,n) + Operations.printNumber(dResult);
         }
 
@@ -53,40 +51,10 @@ public class CalculateInput {
 
 
 
-        if (StringUtils.contains(strInput,"%")){
-            n = StringUtils.indexOf(strInput, "%");
-
-            str=strInput.substring(0,n);
-
-
-//                n= str.lastIndexOf('(');
-//                str=str.substring(n+1);
-
-            if (str.contains("+")   |   str.contains("-")  |
-                str.contains("*")   |   str.contains("/") ){
-
-            }else {
-                nameSign="no";
-                dNumber=Double.parseDouble(str);
-            }
-
-
-
-
-
-
-
-        }
 
 
 //        System.out.println(strInput);
         dResult=calculateBasic.calculateBasicInput(strInput);
-
-
-//        for (int i=0; i<strInput.length(); i++) {
-//
-//        }
-
         return dResult;
     }
 }

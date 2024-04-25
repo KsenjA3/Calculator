@@ -10,7 +10,7 @@ public class Main {
         String str=" h j   lko ll   ";
         str=StringUtils.deleteWhitespace(str);
 
-        System.out.println("="+str+"=");
+        System.out.println( Double.parseDouble("0."));
 
     }
 }

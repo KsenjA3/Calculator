@@ -25,12 +25,23 @@ class CalculateBasicInputTest {
             " 3-8,  -5",
             " 9-5, 4",
             " 2*3, 6",
-            " 9/3, 3"
+            " 9/3, 3",
     })
-    void intNumbersCount_PlusMinusDivideMultiply (String strInput, double expectedResult) {
+    void intNumbersCount_PlusMinusDivideMultiply  (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
-
+    @ParameterizedTest
+    @CsvSource ( value =  {
+            " 50+2*10*2, 90",
+            " 50-2*10*2, 10",
+            "2*5*4-10*3*2,-20",
+            "5*2-3*3,1",
+            "2*5*4-10*2,20",
+            "100/10*5-2*25,0"
+    })
+    void oderCount (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
+    }
 
     @ParameterizedTest
     @CsvSource ( value =  {
@@ -51,11 +62,11 @@ class CalculateBasicInputTest {
         BigDecimal dResult=new BigDecimal("99999999999999999999999");
 
         BigDecimal dResult1=dResult.add(dResult);
-        assertThat(sut.calculateBasicInput("  99999999999999999999999 +    99999999999999999999999  "))
+        assertThat(sut.calculateBasicInput("99999999999999999999999+99999999999999999999999"))
                 .isEqualTo(dResult1.doubleValue());
 
         BigDecimal dResult2=dResult.multiply(dResult);
-        assertThat(sut.calculateBasicInput("  99999999999999999999999 *    99999999999999999999999  "))
+        assertThat(sut.calculateBasicInput("99999999999999999999999*99999999999999999999999"))
                 .isEqualTo(dResult2.doubleValue());
     }
 
@@ -79,7 +90,7 @@ class CalculateBasicInputTest {
 
     @ParameterizedTest
     @CsvSource ( value =  {
-            " 25-15*2+,   20",
+            " 25-15*2+,   -5",
             " 2*2/,  4",
             " 2*√4√, 4",
             " 2*√4+√, 4"
@@ -119,22 +130,26 @@ class CalculateBasicInputTest {
         calculate divide = Operations::divide;
 
         return Stream.of(
-                Arguments.of( " + ", 200, 5, 210),
-                Arguments.of( " - ", 200, 5, 190),
-                Arguments.of( " * ", 200, 5, 10),
-                Arguments.of( " / ", 200, 5, 4000),
-                Arguments.of( " / ", 200, 100, 1),
-                Arguments.of( " + ", 200, 20, 0.2),
-                Arguments.of( " - ", 200, 200, 2),
-                Arguments.of( " * ", 200, 80, 0.8)
+                Arguments.of( "+", 200, 5, 210),
+                Arguments.of( "-", 200, 5, 190),
+                Arguments.of( "*", 200, 5, 10),
+                Arguments.of( "/", 200, 5, 4000),
+
+                Arguments.of( "/", 200, 100, 200),
+                Arguments.of( "+", 200, 20, 240),
+                Arguments.of( "-", 200, 200, -200),
+                Arguments.of( "*", 200, 80, 160)
         );
 
     }
     //In the test package
     @ParameterizedTest
     @MethodSource("dataProvider")
-    void calculatePersent(calculate funcPerc, String nameSign, double dResultPercentIn, double dNumberIn, double expectedResult)
+    void calculatePersent(String nameSign, double dResultPercentIn, double dNumberIn, double expectedResult)
     {
         assertEquals(expectedResult, sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn));
     }
+
+
+
 }

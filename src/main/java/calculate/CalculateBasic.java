@@ -34,7 +34,7 @@ public class CalculateBasic {
      * @return double result of calculation
      */
     public double calculateBasicInput (String strInput) {
-
+        strInput=StringUtils.deleteWhitespace(strInput);
 //System.out.println(strInput);
 
         wasNegativeNumber=false;
@@ -97,14 +97,11 @@ public class CalculateBasic {
 
                     }
                     else           // если знак после sqrt
-
                         if (wasSqrt) // если несколько sqrt подряд
                             figureSqrt++;
-
                     wasNumber= false;
                     wasSqrt=true;
                     strNumber=" ";
-
                 }
                 case '+' ->
                 {   arrNameSign.add("+");
@@ -158,7 +155,7 @@ public class CalculateBasic {
 //        System.out.println(arrNameSign);
 //        System.out.println();
 
-            //calculator.calculate.calculate the resultate
+//calculator.calculate.calculate the result
         if (arrD.size()>2   &&   arrSign.size()>1){
             for (int j = 0; j<arrSign.size(); j++) {
 
@@ -171,6 +168,7 @@ public class CalculateBasic {
                     arrD.remove(j);
                     arrD.remove(j);
                     arrD.add(j,dNumber);
+                    j--;
                 }
             }
         }
@@ -189,9 +187,7 @@ public class CalculateBasic {
         }
 
         dResult=dResult.setScale(14,RoundingMode.HALF_UP);
-
         doubleResult = dResult.doubleValue();
-
         return doubleResult;
     }
 

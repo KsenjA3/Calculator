@@ -103,33 +103,33 @@ public class CalculateFace extends JFrame {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Обычный" -> {
-                    if (textPanel.getStrResult().equals("0.0")) {
+                    if (textPanel.getTextResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextResult(textPanel.getStrResult());
+                        textPanel.setTextInput(textPanel.getTextInput().getText());
+                        textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     repack();
                 }
                 case "Инженерный" -> {
-                    if (textPanel.getStrResult().equals("0.0")) {
+                    if (textPanel.getTextResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextResult(textPanel.getStrResult());
+                        textPanel.setTextInput(textPanel.getTextInput().getText());
+                        textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     repack();
                 }
                 case "IT" -> {
-                    if (textPanel.getStrResult().equals("0.0")) {
+                    if (textPanel.getTextResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
-                        textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextResult(textPanel.getStrResult());
+                        textPanel.setTextInput(textPanel.getTextInput().getText());
+                        textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
                     cardTypeCalc.show(cardPanel, "IT");
                     widthSize = keyPanelIT.getWidthKeyPanel();

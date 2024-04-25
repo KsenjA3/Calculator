@@ -69,9 +69,7 @@ import java.awt.event.ActionEvent;
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-
             double scale= Math.pow(10,15);
-
 
             switch (name){
                 case "±"-> {
@@ -86,7 +84,7 @@ import java.awt.event.ActionEvent;
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
-                    PrintSign("²");
+                    printSign("²");
 
                     func = Operations::pow;
 
@@ -97,7 +95,7 @@ import java.awt.event.ActionEvent;
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
-                    PrintSign("³");
+                    printSign("³");
 
                     func = Operations::pow;
 
@@ -109,7 +107,7 @@ import java.awt.event.ActionEvent;
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
-                    PrintSign("^");
+                    printSign("^");
 
                     func = Operations::pow;
 
@@ -120,7 +118,7 @@ import java.awt.event.ActionEvent;
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
-                    PrintSign("^(-1)");
+                    printSign("^(-1)");
 
                     func = Operations::pow;
 
@@ -131,7 +129,7 @@ import java.awt.event.ActionEvent;
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
-                    PrintSign("!");
+                    printSign("!");
 
                     func = Operations::pow;
 
@@ -142,38 +140,38 @@ import java.awt.event.ActionEvent;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("³√");
+                    printSign("³√");
                 }
 
                 case "ln" ->{
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("ln(");
+                    printSign("ln(");
                 }
                 case "lg" ->{
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("lg(");
+                    printSign("lg(");
                 }
                 case "sin" ->{
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("sin(");
+                    printSign("sin(");
                 }
                 case "cos" ->{
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("cos(");
+                    printSign("cos(");
                 }
                 case "tg" -> {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always (textPanel);
                     replaceRepeatedSign_exceptSimple(textPanel);
-                    PrintSign("tg(");
+                    printSign("tg(");
                 }
 
                 case "π" ->{
@@ -181,21 +179,21 @@ import java.awt.event.ActionEvent;
                     str=str.substring(0,str.length()-strNumber.length());
                     dNumber = Math.PI;
 
-                    textPanel.setStrInput(str+dNumber.toString());
-                    textPanel.setTextInput(textPanel.getStrInput());
+                   strInput= str+dNumber.toString();
+                    textPanel.setTextInput(strInput);
 
-                    dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
-                    textPanel.setStrResult("=" + Operations.printNumber(dResult));
+                    dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText());
+                    strInput="=" + Operations.printNumber(dResult);
                     unblockedAll(bPercent);       // work  % without mistakes
-                    textPanel.setTextResult(textPanel.getStrResult());
+                    textPanel.setTextResult(strInput);
                 }
                 case ")"  ->{
                     str=textPanel.getTextInput().getText().trim();
                     switch (str.charAt(str.length()-1)) {
                         case '0','1','2','3','4','5','6','7','8','9',')' -> {
                             countBrace--;
-                            textPanel.setStrInput(textPanel.getTextInput().getText() + name);
-                            textPanel.setTextInput(textPanel.getStrInput());
+                            strInput=textPanel.getTextInput().getText() + name;
+                            textPanel.setTextInput(strInput);
                         }
                     }
 
@@ -213,27 +211,24 @@ import java.awt.event.ActionEvent;
                     str=textPanel.getTextInput().getText().trim();
                     switch (str.charAt(str.length()-1)) {
                         case '0','1','2','3','4','5','6','7','8','9',')'-> {
-                            textPanel.setStrInput(str+" * "+name);
-                            textPanel.setTextInput(textPanel.getStrInput());
+                            strInput=str+" * "+name;
+                            textPanel.setTextInput(strInput);
                         }
                         case '.'-> {
-                            textPanel.setStrInput(str+"0 * "+name);
-                            textPanel.setTextInput(textPanel.getStrInput());
+                            strInput=str+"0 * "+name;
+                            textPanel.setTextInput(strInput);
                         }
                         default -> {
-                            textPanel.setStrInput(str+name);
-                            textPanel.setTextInput(textPanel.getStrInput());
+                            strInput=str+name;
+                            textPanel.setTextInput(strInput);
                         }
                     }
 
-//                    System.out.println("="+str+"=");
                     unblockedAll(braceClose);
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
                             bChageSign, bFactorial, bDivX,  bSqrt3);
-
-
                 }
             }
         }

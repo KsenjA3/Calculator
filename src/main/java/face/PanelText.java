@@ -16,14 +16,12 @@ public class PanelText {
      */
     private JPanel panelRezult;
     private JLabel textRezult;
-    private String strResult;
 
     /**
      * elements of Input window
      */
     private JScrollPane scrollinput;
     private JTextPane textInput;
-    private String strInput;
 
     /**
      * FONTs
@@ -57,8 +55,6 @@ public class PanelText {
 
     PanelText(){
 
-        strInput = "   ";
-        strResult = "0.0";
         textInputAttributes = new SimpleAttributeSet();
 
         GridBagLayout gbag = new GridBagLayout();
@@ -123,16 +119,11 @@ public class PanelText {
     }
 
      JLabel getTextResult() { return textRezult; }
-     String getStrResult() { return strResult; }
      JTextPane getTextInput() { return textInput ;}
-     String getStrInput() { return strInput; }
 
-    void setStrResult(String strResult) {  this.strResult=strResult; }
-    void  setStrInput(String strInput) {  this.strInput=strInput; }
 
     void setTextInput(String strInput) {
         this.textInput.setText(strInput); }
-
     void setTextResult(String strResult) {
         this.textRezult.setText(strResult); }
 }

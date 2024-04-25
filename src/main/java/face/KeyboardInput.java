@@ -56,7 +56,7 @@ public class KeyboardInput {
 
             dResult = calculateCurrent.calculateBasicInput(textPanel.getStrInput());
             textPanel.setStrResult("=" + Operations.printNumber(dResult));
-            textPanel.setTextRezult(textPanel.getStrResult());
+            textPanel.setTextResult(textPanel.getStrResult());
 
             textPanel.setSbLog(textPanel.getStrInput());
             textPanel.setSbLog("\n");

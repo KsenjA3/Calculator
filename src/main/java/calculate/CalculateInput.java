@@ -37,11 +37,14 @@ public class CalculateInput {
 
         while (StringUtils.contains(strInput,"(")){
             n=StringUtils.lastIndexOf(strInput, "(");
-            str=strInput.substring(n+1);
+            if(n==strInput.length()-1){
+                dResult=0.0;
+            }else {
+                str = strInput.substring(n + 1);
+                dResult = calculateBasic.calculateBasicInput(str);
+            }
 
-            System.out.println(str);
 
-            dResult=calculateBasic.calculateBasicInput(str);
             strInput=strInput.substring(0,n) + Operations.printNumber(dResult);
         }
 
@@ -76,7 +79,7 @@ public class CalculateInput {
         }
 
 
-        System.out.println(strInput);
+//        System.out.println(strInput);
         dResult=calculateBasic.calculateBasicInput(strInput);
 
 

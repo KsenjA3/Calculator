@@ -91,7 +91,6 @@ import java.awt.event.ActionEvent;
                     func = Operations::pow;
 
                     nameSign = "²";
-                    strInputFormerSign = textPanel.getStrInput();
                 }
                 case  "x³" ->{
                     textPanel.setFontBoldInput ();
@@ -103,7 +102,6 @@ import java.awt.event.ActionEvent;
                     func = Operations::pow;
 
                     nameSign = "³";
-                    strInputFormerSign = textPanel.getStrInput();
                 }
 
                 case "xⁿ" ->{
@@ -116,7 +114,6 @@ import java.awt.event.ActionEvent;
                     func = Operations::pow;
 
                     nameSign = "^";
-                    strInputFormerSign = textPanel.getStrInput();
                 }
                 case "1/x" ->{
                     textPanel.setFontBoldInput ();
@@ -128,7 +125,6 @@ import java.awt.event.ActionEvent;
                     func = Operations::pow;
 
                     nameSign = "^(-1)";
-                    strInputFormerSign = textPanel.getStrInput();
                 }
                 case "x!" ->{
                     textPanel.setFontBoldInput ();
@@ -140,7 +136,6 @@ import java.awt.event.ActionEvent;
                     func = Operations::pow;
 
                     nameSign = "!";
-                    strInputFormerSign = textPanel.getStrInput();
                 }
 
                 case  "³√" ->{
@@ -192,7 +187,7 @@ import java.awt.event.ActionEvent;
                     dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
                     textPanel.setStrResult("=" + Operations.printNumber(dResult));
                     unblockedAll(bPercent);       // work  % without mistakes
-                    textPanel.setTextRezult(textPanel.getStrResult());
+                    textPanel.setTextResult(textPanel.getStrResult());
                 }
                 case ")"  ->{
                     str=textPanel.getTextInput().getText().trim();

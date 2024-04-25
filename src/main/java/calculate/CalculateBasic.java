@@ -35,7 +35,7 @@ public class CalculateBasic {
      */
     public double calculateBasicInput (String strInput) {
 
-System.out.println(strInput);
+//System.out.println(strInput);
 
         wasNegativeNumber=false;
         func=null;
@@ -51,8 +51,7 @@ System.out.println(strInput);
         arrNameSign=new ArrayList<>();
 
 //begin from Negative number
-        if (strInput.charAt(0)=='-')
-        {
+        if (strInput.charAt(0)=='-'){
             strInput = strInput.substring(1);
             wasNegativeNumber = true;
         }
@@ -155,9 +154,9 @@ System.out.println(strInput);
             }
         }
 
-        System.out.println(arrD);
-        System.out.println(arrNameSign);
-        System.out.println();
+//        System.out.println(arrD);
+//        System.out.println(arrNameSign);
+//        System.out.println();
 
             //calculator.calculate.calculate the resultate
         if (arrD.size()>2   &&   arrSign.size()>1){
@@ -195,6 +194,8 @@ System.out.println(strInput);
 
         return doubleResult;
     }
+
+
     void getReadyGoOn () {
         if (wasNegativeNumber){ dNumber=dNumber.negate(); }
         arrD.add(dNumber);
@@ -204,6 +205,9 @@ System.out.println(strInput);
         dNSqrt = new BigDecimal(1);
         wasNegativeNumber=false;
     }
+
+
+
 
     /**
      * calculator.calculate.calculate result Percent

@@ -74,7 +74,7 @@ public class CalculateFace extends JFrame {
 
         //make and set PopupMenu
         makePopupMenu();
-        mouseListenerPopupMenu(textPanel.getTextLog(),textPanel.getTextInput(),textPanel.getTextRezult());
+        mouseListenerPopupMenu(textPanel.getTextLog(),textPanel.getTextInput(),textPanel.getTextResult());
 
 
         /*
@@ -107,7 +107,7 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(" ");
                     }else {
                         textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextRezult(textPanel.getStrResult());
+                        textPanel.setTextResult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "Basic");
                     widthSize=keyPanelBasic.getWidthKeyPanel();
@@ -118,7 +118,7 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(" ");
                     }else {
                         textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextRezult(textPanel.getStrResult());
+                        textPanel.setTextResult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "Engineer");
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
@@ -129,7 +129,7 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(" ");
                     }else {
                         textPanel.setTextInput(textPanel.getStrInput());
-                        textPanel.setTextRezult(textPanel.getStrResult());
+                        textPanel.setTextResult(textPanel.getStrResult());
                     }
                     cardTypeCalc.show(cardPanel, "IT");
                     widthSize = keyPanelIT.getWidthKeyPanel();

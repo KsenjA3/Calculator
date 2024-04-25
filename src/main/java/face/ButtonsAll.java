@@ -38,10 +38,10 @@ import javax.swing.*;
      }
 
      void replaceRepeatedSign_simple (PanelTextLog textPanel) {
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " + "));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " - "));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " * "));
-         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), " / "));
+         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "-"));
+         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "+"));
+         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "*"));
+         textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "/"));
      }
      void replaceRepeatedSign_exceptSimple (PanelTextLog textPanel) {
          textPanel.setStrInput(StringUtils.removeEnd(textPanel.getStrInput(), "%"));

@@ -122,7 +122,7 @@ public class PanelText {
                         + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get();
     }
 
-     JLabel getTextRezult() { return textRezult; }
+     JLabel getTextResult() { return textRezult; }
      String getStrResult() { return strResult; }
      JTextPane getTextInput() { return textInput ;}
      String getStrInput() { return strInput; }
@@ -133,6 +133,6 @@ public class PanelText {
     void setTextInput(String strInput) {
         this.textInput.setText(strInput); }
 
-    void setTextRezult(String strResult) {
+    void setTextResult(String strResult) {
         this.textRezult.setText(strResult); }
 }

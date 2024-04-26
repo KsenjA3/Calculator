@@ -188,11 +188,11 @@ import java.awt.event.ActionEvent;
                     textPanel.setTextResult(strInput);
                 }
                 case ")"  ->{
-                    str=textPanel.getTextInput().getText().trim();
+                    str=strInput.trim();
                     switch (str.charAt(str.length()-1)) {
                         case '0','1','2','3','4','5','6','7','8','9',')' -> {
                             countBrace--;
-                            strInput=textPanel.getTextInput().getText() + name;
+                            strInput=strInput + name;
                             textPanel.setTextInput(strInput);
                         }
                     }
@@ -208,14 +208,14 @@ import java.awt.event.ActionEvent;
                 }
                 case "(" ->{
                     countBrace ++;
-                    str=textPanel.getTextInput().getText().trim();
+                    str=strInput.trim();
                     switch (str.charAt(str.length()-1)) {
                         case '0','1','2','3','4','5','6','7','8','9',')'-> {
-                            strInput=str+" * "+name;
+                            strInput=str+"*"+name;
                             textPanel.setTextInput(strInput);
                         }
                         case '.'-> {
-                            strInput=str+"0 * "+name;
+                            strInput=str.substring(0,str.length()-1)+"*"+name;
                             textPanel.setTextInput(strInput);
                         }
                         default -> {

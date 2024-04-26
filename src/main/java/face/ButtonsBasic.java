@@ -45,6 +45,11 @@ public class ButtonsBasic extends ButtonsAll{
      */
     protected String nameSign;
 
+    protected String strPersentFrom;
+    protected String strBeforePersent;
+
+
+
     /**
      * to safe into the memory
      */
@@ -67,6 +72,7 @@ public class ButtonsBasic extends ButtonsAll{
         dResult=0.0;
         func = null;
         nameSign = "";
+        strInput="   ";
                         //create object for calculation
         calculateCurrent = new CalculateInput();
         calculateBasic= new CalculateBasic();
@@ -211,10 +217,10 @@ public class ButtonsBasic extends ButtonsAll{
 
 
                 if (strNumber.equals("0.") && name.equals(".")) {    //output in beginning
-                    strInput=textPanel.getTextInput().getText() + strNumber;
+                    strInput=strInput + strNumber;
                     textPanel.setTextInput(strInput);
                 }else {
-                    strInput=textPanel.getTextInput().getText() + name;
+                    strInput=strInput + name;
                     textPanel.setTextInput(strInput);
                 }
                                                         // except divide for 0
@@ -223,7 +229,7 @@ public class ButtonsBasic extends ButtonsAll{
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                 } else {
-                    dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText());
+                    dResult = calculateCurrent.calculateInput(strInput);
                     strResult="=" + Operations.printNumber(dResult);
 
                     unblockedAll(bPercent);       // work  % without mistakes
@@ -270,7 +276,7 @@ public class ButtonsBasic extends ButtonsAll{
             switch (name) {
                 case " √ " -> {
                     if (countSqrt<3) {
-                        strInput=textPanel.getTextInput().getText() + name.trim();
+                        strInput=strInput + name.trim();
                         textPanel.setTextInput(strInput);
                     }
                     countSqrt++;
@@ -307,7 +313,7 @@ public class ButtonsBasic extends ButtonsAll{
                     replaceRepeatedSign_exceptSimple(textPanel);
                     replaceRepeatedSign_simple(textPanel);
 
-                    String str=StringUtils.deleteWhitespace(textPanel.getTextInput().getText());
+                    String str=StringUtils.deleteWhitespace(strInput);
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
                     int placeOpen = 0;
@@ -348,16 +354,16 @@ public class ButtonsBasic extends ButtonsAll{
 //System.out.println("str= "+str);
 
 //вариант, когда % находится от части выражения, например 20+(200+5%)
-                    String strBeforePersent=" ";
-                    String strResult=str;
+                    strBeforePersent=" ";
+                    strPersentFrom=str;
 
                     if (nOpenBraces>nCloseBraces){
                         for (int i=1; i<=nCloseBraces;i++){
                             placeOpen=StringUtils.lastIndexOf(str,"(");
                             placeClose=StringUtils.lastIndexOf(str,")");
                             if (placeOpen>placeClose) {
-                                strBeforePersent = strResult.substring(0, placeOpen);
-                                strResult=strResult.substring(placeOpen+1);
+                                strBeforePersent = strPersentFrom.substring(0, placeOpen);
+                                strPersentFrom=strPersentFrom.substring(placeOpen+1);
                                 break;
                             }
                             else
@@ -366,7 +372,7 @@ public class ButtonsBasic extends ButtonsAll{
                     }
 
 // от dResult находиться %
-                    dResult=calculateCurrent.calculateInput(strResult);
+                    dResult=calculateCurrent.calculateInput(strPersentFrom);
 //System.out.println("strBeforePersent= "+strBeforePersent);
 //System.out.println("strResult= "+strResult);
 //System.out.println("dResult= "+dResult);
@@ -379,14 +385,14 @@ public class ButtonsBasic extends ButtonsAll{
                     dResult=calculateCurrent.calculateInput(strBeforePersent+Operations.printNumber(dResult));
 //printSign("%") отличается if, который влияет на √
                     if (func==null ) {
-                        strInput=Operations.printNumber(dResult) + name;
+                        strInput=Operations.printNumber(dResult) + name.trim();
                         textPanel.setTextInput(strInput);
                     }else {
-                        strInput=textPanel.getTextInput().getText() + name;
+                        strInput=strInput + name.trim();
                         textPanel.setTextInput(strInput);
                     }
 
-                    textPanel.setSbLog(textPanel.getTextInput().getText().trim());
+                    textPanel.setSbLog(strInput.trim());
                     printResult ();
                     print_SbLog ();
                 }
@@ -394,7 +400,7 @@ public class ButtonsBasic extends ButtonsAll{
                 case " = " -> {
                     dResult= Double.parseDouble(textPanel.getTextResult().getText().substring(1));
                      printResult ();
-                    textPanel.setSbLog(textPanel.getTextInput().getText().trim());
+                    textPanel.setSbLog(strInput.trim());
                     print_SbLog ();
                     strResult=Operations.printNumber(dResult);
                     textPanel.setTextInput(strResult);
@@ -431,26 +437,26 @@ public class ButtonsBasic extends ButtonsAll{
                 case "MR" -> {
                     dNumber = memory;
 
-                    switch ( textPanel.getTextInput().getText().substring( textPanel.getTextInput().getText().length() - 1)) {
+                    switch ( strInput.substring( strInput.length() - 1)) {
                                     // before MR was number
                         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." -> {
                             boolean isFormerNumber = true;
 
                             while (isFormerNumber) {
-                                strInput=textPanel.getTextInput().getText().substring(0,  textPanel.getTextInput().getText().length() - 1);
+                                strInput=strInput.substring(0,  strInput.length() - 1);
                                 textPanel.setTextInput(strInput);
-                                switch ( textPanel.getTextInput().getText().substring( textPanel.getTextInput().getText().length() - 1)) {
+                                switch ( strInput.substring( strInput.length() - 1)) {
                                     case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." ->
                                                 isFormerNumber = true;
                                     default -> isFormerNumber = false;
                                 }
                             }
-                            strInput=textPanel.getTextInput().getText()+ Operations.printNumber(memory);
+                            strInput=strInput+ Operations.printNumber(memory);
                             textPanel.setTextInput(strInput);
                         }
                                 // before MR was sign
                         default ->  {
-                            strInput=textPanel.getTextInput().getText()+ Operations.printNumber(memory);
+                            strInput=strInput+ Operations.printNumber(memory);
                             textPanel.setTextInput(strInput);
                         }
                     }
@@ -462,7 +468,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                                 bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     } else {
-                        dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                        dResult = calculateCurrent.calculateInput( strInput);
                         strResult="=" + Operations.printNumber(dResult);
                     }
                     textPanel.setTextResult(strResult);
@@ -496,12 +502,12 @@ public class ButtonsBasic extends ButtonsAll{
 //                    textPanel.setTextResult(strResult);
                 }
                 case "C" -> {
-                    if (textPanel.getTextInput().getText().length()==0) break;
+                    if (strInput.length()==0) break;
                     // input window
-                    strInput=textPanel.getTextInput().getText().substring(0,  textPanel.getTextInput().getText().length() - 1);
+                    strInput=strInput.substring(0,  strInput.length() - 1);
                     textPanel.setTextInput(strInput);
 
-                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+                    dResult = calculateCurrent.calculateInput( strInput);
                     //beginning work
                     if (strNumber.length() > 1)
                         strNumber = strNumber.substring(0, strNumber.length() - 1);
@@ -553,11 +559,11 @@ public class ButtonsBasic extends ButtonsAll{
     }
 
     void printSign (String name) {
-        if (func==null && textPanel.getTextInput().getText().equals("   ")) {
+        if (func==null && strInput.equals("   ")) {
             strInput=Operations.printNumber(dResult) + name;
             textPanel.setTextInput(strInput);
         }else {
-            strInput=textPanel.getTextInput().getText() + name;
+            strInput=strInput + name;
             textPanel.setTextInput(strInput);
         }
     }

@@ -206,6 +206,7 @@ public class ButtonsBasic extends ButtonsAll{
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = e.getActionCommand();
+            strInput= textPanel.getTextInput().getText();
 
                             //alter fonts
             textPanel.setFontBoldInput ();
@@ -272,6 +273,8 @@ public class ButtonsBasic extends ButtonsAll{
             N = 0;
             unblockedAll(bPoint);       // allow double
             blockedAll(bPercent);       // work  % without mistakes
+
+            strInput= textPanel.getTextInput().getText();
 
             switch (name) {
                 case " √ " -> {
@@ -395,15 +398,17 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setSbLog(strInput.trim());
                     printResult ();
                     print_SbLog ();
+//                    strInput=Operations.printNumber(dResult);
+//                    textPanel.setTextInput(strInput);
                 }
 
                 case " = " -> {
                     dResult= Double.parseDouble(textPanel.getTextResult().getText().substring(1));
-                     printResult ();
                     textPanel.setSbLog(strInput.trim());
                     print_SbLog ();
-                    strResult=Operations.printNumber(dResult);
-                    textPanel.setTextInput(strResult);
+                    printResult ();
+                    strInput=Operations.printNumber(dResult);
+                    textPanel.setTextInput(strInput);
                 }
             }
         }
@@ -423,6 +428,7 @@ public class ButtonsBasic extends ButtonsAll{
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            strInput= textPanel.getTextInput().getText();
 
             switch (name) {
 

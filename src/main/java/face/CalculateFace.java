@@ -16,7 +16,7 @@ public class CalculateFace extends JFrame {
     private CardLayout cardTypeCalc;
     private JPanel cardPanel;
     private PanelKeyBasic keyPanelBasic;
-    private PanelKeyEngineer keyPanelEngineer;
+    protected PanelKeyEngineer keyPanelEngineer;
     private PanelKeyIT keyPanelIT;
     private PanelTextLog textPanel;
 

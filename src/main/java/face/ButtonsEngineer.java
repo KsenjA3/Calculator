@@ -26,7 +26,9 @@ import java.awt.event.ActionEvent;
      * create engineer Buttons
      */
      void makeEngineerButtons() {
-        braceClose=createButton(new CreateEngineerButton(")"),")",
+//         bPlus = createButton(new CreateSignButton(" + "),
+//                 " + ", KeyStroke.getKeyStroke('+'), MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
+        braceClose=createButton(new CreateEngineerButton(")"),")",KeyStroke.getKeyStroke(')'),
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get() );
         bx2=createButton(new CreateEngineerButton("x²"),"x²",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
@@ -37,7 +39,7 @@ import java.awt.event.ActionEvent;
         bSqrt3=createButton(new CreateEngineerButton("³√"),"³√",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );
 
-        braceOpen=createButton(new CreateEngineerButton("("),"(",
+        braceOpen=createButton(new CreateEngineerButton("("),"(",KeyStroke.getKeyStroke('('),
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get() );
         bLn=createButton(new CreateEngineerButton("ln"),"ln",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_MIDDLE.get() );

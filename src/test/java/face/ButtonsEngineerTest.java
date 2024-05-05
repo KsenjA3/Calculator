@@ -329,28 +329,80 @@ class ButtonsEngineerTest {
         assertEquals(26, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
 
+    @Test //±5
+    void exchangeSign_positive()  {
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
 
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bChageSign.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
 
+        //±5
+        assertEquals("±(5)", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(-5, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
 
-//    @ParameterizedTest
-//    @CsvSource( value =  {
-//            " 2,    8",
-//            " -3,   -27",
-//            " 2.5,   15.625",
-//            " -2.5,   -15.625",
-//    })
-//     void testX3(String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bx3.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
-//    }
+    @Test //±2(5-8)
+    void exchangeSign_negative()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b8.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bChageSign.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        //±2*(5-8)
+        assertEquals("±(2*(5-8))", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(6, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
 //    @Test
 //    void ln_Exception(){
 //        Throwable ex = assertThrows(
@@ -512,27 +564,6 @@ class ButtonsEngineerTest {
 //
 //        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
 //    }
-//
-//    @ParameterizedTest
-//    @CsvSource( value =  {
-//            " 6,    -6",
-//            " -30,   30",
-//            " 45.55,   -45.55",
-//            " -66.25,   66.25",
-//    })
-//     void changeSign(String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bChageSign.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
-//    }
-
 //
 //
 //

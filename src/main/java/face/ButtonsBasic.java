@@ -206,11 +206,10 @@ public class ButtonsBasic extends ButtonsAll{
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = e.getActionCommand();
+
             strInput= textPanel.getTextInput().getText();
-
-            if (strInput.endsWith("%"))
+            if (strInput.endsWith("%")   |   strInput.startsWith("±"))
                 strInput="   ";
-
             if (strInput.endsWith(")"))
                 strInput=strInput+"*";
 
@@ -246,7 +245,7 @@ public class ButtonsBasic extends ButtonsAll{
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     try {
                         unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3);
+                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
                     }catch (NullPointerException ex){  }
                 }
 
@@ -279,13 +278,16 @@ public class ButtonsBasic extends ButtonsAll{
             textPanel.setFontBoldInput ();      //alter fonts
             strNumber = "0";                      //prepare to input new number
             N = 0;
+
             unblockedAll(bPoint);       // allow double
-            unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPi,bPercent,bRadical); // after blocked x²,x³,1/x,x!
             blockedAll(bPercent);       // work  % without mistakes
+            unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPercent,bRadical); // after blocked x²,x³,1/x,x!
+            try {
+                unblockedAll( bPi);
+            }catch (NullPointerException ex){  }
 
             strInput= textPanel.getTextInput().getText();
-
-            if (strInput.endsWith("%"))
+            if (strInput.endsWith("%")   |   strInput.startsWith("±"))
                 strInput=Operations.printNumber(dResult);
 
             switch (name) {
@@ -334,7 +336,7 @@ public class ButtonsBasic extends ButtonsAll{
 
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
-                    int placeOpen ;
+                    int placeOpen = 0;
                     int placeClose;
                     boolean isSign= false;
 //dNumber and nameSign
@@ -420,8 +422,6 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setSbLog(strInput.trim());
                     printResult ();
                     print_SbLog ();
-//                    strInput=Operations.printNumber(dResult);
-//                    textPanel.setTextInput(strInput);
                 }
 
                 case " = " -> {
@@ -431,6 +431,7 @@ public class ButtonsBasic extends ButtonsAll{
                     printResult ();
                     strInput=Operations.printNumber(dResult);
                     textPanel.setTextInput(strInput);
+                    strInput="   ";
                 }
             }
         }
@@ -475,7 +476,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 textPanel.setTextInput(strInput);
                                 switch ( strInput.substring( strInput.length() - 1)) {
                                     case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." ->
-                                                 isFormerNumber = true;
+                                                isFormerNumber = true;
                                     default -> isFormerNumber = false;
                                 }
                             }
@@ -509,7 +510,7 @@ public class ButtonsBasic extends ButtonsAll{
                     try {
                         blockedAll(braceClose);
                         unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3);
+                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
                     }catch (NullPointerException ex){  }
 
                     if (memory != null)
@@ -546,6 +547,11 @@ public class ButtonsBasic extends ButtonsAll{
                     unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
                             bMemoryAdd, bMemoryDel, bMemoryHold, bDel,
                             bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
+
+                    try {
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
+                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
+                    }catch (NullPointerException ex){  }
                 }
             }
         }
@@ -576,8 +582,6 @@ public class ButtonsBasic extends ButtonsAll{
          unblockedAll(bPercent);       // work  % without mistakes
          strNumber = "0";              // if after = go "."
          func = null;
-        strInput="   ";    // input number after =
-//         textPanel.setTextInput(strInput);
     }
     void print_SbLog (){
         textPanel.setSbLog("\n");

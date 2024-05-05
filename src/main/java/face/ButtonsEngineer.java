@@ -130,10 +130,13 @@ class ButtonsEngineer extends ButtonsBasic {
 
                     if (str.trim()!="" &&
                          StringUtils.endsWithAny(str,"0","1","2","3","4","5","6","7","8","9",".")) {
+// логика замены цифры, находящейся перед PI, на число PI
 //                        hashMap = Operations.findNumber_beforeSign(str);
 //                        placeNumber = hashMap.keySet().stream().findFirst().get();
 //                        dNumber = hashMap.get(placeNumber);
 //                        str = str.substring(0, str.length() - Operations.printNumber(dNumber).length());
+
+// логика перемножения цифры, находящейся перед PI, на  само число PI
                         str=str+"*";
                     }
 
@@ -177,11 +180,17 @@ class ButtonsEngineer extends ButtonsBasic {
                     blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical);
                 }
                 case "±"-> {
-//                    dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//                        dResult = -dResult;
-//                        printResult ();
-//                        textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
-//                        print_SbLog_Input();
+                    strInput=textPanel.getTextInput().getText();
+                    dResult = calculateCurrent.calculateInput( strInput);
+                        dResult = -dResult;
+
+                    strInput="±("+textPanel.getTextInput().getText().trim()+")";
+                    textPanel.setTextInput(strInput);
+                    textPanel.setSbLog(strInput);
+                    printResult ();
+                    print_SbLog();
+
+                    System.out.println("±±±strInput= "+strInput);
                 }
 
                 case "xⁿ" ->{

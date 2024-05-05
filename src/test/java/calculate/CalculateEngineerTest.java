@@ -37,7 +37,6 @@ class CalculateEngineerTest {
     }
 
 
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 2³,³, 8",
@@ -59,5 +58,25 @@ class CalculateEngineerTest {
     void power3_negative  (String strInput,String name, String expectedResult) {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
     }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 2³,³, 8",
+            " 14+2³,³, 14+8",
+            " 5+2³-8,³, 5+8-8",
+            " 5+2³-3³,³, 5+8-3³",
+    })
+    void powerN_positive  (String strInput,String name, String expectedResult) {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
+    }
 
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " -2³,³, -8",
+            " 14+-2³,³, 14+-8",
+            " 5+-2³-8,³, 5+-8-8",
+            " 5+-2³-3³,³, 5+-8-3³",
+    })
+    void powerN_negative  (String strInput,String name, String expectedResult) {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
+    }
 }

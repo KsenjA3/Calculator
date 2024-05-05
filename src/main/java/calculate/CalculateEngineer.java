@@ -17,13 +17,7 @@ public class CalculateEngineer {
         double dNumber;
         int n;
         switch (name){
-//        case "±"-> {
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//            dResult = -dResult;
-//            printResult ();
-//            textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
-//            print_SbLog_Input();
-//        }
+
             case "²" ->{
                 boolean isNegative = false;
                 n = StringUtils.indexOf(strInput, "²");
@@ -73,6 +67,37 @@ public class CalculateEngineer {
 //            case "xⁿ" ->{
 //                return strReturn;
 //            }
+
+//            case "x!" ->{
+//            int n;
+//            try {
+//                n = Integer.parseInt(textPanel.getStrResult().substring(1));
+//                if (n<0) {
+//                    throw new NumberFormatException ();
+//                } else {
+//                    dResult = 1.0;
+//                    for (int k = 1; k <= n; k++) {
+//                        dResult = dResult * k;
+//                    }
+//                    printResult ();
+//                    textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")!");
+//                    print_SbLog_Input();
+//                }
+//            } catch (NumberFormatException exc) {
+//                System.out.println("factorial catch");
+//                textPanel.setStrResult("неверный формат ввода");
+////                        textPanel.setFontBoldResult ();          //alter font
+//                textPanel.setTextRezult(textPanel.getStrResult());
+//
+//                textPanel.setStrInput(Operations.printNumber(dResult)+"!");
+//                textPanel.setTextInput(textPanel.getStrInput());
+//
+//                textPanel.setSbLog(textPanel.getStrInput());
+//                print_SbLog_Input();
+//            }
+//        }
+
+
 //        case  "³√" ->{
 //            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
 //            dResult=Math.cbrt(dResult);
@@ -80,25 +105,29 @@ public class CalculateEngineer {
 //            textPanel.setSbLog("³√("+textPanel.getTextInput().getText().trim()+")");
 //            print_SbLog_Input();
 //        }
-//        case "π" ->{
-//            str=textPanel.getTextInput().getText();
-//            str=str.substring(0,str.length()-strNumber.length());
-//            dNumber = Math.PI;
-//
-//            textPanel.setStrInput(str+dNumber.toString());
-//            textPanel.setTextInput(textPanel.getStrInput());
-//
-//            dResult = calculateCurrent.calculateInput(textPanel.getStrInput());
-//            textPanel.setStrResult("=" + Operations.printNumber(dResult));
-//            unblockedAll(bPercent);       // work  % without mistakes
-//            textPanel.setTextRezult(textPanel.getStrResult());
+
+
+//            case "1/x" ->{
+//            try {
+//                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+//                if (dResult==0.0){
+//                    throw new ArithmeticException();
+//                }else {
+//                    dResult = 1 / dResult;
+//                    printResult ();
+//                    textPanel.setSbLog("1 / ("+textPanel.getTextInput().getText().trim()+")");
+//                    print_SbLog_Input();
+//                }
+//            } catch (ArithmeticException ex) {
+//                textPanel.setStrResult("делить на ноль нельзя");
+//                //                        textPanel.setFontBoldResult ();          //alter font
+//                textPanel.setTextRezult(textPanel.getStrResult());
+//                textPanel.setSbLog("1/ ("+textPanel.getTextInput().getText().trim()+")");
+//                print_SbLog_Input();
+//            }
 //        }
-        case ")"  ->{
 
-        }
-        case "(" ->{
 
-        }
 //        case "ln" ->{
 //            try {
 //                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
@@ -148,54 +177,8 @@ public class CalculateEngineer {
 //                print_SbLog_Input();
 //            }
 //        }
-//        case "x!" ->{
-//            int n;
-//            try {
-//                n = Integer.parseInt(textPanel.getStrResult().substring(1));
-//                if (n<0) {
-//                    throw new NumberFormatException ();
-//                } else {
-//                    dResult = 1.0;
-//                    for (int k = 1; k <= n; k++) {
-//                        dResult = dResult * k;
-//                    }
-//                    printResult ();
-//                    textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")!");
-//                    print_SbLog_Input();
-//                }
-//            } catch (NumberFormatException exc) {
-//                System.out.println("factorial catch");
-//                textPanel.setStrResult("неверный формат ввода");
-////                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
 //
-//                textPanel.setStrInput(Operations.printNumber(dResult)+"!");
-//                textPanel.setTextInput(textPanel.getStrInput());
 //
-//                textPanel.setSbLog(textPanel.getStrInput());
-//                print_SbLog_Input();
-//            }
-//        }
-//        case "1/x" ->{
-//            try {
-//                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//                if (dResult==0.0){
-//                    throw new ArithmeticException();
-//                }else {
-//                    dResult = 1 / dResult;
-//                    printResult ();
-//                    textPanel.setSbLog("1 / ("+textPanel.getTextInput().getText().trim()+")");
-//                    print_SbLog_Input();
-//                }
-//            } catch (ArithmeticException ex) {
-//                textPanel.setStrResult("делить на ноль нельзя");
-//                //                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//                textPanel.setSbLog("1/ ("+textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
-//
-//        }
 //        case "sin" ->{
 //            dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText() );
 //            b = Math.toRadians(dResult);

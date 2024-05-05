@@ -33,5 +33,64 @@ class CalculateInputTest {
     }
 
 
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 8-(5-8), 11",
+            " (8-6)*(5-8), -6",
+    })
+    void negative_in_braces (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
 
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 2 - (5-8, 5",
+            " 2+(3-(5-8, 8",
+            " 5-(2-(3-(5-8, 9",
+            " 8-(5-4)+(2-(3-(5-8, 3",
+    })
+    void differentNumber_openANDclose_braces (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "3², 9",
+            "(6-8)², 4",
+            "2-(6-8)², -2",
+            "5+(6-8)², 9",
+            "5*(6-8)², 20",
+            "3²+2, 11",
+            "3²+2², 13",
+            "2²*(3-1), 8",
+            "9-3²+2²+5, 9",
+            "2*(3²+2²), 26",
+            "2*(3+2)², 50",
+            "(2+4)²+(3+2)², 61",
+            "(2+4)²-(3²+2²), 23",
+    })
+    void power2 (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "3³, 27",
+            "3³+2, 29",
+            "3³+2³, 35",
+            "(8-5)³, 27",
+            "(6-8)³, -8",
+            "2-(6-8)³, 10",
+            "5+(6-8)³,-3",
+            "5*(6-8)³, -40",
+            "(3³-2³)²-300, 61",
+            "2*(3²-2²)³, 250",
+            "2+(3-3)³, 2",
+            "(4+2)³+(3+2)², 241",
+            "(4-2)³-(3³+2²), -23",
+    })
+    void power3 (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
 }

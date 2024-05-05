@@ -1,6 +1,6 @@
 package face;
 
-import calculate.Operations;
+
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ import javax.swing.*;
      protected JButton braceOpen, braceClose, bx2, bx3, bxn, bSqrt3, bLn, bLg,
             bFactorial, bDivX, bChageSign, bSin, bCos, bTg, bPi;
 
-     void replaceRepeatedSign_always (PanelTextLog textPanel) {
+     void replaceRepeatedSign_always () {
          strInput=StringUtils.removeEnd(strInput, "^");
          strInput=StringUtils.removeEnd(strInput, "tg(");
          strInput=StringUtils.removeEnd(strInput, "sin(");
@@ -35,13 +35,13 @@ import javax.swing.*;
          strInput=StringUtils.removeEnd(strInput, "√");
      }
 
-     void replaceRepeatedSign_simple (PanelTextLog textPanel) {
+     void replaceRepeatedSign_simple () {
          strInput=StringUtils.removeEnd(strInput, "-");
          strInput=StringUtils.removeEnd(strInput, "+");
          strInput=StringUtils.removeEnd(strInput, "*");
          strInput=StringUtils.removeEnd(strInput, "/");
      }
-     void replaceRepeatedSign_exceptSimple (PanelTextLog textPanel) {
+     void replaceRepeatedSign_exceptSimple () {
          strInput=StringUtils.removeEnd(strInput, "%");
          strInput=StringUtils.removeEnd(strInput, "²");
          strInput=StringUtils.removeEnd(strInput, "³");

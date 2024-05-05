@@ -4,6 +4,7 @@ package calculate;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.HashMap;
 
 public class Operations {
 
@@ -25,6 +26,7 @@ public class Operations {
     public static MathContext mathContext= new MathContext(15);
 
     public static  BigDecimal result (calculate f, BigDecimal d1, BigDecimal d2) {
+
         return f.func(d1, d2);
     }
 
@@ -46,6 +48,33 @@ public class Operations {
     }
 
     public static  BigDecimal sqrt (BigDecimal d1) { return d1.sqrt(mathContext);}
+
+    public static HashMap findNumber_beforeSign (String strIn){
+        HashMap <Integer, Double> result = new HashMap<>();
+        boolean isSign= false;
+        double number= 0;
+        int placeNumber=1;
+
+        for (int i=strIn.length()-1; i>=0; i--) {
+            switch (strIn.charAt(i)) {
+                case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
+                    if (i==0) {
+                        number=Double.parseDouble(strIn);
+                        placeNumber=0;
+                    }
+                }
+                default -> {
+                    number=Double.parseDouble(strIn.substring(i+1));
+                    isSign=true;
+                    placeNumber=i+1;
+                }
+            }
+            if (isSign)break;
+        }
+        result.put(placeNumber,number);
+        return result;
+    }
+
 
 
     public static  BigDecimal pow (BigDecimal d1, BigDecimal d2) {

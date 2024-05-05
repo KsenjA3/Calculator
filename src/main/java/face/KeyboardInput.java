@@ -16,10 +16,9 @@ public class KeyboardInput {
      * result of calculation
      * from calculator.face.PanelText
      */
-    private Double dResult;
-
+    protected Double dResult;
+    protected String str;
     private CalculateInput calculateCurrent;
-
 
     KeyboardInput (PanelTextLog textPanel) {
         this.textPanel=textPanel;
@@ -33,7 +32,7 @@ public class KeyboardInput {
     private class TextPanelInputKeysAction extends AbstractAction {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String str = textPanel.getTextInput().getText();
+            str = textPanel.getTextInput().getText();
             str= StringUtils.deleteWhitespace(str);
 
             for (int i = 0; i < str.length()-1; i++) {

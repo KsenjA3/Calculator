@@ -208,6 +208,14 @@ public class ButtonsBasic extends ButtonsAll{
             String name = e.getActionCommand();
             strInput= textPanel.getTextInput().getText();
 
+            if (strInput.endsWith("%"))
+                strInput="   ";
+
+            if (strInput.endsWith(")"))
+                strInput=strInput+"*";
+
+//            System.out.println("strInput in bacic number"+strInput);
+
                             //alter fonts
             textPanel.setFontBoldInput ();
             countSqrt=0;
@@ -272,9 +280,13 @@ public class ButtonsBasic extends ButtonsAll{
             strNumber = "0";                      //prepare to input new number
             N = 0;
             unblockedAll(bPoint);       // allow double
+            unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPi,bPercent,bRadical); // after blocked x²,x³,1/x,x!
             blockedAll(bPercent);       // work  % without mistakes
 
             strInput= textPanel.getTextInput().getText();
+
+            if (strInput.endsWith("%"))
+                strInput=Operations.printNumber(dResult);
 
             switch (name) {
                 case " √ " -> {
@@ -285,26 +297,26 @@ public class ButtonsBasic extends ButtonsAll{
                     countSqrt++;
                 }
                 case " + " -> {
-                    replaceRepeatedSign_always (textPanel);
-                    replaceRepeatedSign_simple(textPanel);
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_simple();
                     printSign("+");
                     func = Operations::plus;
                 }
                 case " - " -> {
-                    replaceRepeatedSign_always (textPanel);
-                    replaceRepeatedSign_simple(textPanel);
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_simple();
                     printSign("-");
                     func = Operations::minus;
                 }
                 case " * " -> {
-                    replaceRepeatedSign_always (textPanel);
-                    replaceRepeatedSign_simple(textPanel);
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_simple();
                     printSign("*");
                     func = Operations::multiply;
                 }
                 case " / " -> {
-                    replaceRepeatedSign_always (textPanel);
-                    replaceRepeatedSign_simple(textPanel);
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_simple();
                     printSign("/");
                     func = Operations::divide;
                 }
@@ -312,14 +324,17 @@ public class ButtonsBasic extends ButtonsAll{
                 case " % " -> {
                     unblockedAll(bPercent);       // work  % without mistakes
                     textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always (textPanel);
-                    replaceRepeatedSign_exceptSimple(textPanel);
-                    replaceRepeatedSign_simple(textPanel);
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_exceptSimple();
+                    replaceRepeatedSign_simple();
 
                     String str=StringUtils.deleteWhitespace(strInput);
+//System.out.println();
+//System.out.println("begin str= "+str);
+
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
-                    int placeOpen = 0;
+                    int placeOpen ;
                     int placeClose;
                     boolean isSign= false;
 //dNumber and nameSign
@@ -354,13 +369,20 @@ public class ButtonsBasic extends ButtonsAll{
                             if (isSign)break;
                         }
                     }
-//System.out.println("str= "+str);
+//System.out.println("from+ before str= "+str);
 
 //вариант, когда % находится от части выражения, например 20+(200+5%)
                     strBeforePersent=" ";
                     strPersentFrom=str;
 
                     if (nOpenBraces>nCloseBraces){
+                        if (nCloseBraces==0){
+                            placeOpen=StringUtils.lastIndexOf(str,"(");
+                            strBeforePersent = strPersentFrom.substring(0, placeOpen);
+                            strPersentFrom=strPersentFrom.substring(placeOpen+1);
+                        }
+
+
                         for (int i=1; i<=nCloseBraces;i++){
                             placeOpen=StringUtils.lastIndexOf(str,"(");
                             placeClose=StringUtils.lastIndexOf(str,")");
@@ -453,7 +475,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 textPanel.setTextInput(strInput);
                                 switch ( strInput.substring( strInput.length() - 1)) {
                                     case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "." ->
-                                                isFormerNumber = true;
+                                                 isFormerNumber = true;
                                     default -> isFormerNumber = false;
                                 }
                             }

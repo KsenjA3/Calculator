@@ -1,11 +1,22 @@
 package calculate;
 
-import face.MyException;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
 
 public class CalculateEngineer {
 
-//
-//switch (name){
+    private String strReturn;
+
+    public String calculateEngineer (String strInput, String name ) {
+
+
+        HashMap<Integer, Double> hashMap;
+        int placeNumber;
+        double dResult;
+        double dNumber;
+        int n;
+        switch (name){
 //        case "±"-> {
 //            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
 //            dResult = -dResult;
@@ -13,42 +24,55 @@ public class CalculateEngineer {
 //            textPanel.setSbLog("±("+textPanel.getTextInput().getText().trim()+")");
 //            print_SbLog_Input();
 //        }
-//        case "x²" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//            dResult = dResult*dResult;
-//            printResult ();
-//            textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")²");
-//            print_SbLog_Input();
-//        }
-//        case  "x³" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//            dResult = dResult*dResult*dResult;
-//            printResult ();
-//            textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")³");
-//            print_SbLog_Input();
-//        }
-//        // пересмотреть Log и м.б. сам алгоритм расчета с учетом скобок
-//        case "xⁿ" ->{
-//            textPanel.setFontBoldInput ();
-//            strNumber = "0";                      //prepare to input new number
-//            N = 0;
-//            unblockedAll(bPoint);       // allow double
-//            blockedAll(bPercent);       // work  % without mistakes
-//
-//            Print_and_replaceRepeatedSign(" ^ ");
-////                    if (func==null && textPanel.getStrInput()=="   ") {
-////                        textPanel.setStrInput(Operations.printNumber(dResult) + name);
-////                        textPanel.setTextInput(textPanel.getStrInput());
-////                    }else {
-////                        textPanel.setStrInput(textPanel.getStrInput() + name);
-////                        textPanel.setTextInput(textPanel.getStrInput());
-////                    }
-////                    dResultPercent = dResult;
-//            func = Operations::pow;
-//
-//            nameSign = " ^ ";
-//            strInputFormerSign = textPanel.getStrInput();
-//        }
+            case "²" ->{
+                boolean isNegative = false;
+                n = StringUtils.indexOf(strInput, "²");
+
+                hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                dNumber = hashMap.get(placeNumber);
+                dResult = dNumber * dNumber;
+
+                if((placeNumber ==1   &&   strInput.charAt(0)=='-')  |
+                        (placeNumber >1   &&   strInput.charAt(placeNumber -1)=='-')   &&
+                        !StringUtils.endsWithAny(strInput.substring(0, placeNumber -1), "0","1","2","3","4","5","6","7","8","9",".") )
+                {
+                    isNegative =true;
+                }
+                if (isNegative){
+                    if (strInput.length() > n + 1)
+                        strReturn = strInput.substring(0, placeNumber -1) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                    else
+                        strReturn = strInput.substring(0, placeNumber -1) + Operations.printNumber(dResult);
+
+                }else {
+
+                    if (strInput.length() > n + 1)
+                        strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                    else
+                        strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult);
+                }
+
+                return strReturn;
+            }
+            case  "³" ->{
+                n =StringUtils.indexOf(strInput, "³");
+
+                hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                dNumber = hashMap.get(placeNumber);
+                dResult = dNumber * dNumber * dNumber;
+
+                if (strInput.length()> n +1)
+                    strReturn=strInput.substring(0, placeNumber)+Operations.printNumber(dResult)+strInput.substring(n +1);
+                else
+                    strReturn=strInput.substring(0, placeNumber)+Operations.printNumber(dResult);
+
+                return strReturn;
+            }
+//            case "xⁿ" ->{
+//                return strReturn;
+//            }
 //        case  "³√" ->{
 //            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
 //            dResult=Math.cbrt(dResult);
@@ -69,52 +93,12 @@ public class CalculateEngineer {
 //            unblockedAll(bPercent);       // work  % without mistakes
 //            textPanel.setTextRezult(textPanel.getStrResult());
 //        }
-//        case ")"  ->{
-//            str=textPanel.getTextInput().getText().trim();
-//            switch (str.charAt(str.length()-1)) {
-//                case '0','1','2','3','4','5','6','7','8','9',')' -> {
-//                    countBrace--;
-//                    textPanel.setStrInput(textPanel.getTextInput().getText() + name);
-//                    textPanel.setTextInput(textPanel.getStrInput());
-//                }
-//            }
-//
-//            if (countBrace<=0) {
-//                blockedAll(braceClose);
-//                unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
-//                        bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-//                unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-//                        bChageSign, bFactorial, bDivX,  bSqrt3);
-//            }
-//
-//        }
-//        case "(" ->{
-//            countBrace ++;
-//            str=textPanel.getTextInput().getText().trim();
-//            switch (str.charAt(str.length()-1)) {
-//                case '0','1','2','3','4','5','6','7','8','9',')'-> {
-//                    textPanel.setStrInput(str+" * "+name);
-//                    textPanel.setTextInput(textPanel.getStrInput());
-//                }
-//                case '.'-> {
-//                    textPanel.setStrInput(str+"0 * "+name);
-//                    textPanel.setTextInput(textPanel.getStrInput());
-//                }
-//                default -> {
-//                    textPanel.setStrInput(str+name);
-//                    textPanel.setTextInput(textPanel.getStrInput());
-//                }
-//            }
-//
-//            System.out.println("="+str+"=");
-//            unblockedAll(braceClose);
-//            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
-//                    bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-//            blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-//                    bChageSign, bFactorial, bDivX,  bSqrt3);
-//
-//
-//        }
+        case ")"  ->{
+
+        }
+        case "(" ->{
+
+        }
 //        case "ln" ->{
 //            try {
 //                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
@@ -256,6 +240,7 @@ public class CalculateEngineer {
 //                print_SbLog_Input();
 //            }
 //
-//        }
-//    }
+        }
+        return strReturn;
+    }
 }

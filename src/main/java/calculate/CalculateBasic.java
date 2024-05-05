@@ -14,7 +14,7 @@ public class CalculateBasic {
     private ArrayList <String> arrNameSign;
 
     private String strNumber;      //inner number
-    calculate func;
+    private calculate func;
 
     private BigDecimal dNumber;
     private BigDecimal  dResult;         //for calculation
@@ -40,7 +40,7 @@ public class CalculateBasic {
         wasNegativeNumber=false;
         func=null;
         strNumber = "0";
-        dResult=new BigDecimal(0.0);
+        dResult= BigDecimal.ZERO;
         figureSqrt=1;
         dNSqrt=new BigDecimal(1);
         wasNumber = false;

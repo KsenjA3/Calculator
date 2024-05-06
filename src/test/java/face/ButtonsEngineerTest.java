@@ -403,52 +403,125 @@ class ButtonsEngineerTest {
         assertEquals("±(2*(5-8))", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(6, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-//    @Test
-//    void ln_Exception(){
-//        Throwable ex = assertThrows(
-//                MyException.class,
-//                ()->{
-//                     txt.setText("-2");
-//                     Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//                    locate=panelKey.buttonsEngineer.bLn.getLocationOnScreen();
-//                        bot.mouseMove(locate.x+10,locate.y+10);
-//                        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//                        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//                        try{Thread.sleep(50);}catch(InterruptedException e){}
-//                },
-//                "no throws"
-//        );
-//
-//        assertEquals("ln не существует", ex.getMessage());
-//
-//    }
-//    @Test
-//    void testExpectedExceptionWithParentType() {
-//
-//        Assertions.assertThrows(ArithmeticException.class, () -> {
-//            double d =1/0;
-//        });
-//    }
-//
-//
-//
-//    @Test
-//    void factorial_Exception()  {
-////        Mockito.when(textPanel.getStrResult()).thenReturn("2.5");
-//        Throwable ex = assertThrows(
-//                NumberFormatException.class,
-//                ()->{
-//                    locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
-//                    bot.mouseMove(locate.x+10,locate.y+10);
-//                    bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//                    bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//                    try{Thread.sleep(50);}catch(InterruptedException e){}
-//                }
-//        );
-//    }
-//
-//
+
+
+    @Test // 5^3
+    void powerN()  {
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bxn.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        // 5^3
+        assertEquals("5^3", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(125, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
+
+    @Test // 0^(3-4)
+    void powerN_Exception()  {
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bxn.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b4.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        // 0^(3-4)
+        assertEquals("0^(3-4", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("делить на 0 нельзя", panelKey.buttonsEngineer.strResult);
+    }
+
+
+    @Test // 5 и 1/x
+     void divideForX()  {
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+         txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bDivX.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        // 5 и 1/x
+        assertEquals("5^(-1)", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(0.2, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
+
+
+    @Test // 0^(-1)
+    void divideForX_Exception()  {
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bDivX.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+
+        // 0^(-1)
+        assertEquals("0^(-1)", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("делить на 0 нельзя", panelKey.buttonsEngineer.strResult);
+    }
+
 //    @ParameterizedTest
 //    @CsvSource( value =  {
 //            " =1,   1",
@@ -470,19 +543,38 @@ class ButtonsEngineerTest {
 //        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
 //    }
 //
+//    @Test
+//    void factorial_Exception()  {
+////        Mockito.when(textPanel.getStrResult()).thenReturn("2.5");
+//        Throwable ex = assertThrows(
+//                NumberFormatException.class,
+//                ()->{
+//                    locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
+//                    bot.mouseMove(locate.x+10,locate.y+10);
+//                    bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//                    bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//                    try{Thread.sleep(50);}catch(InterruptedException e){}
+//                }
+//        );
+//    }
+
+
+
+
+
+
 //    @ParameterizedTest
 //    @CsvSource( value =  {
-//            " 2-1,   1",
-//            " 2,   0.5",
-//            " -4,   -0.25",
-//            " 0.5,   2",
-//
+//            " 8,    2",
+//            " -27,   -3",
+//            " 15.625,   2.5",
+//            " -15.625,   -2.5",
 //    })
-//     void divideForX(String strResult, double expectedResult)  {
+//     void sqrt3(String strResult, double expectedResult)  {
 //        txt.setText(strResult);
 //        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
 //
-//        locate=panelKey.buttonsEngineer.bDivX.getLocationOnScreen();
+//        locate=panelKey.buttonsEngineer.bSqrt3.getLocationOnScreen();
 //        bot.mouseMove(locate.x+10,locate.y+10);
 //        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -490,6 +582,14 @@ class ButtonsEngineerTest {
 //
 //        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
 //    }
+
+
+
+
+
+
+
+
 //    @ParameterizedTest
 //    @CsvSource( value =  {
 //            " 30.0,   0.5",
@@ -569,26 +669,6 @@ class ButtonsEngineerTest {
 //
 //    @ParameterizedTest
 //    @CsvSource( value =  {
-//            " 8,    2",
-//            " -27,   -3",
-//            " 15.625,   2.5",
-//            " -15.625,   -2.5",
-//    })
-//     void sqrt3(String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bSqrt3.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
-//    }
-//
-//    @ParameterizedTest
-//    @CsvSource( value =  {
 //            " 100,   2",
 //            " 20,   1.301029995",
 //            " 10000,   4",
@@ -628,5 +708,29 @@ class ButtonsEngineerTest {
 //
 //        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
 //    }
+//    @Test
+//    void ln_Exception(){
+//        Throwable ex = assertThrows(
+//                MyException.class,
+//                ()->{
+//                     txt.setText("-2");
+//                     Mockito.when(textPanel.getTextInput()).thenReturn(txt);
+//
+//                    locate=panelKey.buttonsEngineer.bLn.getLocationOnScreen();
+//                        bot.mouseMove(locate.x+10,locate.y+10);
+//                        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//                        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//                        try{Thread.sleep(50);}catch(InterruptedException e){}
+//                },
+//                "no throws"
+//        );
+//
+//        assertEquals("ln не существует", ex.getMessage());
+//
+//    }
+//
+//
+
+
 
 }

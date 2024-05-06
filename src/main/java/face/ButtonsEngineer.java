@@ -7,16 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.HashMap;
 
 class ButtonsEngineer extends ButtonsBasic {
-    private   String str;
-    protected double b ;
-
-    // find number before sign
-    HashMap<Integer, Double> hashMap;
-    int placeNumber;
-
     private PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
@@ -77,11 +69,12 @@ class ButtonsEngineer extends ButtonsBasic {
         }
         @Override
         public void actionPerformed(ActionEvent e) {
-            double scale= Math.pow(10,15);
+//            double scale= Math.pow(10,15);
 
+            String str;
             switch (name){
                 case ")"  ->{
-                    str=textPanel.getTextInput().getText().trim();
+                    str =textPanel.getTextInput().getText().trim();
                     switch (str.charAt(str.length()-1)) {
                         case '0','1','2','3','4','5','6','7','8','9',')','²', '³', '!' -> {
                             countBrace--;
@@ -101,7 +94,7 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
                 case "(" ->{
                     countBrace ++;
-                    str=textPanel.getTextInput().getText().trim();
+                    str =textPanel.getTextInput().getText().trim();
 
                     if (str.length()>=1)
                         switch (str.charAt(str.length() - 1)) {
@@ -115,20 +108,20 @@ class ButtonsEngineer extends ButtonsBasic {
                                 strInput = str + name;
 
                         }
-                    else strInput=str+name;
+                    else strInput= str +name;
 
                     textPanel.setTextInput(strInput);
 
                     unblockedAll(braceClose);
-                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
+                    blockedAll(bPlus,  bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
                             bChageSign, bFactorial, bDivX,  bSqrt3);
                 }
                 case "π" ->{
-                    str=textPanel.getTextInput().getText().trim();
+                    str =textPanel.getTextInput().getText().trim();
 
-                    if (str.trim()!="" &&
+                    if (!str.trim().equals("") &&
                          StringUtils.endsWithAny(str,"0","1","2","3","4","5","6","7","8","9",".")) {
 // логика замены цифры, находящейся перед PI, на число PI
 //                        hashMap = Operations.findNumber_beforeSign(str);
@@ -137,11 +130,11 @@ class ButtonsEngineer extends ButtonsBasic {
 //                        str = str.substring(0, str.length() - Operations.printNumber(dNumber).length());
 
 // логика перемножения цифры, находящейся перед PI, на  само число PI
-                        str=str+"*";
+                        str = str +"*";
                     }
 
                     dNumber = Math.PI;
-                    strInput= str+dNumber;
+                    strInput= str +dNumber;
                     textPanel.setTextInput(strInput);
 
                     dResult = calculateCurrent.calculateInput(strInput);
@@ -190,30 +183,42 @@ class ButtonsEngineer extends ButtonsBasic {
                     printResult ();
                     print_SbLog();
 
-                    System.out.println("±±±strInput= "+strInput);
                 }
-
                 case "xⁿ" ->{
+                    strInput= textPanel.getTextInput().getText();
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
                     printSign("^");
-
                     func = Operations::pow;
-
-                    nameSign = "^";
                 }
                 case "1/x" ->{
+                    strInput= textPanel.getTextInput().getText();
+
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
+
                     printSign("^(-1)");
-
-                    func = Operations::pow;
-
-                    nameSign = "^(-1)";
+                    try {
+                        dResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical);
+                    }catch ( ArithmeticException  ex){
+                        if (ex.getMessage().equals("Division by zero")) {
+                            strResult = "делить на 0 нельзя";
+                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,
+                                    bResult, bMemoryAdd, bMemoryDel, bMemoryHold,
+                                    bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose
+                            );
+                        }
+                    }
+                    textPanel.setFontBoldResult ();          //alter font
+                    textPanel.setTextResult(strResult);
                 }
                 case "x!" ->{
                     textPanel.setFontBoldInput ();
@@ -222,9 +227,6 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_exceptSimple();
                     printSign("!");
 
-                    func = Operations::pow;
-
-                    nameSign = "!";
                 }
 
                 case  "³√" ->{

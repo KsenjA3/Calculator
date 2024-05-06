@@ -150,6 +150,20 @@ class CalculateBasicInputTest {
         assertEquals(expectedResult, sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn));
     }
 
-
+    @ParameterizedTest
+    @CsvSource ( value =  {
+            " 5^3, 125",
+            " -5^3, -125",
+            " 5^2, 25",
+            " -5^2, 25",
+            "2-5^2, -23",
+            " -5^2+2, 27",
+            " 5^2-2*10, 5",
+            " 10-5^2, -15",
+            " 10--5^2, -15",
+    })
+    void count_power  (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateBasicInput(strInput));
+    }
 
 }

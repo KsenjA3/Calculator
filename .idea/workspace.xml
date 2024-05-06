@@ -9,12 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="power_2and3">
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="sign±">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateBasicInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateBasicInputTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/face/ButtonsBasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsBasicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.exchangeSign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ButtonsEngineerTest.divideForX_Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -97,13 +99,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="exchangeSign" />
+      <option name="METHOD_NAME" value="divideForX_Exception" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.exchangeSign_negative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ButtonsEngineerTest.powerN" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -113,13 +115,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="exchangeSign_negative" />
+      <option name="METHOD_NAME" value="powerN" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.exchangeSign_positive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ButtonsEngineerTest.powerN_Exception" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -129,7 +131,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="exchangeSign_positive" />
+      <option name="METHOD_NAME" value="powerN_Exception" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -138,10 +140,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Calculator" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.exchangeSign_negative" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.exchangeSign_positive" />
         <item itemvalue="Application.CalculateDemo" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.exchangeSign" />
+        <item itemvalue="JUnit.ButtonsEngineerTest.divideForX_Exception" />
+        <item itemvalue="JUnit.ButtonsEngineerTest.powerN_Exception" />
+        <item itemvalue="JUnit.ButtonsEngineerTest.powerN" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1714908976490</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="sign±">
+      <created>1714913922401</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1714913922401</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -356,7 +365,8 @@
     <MESSAGE value="move_strInput/strRes_from/textPanel_to/ButtonsAll" />
     <MESSAGE value="BasicButtonsTests_keyBoard" />
     <MESSAGE value="power_2and3" />
-    <option name="LAST_COMMIT_MESSAGE" value="power_2and3" />
+    <MESSAGE value="sign±" />
+    <option name="LAST_COMMIT_MESSAGE" value="sign±" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -408,28 +418,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>249</line>
+          <line>253</line>
           <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java</url>
-          <line>435</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java</url>
-          <line>405</line>
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java</url>
-          <line>425</line>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="165" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java</url>
@@ -443,43 +433,68 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>217</line>
+          <line>222</line>
           <option name="timeStamp" value="177" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="178" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java</url>
-          <line>195</line>
-          <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/face/ButtonsBasicTest.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java</url>
           <line>60</line>
-          <option name="timeStamp" value="186" />
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java</url>
           <line>61</line>
-          <option name="timeStamp" value="190" />
+          <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java</url>
           <line>62</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java</url>
+          <line>63</line>
           <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>286</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>287</line>
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>288</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>289</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>290</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>291</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java</url>
+          <line>499</line>
+          <option name="timeStamp" value="202" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

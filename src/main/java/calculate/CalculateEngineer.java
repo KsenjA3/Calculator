@@ -64,9 +64,6 @@ public class CalculateEngineer {
 
                 return strReturn;
             }
-//            case "xⁿ" ->{
-//                return strReturn;
-//            }
 
 //            case "x!" ->{
 //            int n;

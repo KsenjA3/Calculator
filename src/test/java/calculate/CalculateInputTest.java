@@ -3,6 +3,7 @@ package calculate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -93,4 +94,46 @@ class CalculateInputTest {
     void power3 (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 10-(3-5)^3, 18",
+            " 10-(2-5)^2, 1",
+            " (7-5)^2, 4",
+            " (3-5)^2, 4",
+            "2+(-3)^2, 11",
+            "2+(-3)^3, -25",
+            "2*3+(-3)^2, 15",
+            "2^(-1), 0.5",
+            "2+2^(-2), 2.25",
+            "0^2, 0",
+            "0^1, 0",
+    })
+    void powerN (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput), 0.000000001);
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "0^(-1)",
+            "5/0",
+            "(10-5*2)^(5-6)",
+            "(25-8)/(6*2-12)",
+    })
+    void Exception_division_by_zero(String strInput){
+        Throwable ex = assertThrows(
+                ArithmeticException.class,
+                ()->{
+                    sut.calculateInput(strInput);
+
+                },
+                "no throws"
+        );
+
+        assertEquals("Division by zero", ex.getMessage());
+
+    }
+
+
+
 }

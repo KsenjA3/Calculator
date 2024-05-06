@@ -73,6 +73,7 @@ public class ButtonsBasic extends ButtonsAll{
         func = null;
         nameSign = "";
         strInput="   ";
+        strResult="0";
                         //create object for calculation
         calculateCurrent = new CalculateInput();
         calculateBasic= new CalculateBasic();
@@ -208,12 +209,11 @@ public class ButtonsBasic extends ButtonsAll{
             String name = e.getActionCommand();
 
             strInput= textPanel.getTextInput().getText();
-            if (strInput.endsWith("%")   |   strInput.startsWith("±"))
-                strInput="   ";
+            if (strInput.endsWith("%")   |   strInput.startsWith("±")
+                    | ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null)
+               ) strInput="   ";
             if (strInput.endsWith(")"))
                 strInput=strInput+"*";
-
-//            System.out.println("strInput in bacic number"+strInput);
 
                             //alter fonts
             textPanel.setFontBoldInput ();
@@ -227,26 +227,31 @@ public class ButtonsBasic extends ButtonsAll{
                 if (strNumber.equals("0.") && name.equals(".")) {    //output in beginning
                     strInput=strInput + strNumber;
                     textPanel.setTextInput(strInput);
-                }else {
+                }else{
                     strInput=strInput + name;
                     textPanel.setTextInput(strInput);
                 }
                                                         // except divide for 0
-                if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
-                    strResult="деление на 0 не возможно";
-                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
-                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                } else {
+                try {
                     dResult = calculateCurrent.calculateInput(strInput);
                     strResult="=" + Operations.printNumber(dResult);
 
-                    unblockedAll(bPercent);       // work  % without mistakes
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     try {
                         unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
-                    }catch (NullPointerException ex){  }
+                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
+                    }catch (NullPointerException exception){  }
+                }catch ( ArithmeticException  ex){
+                    if (ex.getMessage().equals("Division by zero")) {
+                        strResult = "делить на 0 нельзя";
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                                bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
                 }
 
                 if (name.equals(".")) {
@@ -279,11 +284,12 @@ public class ButtonsBasic extends ButtonsAll{
             strNumber = "0";                      //prepare to input new number
             N = 0;
 
-            unblockedAll(bPoint);       // allow double
-            blockedAll(bPercent);       // work  % without mistakes
-            unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPercent,bRadical); // after blocked x²,x³,1/x,x!
+            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
+                    bResult, bMemoryAdd, bMemoryDel, bMemoryHold );
             try {
-                unblockedAll( bPi);
+                unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                        bChageSign,braceOpen);
             }catch (NullPointerException ex){  }
 
             strInput= textPanel.getTextInput().getText();
@@ -431,7 +437,6 @@ public class ButtonsBasic extends ButtonsAll{
                     printResult ();
                     strInput=Operations.printNumber(dResult);
                     textPanel.setTextInput(strInput);
-                    strInput="   ";
                 }
             }
         }
@@ -492,7 +497,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 // except divide for 0
                     if ((dNumber == 0.0) && (nameSign.equals(" / "))) {
 
-                        strResult="деление на 0 не возможно";
+                        strResult="делить на 0 нельзя";
                         blockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0,
                                 bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                                 bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
@@ -504,13 +509,12 @@ public class ButtonsBasic extends ButtonsAll{
                     unblockedAll(bPercent);       // work  % without mistakes
                 }
                 case "AC" -> {
-                    unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
-                            bMemoryAdd, bMemoryDel, bDel,
-                            bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
+                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                            b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
+                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold );
                     try {
-                        blockedAll(braceClose);
-                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
+                        unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                bChageSign,braceOpen);
                     }catch (NullPointerException ex){  }
 
                     if (memory != null)
@@ -531,26 +535,28 @@ public class ButtonsBasic extends ButtonsAll{
 //                    textPanel.setTextResult(strResult);
                 }
                 case "C" -> {
+                    strInput=textPanel.getTextInput().getText();
                     if (strInput.length()==0) break;
-                    // input window
-                    strInput=strInput.substring(0,  strInput.length() - 1);
+
+                    if (strResult.equals("делить на 0 нельзя"))
+                        strInput=strInput.substring(0,  strInput.length() - 2);
+                    else
+                        strInput=strInput.substring(0,  strInput.length() - 1);
                     textPanel.setTextInput(strInput);
 
                     dResult = calculateCurrent.calculateInput( strInput);
-                    //beginning work
-                    if (strNumber.length() > 1)
-                        strNumber = strNumber.substring(0, strNumber.length() - 1);
-
                     strResult="=" + Operations.printNumber(dResult);
                     textPanel.setTextResult(strResult);
 
-                    unblockedAll(b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, bPoint,
-                            bMemoryAdd, bMemoryDel, bMemoryHold, bDel,
-                            bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
+                    if (strNumber.length() > 1)          //beginning work
+                        strNumber = strNumber.substring(0, strNumber.length() - 1);
 
+                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                            b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
+                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold );
                     try {
-                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3, bPi);
+                        unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                bChageSign,braceOpen,braceClose);
                     }catch (NullPointerException ex){  }
                 }
             }

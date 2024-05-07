@@ -257,7 +257,16 @@ public class ButtonsBasic extends ButtonsAll{
                                     bChageSign,braceOpen,braceClose);
                         }catch (NullPointerException exception){  }
                     }
+                }catch (MyException myException){
+                    strResult = myException.getMessage();
+                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                            bResult, bMemoryAdd);
+                    try {
+                        blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                bChageSign,braceOpen,braceClose);
+                    }catch (NullPointerException exception){  }
                 }
+
                 textPanel.setTextResult(strResult);
 
 
@@ -346,15 +355,27 @@ public class ButtonsBasic extends ButtonsAll{
                     boolean isSign= false;
 //dNumber and nameSign
                     if (str.endsWith(")")){
-                        placeOpen=StringUtils.lastIndexOf(str,"(");
-                        dNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
-                        if (placeOpen==0){
-                            nameSign="no";
-                            str="  ";
-                        }else{
-                            nameSign=str.substring(placeOpen-1,placeOpen);
-                            str=str.substring(0,placeOpen-1);
+                        try {
+                            placeOpen=StringUtils.lastIndexOf(str,"(");
+                            dNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
+                            if (placeOpen==0){
+                                nameSign="no";
+                                str="  ";
+                            }else{
+                                nameSign=str.substring(placeOpen-1,placeOpen);
+                                str=str.substring(0,placeOpen-1);
+                            }
+
+                        }catch (MyException myException){
+                            strResult = myException.getMessage();
+                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                                    bResult, bMemoryAdd);
+                            try {
+                                blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                        bChageSign,braceOpen,braceClose);
+                            }catch (NullPointerException exception){  }
                         }
+
                     }
                     else {
                         for (int i=str.length()-1; i>=0; i--) {

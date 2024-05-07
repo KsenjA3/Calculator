@@ -18,6 +18,27 @@ class CalculateInputTest {
     }
 
 
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "0^(-1)",
+            "5/0",
+            "(10-5*2)^(5-6)",
+            "(25-8)/(6*2-12)",
+    })
+    void Exception_division_by_zero(String strInput){
+        Throwable ex = assertThrows(
+                ArithmeticException.class,
+                ()->{
+                    sut.calculateInput(strInput);
+
+                },
+                "no throws"
+        );
+
+        assertEquals("Division by zero", ex.getMessage());
+
+    }
+
 
     @ParameterizedTest
     @CsvSource( value =  {
@@ -116,26 +137,25 @@ class CalculateInputTest {
 
 
 
+
+
+
+
     @ParameterizedTest
     @CsvSource( value =  {
-            "0^(-1)",
-            "5/0",
-            "(10-5*2)^(5-6)",
-            "(25-8)/(6*2-12)",
+            " 3!, 6",
+            " 2+3!, 8",
+            " 3!*5, 30",
+
+            "3+-2!, 1",
+            "-2!,1",
+            " 3.2!,1",
+
     })
-    void Exception_division_by_zero(String strInput){
-        Throwable ex = assertThrows(
-                ArithmeticException.class,
-                ()->{
-                    sut.calculateInput(strInput);
-
-                },
-                "no throws"
-        );
-
-        assertEquals("Division by zero", ex.getMessage());
-
+    void factorial (String strInput, double expectedResult) {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
     }
+
 
 
 

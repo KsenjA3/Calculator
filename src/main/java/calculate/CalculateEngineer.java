@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class CalculateEngineer {
 
     private String strReturn;
+    final double threshold = 0.000000001;
 
     public String calculateEngineer (String strInput, String name ) {
 
@@ -14,7 +15,7 @@ public class CalculateEngineer {
         HashMap<Integer, Double> hashMap;
         int placeNumber;
         double dResult;
-        double dNumber;
+        Double dNumber;
         int n;
         switch (name){
 
@@ -65,34 +66,60 @@ public class CalculateEngineer {
                 return strReturn;
             }
 
-//            case "x!" ->{
-//            int n;
-//            try {
-//                n = Integer.parseInt(textPanel.getStrResult().substring(1));
-//                if (n<0) {
-//                    throw new NumberFormatException ();
-//                } else {
-//                    dResult = 1.0;
-//                    for (int k = 1; k <= n; k++) {
-//                        dResult = dResult * k;
-//                    }
-//                    printResult ();
-//                    textPanel.setSbLog("("+textPanel.getTextInput().getText().trim()+")!");
-//                    print_SbLog_Input();
+            case "!" -> {
+
+                n = StringUtils.indexOf(strInput, "!");
+
+                hashMap = Operations.findNumber_beforeSign(strInput.substring(0, n));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                dNumber = hashMap.get(placeNumber);
+                        System.out.println(placeNumber);
+                        System.out.println(dNumber);
+
+                Integer intNumber;
+//                try {
+                     intNumber = dNumber.intValue();
+                    System.out.println(dNumber-intNumber);
+
+                     if (Math.abs(dNumber-intNumber)>threshold)
+                         throw new NumberFormatException ();
+
+                    if ( (placeNumber==1   &&   strInput.charAt(0)=='-')
+                          |  (placeNumber>1   &&   strInput.charAt(placeNumber-1)=='-'     &&
+                                 StringUtils.startsWithAny(strInput.substring(placeNumber-2),"+","-","/","*" ))
+                    )
+                        throw new NumberFormatException ();
+
+
+
+                        Integer intResult = 1;
+                        for (int k = 1; k <= intNumber; k++) {
+                            intResult = intResult * k;
+                        }
+                        dResult=intResult.doubleValue();
+                                System.out.println("intResult= "+intResult);
+
 //                }
-//            } catch (NumberFormatException exc) {
-//                System.out.println("factorial catch");
-//                textPanel.setStrResult("неверный формат ввода");
-////                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//
-//                textPanel.setStrInput(Operations.printNumber(dResult)+"!");
-//                textPanel.setTextInput(textPanel.getStrInput());
-//
-//                textPanel.setSbLog(textPanel.getStrInput());
-//                print_SbLog_Input();
-//            }
-//        }
+//                catch (NumberFormatException exc) {
+//                                System.out.println("factorial catch");
+//                    strReturn="неверный формат ввода";
+//                    return strReturn;
+//                }
+
+
+
+                                System.out.println("dResult= "+dResult);
+
+                if (strInput.length() > n + 1)
+                    strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                else
+                    strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult);
+
+                                System.out.println("Result= "+  strReturn);
+
+                return strReturn;
+            }
+
 
 
 //        case  "³√" ->{

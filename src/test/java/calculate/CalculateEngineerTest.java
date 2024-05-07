@@ -60,23 +60,64 @@ class CalculateEngineerTest {
     }
     @ParameterizedTest
     @CsvSource( value =  {
-            " 2³,³, 8",
-            " 14+2³,³, 14+8",
-            " 5+2³-8,³, 5+8-8",
-            " 5+2³-3³,³, 5+8-3³",
+            " 2³, 8",
+            " 14+2³, 14+8",
+            " 5+2³-8, 5+8-8",
+            " 5+2³-3³, 5+8-3³",
     })
-    void powerN_positive  (String strInput,String name, String expectedResult) {
-        assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
+    void powerN_positive  (String strInput, String expectedResult) {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, "³"));
     }
 
     @ParameterizedTest
     @CsvSource( value =  {
-            " -2³,³, -8",
-            " 14+-2³,³, 14+-8",
-            " 5+-2³-8,³, 5+-8-8",
-            " 5+-2³-3³,³, 5+-8-3³",
+            " -2³, -8",
+            " 14+-2³, 14+-8",
+            " 5+-2³-8, 5+-8-8",
+            " 5+-2³-3³, 5+-8-3³",
     })
-    void powerN_negative  (String strInput,String name, String expectedResult) {
-        assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
+    void powerN_negative  (String strInput, String expectedResult) {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, "³"));
     }
+
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 3!, 6",
+            " 2+3!, 2+6",
+            " 3!*5, 6*5",
+//            "3+-2!, неверный формат ввода",
+//            "-2!, неверный формат ввода",
+//            " 3.2!, неверный формат ввода",
+
+
+    })
+    void factorial  (String strInput, String expectedResult) {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, "!"));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "3+-2!",
+            "-2!",
+            " 3.2!",
+
+    })
+    void Exception_factorial(String strInput){
+        Throwable ex = assertThrows(
+                NumberFormatException.class,
+                ()->{
+                    sut.calculateEngineer(strInput, "!");
+
+                },
+                "!!!НЕТУ!!!"
+        );
+
+//        assertEquals("неверный формат ввода", ex.getMessage());
+
+    }
+
+
+
 }

@@ -1,5 +1,6 @@
 package calculate;
 
+import face.MyException;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -13,9 +14,9 @@ public class CalculateInput {
     }
 
 
-    public double calculateInput (String strInput) {
+    public double calculateInput (String strInput) throws MyException {
 
-//        System.out.println("in= "+strInput);
+        System.out.println("in= "+strInput);
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
@@ -47,7 +48,6 @@ public class CalculateInput {
             strInput=strInput.substring(0, nBrace) + Operations.printNumber(dResult);
         }
 
-
         while (StringUtils.contains(strInput,"²")){
             strInput = calculateEngineer.calculateEngineer(strInput,"²");
         }
@@ -56,9 +56,18 @@ public class CalculateInput {
             strInput=calculateEngineer.calculateEngineer(strInput,"³");
         }
 
+        while (StringUtils.contains(strInput,"!")){
+            try {
+            strInput=calculateEngineer.calculateEngineer(strInput,"!");
+            }
+                catch (NumberFormatException exc) {
+                                System.out.println("factorial catch");
+//                    strInput="неверный формат ввода";
+                    throw new MyException("неверный формат ввода факториала");
+                }
+        }
 
-
-//        System.out.println("before basic= "+strInput);
+       System.out.println("before basic= "+strInput);
         dResult =calculateBasic.calculateBasicInput(strInput);
         return dResult;
     }

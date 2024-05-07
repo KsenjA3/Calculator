@@ -149,7 +149,6 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
                 case "x²" ->{
                     strInput= textPanel.getTextInput().getText();
-
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -165,7 +164,6 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
                 case  "x³" ->{
                     strInput= textPanel.getTextInput().getText();
-
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -231,15 +229,19 @@ class ButtonsEngineer extends ButtonsBasic {
 
 
                 case "x!" ->{
+                    strInput= textPanel.getTextInput().getText();
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-//                    printSign("!");
 
-                    System.out.println(textPanel.memoryMR);
-                    System.out.println(strInput);
+                    printSign("!");
+                    dResult = calculateCurrent.calculateInput(strInput);
+                    strResult="=" + Operations.printNumber(dResult);
+                    textPanel.setFontBoldResult ();          //alter font
+                    textPanel.setTextResult(strResult);
 
+                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                 }
 
                 case  "³√" ->{

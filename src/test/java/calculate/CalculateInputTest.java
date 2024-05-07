@@ -17,6 +17,8 @@ class CalculateInputTest {
         sut = new CalculateInput();
     }
 
+
+
     @ParameterizedTest
     @CsvSource( value =  {
             " 2 - (5-8, 5",
@@ -32,8 +34,6 @@ class CalculateInputTest {
     void oder_and_braces (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 8-(5-8), 11",
@@ -42,8 +42,6 @@ class CalculateInputTest {
     void negative_in_braces (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 2 - (5-8, 5",
@@ -54,6 +52,9 @@ class CalculateInputTest {
     void differentNumber_openANDclose_braces (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
+
+
+
 
     @ParameterizedTest
     @CsvSource( value =  {
@@ -112,6 +113,8 @@ class CalculateInputTest {
     void powerN (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateInput(strInput), 0.000000001);
     }
+
+
 
     @ParameterizedTest
     @CsvSource( value =  {

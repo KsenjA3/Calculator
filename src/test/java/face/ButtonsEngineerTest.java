@@ -51,7 +51,6 @@ class ButtonsEngineerTest {
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
         Mockito.when(textPanel.getTextResult()).thenReturn(lable);
     }
-
     @AfterAll
      void hideFrame() {
         frame.setVisible(false);
@@ -68,6 +67,8 @@ class ButtonsEngineerTest {
                 panelKey.buttonsEngineer.bPi,panelKey.buttonsEngineer.bPercent,panelKey.buttonsEngineer.bRadical);
 
     }
+
+
 
     @Test //2+PI
     void PI_afterSign()  {
@@ -155,6 +156,63 @@ class ButtonsEngineerTest {
         assertEquals("3.141592653589793+3.141592653589793", panelKey.buttonsEngineer.strInput);
         assertEquals(6.283185307, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
+    @Test //2(2+3)PI
+    void PI_afterBraces()  {
+
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPi.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+//2(2+3)PI
+        assertEquals("2*(2+3)*3.141592653589793", panelKey.buttonsEngineer.strInput);
+        assertEquals(31.415926535, panelKey.buttonsEngineer.dResult, 0.000000001);
+    }
+
+
+
     @Test //5²
     void x2()  {
         locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
@@ -174,7 +232,6 @@ class ButtonsEngineerTest {
         assertEquals("5²", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(25, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
     @Test //2²+3²
     void x2_plus_x2()  {
         bot.keyPress(KeyEvent.VK_2);
@@ -210,7 +267,6 @@ class ButtonsEngineerTest {
         assertEquals("2²+3²", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(13, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
     @Test //2(2+3)²
     void x2_sum()  {
         locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
@@ -265,7 +321,6 @@ class ButtonsEngineerTest {
         assertEquals("2*(2+3)²", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(50, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
     @Test //2(2²+3²
     void x2_plus_x2_inBraces()  {
         locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
@@ -329,6 +384,9 @@ class ButtonsEngineerTest {
         assertEquals(26, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
 
+
+
+
     @Test //±5
     void exchangeSign_positive()  {
         locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
@@ -348,7 +406,6 @@ class ButtonsEngineerTest {
         assertEquals("±(5)", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(-5, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
     @Test //±2(5-8)
     void exchangeSign_negative()  {
         locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
@@ -405,6 +462,8 @@ class ButtonsEngineerTest {
     }
 
 
+
+
     @Test // 5^3
     void powerN()  {
         locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
@@ -430,7 +489,6 @@ class ButtonsEngineerTest {
         assertEquals("5^3", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(125, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
     @Test // 0^(3-4)
     void powerN_Exception()  {
         locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
@@ -480,6 +538,9 @@ class ButtonsEngineerTest {
     }
 
 
+
+
+
     @Test // 5 и 1/x
      void divideForX()  {
         locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
@@ -499,8 +560,6 @@ class ButtonsEngineerTest {
         assertEquals("5^(-1)", panelKey.buttonsEngineer.strInput.trim());
         assertEquals(0.2, panelKey.buttonsEngineer.dResult, 0.000000001);
     }
-
-
     @Test // 0^(-1)
     void divideForX_Exception()  {
         locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
@@ -521,6 +580,9 @@ class ButtonsEngineerTest {
         assertEquals("0^(-1)", panelKey.buttonsEngineer.strInput.trim());
         assertEquals("делить на 0 нельзя", panelKey.buttonsEngineer.strResult);
     }
+
+
+
 
 //    @ParameterizedTest
 //    @CsvSource( value =  {

@@ -9,6 +9,7 @@ import java.awt.event.*;
 
 public class CalculateFace extends JFrame {
 
+
     /**
      * Components
      */

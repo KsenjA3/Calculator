@@ -71,6 +71,10 @@ class ButtonsEngineer extends ButtonsBasic {
         public void actionPerformed(ActionEvent e) {
 //            double scale= Math.pow(10,15);
 
+            if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
+            else     unblockedAll(bMemoryHold,bMemoryDel);
+
+
             String str;
             switch (name){
                 case ")"  ->{
@@ -85,12 +89,9 @@ class ButtonsEngineer extends ButtonsBasic {
 
                     if (countBrace<=0) {
                         blockedAll(braceClose);
-                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
-                                bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                bChageSign, bFactorial, bDivX,  bSqrt3);
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,bChageSign, bFactorial, bDivX,  bSqrt3);
                     }
-
                 }
                 case "(" ->{
                     countBrace ++;
@@ -113,16 +114,15 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextInput(strInput);
 
                     unblockedAll(braceClose);
-                    blockedAll(bPlus,  bDivide, bMultiply, bPercent,
-                            bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                            bChageSign, bFactorial, bDivX,  bSqrt3);
+                    blockedAll(bPlus,  bDivide, bMultiply, bPercent,bResult, bMemoryAdd);
+                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,bChageSign, bFactorial, bDivX,  bSqrt3);
+
                 }
                 case "π" ->{
-                    str =textPanel.getTextInput().getText().trim();
+                    strInput =textPanel.getTextInput().getText().trim();
 
-                    if (!str.trim().equals("") &&
-                         StringUtils.endsWithAny(str,"0","1","2","3","4","5","6","7","8","9",".")) {
+                    if (!strInput.trim().equals("") &&
+                         StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".")) {
 // логика замены цифры, находящейся перед PI, на число PI
 //                        hashMap = Operations.findNumber_beforeSign(str);
 //                        placeNumber = hashMap.keySet().stream().findFirst().get();
@@ -130,11 +130,16 @@ class ButtonsEngineer extends ButtonsBasic {
 //                        str = str.substring(0, str.length() - Operations.printNumber(dNumber).length());
 
 // логика перемножения цифры, находящейся перед PI, на  само число PI
-                        str = str +"*";
+                        strInput = strInput +"*";
                     }
+                    if (strInput.endsWith("%")   |   strInput.startsWith("±")
+                            | ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null)
+                    ) strInput="   ";
+                    if (strInput.endsWith(")"))
+                        strInput=strInput+"*";
 
                     dNumber = Math.PI;
-                    strInput= str +dNumber;
+                    strInput= strInput +dNumber;
                     textPanel.setTextInput(strInput);
 
                     dResult = calculateCurrent.calculateInput(strInput);
@@ -156,9 +161,11 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
 
-                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical);
+                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                 }
                 case  "x³" ->{
+                    strInput= textPanel.getTextInput().getText();
+
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -170,7 +177,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
 
-                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical);
+                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                 }
                 case "±"-> {
                     strInput=textPanel.getTextInput().getText();
@@ -205,7 +212,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     try {
                         dResult = calculateCurrent.calculateInput(strInput);
                         strResult="=" + Operations.printNumber(dResult);
-                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical);
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch ( ArithmeticException  ex){
                         if (ex.getMessage().equals("Division by zero")) {
                             strResult = "делить на 0 нельзя";
@@ -220,12 +227,18 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
                 }
+
+
+
                 case "x!" ->{
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-                    printSign("!");
+//                    printSign("!");
+
+                    System.out.println(textPanel.memoryMR);
+                    System.out.println(strInput);
 
                 }
 

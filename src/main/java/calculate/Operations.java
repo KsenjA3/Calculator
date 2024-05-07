@@ -50,7 +50,12 @@ public class Operations {
     public static  BigDecimal sqrt (BigDecimal d1) { return d1.sqrt(mathContext);}
 
     public static HashMap findNumber_beforeSign (String strIn){
+
+
         HashMap <Integer, Double> result = new HashMap<>();
+
+
+
         boolean isSign= false;
         double number= 0;
         int placeNumber=1;

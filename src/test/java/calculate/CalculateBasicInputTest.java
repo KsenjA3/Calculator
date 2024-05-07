@@ -42,7 +42,6 @@ class CalculateBasicInputTest {
     void oderCount (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource ( value =  {
             " 5.3+14.5, 19.8",
@@ -55,6 +54,8 @@ class CalculateBasicInputTest {
     void doubleNumbersCount_PlusMinusDivideMultiply (String strInput, double expectedResult) {
         assertEquals (expectedResult,sut.calculateBasicInput(strInput));
     }
+
+
 
     //переполнение
     @Test
@@ -69,6 +70,8 @@ class CalculateBasicInputTest {
         assertThat(sut.calculateBasicInput("99999999999999999999999*99999999999999999999999"))
                 .isEqualTo(dResult2.doubleValue());
     }
+
+
 
     @ParameterizedTest
     @CsvSource ( value =  {
@@ -145,7 +148,7 @@ class CalculateBasicInputTest {
     //In the test package
     @ParameterizedTest
     @MethodSource("dataProvider")
-    void calculatePersent(String nameSign, double dResultPercentIn, double dNumberIn, double expectedResult)
+    void calculatePercent(String nameSign, double dResultPercentIn, double dNumberIn, double expectedResult)
     {
         assertEquals(expectedResult, sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn));
     }

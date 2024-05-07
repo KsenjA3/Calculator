@@ -11,6 +11,10 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 
  class PanelTextLog extends PanelText{
+     /**
+      * to safe into the memory
+      */
+     protected Double memoryMR;
 
     /**
      * for writing to calculator.face.PanelTextLog

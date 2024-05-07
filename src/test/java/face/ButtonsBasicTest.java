@@ -72,58 +72,421 @@ class ButtonsBasicTest {
         Mockito.when(textPanel.getTextResult()).thenReturn(lable);
 
     }
-
     @Test
-        //((5-7)-2
-    void negativNumber_inBraces()  {
-        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+    void number_press( )  {
+
+        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(1, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(12, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(123, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b4.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(1234, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(12345, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        panelKey.buttonsEngineer.strNumber=" ";
+        locate=panelKey.buttonsEngineer.b6.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(6, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b7.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(67, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b8.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(678, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(6789, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        panelKey.buttonsEngineer.strNumber=" ";
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+        assertEquals(0, panelKey.buttonsEngineer.dNumber, 0.000000001);
+
+        locate=panelKey.buttonsEngineer.bResult.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         try{Thread.sleep(25);}catch(InterruptedException e){}
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        bot.keyPress(KeyEvent.VK_5);
-        try{Thread.sleep(10);}catch(InterruptedException e){}
-        bot.keyRelease(KeyEvent.VK_5);
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        bot.keyPress(KeyEvent.VK_MINUS);
-        try{Thread.sleep(15);}catch(InterruptedException e){}
-        bot.keyRelease(KeyEvent.VK_MINUS);
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        bot.keyPress(KeyEvent.VK_7);
-        try{Thread.sleep(10);}catch(InterruptedException e){}
-        bot.keyRelease(KeyEvent.VK_7);
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        bot.keyPress(KeyEvent.VK_MINUS);
-        try{Thread.sleep(15);}catch(InterruptedException e){}
-        bot.keyRelease(KeyEvent.VK_MINUS);
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        bot.keyPress(KeyEvent.VK_2);
-        try{Thread.sleep(10);}catch(InterruptedException e){}
-        bot.keyRelease(KeyEvent.VK_2);
-
-        //((5-7)-2
-        assertEquals(-4, panelKey.buttonsEngineer.dResult);
+        assertEquals(0.0, panelKey.buttonsEngineer.dNumber, 0.000000001);
     }
+
+    @Test  //2+3.0003
+    void input_number_double ()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//2+3.0003
+        assertEquals("2+3.0003", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(5.0003, panelKey.buttonsEngineer.dResult);
+    }
+    @Test  //200.5+5.0003
+    void input_ZIRO_inCentre_double ()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//200.5+5.0003
+        assertEquals("200.5+5.0003", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(205.5003, panelKey.buttonsEngineer.dResult);
+    }
+
+    @Test  //2+.0003
+    void input_double_beginWith_Point ()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//2+0.0003
+        assertEquals("2+0.0003", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(2.0003, panelKey.buttonsEngineer.dResult);
+    }
+
+    @Test  //00002+3
+    void input_beginWith_ZERO ()  {
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+
+
+//00002+3
+        assertEquals("2+3", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(5, panelKey.buttonsEngineer.dResult);
+    }
+
+    @Test  //2+0003.3
+    void input_double_beginWith_ZERO ()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//2+0003.3
+        assertEquals("2+3.3", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(5.3, panelKey.buttonsEngineer.dResult);
+    }
+
+
 
     @Test  //2+3= после ввод 8
     void input_number_after_result ()  {
@@ -201,61 +564,11 @@ class ButtonsBasicTest {
 
         assertEquals("8", panelKey.buttonsEngineer.strInput.trim());
     }
-    @Test  //2(2+3)5
-    void addMultiply_before_after_Braces ()  {
 
-        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
-
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
-
-//2(2+3)5
-        assertEquals("2*(2+3)*5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(50, panelKey.buttonsEngineer.dResult);
-    }
 
     @Test // 7√√√+ == 7+
     void exchange_fewSqrt_to_plus()  {
@@ -294,95 +607,6 @@ class ButtonsBasicTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
         assertEquals("7+", panelKey.buttonsEngineer.strInput.trim());
-    }
-
-    @Test
-    void number_press( )  {
-
-        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(1, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(12, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(123, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b4.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(1234, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(12345, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        panelKey.buttonsEngineer.strNumber=" ";
-        locate=panelKey.buttonsEngineer.b6.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(6, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b7.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(67, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b8.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(678, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(6789, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        panelKey.buttonsEngineer.strNumber=" ";
-        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(0, panelKey.buttonsEngineer.dNumber, 0.000000001);
-
-        locate=panelKey.buttonsEngineer.bResult.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
-
-        locate=panelKey.buttonsEngineer.bPoint.getLocationOnScreen();
-            bot.mouseMove(locate.x+10,locate.y+10);
-            bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            try{Thread.sleep(25);}catch(InterruptedException e){}
-        assertEquals(0.0, panelKey.buttonsEngineer.dNumber, 0.000000001);
     }
     @Test  //2-+5
     void fewSign_OneByOne ()  {
@@ -487,7 +711,6 @@ class ButtonsBasicTest {
         //8√√√
         assertEquals("8√√√", panelKey.buttonsEngineer.strInput.trim());
     }
-
     @Test
         //2(+3√+ == 2*(3+
     void exchange_Blocked_SymbolsWith_openBrace ()  {
@@ -534,6 +757,119 @@ class ButtonsBasicTest {
 
         assertEquals("2*(3+", panelKey.buttonsEngineer.strInput.trim());
     }
+
+
+
+
+    @Test  //((5-7)-2
+    void negativeNumber_inBraces()  {
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        bot.keyPress(KeyEvent.VK_5);
+        try{Thread.sleep(10);}catch(InterruptedException e){}
+        bot.keyRelease(KeyEvent.VK_5);
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        bot.keyPress(KeyEvent.VK_MINUS);
+        try{Thread.sleep(15);}catch(InterruptedException e){}
+        bot.keyRelease(KeyEvent.VK_MINUS);
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        bot.keyPress(KeyEvent.VK_7);
+        try{Thread.sleep(10);}catch(InterruptedException e){}
+        bot.keyRelease(KeyEvent.VK_7);
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        bot.keyPress(KeyEvent.VK_MINUS);
+        try{Thread.sleep(15);}catch(InterruptedException e){}
+        bot.keyRelease(KeyEvent.VK_MINUS);
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        bot.keyPress(KeyEvent.VK_2);
+        try{Thread.sleep(10);}catch(InterruptedException e){}
+        bot.keyRelease(KeyEvent.VK_2);
+
+        //((5-7)-2
+        assertEquals(-4, panelKey.buttonsEngineer.dResult);
+    }
+    @Test  //2(2+3)5
+    void addMultiply_before_after_Braces ()  {
+
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//2(2+3)5
+        assertEquals("2*(2+3)*5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(50, panelKey.buttonsEngineer.dResult);
+    }
+
+
+
+
 
     @Test
         //2+8+(9-(2-5)-(2+8)%
@@ -681,67 +1017,54 @@ class ButtonsBasicTest {
     @Test
         // 2(7+(2*+8%
     void percent_Braces_2open_0close()  {
-        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_2);
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_2);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        try{Thread.sleep(40);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b7.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_7);
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_7);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_ADD);
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_ADD);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        try{Thread.sleep(40);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_2);
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_2);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.bMultiply.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_MULTIPLY);
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_MULTIPLY);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_ADD);
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_ADD);
+
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.b8.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        bot.keyPress(KeyEvent.VK_8);
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
+        bot.keyRelease(KeyEvent.VK_8);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bPercent.getLocationOnScreen();
@@ -880,27 +1203,27 @@ class ButtonsBasicTest {
         //200+5%+5
     void after_percent_plus5() {
         bot.keyPress(KeyEvent.VK_2);
-        try {Thread.sleep(10);} catch (InterruptedException e) {}
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_2);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_0);
-        try {Thread.sleep(10);} catch (InterruptedException e) {}
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_0);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_0);
-        try {Thread.sleep(10);} catch (InterruptedException e) {}
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_0);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_ADD);
-        try {Thread.sleep(25);} catch (InterruptedException e) {}
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_ADD);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_5);
-        try {Thread.sleep(10);} catch (InterruptedException e) {}
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_5);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
@@ -912,12 +1235,12 @@ class ButtonsBasicTest {
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_ADD);
-        try {Thread.sleep(25);} catch (InterruptedException e) {}
+        try {Thread.sleep(40);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_ADD);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         bot.keyPress(KeyEvent.VK_5);
-        try {Thread.sleep(10);} catch (InterruptedException e) {}
+        try {Thread.sleep(20);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_5);
 
         //200+5%+5

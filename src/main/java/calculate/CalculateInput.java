@@ -15,7 +15,7 @@ public class CalculateInput {
 
     public double calculateInput (String strInput) {
 
-        System.out.println("in= "+strInput);
+//        System.out.println("in= "+strInput);
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
@@ -58,7 +58,7 @@ public class CalculateInput {
 
 
 
-        System.out.println("before basic= "+strInput);
+//        System.out.println("before basic= "+strInput);
         dResult =calculateBasic.calculateBasicInput(strInput);
         return dResult;
     }

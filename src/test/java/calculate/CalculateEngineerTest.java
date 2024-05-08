@@ -1,5 +1,6 @@
 package calculate;
 
+import face.MyException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,7 +22,7 @@ class CalculateEngineerTest {
             " 5+5²-8,², 5+25-8",
             " 5+5²-3²,², 5+25-3²",
     })
-    void power2_positive  (String strInput,String name, String expectedResult) {
+    void power2_positive  (String strInput,String name, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
     }
 
@@ -32,7 +33,7 @@ class CalculateEngineerTest {
             " 5+-5²-8,², 5+25-8",
             " 5+-5²-3²,², 5+25-3²",
     })
-    void power2_negative  (String strInput,String name, String expectedResult) {
+    void power2_negative  (String strInput,String name, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
     }
 
@@ -44,7 +45,7 @@ class CalculateEngineerTest {
             " 5+2³-8,³, 5+8-8",
             " 5+2³-3³,³, 5+8-3³",
     })
-    void power3_positive  (String strInput,String name, String expectedResult) {
+    void power3_positive  (String strInput,String name, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
     }
 
@@ -55,7 +56,7 @@ class CalculateEngineerTest {
             " 5+-2³-8,³, 5+-8-8",
             " 5+-2³-3³,³, 5+-8-3³",
     })
-    void power3_negative  (String strInput,String name, String expectedResult) {
+    void power3_negative  (String strInput,String name, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, name));
     }
     @ParameterizedTest
@@ -65,7 +66,7 @@ class CalculateEngineerTest {
             " 5+2³-8, 5+8-8",
             " 5+2³-3³, 5+8-3³",
     })
-    void powerN_positive  (String strInput, String expectedResult) {
+    void powerN_positive  (String strInput, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, "³"));
     }
 
@@ -76,7 +77,7 @@ class CalculateEngineerTest {
             " 5+-2³-8, 5+-8-8",
             " 5+-2³-3³, 5+-8-3³",
     })
-    void powerN_negative  (String strInput, String expectedResult) {
+    void powerN_negative  (String strInput, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, "³"));
     }
 
@@ -87,13 +88,9 @@ class CalculateEngineerTest {
             " 3!, 6",
             " 2+3!, 2+6",
             " 3!*5, 6*5",
-//            "3+-2!, неверный формат ввода",
-//            "-2!, неверный формат ввода",
-//            " 3.2!, неверный формат ввода",
-
-
+            "10!, 3628800",
     })
-    void factorial  (String strInput, String expectedResult) {
+    void factorial  (String strInput, String expectedResult) throws MyException{
         assertEquals (expectedResult,sut.calculateEngineer(strInput, "!"));
     }
 
@@ -102,6 +99,7 @@ class CalculateEngineerTest {
             "3+-2!",
             "-2!",
             " 3.2!",
+            "0!"
 
     })
     void Exception_factorial(String strInput){
@@ -114,7 +112,7 @@ class CalculateEngineerTest {
                 "!!!НЕТУ!!!"
         );
 
-//        assertEquals("неверный формат ввода", ex.getMessage());
+//        assertEquals("неверный формат ввода факториала", ex.getMessage());
 
     }
 

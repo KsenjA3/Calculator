@@ -48,6 +48,8 @@ public class CalculateInput {
             strInput=strInput.substring(0, nBrace) + Operations.printNumber(dResult);
         }
 
+
+
         while (StringUtils.contains(strInput,"²")){
             strInput = calculateEngineer.calculateEngineer(strInput,"²");
         }
@@ -60,11 +62,10 @@ public class CalculateInput {
             try {
             strInput=calculateEngineer.calculateEngineer(strInput,"!");
             }
-                catch (NumberFormatException exc) {
-                                System.out.println("factorial catch");
-//                    strInput="неверный формат ввода";
-                    throw new MyException("неверный формат ввода факториала");
-                }
+            catch (NumberFormatException exc) {
+                    System.out.println("factorial catch");
+                throw new MyException ("неверный формат ввода факториала");
+            }
         }
 
        System.out.println("before basic= "+strInput);

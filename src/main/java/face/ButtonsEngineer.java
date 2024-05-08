@@ -142,9 +142,19 @@ class ButtonsEngineer extends ButtonsBasic {
                     strInput= strInput +dNumber;
                     textPanel.setTextInput(strInput);
 
-                    dResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + Operations.printNumber(dResult);
-                    unblockedAll(bPercent);       // work  % without mistakes
+                    try {
+                        dResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                        unblockedAll(bPercent);       // work  % without mistakes
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                        b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
                     textPanel.setTextResult(strResult);
                 }
                 case "x²" ->{
@@ -153,14 +163,22 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-
                     printSign("²");
-                    dResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + Operations.printNumber(dResult);
-                    textPanel.setFontBoldResult ();          //alter font
+                    try {
+                        dResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                        textPanel.setFontBoldResult ();          //alter font
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
                     textPanel.setTextResult(strResult);
-
-                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                 }
                 case  "x³" ->{
                     strInput= textPanel.getTextInput().getText();
@@ -168,25 +186,47 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-
                     printSign("³");
-                    dResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + Operations.printNumber(dResult);
-                    textPanel.setFontBoldResult ();          //alter font
+                    try {
+                        dResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                        textPanel.setFontBoldResult ();          //alter font
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
                     textPanel.setTextResult(strResult);
-
-                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                 }
                 case "±"-> {
                     strInput=textPanel.getTextInput().getText();
-                    dResult = calculateCurrent.calculateInput( strInput);
-                        dResult = -dResult;
 
-                    strInput="±("+textPanel.getTextInput().getText().trim()+")";
-                    textPanel.setTextInput(strInput);
-                    textPanel.setSbLog(strInput);
-                    printResult ();
-                    print_SbLog();
+                    try {
+                        dResult = calculateCurrent.calculateInput( strInput);
+                        dResult = -dResult;
+                        strInput="±("+textPanel.getTextInput().getText().trim()+")";
+                        textPanel.setTextInput(strInput);
+                        textPanel.setSbLog(strInput);
+                        printResult ();
+                        print_SbLog();
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        textPanel.setTextResult(strResult);
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+
+                    }
+
+
 
                 }
                 case "xⁿ" ->{
@@ -221,7 +261,15 @@ class ButtonsEngineer extends ButtonsBasic {
                                     bChageSign,braceOpen,braceClose
                             );
                         }
-                    }
+                    }catch (MyException myException){
+                    strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                    try {
+                        blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                bChageSign,braceOpen,braceClose);
+                    }catch (NullPointerException exception){  }
+                }
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
                 }
@@ -234,14 +282,25 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-
                     printSign("!");
-                    dResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + Operations.printNumber(dResult);
-                    textPanel.setFontBoldResult ();          //alter font
+
+                    try {
+                        dResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                        textPanel.setFontBoldResult ();          //alter font
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
                     textPanel.setTextResult(strResult);
 
-                    blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+
                 }
 
                 case  "³√" ->{

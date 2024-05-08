@@ -72,15 +72,19 @@ public class KeyboardInput {
             textPanel.setFontBoldResult();
             textPanel.setTextInput(str.trim());
 
-            dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText());
-            textPanel.setTextResult("=" + Operations.printNumber(dResult));
+            try {
+                dResult = calculateCurrent.calculateInput(str);
+                textPanel.setTextResult("=" + Operations.printNumber(dResult));
 
-            textPanel.setSbLog(textPanel.getTextInput().getText());
-            textPanel.setSbLog("\n");
-            textPanel.setSbLog(textPanel.getTextResult().getText());
-            textPanel.setSbLog("\n");
-            textPanel.setTextLog( textPanel.getSbLog().toString());
-
+                textPanel.setSbLog(textPanel.getTextInput().getText());
+                textPanel.setSbLog("\n");
+                textPanel.setSbLog(textPanel.getTextResult().getText());
+                textPanel.setSbLog("\n");
+                textPanel.setTextLog( textPanel.getSbLog().toString());
+            }catch (MyException myException){
+                str = myException.getMessage();
+                textPanel.setTextResult(str);
+            }
 //            focus to visible keyPenel
 //            focusVisibleKeyPenel ();
         }

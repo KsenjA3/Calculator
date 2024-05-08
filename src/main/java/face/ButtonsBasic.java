@@ -54,6 +54,7 @@ public class ButtonsBasic extends ButtonsAll{
     private HashMap<String,JButton> listButtons;
     protected Double dResult;
 
+    protected String countResult;
 
 
 
@@ -259,8 +260,8 @@ public class ButtonsBasic extends ButtonsAll{
                     }
                 }catch (MyException myException){
                     strResult = myException.getMessage();
-                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
-                            bResult, bMemoryAdd);
+                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                            b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
                     try {
                         blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
                                 bChageSign,braceOpen,braceClose);
@@ -301,9 +302,25 @@ public class ButtonsBasic extends ButtonsAll{
             textPanel.setFontBoldInput ();      //alter fonts
             strNumber = "0";                      //prepare to input new number
             N = 0;
+
+
             strInput= textPanel.getTextInput().getText();
             if (strInput.endsWith("%")   |   strInput.startsWith("±"))
                 strInput=Operations.printNumber(dResult);
+
+
+            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
+                    bResult, bMemoryAdd );
+            try {
+                unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                        bChageSign,braceOpen);
+            }catch (NullPointerException ex){  }
+
+            if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
+            else     unblockedAll(bMemoryHold,bMemoryDel);
+
+
 
             switch (name) {
                 case " √ " -> {
@@ -350,7 +367,7 @@ public class ButtonsBasic extends ButtonsAll{
 
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
-                    int placeOpen = 0;
+                    int placeOpen ;
                     int placeClose;
                     boolean isSign= false;
 //dNumber and nameSign
@@ -368,12 +385,15 @@ public class ButtonsBasic extends ButtonsAll{
 
                         }catch (MyException myException){
                             strResult = myException.getMessage();
-                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
-                                    bResult, bMemoryAdd);
+                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
                             try {
                                 blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
                                         bChageSign,braceOpen,braceClose);
                             }catch (NullPointerException exception){  }
+
+                            textPanel.setTextResult(strResult);
+                            break;
                         }
 
                     }
@@ -424,30 +444,41 @@ public class ButtonsBasic extends ButtonsAll{
                         }
                     }
 
+                    try {
 // от dResult находиться %
-                    dResult=calculateCurrent.calculateInput(strPersentFrom);
-//System.out.println("strBeforePersent= "+strBeforePersent);
-//System.out.println("strResult= "+strResult);
-//System.out.println("dResult= "+dResult);
-//System.out.println("nameSign= "+nameSign);
-//System.out.println("dNumber= "+dNumber);
-
+                        dResult=calculateCurrent.calculateInput(strPersentFrom);
+                        //System.out.println("strBeforePersent= "+strBeforePersent);
+                        //System.out.println("strResult= "+strResult);
+                        //System.out.println("dResult= "+dResult);
+                        //System.out.println("nameSign= "+nameSign);
+                        //System.out.println("dNumber= "+dNumber);
 //найденный %
-                    dResult = calculateBasic.calculatePersent(nameSign,dResult, dNumber);
+                        dResult = calculateBasic.calculatePersent(nameSign,dResult, dNumber);
 //окончательный ответ
-                    dResult=calculateCurrent.calculateInput(strBeforePersent+Operations.printNumber(dResult));
+                        dResult=calculateCurrent.calculateInput(strBeforePersent+Operations.printNumber(dResult));
 //printSign("%") отличается if, который влияет на √
-                    if (func==null ) {
-                        strInput=Operations.printNumber(dResult) + name.trim();
-                        textPanel.setTextInput(strInput);
-                    }else {
-                        strInput=strInput + name.trim();
-                        textPanel.setTextInput(strInput);
-                    }
+                        if (func==null ) {
+                            strInput=Operations.printNumber(dResult) + name.trim();
+                            textPanel.setTextInput(strInput);
+                        }else {
+                            strInput=strInput + name.trim();
+                            textPanel.setTextInput(strInput);
+                        }
 
-                    textPanel.setSbLog(strInput.trim());
-                    printResult ();
-                    print_SbLog ();
+                        textPanel.setSbLog(strInput.trim());
+                        printResult ();
+                        print_SbLog ();
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+
+                        textPanel.setTextResult(strResult);
+                    }
                 }
                 case " = " -> {
                     dResult= Double.parseDouble(textPanel.getTextResult().getText().substring(1));
@@ -458,17 +489,6 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setTextInput(strInput);
                 }
             }
-
-            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
-                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
-                    bResult, bMemoryAdd );
-            try {
-                unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                        bChageSign,braceOpen);
-            }catch (NullPointerException ex){  }
-
-            if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
-            else     unblockedAll(bMemoryHold,bMemoryDel);
         }
     }
 
@@ -509,9 +529,8 @@ public class ButtonsBasic extends ButtonsAll{
                             strInput=strInput.substring(0,  strInput.length() - 1);
                             textPanel.setTextInput(strInput);
 
-                            if (StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."))
-                                        isFormerNumber = true;
-                            else isFormerNumber = false;
+                            if (!StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."))
+                                isFormerNumber = false;
                         }
                     }
                     if (strInput.endsWith("%")   |   strInput.startsWith("±")
@@ -542,6 +561,14 @@ public class ButtonsBasic extends ButtonsAll{
                                         bChageSign,braceOpen,braceClose);
                             }catch (NullPointerException exception){  }
                         }
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
                     }
                     textPanel.setTextResult(strResult);
                 }
@@ -587,8 +614,20 @@ public class ButtonsBasic extends ButtonsAll{
                         strInput=strInput.substring(0,  strInput.length() - 1);
                     textPanel.setTextInput(strInput);
 
-                    dResult = calculateCurrent.calculateInput( strInput);
-                    strResult="=" + Operations.printNumber(dResult);
+                    try {
+                        dResult = calculateCurrent.calculateInput( strInput);
+                        strResult="=" + Operations.printNumber(dResult);
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
+
+
                     textPanel.setTextResult(strResult);
 
 

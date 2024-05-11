@@ -16,7 +16,7 @@ public class KeyboardInput {
      * result of calculation
      * from calculator.face.PanelText
      */
-    protected Double dResult;
+    protected String countResult;
     protected String str;
     private CalculateInput calculateCurrent;
 
@@ -73,8 +73,8 @@ public class KeyboardInput {
             textPanel.setTextInput(str.trim());
 
             try {
-                dResult = calculateCurrent.calculateInput(str);
-                textPanel.setTextResult("=" + Operations.printNumber(dResult));
+                countResult = calculateCurrent.calculateInput(str);
+                textPanel.setTextResult("=" + countResult);
 
                 textPanel.setSbLog(textPanel.getTextInput().getText());
                 textPanel.setSbLog("\n");

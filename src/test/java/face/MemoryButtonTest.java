@@ -103,7 +103,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
         assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(7, panelKey.buttonsEngineer.dResult);
+        assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+235MR
     void number_plus_number_MR ()  {
@@ -149,7 +149,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
         assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(7, panelKey.buttonsEngineer.dResult);
+        assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+PI MR
     void number_plus_PI_MR ()  {
@@ -181,7 +181,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
         assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(7, panelKey.buttonsEngineer.dResult);
+        assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+2²MR
     void number_power2_MR ()  {
@@ -220,7 +220,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2+2²MR
         assertEquals("2+2²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(6, panelKey.buttonsEngineer.dResult);
+        assertEquals("6", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2^MR
     void number_power_MR ()  {
@@ -245,7 +245,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2^MR
         assertEquals("2^5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(32, panelKey.buttonsEngineer.dResult);
+        assertEquals("32", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2 1/x MR
     void number_devX_MR ()  {
@@ -270,7 +270,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2 1/x MR
         assertEquals("2^(-1)", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(0.5, panelKey.buttonsEngineer.dResult);
+        assertEquals("0.5", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+(MR
     void number_plus_braceOpen_MR ()  {
@@ -302,7 +302,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(30);}catch(InterruptedException e){}
 //2+(MR
         assertEquals("2+(5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(7, panelKey.buttonsEngineer.dResult);
+        assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+(3-1)MR
     void MR_after_braceClose ()  {
@@ -362,7 +362,7 @@ public class MemoryButtonTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2+(3-1)MR
         assertEquals("2+(3-1)*5", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(12, panelKey.buttonsEngineer.dResult);
+        assertEquals("12", panelKey.buttonsEngineer.countResult);
     }
 
 //    @Test   //   2/(MR==0)
@@ -417,7 +417,7 @@ public class MemoryButtonTest {
 ////        assertEquals("Division by zero", ex.getMessage());
 //
 //        assertEquals("2/0", panelKey.buttonsEngineer.strInput.trim());
-//        assertEquals(0, panelKey.buttonsEngineer.dResult);
+//        assertEquals(0, panelKey.buttonsEngineer.countResult);
 //    }
 
 

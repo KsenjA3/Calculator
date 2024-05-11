@@ -2,33 +2,21 @@ package calculate;
 
 
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.HashMap;
 
 public class Operations {
-
-
-    /**
-     * transform  Double number to String,
-     * consider that number can be Integer
-     * @param d transforming Double number to String
-     * @return String form number
-     */
-    public static String printNumber (Double d) {
-        String str =Double.toString(d);
-        if (str.substring(str.indexOf('.')+1).equals("0"))
-            return   str= Long.toString(d.longValue());
-        else return str;
-    }
-
-
-    public static MathContext mathContext= new MathContext(15);
+    public static MathContext mathContext= new MathContext(25);
 
     public static  BigDecimal result (calculate f, BigDecimal d1, BigDecimal d2) {
 
         return f.func(d1, d2);
     }
+
+
 
 
     public static BigDecimal plus (BigDecimal d1, BigDecimal d2) {
@@ -48,6 +36,44 @@ public class Operations {
     }
 
     public static  BigDecimal sqrt (BigDecimal d1) { return d1.sqrt(mathContext);}
+
+    public static  BigDecimal pow (BigDecimal d1, BigDecimal d2) {
+        int i2= Integer.parseInt(d2.toString());
+        return d1.pow(i2, mathContext);
+    }
+
+
+
+
+
+
+    /**
+     * transform  Double number to String,
+     * consider that number can be Integer
+     * @param d transforming Double number to String
+     * @return String form number
+     */
+    public static String printDoubleNumber (Double d) {
+        String str =Double.toString(d);
+        if (str.substring(str.indexOf('.')+1).equals("0"))
+            return   str= Long.toString(d.longValue());
+        else return str;
+    }
+    public static String printStringNumber (String str) {
+        if(str.contains("E"))
+            str = new  BigDecimal(str).toPlainString();
+
+        if(!str.contains("."))
+            return str;
+
+        int placePoint = StringUtils.indexOf(str, ".");
+        int placeLastNumber=StringUtils.lastIndexOfAny(str, "1","2","3","4","5","6","7","8","9");
+        if (placePoint>placeLastNumber)
+            str=str.substring(0,placePoint);
+        else
+            str=str.substring(0,placeLastNumber+1);
+        return str;
+    }
 
     public static HashMap findNumber_beforeSign (String strIn){
 
@@ -80,11 +106,5 @@ public class Operations {
         return result;
     }
 
-
-
-    public static  BigDecimal pow (BigDecimal d1, BigDecimal d2) {
-        int i2= Integer.parseInt(d2.toString());
-        return d1.pow(i2, mathContext);
-    }
 
 }

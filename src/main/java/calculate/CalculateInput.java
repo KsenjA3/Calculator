@@ -14,38 +14,38 @@ public class CalculateInput {
     }
 
 
-    public double calculateInput (String strInput) throws MyException {
+    public String calculateInput (String strInput) throws MyException {
 
         System.out.println("in= "+strInput);
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
         if (StringUtils.isEmpty(strInput))
-            return 0.0;
+            return "";
 
 //Braces
         String str;
-        double dResult;
+        String countResult;
         while (StringUtils.contains(strInput,")")){
             int nLast = StringUtils.indexOf(strInput, ")");
             str =strInput.substring(0, nLast);
             int nFirst = StringUtils.lastIndexOf(str, "(");
             str = str.substring(nFirst +1);
 
-            dResult =calculateInput(str);
+            countResult =calculateInput(str);
             str =strInput.substring(nLast +1);
-            strInput=strInput.substring(0, nFirst) + Operations.printNumber(dResult)+ str;
+            strInput=strInput.substring(0, nFirst) + countResult+ str;
         }
 
         while (StringUtils.contains(strInput,"(")){
             int nBrace = StringUtils.lastIndexOf(strInput, "(");
             if(nBrace ==strInput.length()-1){
-                dResult =0.0;
+                countResult ="";
             }else {
                 str = strInput.substring(nBrace + 1);
-                dResult =calculateInput(str);
+                countResult =calculateInput(str);
             }
-            strInput=strInput.substring(0, nBrace) + Operations.printNumber(dResult);
+            strInput=strInput.substring(0, nBrace) + countResult;
         }
 
 
@@ -68,9 +68,13 @@ public class CalculateInput {
             }
         }
 
+
        System.out.println("before basic= "+strInput);
-        dResult =calculateBasic.calculateBasicInput(strInput);
-        return dResult;
+        countResult =calculateBasic.calculateBasicInput(strInput);
+
+
+        countResult=Operations.printStringNumber(countResult);
+        return countResult;
     }
 
 

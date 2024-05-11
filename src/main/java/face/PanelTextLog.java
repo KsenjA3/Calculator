@@ -14,7 +14,7 @@ import java.awt.*;
      /**
       * to safe into the memory
       */
-     protected Double memoryMR;
+     protected String memoryMR;
 
     /**
      * for writing to calculator.face.PanelTextLog

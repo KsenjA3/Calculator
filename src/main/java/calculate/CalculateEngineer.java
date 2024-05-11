@@ -2,6 +2,8 @@ package calculate;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 
 public class CalculateEngineer {
@@ -14,7 +16,7 @@ public class CalculateEngineer {
 
         HashMap<Integer, Double> hashMap;
         int placeNumber;
-        double dResult;
+        BigDecimal dResult;
         Double dNumber;
         int n;
         switch (name){
@@ -26,7 +28,8 @@ public class CalculateEngineer {
                 hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 dNumber = hashMap.get(placeNumber);
-                dResult = dNumber * dNumber;
+                dResult = new BigDecimal(dNumber);
+                dResult=dResult.pow(2);
 
                 if((placeNumber ==1   &&   strInput.charAt(0)=='-')  |
                         (placeNumber >1   &&   strInput.charAt(placeNumber -1)=='-')   &&
@@ -36,16 +39,16 @@ public class CalculateEngineer {
                 }
                 if (isNegative){
                     if (strInput.length() > n + 1)
-                        strReturn = strInput.substring(0, placeNumber -1) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                        strReturn = strInput.substring(0, placeNumber -1) + dResult + strInput.substring(n + 1);
                     else
-                        strReturn = strInput.substring(0, placeNumber -1) + Operations.printNumber(dResult);
+                        strReturn = strInput.substring(0, placeNumber -1) + dResult;
 
                 }else {
 
                     if (strInput.length() > n + 1)
-                        strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                        strReturn = strInput.substring(0, placeNumber) + dResult + strInput.substring(n + 1);
                     else
-                        strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult);
+                        strReturn = strInput.substring(0, placeNumber) + dResult;
                 }
 
                 return strReturn;
@@ -56,12 +59,13 @@ public class CalculateEngineer {
                 hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 dNumber = hashMap.get(placeNumber);
-                dResult = dNumber * dNumber * dNumber;
+                dResult = new BigDecimal(dNumber);
+                dResult=dResult.pow(3);
 
                 if (strInput.length()> n +1)
-                    strReturn=strInput.substring(0, placeNumber)+Operations.printNumber(dResult)+strInput.substring(n +1);
+                    strReturn=strInput.substring(0, placeNumber)+dResult+strInput.substring(n +1);
                 else
-                    strReturn=strInput.substring(0, placeNumber)+Operations.printNumber(dResult);
+                    strReturn=strInput.substring(0, placeNumber)+dResult;
 
                 return strReturn;
             }
@@ -82,15 +86,14 @@ public class CalculateEngineer {
                 )
                     throw new NumberFormatException ();
 
-                Integer intResult = 1;
-                for (int k = 1; k <= intNumber; k++)
-                        intResult = intResult * k;
-                dResult=intResult.doubleValue();
+                BigInteger intResult = BigInteger.ONE;
+                for (Integer k = 1; k <= intNumber; k++)
+                        intResult = intResult.multiply(new BigInteger(k.toString()));
 
                 if (strInput.length() > n + 1)
-                    strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult) + strInput.substring(n + 1);
+                    strReturn = strInput.substring(0, placeNumber) + intResult + strInput.substring(n + 1);
                 else
-                    strReturn = strInput.substring(0, placeNumber) + Operations.printNumber(dResult);
+                    strReturn = strInput.substring(0, placeNumber) +intResult;
 
                 return strReturn;
             }

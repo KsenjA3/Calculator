@@ -138,13 +138,13 @@ class ButtonsEngineer extends ButtonsBasic {
                     if (strInput.endsWith(")"))
                         strInput=strInput+"*";
 
-                    dNumber = Math.PI;
+                    double dNumber = Math.PI;
                     strInput= strInput +dNumber;
                     textPanel.setTextInput(strInput);
 
                     try {
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
                         unblockedAll(bPercent);       // work  % without mistakes
                     }catch (MyException myException){
                         strResult = myException.getMessage();
@@ -165,9 +165,10 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_exceptSimple();
                     printSign("²");
                     try {
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
                         textPanel.setFontBoldResult ();          //alter font
+
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
                         strResult = myException.getMessage();
@@ -188,8 +189,8 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_exceptSimple();
                     printSign("³");
                     try {
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
@@ -207,8 +208,8 @@ class ButtonsEngineer extends ButtonsBasic {
                     strInput=textPanel.getTextInput().getText();
 
                     try {
-                        dResult = calculateCurrent.calculateInput( strInput);
-                        dResult = -dResult;
+                        countResult = calculateCurrent.calculateInput( strInput);
+                        countResult = calculateCurrent.calculateInput( "-"+countResult);
                         strInput="±("+textPanel.getTextInput().getText().trim()+")";
                         textPanel.setTextInput(strInput);
                         textPanel.setSbLog(strInput);
@@ -248,8 +249,8 @@ class ButtonsEngineer extends ButtonsBasic {
 
                     printSign("^(-1)");
                     try {
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch ( ArithmeticException  ex){
                         if (ex.getMessage().equals("Division by zero")) {
@@ -273,9 +274,6 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
                 }
-
-
-
                 case "x!" ->{
                     strInput= textPanel.getTextInput().getText();
                     textPanel.setFontBoldInput ();
@@ -285,8 +283,8 @@ class ButtonsEngineer extends ButtonsBasic {
                     printSign("!");
 
                     try {
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
@@ -304,6 +302,29 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
 
                 case  "³√" ->{
+                    strInput= textPanel.getTextInput().getText();
+                    textPanel.setFontBoldInput ();
+                    replaceRepeatedSign_always ();
+                    replaceRepeatedSign_simple();
+                    replaceRepeatedSign_exceptSimple();
+                    printSign("³");
+                    try {
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
+                        textPanel.setFontBoldResult ();          //alter font
+                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+                    }catch (MyException myException){
+                        strResult = myException.getMessage();
+                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
+                        try {
+                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
+                                    bChageSign,braceOpen,braceClose);
+                        }catch (NullPointerException exception){  }
+                    }
+                    textPanel.setTextResult(strResult);
+
+
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();

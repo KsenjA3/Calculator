@@ -53,7 +53,7 @@ class CalculateInputTest {
             "2+(50-40)*((25-10)-(15-10)-(10-12))-100,22",
             "22-(11*3), -11"
     })
-    void oder_and_braces (String strInput, double expectedResult) throws MyException {
+    void oder_and_braces (String strInput, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
     @ParameterizedTest
@@ -61,7 +61,7 @@ class CalculateInputTest {
             " 8-(5-8), 11",
             " (8-6)*(5-8), -6",
     })
-    void negative_in_braces (String strInput, double expectedResult) throws MyException {
+    void negative_in_braces (String strInput, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
     @ParameterizedTest
@@ -71,7 +71,7 @@ class CalculateInputTest {
             " 5-(2-(3-(5-8, 9",
             " 8-(5-4)+(2-(3-(5-8, 3",
     })
-    void differentNumber_openANDclose_braces (String strInput, double expectedResult)  throws MyException {
+    void differentNumber_openANDclose_braces (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
 
@@ -94,7 +94,7 @@ class CalculateInputTest {
             "(2+4)²+(3+2)², 61",
             "(2+4)²-(3²+2²), 23",
     })
-    void power2 (String strInput, double expectedResult)  throws MyException {
+    void power2 (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
 
@@ -114,7 +114,7 @@ class CalculateInputTest {
             "(4+2)³+(3+2)², 241",
             "(4-2)³-(3³+2²), -23",
     })
-    void power3 (String strInput, double expectedResult)  throws MyException {
+    void power3 (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
 
@@ -132,8 +132,8 @@ class CalculateInputTest {
             "0^2, 0",
             "0^1, 0",
     })
-    void powerN (String strInput, double expectedResult)  throws MyException{
-        assertEquals (expectedResult,sut.calculateInput(strInput), 0.000000001);
+    void powerN (String strInput, String expectedResult)  throws MyException{
+        assertEquals (expectedResult,sut.calculateInput(strInput));
     }
 
 
@@ -151,7 +151,7 @@ class CalculateInputTest {
             " (2+3)!*(22-21)!, 120",
 
     })
-    void factorial (String strInput, double expectedResult)  throws MyException {
+    void factorial (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
 

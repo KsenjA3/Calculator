@@ -30,7 +30,7 @@ public class ButtonsBasic extends ButtonsAll{
      * in number
      */
     protected String strNumber;
-    protected Double dNumber;
+//    protected Double dNumber;
 
     /**
      * type function
@@ -52,9 +52,9 @@ public class ButtonsBasic extends ButtonsAll{
     protected CalculateInput calculateCurrent;
     protected CalculateBasic calculateBasic;
     private HashMap<String,JButton> listButtons;
-    protected Double dResult;
+//    protected Double dResult;
 
-    protected String countResult;
+    protected String countResult,  countNumber;
 
 
 
@@ -64,8 +64,9 @@ public class ButtonsBasic extends ButtonsAll{
 
         N = 0;
         strNumber = "0";
-        dNumber = 0.0;
-        dResult=0.0;
+//        dNumber = 0.0;
+//        dResult=0.0;
+        countResult="";
         func = null;
         nameSign = "";
         strInput="   ";
@@ -234,13 +235,13 @@ public class ButtonsBasic extends ButtonsAll{
                 else{
                     strInput=strInput + name;
                 }
-                dNumber = Double.parseDouble(strNumber);
+//                dNumber = Double.parseDouble(strNumber);
                 textPanel.setTextInput(strInput);
 
 
                 try {                                       // except divide for 0
-                    dResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + Operations.printNumber(dResult);
+                    countResult = calculateCurrent.calculateInput(strInput);
+                    strResult="=" + countResult;
 
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd);
@@ -306,7 +307,7 @@ public class ButtonsBasic extends ButtonsAll{
 
             strInput= textPanel.getTextInput().getText();
             if (strInput.endsWith("%")   |   strInput.startsWith("±"))
-                strInput=Operations.printNumber(dResult);
+                strInput=countResult;
 
 
             unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
@@ -362,19 +363,20 @@ public class ButtonsBasic extends ButtonsAll{
                     replaceRepeatedSign_simple();
 
                     String str=StringUtils.deleteWhitespace(strInput);
-//System.out.println();
-//System.out.println("begin str= "+str);
+System.out.println();
+System.out.println("begin str= "+str);
 
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
                     int placeOpen ;
                     int placeClose;
                     boolean isSign= false;
-//dNumber and nameSign
+                    countNumber="";
+//countNumber and nameSign
                     if (str.endsWith(")")){
                         try {
                             placeOpen=StringUtils.lastIndexOf(str,"(");
-                            dNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
+                            countNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
                             if (placeOpen==0){
                                 nameSign="no";
                                 str="  ";
@@ -402,13 +404,13 @@ public class ButtonsBasic extends ButtonsAll{
                             switch (str.charAt(i)) {
                                 case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
                                     if (i==0) {
-                                        dNumber=Double.parseDouble(str);
+                                        countNumber=str;
                                         nameSign="no";
                                         str="  ";
                                     }
                                 }
                                 default -> {
-                                    dNumber=Double.parseDouble(str.substring(i+1));
+                                    countNumber=str.substring(i+1);
                                     nameSign=str.substring(i,i+1);
                                     str=str.substring(0,i);
                                     isSign=true;
@@ -417,7 +419,7 @@ public class ButtonsBasic extends ButtonsAll{
                             if (isSign)break;
                         }
                     }
-//System.out.println("from+ before str= "+str);
+System.out.println("from+ before str= "+str);
 
 //вариант, когда % находится от части выражения, например 20+(200+5%)
                     strBeforePersent=" ";
@@ -445,20 +447,20 @@ public class ButtonsBasic extends ButtonsAll{
                     }
 
                     try {
-// от dResult находиться %
-                        dResult=calculateCurrent.calculateInput(strPersentFrom);
-                        //System.out.println("strBeforePersent= "+strBeforePersent);
-                        //System.out.println("strResult= "+strResult);
-                        //System.out.println("dResult= "+dResult);
-                        //System.out.println("nameSign= "+nameSign);
-                        //System.out.println("dNumber= "+dNumber);
+// от countResult находиться %
+                        countResult=calculateCurrent.calculateInput(strPersentFrom);
+                        System.out.println("strBeforePersent= "+strBeforePersent);
+                        System.out.println("strResult= "+strResult);
+                        System.out.println("countResult= "+countResult);
+                        System.out.println("nameSign= "+nameSign);
+                        System.out.println("countNumber= "+countNumber);
 //найденный %
-                        dResult = calculateBasic.calculatePersent(nameSign,dResult, dNumber);
+                        countResult = calculateBasic.calculatePersent(nameSign,countResult, countNumber);
 //окончательный ответ
-                        dResult=calculateCurrent.calculateInput(strBeforePersent+Operations.printNumber(dResult));
+                        countResult=calculateCurrent.calculateInput(strBeforePersent+countResult);
 //printSign("%") отличается if, который влияет на √
                         if (func==null ) {
-                            strInput=Operations.printNumber(dResult) + name.trim();
+                            strInput=countResult+ name.trim();
                             textPanel.setTextInput(strInput);
                         }else {
                             strInput=strInput + name.trim();
@@ -481,11 +483,11 @@ public class ButtonsBasic extends ButtonsAll{
                     }
                 }
                 case " = " -> {
-                    dResult= Double.parseDouble(textPanel.getTextResult().getText().substring(1));
+                    countResult= textPanel.getTextResult().getText().substring(1);
                     textPanel.setSbLog(strInput.trim());
                     print_SbLog ();
                     printResult ();
-                    strInput=Operations.printNumber(dResult);
+                    strInput=countResult;
                     textPanel.setTextInput(strInput);
                 }
             }
@@ -511,7 +513,7 @@ public class ButtonsBasic extends ButtonsAll{
             switch (name) {
 
                 case "M+" -> {
-                    textPanel.memoryMR = dResult;
+                    textPanel.memoryMR = countResult;
                     unblockedAll(bMemoryHold, bMemoryDel);
                 }
                 case "M-" -> {
@@ -519,7 +521,6 @@ public class ButtonsBasic extends ButtonsAll{
                     blockedAll(bMemoryHold);
                 }
                 case "MR" -> {
-                    dNumber = textPanel.memoryMR;
                     strInput=textPanel.getTextInput().getText();
 
                     if (StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".")){
@@ -539,12 +540,12 @@ public class ButtonsBasic extends ButtonsAll{
                     if (strInput.endsWith(")"))
                         strInput=strInput+"*";
 
-                    strInput=strInput+ Operations.printNumber(textPanel.memoryMR);
+                    strInput=strInput+ textPanel.memoryMR;
                     textPanel.setTextInput(strInput);
 
                     try {                                       // except divide for 0
-                        dResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput(strInput);
+                        strResult="=" + countResult;
 
                         unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,bResult, bMemoryAdd);
                         try {
@@ -583,7 +584,7 @@ public class ButtonsBasic extends ButtonsAll{
                     else     unblockedAll(bMemoryHold,bMemoryDel);
 
                     countBrace=0;
-                    dNumber = 0.0;
+//                    dNumber = 0.0;
                     strNumber = "0";
                     N=0;
 
@@ -591,7 +592,8 @@ public class ButtonsBasic extends ButtonsAll{
                     strInput="   ";   //number after АС
                     textPanel.setTextInput( strInput);
                     func = null;
-                    dResult = 0.0;                // sign after АС
+//                    dResult = 0.0;
+                    countResult="";                 // sign after АС
                     nameSign = " ";               //after sqrt
                     strResult="0";  // AC then =, textRez
 //                    textPanel.setTextResult(strResult);
@@ -615,8 +617,8 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setTextInput(strInput);
 
                     try {
-                        dResult = calculateCurrent.calculateInput( strInput);
-                        strResult="=" + Operations.printNumber(dResult);
+                        countResult = calculateCurrent.calculateInput( strInput);
+                        strResult="=" + countResult;
                     }catch (MyException myException){
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -665,7 +667,7 @@ public class ButtonsBasic extends ButtonsAll{
             b.setEnabled(true);
     }
      void printResult (){
-        strResult="=" + Operations.printNumber(dResult);
+        strResult="=" +countResult;
         textPanel.setFontBoldResult ();          //alter font
         textPanel.setTextResult(strResult);
 
@@ -683,7 +685,7 @@ public class ButtonsBasic extends ButtonsAll{
 
     void printSign (String name) {
         if (func==null && strInput.equals("   ")) {
-            strInput=Operations.printNumber(dResult) + name;
+            strInput=countResult + name;
             textPanel.setTextInput(strInput);
         }else {
             strInput=strInput + name;

@@ -23,8 +23,7 @@ public class CalculateBasic {
     private int figureSqrt;
     private boolean wasNumber;
     private boolean wasSqrt;
-    private double doubleResult;
-    private double doubleNumber;
+    private String stringResult;
 
     private boolean wasNegativeNumber;
 
@@ -33,7 +32,7 @@ public class CalculateBasic {
      * @param strInput string with task to calculator.calculate.calculate
      * @return double result of calculation
      */
-    public double calculateBasicInput (String strInput) {
+    public String calculateBasicInput (String strInput) {
         strInput=StringUtils.deleteWhitespace(strInput);
 //System.out.println(strInput);
 
@@ -52,8 +51,13 @@ public class CalculateBasic {
 
 //begin from Negative number
         if (strInput.charAt(0)=='-'){
-            strInput = strInput.substring(1);
-            wasNegativeNumber = true;
+            if (strInput.length()>1 && strInput.charAt(1)=='-'){
+                strInput = strInput.substring(2);
+                wasNegativeNumber = false;
+            }else {
+                strInput = strInput.substring(1);
+                wasNegativeNumber = true;
+            }
         }
 
         for (int i=0; i<strInput.length(); i++) {
@@ -61,20 +65,19 @@ public class CalculateBasic {
             switch (strInput.charAt(i)) {
                 case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'-> {
                         //create number
+
+
                     strNumber = strNumber + strInput.charAt(i);
 
                         //if sqrt before number
                     if (wasSqrt) {
-                        doubleNumber= Double.parseDouble(strNumber);
-                        dNumber = new BigDecimal (doubleNumber);
-
+                        dNumber = new BigDecimal (strNumber);
                         for (int j = 0; j < figureSqrt; j++){
                             dNumber = Operations.sqrt(dNumber);
                         }
                         dNumber= Operations.multiply(dNSqrt,dNumber);
                     } else {          // number after -+*/^
-                        doubleNumber= Double.parseDouble(strNumber);
-                        dNumber = new BigDecimal (doubleNumber);
+                        dNumber = new BigDecimal (strNumber);
                     }
                         //write last number
                     if (i == strInput.length() - 1) {
@@ -101,7 +104,7 @@ public class CalculateBasic {
                             figureSqrt++;
                     wasNumber= false;
                     wasSqrt=true;
-                    strNumber=" ";
+                    strNumber="0";
                 }
                 case '+' ->
                 {   arrNameSign.add("+");
@@ -186,20 +189,22 @@ public class CalculateBasic {
             }
         }
 
-        dResult=dResult.setScale(14,RoundingMode.HALF_UP);
-        doubleResult = dResult.doubleValue();
-        return doubleResult;
+//        dResult=dResult.setScale(14,RoundingMode.HALF_UP);
+        stringResult = dResult.toString();
+        return stringResult;
     }
 
 
     void getReadyGoOn () {
-        if (wasNegativeNumber){ dNumber=dNumber.negate(); }
+        if (wasNegativeNumber  && dNumber!=null){ dNumber=dNumber.negate(); }
+
+        wasNegativeNumber=false;
         arrD.add(dNumber);
-        strNumber = " ";
+
+        strNumber = "0";
         wasNumber = false;
         wasSqrt = false;
         dNSqrt = new BigDecimal(1);
-        wasNegativeNumber=false;
     }
 
 
@@ -208,17 +213,30 @@ public class CalculateBasic {
     /**
      * calculator.calculate.calculate result Percent
      * @param nameSign string presentation precеding function to Percent
-     * @param dResultPercentIn result before precеding function to Percent in double format
-     * @param dNumberIn number between precеding function and function Percent
+     * @param strResultPercentIn result before precеding function to Percent in double format
+     * @param strNumberIn number between precеding function and function Percent
      * @return double result of calculation
      */
-    public double calculatePersent (String nameSign, double dResultPercentIn, double dNumberIn) {
+    public String calculatePersent (String nameSign, String strResultPercentIn, String strNumberIn) {
 
-        dNumber= new BigDecimal(dNumberIn);
-        dResultPercent = new BigDecimal(dResultPercentIn);
+        if (strNumberIn.trim().equals(""))
+            dNumber=BigDecimal.ZERO;
+        else
+            dNumber= new BigDecimal(strNumberIn);
 
-            switch (nameSign) {
+        if (strResultPercentIn.trim().equals(""))
+            dResultPercent=BigDecimal.ZERO;
+        else
+            dResultPercent = new BigDecimal(strResultPercentIn);
+
+        System.out.println();
+        System.out.println(dResultPercent);
+        System.out.println(nameSign);
+        System.out.println(dNumber);
+
+            switch (nameSign.trim()) {
                 case "+"-> {
+                    System.out.println("in +");
                     func=Operations::plus;
                     dNumber = Operations.divide(Operations.multiply(dResultPercent, dNumber),
                                                 new BigDecimal(100));
@@ -238,14 +256,16 @@ public class CalculateBasic {
                 case "/" -> {
                     func=Operations::divide;
                     dNumber = Operations.divide(dNumber, new BigDecimal(100));
+                    System.out.println("%dNumber%= "+ dNumber);
+                    System.out.println("%dResultPercent%= "+ dResultPercent);
                     dResult = Operations.result(func, dResultPercent, dNumber);
-
+                    System.out.println("%dResult%= "+ dResult);
                 }
                 case "no"->  dResult = Operations.divide(dNumber, new BigDecimal(100) );
             }
 
-        doubleResult = dResult.doubleValue();
-        return doubleResult;
+        stringResult = dResult.toString();
+        return stringResult;
     }
 
 }

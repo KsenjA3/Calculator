@@ -95,7 +95,7 @@ class ButtonsEngineerTest {
 
         //2+PI
         assertEquals("2+3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals(5.1415926535, panelKey.buttonsEngineer.dResult, 0.0000000001);
+        assertEquals("5.141592653589793", panelKey.buttonsEngineer.countResult);
     }
     @Test //5+2PI
     void PI_afterNumber()  {
@@ -128,7 +128,7 @@ class ButtonsEngineerTest {
 
         //5+2PI
         assertEquals("5+2*3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals(11.283185307, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("11.283185307179586", panelKey.buttonsEngineer.countResult);
     }
     @Test //PI=PI
     void PI_plus_Pi()  {
@@ -154,7 +154,7 @@ class ButtonsEngineerTest {
 
         //PI=PI
         assertEquals("3.141592653589793+3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals(6.283185307, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("6.283185307179586", panelKey.buttonsEngineer.countResult);
     }
     @Test //2(2+3)PI
     void PI_afterBraces()  {
@@ -208,7 +208,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2(2+3)PI
         assertEquals("2*(2+3)*3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals(31.415926535, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("31.41592653589793", panelKey.buttonsEngineer.countResult);
     }
 
 
@@ -230,7 +230,7 @@ class ButtonsEngineerTest {
 
         //5²
         assertEquals("5²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(25, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("25", panelKey.buttonsEngineer.countResult);
     }
     @Test //2²+3²
     void x2_plus_x2()  {
@@ -265,7 +265,7 @@ class ButtonsEngineerTest {
 
         //2²+3²
         assertEquals("2²+3²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(13, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("13", panelKey.buttonsEngineer.countResult);
     }
     @Test //2(2+3)²
     void x2_sum()  {
@@ -319,7 +319,7 @@ class ButtonsEngineerTest {
 
         //2(2+3)²
         assertEquals("2*(2+3)²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(50, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("50", panelKey.buttonsEngineer.countResult);
     }
     @Test //2(2²+3²
     void x2_plus_x2_inBraces()  {
@@ -381,7 +381,7 @@ class ButtonsEngineerTest {
 
         //2(2²+3²
         assertEquals("2*(2²+3²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(26, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("26", panelKey.buttonsEngineer.countResult);
     }
 
 
@@ -404,7 +404,7 @@ class ButtonsEngineerTest {
 
         //±5
         assertEquals("±(5)", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(-5, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("-5", panelKey.buttonsEngineer.countResult);
     }
     @Test //±2(5-8)
     void exchangeSign_negative()  {
@@ -458,7 +458,7 @@ class ButtonsEngineerTest {
 
         //±2*(5-8)
         assertEquals("±(2*(5-8))", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(6, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("6", panelKey.buttonsEngineer.countResult);
     }
 
 
@@ -487,7 +487,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
         // 5^3
         assertEquals("5^3", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(125, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("125", panelKey.buttonsEngineer.countResult);
     }
     @Test // 0^(3-4)
     void powerN_Exception()  {
@@ -558,7 +558,7 @@ class ButtonsEngineerTest {
 
         // 5 и 1/x
         assertEquals("5^(-1)", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(0.2, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("0.2", panelKey.buttonsEngineer.countResult);
     }
     @Test // 0^(-1)
     void divideForX_Exception()  {
@@ -602,7 +602,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //5!
         assertEquals("5!", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(120, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("120", panelKey.buttonsEngineer.countResult);
     }
     @Test    //5²!
     void x2_factorial()  {
@@ -627,7 +627,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //5²!
         assertEquals("5!", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(120, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("120", panelKey.buttonsEngineer.countResult);
     }
     @Test //5!²
     void factorial_x2()  {
@@ -652,7 +652,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //5!²
         assertEquals("5²", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(25, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("25", panelKey.buttonsEngineer.countResult);
     }
     @Test //    3.2!
     void factorial_double()  {
@@ -667,24 +667,49 @@ class ButtonsEngineerTest {
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(40);}catch(InterruptedException e){}
+        try{Thread.sleep(25);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
-        locate=panelKey.buttonsEngineer.bx2.getLocationOnScreen();
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(40);}catch(InterruptedException e){}
+        try{Thread.sleep(25);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(40);}catch(InterruptedException e){}
+        try{Thread.sleep(25);}catch(InterruptedException e){}
 //  3.2!
         assertEquals("3.2!", panelKey.buttonsEngineer.strInput.trim());
-        assertEquals(25, panelKey.buttonsEngineer.dResult, 0.000000001);
+        assertEquals("неверный формат ввода факториала", panelKey.buttonsEngineer.strResult);
+    }
+    @Test //    -2!
+    void factorial_negativeNumber()  {
+        locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+//  -2!
+        assertEquals("-2!", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("неверный формат ввода факториала", panelKey.buttonsEngineer.strResult);
     }
 
 
@@ -709,7 +734,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 
 
@@ -741,7 +766,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //
 //    @ParameterizedTest
@@ -767,7 +792,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //
 //    @ParameterizedTest
@@ -791,7 +816,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //
 //
@@ -814,7 +839,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //
 //    @ParameterizedTest
@@ -835,7 +860,7 @@ class ButtonsEngineerTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        try{Thread.sleep(50);}catch(InterruptedException e){}
 //
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.dResult, 0.000000001);
+//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //    @Test
 //    void ln_Exception(){

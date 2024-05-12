@@ -133,47 +133,33 @@ public class CalculateEngineer {
                     strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
                 return strReturn;
             }
-
             case "cos" ->{
-                System.out.println("in= "+strInput);
-
                 n =StringUtils.indexOf(strInput, "cos");
 
                 boolean isNegative ;
-                if (strInput.charAt(n+3)=='-')
+                if (strInput.charAt(n+3)=='-'){
+                    isNegative = true;
                     strInput=strInput.substring(0,n+3)+strInput.substring(n+4);
+                }
+                else   isNegative = false;
 
                 hashMap =Operations.findNumber_afterSign(strInput.substring(n+3));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 stringNumber = hashMap.get(placeNumber);
 
-                System.out.println("stringNumber= "+stringNumber);
-                System.out.println("length Number= "+placeNumber);
-
                 dNumber=Double.parseDouble(stringNumber);
-                System.out.println("dNumber= "+dNumber);
+                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                    throw new MyException("cos INFINITY ");
+                }
 
+                if (isNegative)  dNumber=-dNumber;
                 dNumber = Math.toRadians(dNumber);
-                dNumber = Math.round(Math.cos(dNumber)*scale)/scale;
-//                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
-//                    throw new MyException("³√ INFINITY ");
-//                }
-
-//                if (isNegative)
-//                    dNumber=-Math.cbrt(dNumber);
-//                else
-//                    dNumber=Math.cbrt(dNumber);
-
-
-                System.out.println("dRez= "+dNumber);
+                dNumber=Math.round(Math.cos(dNumber)*scale)/scale;
 
                 if (n+3+placeNumber<=strInput.length()-1)
                     strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+3+placeNumber );
                 else
                     strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
-
-                System.out.println("out= "+strReturn);
-                System.out.println();
 
                 return strReturn;
             }
@@ -198,19 +184,14 @@ public class CalculateEngineer {
                 System.out.println("length Number= "+placeNumber);
 
                 dNumber=Double.parseDouble(stringNumber);
-                System.out.println("dNumber= "+dNumber);
+                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                    throw new MyException("sin INFINITY ");
+                }
 
+                if (isNegative)
+                    dNumber=-dNumber;
                 dNumber = Math.toRadians(dNumber);
-                dNumber = Math.round(Math.cos(dNumber)*scale)/scale;
-//                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
-//                    throw new MyException("³√ INFINITY ");
-//                }
-
-//                if (isNegative)
-//                    dNumber=-Math.cbrt(dNumber);
-//                else
-//                    dNumber=Math.cbrt(dNumber);
-
+                dNumber=Math.round(Math.sin(dNumber)*scale)/scale;
 
                 System.out.println("dRez= "+dNumber);
 

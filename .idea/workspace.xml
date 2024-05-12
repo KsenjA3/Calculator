@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="sqrt3">
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="sin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +80,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.cos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ButtonsEngineerTest.sin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -88,29 +90,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="cos" />
+      <option name="METHOD_NAME" value="sin" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateEngineerTest.cos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="calculate.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="calculate" />
-      <option name="MAIN_CLASS_NAME" value="calculate.CalculateEngineerTest" />
-      <option name="METHOD_NAME" value="cos(java.lang.String,java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CalculateInputTest.cos_negative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateInputTest.Exception_cos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -120,13 +106,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="calculate" />
       <option name="MAIN_CLASS_NAME" value="calculate.CalculateInputTest" />
-      <option name="METHOD_NAME" value="cos_negative(java.lang.String,java.lang.String)" />
+      <option name="METHOD_NAME" value="Exception_cos(java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculateInputTest.cos_positive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateInputTest.sin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -136,7 +122,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="calculate" />
       <option name="MAIN_CLASS_NAME" value="calculate.CalculateInputTest" />
-      <option name="METHOD_NAME" value="cos_positive(java.lang.String,java.lang.String)" />
+      <option name="METHOD_NAME" value="sin(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculateInputTest.sin_negative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="calculate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="calculate" />
+      <option name="MAIN_CLASS_NAME" value="calculate.CalculateInputTest" />
+      <option name="METHOD_NAME" value="sin_negative(java.lang.String,java.lang.String)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Calculator" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.cos" />
-        <item itemvalue="JUnit.CalculateInputTest.cos_negative" />
-        <item itemvalue="JUnit.CalculateInputTest.cos_positive" />
-        <item itemvalue="JUnit.CalculateEngineerTest.cos" />
+        <item itemvalue="JUnit.CalculateInputTest.sin" />
+        <item itemvalue="JUnit.CalculateInputTest.Exception_cos" />
+        <item itemvalue="JUnit.ButtonsEngineerTest.sin" />
+        <item itemvalue="JUnit.CalculateInputTest.sin_negative" />
       </list>
     </recent_temporary>
   </component>
@@ -364,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715418846146</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="cos">
+      <created>1715522083644</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1715522083644</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +388,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init" />
     <MESSAGE value="testInit" />
     <MESSAGE value="CreateActionNumberButton" />
     <MESSAGE value="Rid_of_static" />
@@ -403,7 +411,9 @@
     <MESSAGE value="factorial1" />
     <MESSAGE value="factorial_ready" />
     <MESSAGE value="clean_tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean_tests" />
+    <MESSAGE value="cos" />
+    <MESSAGE value="sin" />
+    <option name="LAST_COMMIT_MESSAGE" value="sin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -460,7 +470,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java</url>
-          <line>116</line>
+          <line>122</line>
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -530,28 +540,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
-          <line>153</line>
-          <option name="timeStamp" value="375" />
+          <line>202</line>
+          <option name="timeStamp" value="385" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="377" />
+          <line>203</line>
+          <option name="timeStamp" value="386" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="387" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="388" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
+          <line>183</line>
+          <option name="timeStamp" value="389" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
           <line>167</line>
-          <option name="timeStamp" value="378" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="380" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="381" />
+          <option name="timeStamp" value="390" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

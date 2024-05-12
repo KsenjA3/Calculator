@@ -196,7 +196,6 @@ class CalculateInputTest {
     void sqrt3_positive (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource( value =  {
             " ³√(30-57), -3",
@@ -233,7 +232,7 @@ class CalculateInputTest {
 
     @ParameterizedTest
     @CsvSource( value =  {
-            " cos(3*30)²+cos(60+120)²,   1",
+            " cos(60+120)²-cos(3*30)²,   1",
             " cos (200+160),   1",
             " cos((5*3)²+(3+4)²-4),   0",
     })
@@ -254,6 +253,69 @@ class CalculateInputTest {
     void cos_negative (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "cos(9^999)",
+            "8*cos(9^999)",
+            "cos(9^999)/9",
+            "cos(-9^999)",
+    })
+    void Exception_cos(String strInput)throws MyException{
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals("cos не существует", ex.getMessage());
+
+    }
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " sin(60+120)²-sin (3*30)²,   -1",
+            " sin (200+160),   0",
+            " sin((5*3)²+(3+4)²-4),   -1",
+    })
+    void sin_positive (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " sin(-30),     -0.5",
+            " sin(90-180),   -1",
+            " sin(123-123),   0",
+            " sin(2*30)+sin(20-7*20),   0",
+            " sin(-135),   -0.707106781186548",
+            " sin(-90)²,   1",
+            " sin(-3*30)²+sin(90*3)²,   2",
+    })
+    void sin_negative (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "sin(9^999)",
+            "8*sin(9^999)",
+            "sin(9^999)/9",
+            "sin(-9^999)",
+    })
+    void sin(String strInput)throws MyException{
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals("sin не существует", ex.getMessage());
+
+    }
+
+
+
 
 }
 

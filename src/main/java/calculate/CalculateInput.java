@@ -80,7 +80,13 @@ public class CalculateInput {
                 }
             }
             if (StringUtils.contains(strInput,"sin")) {
-                strInput = calculateEngineer.calculateEngineer(strInput, "sin");
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "sin");
+                }
+                catch (MyException exc) {
+                    System.out.println("sin catch");
+                    throw new MyException ("sin не существует");
+                }
             }
             if (StringUtils.contains(strInput,"tg")) {
                 strInput = calculateEngineer.calculateEngineer(strInput, "tg");

@@ -827,37 +827,52 @@ class ButtonsEngineerTest {
         assertEquals("=1", panelKey.buttonsEngineer.strResult);
     }
 
+    @Test //    2-sin( 30
+    void sin()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bSin.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//  2-sin( 30
+        assertEquals("2-sin(30", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("=1.5", panelKey.buttonsEngineer.strResult);
+    }
 
 
 
 
 
 
-//    @ParameterizedTest
-//    @CsvSource( value =  {
-//            " 30.0,   0.5",
-//            " 90,   1.0",
-//            " 0,   0.0",
-//            " 45,   0.707106781",
-//            " 60,   0.866025403",
-//            " 120,   0.866025403",
-//            " 135,   0.707106781",
-//            " 270,   -1.0",
-//            " 180,   0.0",
-//    })
-//     void sin( String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bSin.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
-//    }
-//
 //
 //    @ParameterizedTest
 //    @CsvSource( value =  {

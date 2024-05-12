@@ -130,7 +130,21 @@ class CalculateEngineerTest {
     void sqrt3  (String strInput, String expectedResult) throws MyException {
         assertEquals (expectedResult,sut.calculateEngineer(strInput, "³√"));
     }
-
-
+        @ParameterizedTest
+    @CsvSource( value =  {
+            " cos30,    0.866025403784439",
+            " cos90,   0",
+            " cos0,   1",
+            " cos45,   0.707106781186548",
+            " cos60,   0.5",
+            " cos120,   -0.5",
+            " cos135,   -0.707106781186547",
+            " cos270,   0",
+            " cos180,   -1",
+            " cos150,   -0.866025403784439",
+    })
+    void cos  (String strInput, String expectedResult) throws MyException {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, "cos"));
+    }
 
 }

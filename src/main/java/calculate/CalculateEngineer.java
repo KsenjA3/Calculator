@@ -13,14 +13,17 @@ public class CalculateEngineer {
     final double threshold = 0.000000001;
 
     public String calculateEngineer (String strInput, String name ) throws MyException {
-
-
         HashMap<Integer, String> hashMap;
         int placeNumber;
         BigDecimal bigdResult;
         String stringNumber;
         Double dNumber;
         int n;
+        double scale= Math.pow(10,15);
+
+
+
+
         switch (name){
 
             case "²" ->{
@@ -100,51 +103,155 @@ public class CalculateEngineer {
                 return strReturn;
             }
 
+            case  "³√" ->{
+                n =StringUtils.indexOf(strInput, "³√");
 
+                boolean isNegative ;
+                if (strInput.charAt(n+2)=='-'){
+                    isNegative = true;
+                    strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+                }
+                else   isNegative = false;
 
-        case  "³√" ->{
-            System.out.println("in= "+strInput);
+                hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                stringNumber = hashMap.get(placeNumber);
+                dNumber=Double.parseDouble(stringNumber);
 
-            n =StringUtils.indexOf(strInput, "³√");
+                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                    throw new MyException("³√ INFINITY ");
+                }
 
-            boolean isNegative ;
-            if (strInput.charAt(n+2)=='-'){
-                isNegative = true;
-                strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+                if (isNegative)
+                    dNumber=-Math.cbrt(dNumber);
+                else
+                    dNumber=Math.cbrt(dNumber);
+
+                if (n+2+placeNumber<=strInput.length()-1)
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+2+placeNumber );
+                else
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+                return strReturn;
             }
-            else   isNegative = false;
 
-            hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
-            placeNumber = hashMap.keySet().stream().findFirst().get();
-            stringNumber = hashMap.get(placeNumber);
-            dNumber=Double.parseDouble(stringNumber);
-            System.out.println("dNumber= "+dNumber);
+            case "cos" ->{
+                System.out.println("in= "+strInput);
 
-            if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
-                throw new MyException("³√ INFINITY ");
+                n =StringUtils.indexOf(strInput, "cos");
+
+                boolean isNegative ;
+                if (strInput.charAt(n+3)=='-')
+                    strInput=strInput.substring(0,n+3)+strInput.substring(n+4);
+
+                hashMap =Operations.findNumber_afterSign(strInput.substring(n+3));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                stringNumber = hashMap.get(placeNumber);
+
+                System.out.println("stringNumber= "+stringNumber);
+                System.out.println("length Number= "+placeNumber);
+
+                dNumber=Double.parseDouble(stringNumber);
+                System.out.println("dNumber= "+dNumber);
+
+                dNumber = Math.toRadians(dNumber);
+                dNumber = Math.round(Math.cos(dNumber)*scale)/scale;
+//                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+//                    throw new MyException("³√ INFINITY ");
+//                }
+
+//                if (isNegative)
+//                    dNumber=-Math.cbrt(dNumber);
+//                else
+//                    dNumber=Math.cbrt(dNumber);
+
+
+                System.out.println("dRez= "+dNumber);
+
+                if (n+3+placeNumber<=strInput.length()-1)
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+3+placeNumber );
+                else
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+
+                System.out.println("out= "+strReturn);
+                System.out.println();
+
+                return strReturn;
             }
 
-            if (isNegative)
-                dNumber=-Math.cbrt(dNumber);
-            else
-                dNumber=Math.cbrt(dNumber);
+            case "sin" ->{
+                System.out.println("in= "+strInput);
+
+                n =StringUtils.indexOf(strInput, "sin");
+
+                boolean isNegative ;
+                if (strInput.charAt(n+3)=='-'){
+                    isNegative = true;
+                    strInput=strInput.substring(0,n+3)+strInput.substring(n+4);
+                }
+                else   isNegative = false;
+
+                hashMap =Operations.findNumber_afterSign(strInput.substring(n+3));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                stringNumber = hashMap.get(placeNumber);
+
+                System.out.println("stringNumber= "+stringNumber);
+                System.out.println("length Number= "+placeNumber);
+
+                dNumber=Double.parseDouble(stringNumber);
+                System.out.println("dNumber= "+dNumber);
+
+                dNumber = Math.toRadians(dNumber);
+                dNumber = Math.round(Math.cos(dNumber)*scale)/scale;
+//                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+//                    throw new MyException("³√ INFINITY ");
+//                }
+
+//                if (isNegative)
+//                    dNumber=-Math.cbrt(dNumber);
+//                else
+//                    dNumber=Math.cbrt(dNumber);
 
 
-            System.out.println("dRez= "+dNumber);
-            System.out.println("placeNumber= "+placeNumber);
+                System.out.println("dRez= "+dNumber);
 
-            if (n+2+placeNumber<=strInput.length()-1)
-                strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+2+placeNumber );
-            else
-                strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+                if (n+3+placeNumber<=strInput.length()-1)
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+3+placeNumber );
+                else
+                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
 
-            System.out.println("out= "+strReturn);
-            System.out.println();
+                System.out.println("out= "+strReturn);
+                System.out.println();
 
-            return strReturn;
+                return strReturn;
         }
-
-
+//
+//        case "tg" ->{
+//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
+//
+//            long iRez=Math.round(dResult);
+//            if(Math.abs(iRez)>180)
+//                iRez=iRez%180;
+//
+//            try {
+//                if (Math.abs(iRez)==90){
+//                    throw new ArithmeticException();
+//                }else {
+//                    b = Math.toRadians(dResult);
+//                    dResult = Math.round(Math.tan(b) * scale) / scale;
+//                    printResult();
+//                    textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim() + ")");
+//                    print_SbLog_Input();
+//                }
+//            } catch (ArithmeticException ex) {
+//                textPanel.setStrResult("не существует");
+//                textPanel.setTextRezult(textPanel.getStrResult());
+//
+//                textPanel.setStrInput(Operations.printNumber(dResult));
+//                textPanel.setTextInput(textPanel.getStrInput());
+//
+//                textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim()+")");
+//                print_SbLog_Input();
+//            }
 
 //        case "ln" ->{
 //            try {
@@ -197,49 +304,7 @@ public class CalculateEngineer {
 //        }
 //
 //
-//        case "sin" ->{
-//            dResult = calculateCurrent.calculateInput(textPanel.getTextInput().getText() );
-//            b = Math.toRadians(dResult);
-//            dResult = Math.round(Math.sin(b)*scale)/scale;
-//            printResult ();
-//            textPanel.setSbLog("sin("+textPanel.getTextInput().getText().trim()+")");
-//            print_SbLog_Input();
-//        }
-//        case "cos" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//            b = Math.toRadians(dResult);
-//            dResult = Math.round(Math.cos(b)*scale)/scale;
-//            printResult ();
-//            textPanel.setSbLog("cos("+textPanel.getTextInput().getText().trim()+")");
-//            print_SbLog_Input();
-//        }
-//        case "tg" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
 //
-//            long iRez=Math.round(dResult);
-//            if(Math.abs(iRez)>180)
-//                iRez=iRez%180;
-//
-//            try {
-//                if (Math.abs(iRez)==90){
-//                    throw new ArithmeticException();
-//                }else {
-//                    b = Math.toRadians(dResult);
-//                    dResult = Math.round(Math.tan(b) * scale) / scale;
-//                    printResult();
-//                    textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim() + ")");
-//                    print_SbLog_Input();
-//                }
-//            } catch (ArithmeticException ex) {
-//                textPanel.setStrResult("не существует");
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//
-//                textPanel.setStrInput(Operations.printNumber(dResult));
-//                textPanel.setTextInput(textPanel.getStrInput());
-//
-//                textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
 //
         }
         return strReturn;

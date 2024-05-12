@@ -64,18 +64,20 @@ public class CalculateInput {
             if (StringUtils.contains(strInput,"³√")) {
                 try {
                     strInput = calculateEngineer.calculateEngineer(strInput, "³√");
-                }
-                catch (MyException exc) {
+                } catch (MyException exc) {
                     System.out.println("³√ catch");
-                    throw new MyException ("³√ недозволеного большого числа");
+                    throw new MyException("³√ недозволеного большого числа");
                 }
-
-
-
 
             }
             if (StringUtils.contains(strInput,"cos")) {
-                strInput = calculateEngineer.calculateEngineer(strInput, "cos");
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "cos");
+                }
+                catch (MyException exc) {
+                    System.out.println("cos catch");
+                    throw new MyException ("cos не существует");
+                }
             }
             if (StringUtils.contains(strInput,"sin")) {
                 strInput = calculateEngineer.calculateEngineer(strInput, "sin");
@@ -90,7 +92,6 @@ public class CalculateInput {
                 strInput = calculateEngineer.calculateEngineer(strInput, "lg");
             }
         }
-
 
         while (StringUtils.containsAny(strInput,"²","³", "!")){
             if (StringUtils.contains(strInput,"²")) {

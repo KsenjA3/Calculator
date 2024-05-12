@@ -793,6 +793,40 @@ class ButtonsEngineerTest {
         assertEquals("³√ недозволеного большого числа", panelKey.buttonsEngineer.strResult);
     }
 
+    @Test //    2-cos( 0
+    void cos()  {
+        locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bCos.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//  2-cos( 0
+        assertEquals("2-cos(0", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("=1", panelKey.buttonsEngineer.strResult);
+    }
+
 
 
 
@@ -824,31 +858,6 @@ class ButtonsEngineerTest {
 //        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
 //    }
 //
-//    @ParameterizedTest
-//    @CsvSource( value =  {
-//            " 30,    0.866025403",
-//            " 90,   0.0",
-//            " 0,   1.0",
-//            " 45,   0.707106781",
-//            " 60,   0.5",
-//            " 120,   -0.5",
-//            " 135,   -0.707106781",
-//            " 270,   0.0",
-//            " 180,   -1.0",
-//            " 150,   -0.866025403",
-//    })
-//     void cos(String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bCos.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
-//    }
 //
 //    @ParameterizedTest
 //    @CsvSource( value =  {

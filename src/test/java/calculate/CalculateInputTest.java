@@ -140,8 +140,6 @@ class CalculateInputTest {
 
 
 
-
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 3!, 6",
@@ -230,6 +228,32 @@ class CalculateInputTest {
 
     }
 
+
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " cos(3*30)²+cos(60+120)²,   1",
+            " cos (200+160),   1",
+            " cos((5*3)²+(3+4)²-4),   0",
+    })
+    void cos_positive (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " cos(-30),    0.866025403784439",
+            " cos(90-180),   0",
+            " cos(123-123),   1",
+            " cos(2*30)+cos(20-7*20),   0",
+            " cos(-135),   -0.707106781186547",
+            " cos(180)²,   1",
+            " cos(3*60)²+cos(60*2)²,   1.25",
+    })
+    void cos_negative (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
 
 }
 

@@ -118,4 +118,19 @@ class CalculateEngineerTest {
 
 
 
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " ³√27, 3",
+            " ³√27+5, 3+5",
+            " 55+³√27, 55+3",
+            " 23-³√27*66, 23-3*66",
+    })
+    void sqrt3  (String strInput, String expectedResult) throws MyException {
+        assertEquals (expectedResult,sut.calculateEngineer(strInput, "³√"));
+    }
+
+
+
 }

@@ -28,7 +28,7 @@ import javax.swing.*;
          strInput=StringUtils.removeEnd(strInput, "cos(");
          strInput=StringUtils.removeEnd(strInput,"ln(" );
          strInput=StringUtils.removeEnd(strInput, "lg(");
-         strInput=StringUtils.removeEnd(strInput, "³√");
+         strInput=StringUtils.removeEnd(strInput, "³√(");
          strInput=StringUtils.removeEnd(strInput, "√");
          strInput=StringUtils.removeEnd(strInput, "√");
          strInput=StringUtils.removeEnd(strInput, "√");

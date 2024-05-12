@@ -74,6 +74,7 @@ class ButtonsEngineer extends ButtonsBasic {
             if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
             else     unblockedAll(bMemoryHold,bMemoryDel);
 
+            strInput= textPanel.getTextInput().getText();
 
             String str;
             switch (name){
@@ -119,15 +120,14 @@ class ButtonsEngineer extends ButtonsBasic {
 
                 }
                 case "π" ->{
-                    strInput =textPanel.getTextInput().getText().trim();
 
                     if (!strInput.trim().equals("") &&
                          StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".")) {
 // логика замены цифры, находящейся перед PI, на число PI
 //                        hashMap = Operations.findNumber_beforeSign(str);
 //                        placeNumber = hashMap.keySet().stream().findFirst().get();
-//                        dNumber = hashMap.get(placeNumber);
-//                        str = str.substring(0, str.length() - Operations.printNumber(dNumber).length());
+//                        strNumber = hashMap.get(placeNumber);
+//                        str = str.substring(0, str.length() - strNumber.length());
 
 // логика перемножения цифры, находящейся перед PI, на  само число PI
                         strInput = strInput +"*";
@@ -158,7 +158,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case "x²" ->{
-                    strInput= textPanel.getTextInput().getText();
+                    if (strInput.trim().equals(""))  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -182,7 +182,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case  "x³" ->{
-                    strInput= textPanel.getTextInput().getText();
+                    if (strInput.trim().equals(""))  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -205,8 +205,6 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case "±"-> {
-                    strInput=textPanel.getTextInput().getText();
-
                     try {
                         countResult = calculateCurrent.calculateInput( strInput);
                         countResult = calculateCurrent.calculateInput( "-"+countResult);
@@ -231,7 +229,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
                 }
                 case "xⁿ" ->{
-                    strInput= textPanel.getTextInput().getText();
+                    if (strInput.trim().equals(""))  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -240,8 +238,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     func = Operations::pow;
                 }
                 case "1/x" ->{
-                    strInput= textPanel.getTextInput().getText();
-
+                    if (strInput.trim().equals(""))  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -275,7 +272,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case "x!" ->{
-                    strInput= textPanel.getTextInput().getText();
+                    if (strInput.trim().equals(""))  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -301,34 +298,12 @@ class ButtonsEngineer extends ButtonsBasic {
 
                 }
 
+// limit variable double
                 case  "³√" ->{
-                    strInput= textPanel.getTextInput().getText();
-                    textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-                    printSign("³");
-                    try {
-                        countResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + countResult;
-                        textPanel.setFontBoldResult ();          //alter font
-                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
-                    }catch (MyException myException){
-                        strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
-                    }
-                    textPanel.setTextResult(strResult);
-
-
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    printSign("³√");
+                    printSign("³√(");
                 }
 
                 case "ln" ->{
@@ -361,9 +336,6 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_exceptSimple();
                     printSign("tg(");
                 }
-
-
-
             }
         }
     }

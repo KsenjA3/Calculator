@@ -4,6 +4,18 @@ import face.MyException;
 import org.apache.commons.lang3.StringUtils;
 
 
+/*
+ORDER COUNT
+1 Braces
+2 ³√, sin, cos, tg, lg, ln
+3 ², ³, !
+4 √
+5 *,/,^
+6 +, -
+
+ */
+
+
 public class CalculateInput {
     private final CalculateBasic calculateBasic;
     private final CalculateEngineer calculateEngineer;
@@ -36,7 +48,6 @@ public class CalculateInput {
             str =strInput.substring(nLast +1);
             strInput=strInput.substring(0, nFirst) + countResult+ str;
         }
-
         while (StringUtils.contains(strInput,"(")){
             int nBrace = StringUtils.lastIndexOf(strInput, "(");
             if(nBrace ==strInput.length()-1){
@@ -49,22 +60,55 @@ public class CalculateInput {
         }
 
 
+        while (StringUtils.containsAny(strInput,"³√", "cos", "sin", "tg", "ln","lg")){
+            if (StringUtils.contains(strInput,"³√")) {
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "³√");
+                }
+                catch (MyException exc) {
+                    System.out.println("³√ catch");
+                    throw new MyException ("³√ недозволеного большого числа");
+                }
 
-        while (StringUtils.contains(strInput,"²")){
-            strInput = calculateEngineer.calculateEngineer(strInput,"²");
-        }
 
-        while (StringUtils.contains(strInput,"³")){
-            strInput=calculateEngineer.calculateEngineer(strInput,"³");
-        }
 
-        while (StringUtils.contains(strInput,"!")){
-            try {
-            strInput=calculateEngineer.calculateEngineer(strInput,"!");
+
             }
-            catch (NumberFormatException exc) {
-                    System.out.println("factorial catch");
-                throw new MyException ("неверный формат ввода факториала");
+            if (StringUtils.contains(strInput,"cos")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "cos");
+            }
+            if (StringUtils.contains(strInput,"sin")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "sin");
+            }
+            if (StringUtils.contains(strInput,"tg")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "tg");
+            }
+            if (StringUtils.contains(strInput,"ln")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "ln");
+            }
+            if (StringUtils.contains(strInput,"lg")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "lg");
+            }
+        }
+
+
+        while (StringUtils.containsAny(strInput,"²","³", "!")){
+            if (StringUtils.contains(strInput,"²")) {
+                strInput = calculateEngineer.calculateEngineer(strInput, "²");
+            }
+
+            if (StringUtils.contains(strInput,"³")){
+                strInput=calculateEngineer.calculateEngineer(strInput,"³");
+            }
+
+            if(StringUtils.contains(strInput,"!")){
+                try {
+                    strInput=calculateEngineer.calculateEngineer(strInput,"!");
+                }
+                catch (NumberFormatException exc) {
+//                    System.out.println("factorial catch");
+                    throw new MyException ("неверный формат ввода факториала");
+                }
             }
         }
 

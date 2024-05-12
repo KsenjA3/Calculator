@@ -229,10 +229,10 @@ public class CalculateBasic {
         else
             dResultPercent = new BigDecimal(strResultPercentIn);
 
-        System.out.println();
-        System.out.println(dResultPercent);
-        System.out.println(nameSign);
-        System.out.println(dNumber);
+//        System.out.println();
+//        System.out.println(dResultPercent);
+//        System.out.println(nameSign);
+//        System.out.println(dNumber);
 
             switch (nameSign.trim()) {
                 case "+"-> {

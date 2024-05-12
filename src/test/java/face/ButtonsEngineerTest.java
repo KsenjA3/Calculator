@@ -59,7 +59,7 @@ class ButtonsEngineerTest {
     void init()  {
         panelKey.buttonsEngineer.strNumber=" ";
         txt.setText("");
-//        panelKey.buttonsEngineer.strInput="";
+        panelKey.buttonsEngineer.strInput=" ";
 
         panelKey.buttonsEngineer.unblockedAll(panelKey.buttonsEngineer.b0,panelKey.buttonsEngineer.b1,panelKey.buttonsEngineer.b2,
                 panelKey.buttonsEngineer.b3,panelKey.buttonsEngineer.b4,panelKey.buttonsEngineer.b5,panelKey.buttonsEngineer.b6,
@@ -77,7 +77,7 @@ class ButtonsEngineerTest {
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        try{Thread.sleep(40);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
@@ -95,7 +95,7 @@ class ButtonsEngineerTest {
 
         //2+PI
         assertEquals("2+3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals("5.141592653589793", panelKey.buttonsEngineer.countResult);
+        assertEquals("5.14159265358979", panelKey.buttonsEngineer.countResult);
     }
     @Test //5+2PI
     void PI_afterNumber()  {
@@ -128,7 +128,7 @@ class ButtonsEngineerTest {
 
         //5+2PI
         assertEquals("5+2*3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals("11.283185307179586", panelKey.buttonsEngineer.countResult);
+        assertEquals("11.2831853071796", panelKey.buttonsEngineer.countResult);
     }
     @Test //PI=PI
     void PI_plus_Pi()  {
@@ -154,7 +154,7 @@ class ButtonsEngineerTest {
 
         //PI=PI
         assertEquals("3.141592653589793+3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals("6.283185307179586", panelKey.buttonsEngineer.countResult);
+        assertEquals("6.28318530717959", panelKey.buttonsEngineer.countResult);
     }
     @Test //2(2+3)PI
     void PI_afterBraces()  {
@@ -208,7 +208,7 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //2(2+3)PI
         assertEquals("2*(2+3)*3.141592653589793", panelKey.buttonsEngineer.strInput);
-        assertEquals("31.41592653589793", panelKey.buttonsEngineer.countResult);
+        assertEquals("31.4159265358979", panelKey.buttonsEngineer.countResult);
     }
 
 
@@ -592,14 +592,14 @@ class ButtonsEngineerTest {
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        try{Thread.sleep(40);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        try{Thread.sleep(25);}catch(InterruptedException e){}
+        try{Thread.sleep(40);}catch(InterruptedException e){}
 //5!
         assertEquals("5!", panelKey.buttonsEngineer.strInput.trim());
         assertEquals("120", panelKey.buttonsEngineer.countResult);
@@ -688,6 +688,20 @@ class ButtonsEngineerTest {
     }
     @Test //    -2!
     void factorial_negativeNumber()  {
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -702,13 +716,20 @@ class ButtonsEngineerTest {
         try{Thread.sleep(25);}catch(InterruptedException e){}
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
         locate=panelKey.buttonsEngineer.bFactorial.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         try{Thread.sleep(25);}catch(InterruptedException e){}
 //  -2!
-        assertEquals("-2!", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("(0-2)!", panelKey.buttonsEngineer.strInput.trim());
         assertEquals("неверный формат ввода факториала", panelKey.buttonsEngineer.strResult);
     }
 
@@ -717,26 +738,60 @@ class ButtonsEngineerTest {
 
 
 
-//    @ParameterizedTest
-//    @CsvSource( value =  {
-//            " 8,    2",
-//            " -27,   -3",
-//            " 15.625,   2.5",
-//            " -15.625,   -2.5",
-//    })
-//     void sqrt3(String strResult, double expectedResult)  {
-//        txt.setText(strResult);
-//        Mockito.when(textPanel.getTextInput()).thenReturn(txt);
-//
-//        locate=panelKey.buttonsEngineer.bSqrt3.getLocationOnScreen();
-//        bot.mouseMove(locate.x+10,locate.y+10);
-//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//        try{Thread.sleep(50);}catch(InterruptedException e){}
-//
-//        assertEquals(expectedResult, panelKey.buttonsEngineer.countResult);
-//    }
+    @Test //    ³√(9^999
+    void sqrt3_bigDecimal_exception()  {
+        locate=panelKey.buttonsEngineer.bSqrt3.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
 
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bxn.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(40);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b9.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+//  ³√(9^999
+        assertEquals("³√((9^999", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("³√ недозволеного большого числа", panelKey.buttonsEngineer.strResult);
+    }
 
 
 

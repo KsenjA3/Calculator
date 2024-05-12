@@ -9,7 +9,7 @@ import java.math.MathContext;
 import java.util.HashMap;
 
 public class Operations {
-    public static MathContext mathContext= new MathContext(25);
+    public static MathContext mathContext= new MathContext(15);
 
     public static  BigDecimal result (calculate f, BigDecimal d1, BigDecimal d2) {
 
@@ -77,25 +77,22 @@ public class Operations {
 
     public static HashMap findNumber_beforeSign (String strIn){
 
-
-        HashMap <Integer, Double> result = new HashMap<>();
-
-
+        HashMap <Integer, String> result = new HashMap<>();
 
         boolean isSign= false;
-        double number= 0;
+        String number= " ";
         int placeNumber=1;
 
         for (int i=strIn.length()-1; i>=0; i--) {
             switch (strIn.charAt(i)) {
                 case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
                     if (i==0) {
-                        number=Double.parseDouble(strIn);
+                        number=strIn;
                         placeNumber=0;
                     }
                 }
                 default -> {
-                    number=Double.parseDouble(strIn.substring(i+1));
+                    number=strIn.substring(i+1);
                     isSign=true;
                     placeNumber=i+1;
                 }
@@ -106,5 +103,33 @@ public class Operations {
         return result;
     }
 
+    public static HashMap findNumber_afterSign (String strIn){
 
+        HashMap <Integer, String> result = new HashMap<>();
+
+        boolean isSign= false;
+        String number= "";
+        int placeNumber=1;
+
+        for (int i=0; i<strIn.length() ; i++) {
+            switch (strIn.charAt(i)) {
+                case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
+                    if (i==strIn.length()-1) {
+                        number=strIn;
+                        placeNumber=strIn.length();
+                    }
+                }
+                default -> {
+                    number=strIn.substring(0,i);
+                    isSign=true;
+                    placeNumber=i;
+                }
+            }
+            if (isSign)break;
+        }
+
+
+        result.put(placeNumber,number);
+        return result;
+    }
 }

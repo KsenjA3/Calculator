@@ -1,5 +1,6 @@
 package calculate;
 
+import face.MyException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
@@ -11,12 +12,13 @@ public class CalculateEngineer {
     private String strReturn;
     final double threshold = 0.000000001;
 
-    public String calculateEngineer (String strInput, String name ) {
+    public String calculateEngineer (String strInput, String name ) throws MyException {
 
 
-        HashMap<Integer, Double> hashMap;
+        HashMap<Integer, String> hashMap;
         int placeNumber;
-        BigDecimal dResult;
+        BigDecimal bigdResult;
+        String stringNumber;
         Double dNumber;
         int n;
         switch (name){
@@ -27,9 +29,9 @@ public class CalculateEngineer {
 
                 hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
-                dNumber = hashMap.get(placeNumber);
-                dResult = new BigDecimal(dNumber);
-                dResult=dResult.pow(2);
+                stringNumber = hashMap.get(placeNumber);
+                bigdResult = new BigDecimal(stringNumber);
+                bigdResult=bigdResult.pow(2);
 
                 if((placeNumber ==1   &&   strInput.charAt(0)=='-')  |
                         (placeNumber >1   &&   strInput.charAt(placeNumber -1)=='-')   &&
@@ -39,16 +41,16 @@ public class CalculateEngineer {
                 }
                 if (isNegative){
                     if (strInput.length() > n + 1)
-                        strReturn = strInput.substring(0, placeNumber -1) + dResult + strInput.substring(n + 1);
+                        strReturn = strInput.substring(0, placeNumber -1) + bigdResult + strInput.substring(n + 1);
                     else
-                        strReturn = strInput.substring(0, placeNumber -1) + dResult;
+                        strReturn = strInput.substring(0, placeNumber -1) + bigdResult;
 
                 }else {
 
                     if (strInput.length() > n + 1)
-                        strReturn = strInput.substring(0, placeNumber) + dResult + strInput.substring(n + 1);
+                        strReturn = strInput.substring(0, placeNumber) + bigdResult + strInput.substring(n + 1);
                     else
-                        strReturn = strInput.substring(0, placeNumber) + dResult;
+                        strReturn = strInput.substring(0, placeNumber) + bigdResult;
                 }
 
                 return strReturn;
@@ -58,23 +60,23 @@ public class CalculateEngineer {
 
                 hashMap =Operations.findNumber_beforeSign(strInput.substring(0, n));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
-                dNumber = hashMap.get(placeNumber);
-                dResult = new BigDecimal(dNumber);
-                dResult=dResult.pow(3);
+                stringNumber = hashMap.get(placeNumber);
+                bigdResult = new BigDecimal(stringNumber);
+                bigdResult=bigdResult.pow(3);
 
                 if (strInput.length()> n +1)
-                    strReturn=strInput.substring(0, placeNumber)+dResult+strInput.substring(n +1);
+                    strReturn=strInput.substring(0, placeNumber)+bigdResult+strInput.substring(n +1);
                 else
-                    strReturn=strInput.substring(0, placeNumber)+dResult;
+                    strReturn=strInput.substring(0, placeNumber)+bigdResult;
 
                 return strReturn;
             }
-
             case "!" -> {
                 n = StringUtils.indexOf(strInput, "!");
                 hashMap = Operations.findNumber_beforeSign(strInput.substring(0, n));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
-                dNumber = hashMap.get(placeNumber);
+                stringNumber = hashMap.get(placeNumber);
+                dNumber=Double.parseDouble(stringNumber);
                 Integer intNumber = dNumber.intValue();
 
                 if (Math.abs(dNumber-intNumber)>threshold  |   dNumber==0.0)
@@ -100,34 +102,48 @@ public class CalculateEngineer {
 
 
 
-//        case  "³√" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//            dResult=Math.cbrt(dResult);
-//            printResult ();
-//            textPanel.setSbLog("³√("+textPanel.getTextInput().getText().trim()+")");
-//            print_SbLog_Input();
-//        }
+        case  "³√" ->{
+            System.out.println("in= "+strInput);
+
+            n =StringUtils.indexOf(strInput, "³√");
+
+            boolean isNegative ;
+            if (strInput.charAt(n+2)=='-'){
+                isNegative = true;
+                strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+            }
+            else   isNegative = false;
+
+            hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
+            placeNumber = hashMap.keySet().stream().findFirst().get();
+            stringNumber = hashMap.get(placeNumber);
+            dNumber=Double.parseDouble(stringNumber);
+            System.out.println("dNumber= "+dNumber);
+
+            if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                throw new MyException("³√ INFINITY ");
+            }
+
+            if (isNegative)
+                dNumber=-Math.cbrt(dNumber);
+            else
+                dNumber=Math.cbrt(dNumber);
 
 
-//            case "1/x" ->{
-//            try {
-//                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//                if (dResult==0.0){
-//                    throw new ArithmeticException();
-//                }else {
-//                    dResult = 1 / dResult;
-//                    printResult ();
-//                    textPanel.setSbLog("1 / ("+textPanel.getTextInput().getText().trim()+")");
-//                    print_SbLog_Input();
-//                }
-//            } catch (ArithmeticException ex) {
-//                textPanel.setStrResult("делить на ноль нельзя");
-//                //                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//                textPanel.setSbLog("1/ ("+textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
-//        }
+            System.out.println("dRez= "+dNumber);
+            System.out.println("placeNumber= "+placeNumber);
+
+            if (n+2+placeNumber<=strInput.length()-1)
+                strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+2+placeNumber );
+            else
+                strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+
+            System.out.println("out= "+strReturn);
+            System.out.println();
+
+            return strReturn;
+        }
+
 
 
 //        case "ln" ->{

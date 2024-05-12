@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 public class ButtonsBasic extends ButtonsAll{
@@ -55,6 +56,7 @@ public class ButtonsBasic extends ButtonsAll{
 //    protected Double dResult;
 
     protected String countResult,  countNumber;
+    protected BigDecimal bigDecimal;
 
 
 
@@ -241,7 +243,8 @@ public class ButtonsBasic extends ButtonsAll{
 
                 try {                                       // except divide for 0
                     countResult = calculateCurrent.calculateInput(strInput);
-                    strResult="=" + countResult;
+                    bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+                    strResult="=" + bigDecimal.toString();
 
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd);
@@ -260,7 +263,10 @@ public class ButtonsBasic extends ButtonsAll{
                         }catch (NullPointerException exception){  }
                     }
                 }catch (MyException myException){
+
                     strResult = myException.getMessage();
+                    System.out.println("catch myException= "+strResult);
+
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                             b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
                     try {
@@ -304,8 +310,8 @@ public class ButtonsBasic extends ButtonsAll{
             strNumber = "0";                      //prepare to input new number
             N = 0;
 
-
             strInput= textPanel.getTextInput().getText();
+
             if (strInput.endsWith("%")   |   strInput.startsWith("±"))
                 strInput=countResult;
 
@@ -325,6 +331,8 @@ public class ButtonsBasic extends ButtonsAll{
 
             switch (name) {
                 case " √ " -> {
+                    if (strInput.equals("0")) strInput="";
+
                     if (countSqrt<3) {
                         strInput=strInput + name.trim();
                         textPanel.setTextInput(strInput);
@@ -332,30 +340,35 @@ public class ButtonsBasic extends ButtonsAll{
                     countSqrt++;
                 }
                 case " + " -> {
+                    if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign("+");
                     func = Operations::plus;
                 }
                 case " - " -> {
+                    if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign("-");
                     func = Operations::minus;
                 }
                 case " * " -> {
+                    if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign("*");
                     func = Operations::multiply;
                 }
                 case " / " -> {
+                    if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign("/");
                     func = Operations::divide;
                 }
                 case " % " -> {
+                    if (strInput.trim().equals(""))  strInput="0";
                     unblockedAll(bPercent);       // work  % without mistakes
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
@@ -363,8 +376,8 @@ public class ButtonsBasic extends ButtonsAll{
                     replaceRepeatedSign_simple();
 
                     String str=StringUtils.deleteWhitespace(strInput);
-System.out.println();
-System.out.println("begin str= "+str);
+//System.out.println();
+//System.out.println("begin str= "+str);
 
                     int nOpenBraces= StringUtils.countMatches(str, "(");
                     int nCloseBraces= StringUtils.countMatches(str, ")");
@@ -419,7 +432,7 @@ System.out.println("begin str= "+str);
                             if (isSign)break;
                         }
                     }
-System.out.println("from+ before str= "+str);
+//System.out.println("from+ before str= "+str);
 
 //вариант, когда % находится от части выражения, например 20+(200+5%)
                     strBeforePersent=" ";
@@ -449,11 +462,11 @@ System.out.println("from+ before str= "+str);
                     try {
 // от countResult находиться %
                         countResult=calculateCurrent.calculateInput(strPersentFrom);
-                        System.out.println("strBeforePersent= "+strBeforePersent);
-                        System.out.println("strResult= "+strResult);
-                        System.out.println("countResult= "+countResult);
-                        System.out.println("nameSign= "+nameSign);
-                        System.out.println("countNumber= "+countNumber);
+//                        System.out.println("strBeforePersent= "+strBeforePersent);
+//                        System.out.println("strResult= "+strResult);
+//                        System.out.println("countResult= "+countResult);
+//                        System.out.println("nameSign= "+nameSign);
+//                        System.out.println("countNumber= "+countNumber);
 //найденный %
                         countResult = calculateBasic.calculatePersent(nameSign,countResult, countNumber);
 //окончательный ответ
@@ -545,7 +558,8 @@ System.out.println("from+ before str= "+str);
 
                     try {                                       // except divide for 0
                         countResult = calculateCurrent.calculateInput(strInput);
-                        strResult="=" + countResult;
+                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+                        strResult="=" + bigDecimal;
 
                         unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,bResult, bMemoryAdd);
                         try {
@@ -618,7 +632,8 @@ System.out.println("from+ before str= "+str);
 
                     try {
                         countResult = calculateCurrent.calculateInput( strInput);
-                        strResult="=" + countResult;
+                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+                        strResult="=" + bigDecimal;
                     }catch (MyException myException){
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -667,7 +682,9 @@ System.out.println("from+ before str= "+str);
             b.setEnabled(true);
     }
      void printResult (){
-        strResult="=" +countResult;
+         bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+        strResult="=" +bigDecimal;
+
         textPanel.setFontBoldResult ();          //alter font
         textPanel.setTextResult(strResult);
 

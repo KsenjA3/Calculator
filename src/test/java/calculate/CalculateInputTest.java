@@ -176,4 +176,62 @@ class CalculateInputTest {
         );
         assertEquals("неверный формат ввода факториала", ex.getMessage());
     }
+
+
+
+
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " ³√27, 3",
+            " ³√27+5, 8",
+            " 55+³√27, 58",
+            " 23-³√27*11, -10",
+            " ³√(3²+2*9), 3",
+            "³√(57-30)² ,9",
+            " ³√(3²+2*9, 3",
+            "³√(3²-2²+5!), 5 ",
+            " ³√(3²+2*(27-3*(6, 3",
+
+    })
+    void sqrt3_positive (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " ³√(30-57), -3",
+            " ³√-27, -3",
+            " ³√(3²+2*(6-4*(6, -3",
+            " 8*³√-27, -24",
+            " ³√-27², 9",
+    })
+    void sqrt3_negative (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "³√(9^999)",
+            "8*³√(9^999)",
+            "³√(9^999)/9",
+
+            "³√(-9^999)",
+    })
+    void Exception_sqrt3(String strInput)throws MyException{
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals("³√ недозволеного большого числа", ex.getMessage());
+
+    }
+
+
 }
+
+
+

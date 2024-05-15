@@ -66,12 +66,10 @@ public class ButtonsBasic extends ButtonsAll{
 
         N = 0;
         strNumber = "0";
-//        dNumber = 0.0;
-//        dResult=0.0;
-        countResult="";
+        countResult="0";
         func = null;
         nameSign = "";
-        strInput="   ";
+        strInput="   ";;
         strResult="0";
                         //create object for calculation
         calculateCurrent = new CalculateInput();
@@ -244,7 +242,7 @@ public class ButtonsBasic extends ButtonsAll{
                 try {                                       // except divide for 0
                     countResult = calculateCurrent.calculateInput(strInput);
                     bigDecimal=new BigDecimal(countResult,Operations.mathContext);
-                    strResult="=" + bigDecimal.toString();
+                    strResult="=" + bigDecimal;
 
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                             bResult, bMemoryAdd);
@@ -472,8 +470,9 @@ public class ButtonsBasic extends ButtonsAll{
 //окончательный ответ
                         countResult=calculateCurrent.calculateInput(strBeforePersent+countResult);
 //printSign("%") отличается if, который влияет на √
+                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
                         if (func==null ) {
-                            strInput=countResult+ name.trim();
+                            strInput=bigDecimal+ name.trim();
                             textPanel.setTextInput(strInput);
                         }else {
                             strInput=strInput + name.trim();
@@ -597,8 +596,8 @@ public class ButtonsBasic extends ButtonsAll{
                     if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
                     else     unblockedAll(bMemoryHold,bMemoryDel);
 
+
                     countBrace=0;
-//                    dNumber = 0.0;
                     strNumber = "0";
                     N=0;
 
@@ -606,11 +605,9 @@ public class ButtonsBasic extends ButtonsAll{
                     strInput="   ";   //number after АС
                     textPanel.setTextInput( strInput);
                     func = null;
-//                    dResult = 0.0;
-                    countResult="";                 // sign after АС
+                    countResult="0";                 // sign after АС
                     nameSign = " ";               //after sqrt
                     strResult="0";  // AC then =, textRez
-//                    textPanel.setTextResult(strResult);
                 }
                 case "C" -> {
                     strInput=textPanel.getTextInput().getText();
@@ -692,6 +689,8 @@ public class ButtonsBasic extends ButtonsAll{
          strNumber = "0";              // if after = go ".
          N=0;
          func = null;
+//         strInput="   ";
+//         countResult="0";
     }
     void print_SbLog (){
         textPanel.setSbLog("\n");
@@ -701,8 +700,10 @@ public class ButtonsBasic extends ButtonsAll{
     }
 
     void printSign (String name) {
-        if (func==null && strInput.equals("   ")) {
-            strInput=countResult + name;
+        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+
+        if (func==null && strInput.equals("  ")) {
+            strInput=bigDecimal + name;
             textPanel.setTextInput(strInput);
         }else {
             strInput=strInput + name;

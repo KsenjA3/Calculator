@@ -72,6 +72,28 @@ class ButtonsBasicTest {
         Mockito.when(textPanel.getTextResult()).thenReturn(lable);
 
     }
+
+
+    @Test
+    void sign_pressFirst( ) {
+
+        locate = panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try {  Thread.sleep(25); } catch (InterruptedException e) { }
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate = panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try {  Thread.sleep(25); } catch (InterruptedException e) { }
+
+        assertEquals("0+2", panelKey.buttonsEngineer.strInput.trim());
+    }
+
+
     @Test
     void number_press( )  {
 
@@ -1214,7 +1236,7 @@ class ButtonsBasicTest {
         //200+5%+5
     void after_percent_plus5() {
         bot.keyPress(KeyEvent.VK_2);
-        try {Thread.sleep(40);} catch (InterruptedException e) {}
+        try {Thread.sleep(50);} catch (InterruptedException e) {}
         bot.keyRelease(KeyEvent.VK_2);
 
         txt.setText(panelKey.buttonsEngineer.strInput.trim());
@@ -1259,8 +1281,8 @@ class ButtonsBasicTest {
         assertEquals("+", panelKey.buttonsEngineer.nameSign.trim());
         assertEquals("5", panelKey.buttonsEngineer.countNumber);
         assertEquals("", panelKey.buttonsEngineer.strBeforePersent.trim());
+        assertEquals("210+5", panelKey.buttonsEngineer.strInput);
         assertEquals("215", panelKey.buttonsEngineer.countResult);
-
     }
 
     @Test

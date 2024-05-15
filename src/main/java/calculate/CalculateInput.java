@@ -12,7 +12,6 @@ ORDER COUNT
 4 √
 5 *,/,^
 6 +, -
-
  */
 
 
@@ -59,7 +58,7 @@ public class CalculateInput {
             strInput=strInput.substring(0, nBrace) + countResult;
         }
 
-
+        System.out.println("before = "+strInput);
         while (StringUtils.containsAny(strInput,"³√", "cos", "sin", "tg", "ln","lg")){
             if (StringUtils.contains(strInput,"³√")) {
                 try {
@@ -76,7 +75,7 @@ public class CalculateInput {
                 }
                 catch (MyException exc) {
                     System.out.println("cos catch");
-                    throw new MyException ("cos не существует");
+                    throw new MyException ("cos недозволеного большого числа");
                 }
             }
             if (StringUtils.contains(strInput,"sin")) {
@@ -85,19 +84,51 @@ public class CalculateInput {
                 }
                 catch (MyException exc) {
                     System.out.println("sin catch");
-                    throw new MyException ("sin не существует");
+                    throw new MyException ("sin недозволеного большого числа");
                 }
             }
             if (StringUtils.contains(strInput,"tg")) {
-                strInput = calculateEngineer.calculateEngineer(strInput, "tg");
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "tg");
+                }
+                catch (MyException exc) {
+                    System.out.println("tg catch");
+                    if (exc.getMessage().equals("tg INFINITY"))
+                        throw new MyException ("tg недозволеного большого числа");
+                    if (exc.getMessage().equals("tg не определен"))
+                        throw new MyException ("tg не определен");
+                }
             }
-            if (StringUtils.contains(strInput,"ln")) {
-                strInput = calculateEngineer.calculateEngineer(strInput, "ln");
-            }
+
             if (StringUtils.contains(strInput,"lg")) {
-                strInput = calculateEngineer.calculateEngineer(strInput, "lg");
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "lg");
+                }
+                catch (MyException exc) {
+                    System.out.println("lg catch");
+                    if (exc.getMessage().equals("lg INFINITY"))
+                        throw new MyException ("lg недозволеного большого числа");
+                    if (exc.getMessage().equals("lg NAN") | exc.getMessage().equals("lg 0"))
+                        throw new MyException ("lg не определен");
+                }
             }
+
+            if (StringUtils.contains(strInput,"ln")) {
+                try {
+                    strInput = calculateEngineer.calculateEngineer(strInput, "ln");
+                }
+                catch (MyException exc) {
+                    System.out.println("ln catch");
+                    if (exc.getMessage().equals("ln INFINITY"))
+                        throw new MyException ("ln недозволеного большого числа");
+                    if (exc.getMessage().equals("ln NAN") | exc.getMessage().equals("ln 0"))
+                        throw new MyException ("ln не определен");
+                }
+            }
+
         }
+
+        System.out.println("after = "+strInput);
 
         while (StringUtils.containsAny(strInput,"²","³", "!")){
             if (StringUtils.contains(strInput,"²")) {
@@ -113,18 +144,17 @@ public class CalculateInput {
                     strInput=calculateEngineer.calculateEngineer(strInput,"!");
                 }
                 catch (NumberFormatException exc) {
-//                    System.out.println("factorial catch");
+                    System.out.println("factorial catch");
                     throw new MyException ("неверный формат ввода факториала");
                 }
             }
         }
 
-
        System.out.println("before basic= "+strInput);
+
         countResult =calculateBasic.calculateBasicInput(strInput);
-
-
-        countResult=Operations.printStringNumber(countResult);
+        countResult=Operations.printNumber(countResult);
+        System.out.println("before basic= "+strInput);
         return countResult;
     }
 

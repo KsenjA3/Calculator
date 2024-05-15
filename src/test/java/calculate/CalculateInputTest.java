@@ -97,7 +97,6 @@ class CalculateInputTest {
     void power2 (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource( value =  {
             "3³, 27",
@@ -117,7 +116,6 @@ class CalculateInputTest {
     void power3 (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 10-(3-5)^3, 18",
@@ -139,7 +137,6 @@ class CalculateInputTest {
 
 
 
-
     @ParameterizedTest
     @CsvSource( value =  {
             " 3!, 6",
@@ -152,7 +149,6 @@ class CalculateInputTest {
     void factorial (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource( value =  {
             "3+-2!",
@@ -164,7 +160,7 @@ class CalculateInputTest {
             "8-4.4!",
             "(25-5²)!"
     })
-    void Exception_factorial(String strInput) {
+    void factorial_Exception(String strInput) {
         Throwable ex = assertThrows(
                 MyException.class,
                 () -> {
@@ -174,9 +170,6 @@ class CalculateInputTest {
         );
         assertEquals("неверный формат ввода факториала", ex.getMessage());
     }
-
-
-
 
 
 
@@ -212,10 +205,9 @@ class CalculateInputTest {
             "³√(9^999)",
             "8*³√(9^999)",
             "³√(9^999)/9",
-
             "³√(-9^999)",
     })
-    void Exception_sqrt3(String strInput)throws MyException{
+    void Exception_sqrt3_overflow(String strInput)throws MyException{
         Throwable ex = assertThrows(
                 MyException.class,
                 () -> {
@@ -228,8 +220,6 @@ class CalculateInputTest {
     }
 
 
-
-
     @ParameterizedTest
     @CsvSource( value =  {
             " cos(60+120)²-cos(3*30)²,   1",
@@ -239,7 +229,6 @@ class CalculateInputTest {
     void cos_positive (String strInput, String expectedResult)  throws MyException {
         assertEquals (expectedResult,sut.calculateInput(strInput));
     }
-
     @ParameterizedTest
     @CsvSource( value =  {
             " cos(-30),    0.866025403784439",
@@ -260,7 +249,7 @@ class CalculateInputTest {
             "cos(9^999)/9",
             "cos(-9^999)",
     })
-    void Exception_cos(String strInput)throws MyException{
+    void cos_Exception_overflow(String strInput)throws MyException{
         Throwable ex = assertThrows(
                 MyException.class,
                 () -> {
@@ -268,7 +257,7 @@ class CalculateInputTest {
                 },
                 "!!!НЕТУ!!!"
         );
-        assertEquals("cos не существует", ex.getMessage());
+        assertEquals("cos недозволеного большого числа", ex.getMessage());
 
     }
 
@@ -289,7 +278,7 @@ class CalculateInputTest {
             " sin(123-123),   0",
             " sin(2*30)+sin(20-7*20),   0",
             " sin(-135),   -0.707106781186548",
-            " sin(-90)²,   1",
+            " sin-90²,   1",
             " sin(-3*30)²+sin(90*3)²,   2",
     })
     void sin_negative (String strInput, String expectedResult)  throws MyException {
@@ -302,7 +291,7 @@ class CalculateInputTest {
             "sin(9^999)/9",
             "sin(-9^999)",
     })
-    void sin(String strInput)throws MyException{
+    void sin_Exception_overflow(String strInput)throws MyException{
         Throwable ex = assertThrows(
                 MyException.class,
                 () -> {
@@ -310,12 +299,152 @@ class CalculateInputTest {
                 },
                 "!!!НЕТУ!!!"
         );
-        assertEquals("sin не существует", ex.getMessage());
+        assertEquals("sin недозволеного большого числа", ex.getMessage());
+
+    }
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " tg(-0),    0",
+            " tg(20+10),   0.57735026918963",
+            " tg(9*5)²-tg(5³+10)³*2,   3",
+            " tg(60)+tg(120),   0",
+            " tg150-1,  -1.57735026918963",
+            " 2+tg360,  2",
+    })
+    void tg_positive (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " tg-360,    0",
+            " tg-60,   -1.73205080756888",
+            " tg-60-20,  -21.7320508075689",
+            " tg-135³,  1",
+            " tg135³,  -1",
+            " tg-135²,  1",
+            " 4-tg135²,  3",
+            " tg(150-300),  0.57735026918963",
+            " tg-180,  0",
+    })
+    void tg_negative (String strInput, String expectedResult)  throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "tg90",
+            "tg270",
+            "tg-90",
+            "tg-270",
+    })
+    void tg_Exception_90(String strInput){
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals("tg не определен", ex.getMessage());
+
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "tg(9^999)",
+            "8*tg(9^999)",
+            "tg(9^999)/9",
+            "tg(-9^999)",
+    })
+    void tg_Exception_overflow(String strInput){
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals("tg недозволеного большого числа", ex.getMessage());
 
     }
 
 
 
+
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 3*lg100²,   12",
+            " lg(2*10),   1.3010299956639813",
+            " lg1000³,   27",
+            " lg25+25,   26.397940008672",
+            " lg(0.5²),   -0.6020599913279624",
+    })
+    void lg  (String strInput, String expectedResult) throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " 8*ln1,   0",
+            " 8-ln(2.718281828459045235360287471352),   7",
+            " ln(5²),   3.2188758248682006",
+            " ln(0.25)-6,   -7.38629436111989",
+    })
+    void ln  (String strInput, String expectedResult) throws MyException {
+        assertEquals (expectedResult,sut.calculateInput(strInput));
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " ln(-90), ln",
+            " ln(9^3-2000), ln",
+            " lg(-3³), lg",
+            " lg(-8^-5), lg",
+    })
+    void log_exception_NAN  (String strInput, String name){
+        Throwable ex = assertThrows(
+                MyException.class,
+                ()->{
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals(name+" не определен", ex.getMessage());
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            " ln0, ln",
+            " lg0, lg",
+            " ln(30-15*2), ln",
+            " lg(8/4-2), lg",
+    })
+    void log_exception_0  (String strInput, String name){
+        Throwable ex = assertThrows(
+                MyException.class,
+                ()->{
+                    sut.calculateInput(strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals(name+" не определен", ex.getMessage());
+    }
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "(9^999), lg",
+            "(9^999), ln",
+            "(9^999)/9, lg",
+            "(9^999)*8, ln",
+    })
+    void log_Exception_overflow(String strInput, String name)throws MyException{
+        Throwable ex = assertThrows(
+                MyException.class,
+                () -> {
+                    sut.calculateInput(name+strInput);
+                },
+                "!!!НЕТУ!!!"
+        );
+        assertEquals(name+" недозволеного большого числа", ex.getMessage());
+
+    }
 
 }
 

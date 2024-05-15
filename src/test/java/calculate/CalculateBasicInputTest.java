@@ -34,7 +34,7 @@ class CalculateBasicInputTest {
             " 9/3, 3",
     })
     void intNumbersCount_PlusMinusDivideMultiply  (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
     @ParameterizedTest
     @CsvSource ( value =  {
@@ -59,7 +59,7 @@ class CalculateBasicInputTest {
             " 9.9/3, 3.3"
     })
     void doubleNumbersCount_PlusMinusDivideMultiply (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
 
 
@@ -97,7 +97,7 @@ class CalculateBasicInputTest {
             " √√√256, 2",
     })
     void sqrt (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
 
     @ParameterizedTest
@@ -108,7 +108,7 @@ class CalculateBasicInputTest {
             " 2*√4+√, 4"
     })
     void ends_with_sign (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
 
     @ParameterizedTest
@@ -146,7 +146,7 @@ class CalculateBasicInputTest {
             " --5--6*2,  17",
     })
     void negative_from_negativeNumber (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
 
     private static Stream<Arguments> dataProvider() {
@@ -173,7 +173,7 @@ class CalculateBasicInputTest {
     @MethodSource("dataProvider")
     void calculatePercent(String nameSign, String dResultPercentIn, String dNumberIn, String expectedResult)
     {
-        assertEquals(expectedResult, Operations.printStringNumber(sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn)));
+        assertEquals(expectedResult, Operations.printNumber(sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn)));
     }
 
     @ParameterizedTest
@@ -189,7 +189,7 @@ class CalculateBasicInputTest {
             " 10--5^2, -15",
     })
     void count_power  (String strInput, String expectedResult) {
-        assertEquals (expectedResult,Operations.printStringNumber(sut.calculateBasicInput(strInput)));
+        assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
 
 }

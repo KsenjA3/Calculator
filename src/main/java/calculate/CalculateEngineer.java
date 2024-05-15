@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class CalculateEngineer {
 
     private String strReturn;
-    final double threshold = 0.000000001;
+    final double threshold = 0.000000000000001;
 
     public String calculateEngineer (String strInput, String name ) throws MyException {
         HashMap<Integer, String> hashMap;
@@ -20,7 +20,7 @@ public class CalculateEngineer {
         Double dNumber;
         int n;
         double scale= Math.pow(10,15);
-
+        double tg_scale= Math.pow(10,14);
 
 
 
@@ -80,8 +80,8 @@ public class CalculateEngineer {
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 stringNumber = hashMap.get(placeNumber);
                 dNumber=Double.parseDouble(stringNumber);
-                Integer intNumber = dNumber.intValue();
 
+                Integer intNumber = dNumber.intValue();
                 if (Math.abs(dNumber-intNumber)>threshold  |   dNumber==0.0)
                     throw new NumberFormatException ();
 
@@ -118,7 +118,7 @@ public class CalculateEngineer {
                 stringNumber = hashMap.get(placeNumber);
                 dNumber=Double.parseDouble(stringNumber);
 
-                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                if (dNumber.isInfinite() ){
                     throw new MyException("³√ INFINITY ");
                 }
 
@@ -128,11 +128,12 @@ public class CalculateEngineer {
                     dNumber=Math.cbrt(dNumber);
 
                 if (n+2+placeNumber<=strInput.length()-1)
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+2+placeNumber );
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
                 else
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
                 return strReturn;
             }
+
             case "cos" ->{
                 n =StringUtils.indexOf(strInput, "cos");
 
@@ -148,7 +149,7 @@ public class CalculateEngineer {
                 stringNumber = hashMap.get(placeNumber);
 
                 dNumber=Double.parseDouble(stringNumber);
-                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                if (dNumber.isInfinite() ){
                     throw new MyException("cos INFINITY ");
                 }
 
@@ -157,16 +158,13 @@ public class CalculateEngineer {
                 dNumber=Math.round(Math.cos(dNumber)*scale)/scale;
 
                 if (n+3+placeNumber<=strInput.length()-1)
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+3+placeNumber );
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+3+placeNumber );
                 else
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
 
                 return strReturn;
             }
-
             case "sin" ->{
-                System.out.println("in= "+strInput);
-
                 n =StringUtils.indexOf(strInput, "sin");
 
                 boolean isNegative ;
@@ -180,11 +178,8 @@ public class CalculateEngineer {
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 stringNumber = hashMap.get(placeNumber);
 
-                System.out.println("stringNumber= "+stringNumber);
-                System.out.println("length Number= "+placeNumber);
-
                 dNumber=Double.parseDouble(stringNumber);
-                if (dNumber==Double.NEGATIVE_INFINITY | dNumber==Double.POSITIVE_INFINITY) {
+                if (dNumber.isInfinite() ){
                     throw new MyException("sin INFINITY ");
                 }
 
@@ -193,100 +188,142 @@ public class CalculateEngineer {
                 dNumber = Math.toRadians(dNumber);
                 dNumber=Math.round(Math.sin(dNumber)*scale)/scale;
 
-                System.out.println("dRez= "+dNumber);
-
                 if (n+3+placeNumber<=strInput.length()-1)
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber)+strInput.substring(n+3+placeNumber );
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+3+placeNumber );
                 else
-                    strReturn=strInput.substring(0, n)+Operations.printDoubleNumber(dNumber);
-
-                System.out.println("out= "+strReturn);
-                System.out.println();
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
 
                 return strReturn;
         }
-//
-//        case "tg" ->{
-//            dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//
-//            long iRez=Math.round(dResult);
-//            if(Math.abs(iRez)>180)
-//                iRez=iRez%180;
-//
-//            try {
-//                if (Math.abs(iRez)==90){
-//                    throw new ArithmeticException();
-//                }else {
-//                    b = Math.toRadians(dResult);
-//                    dResult = Math.round(Math.tan(b) * scale) / scale;
-//                    printResult();
-//                    textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim() + ")");
-//                    print_SbLog_Input();
-//                }
-//            } catch (ArithmeticException ex) {
-//                textPanel.setStrResult("не существует");
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//
-//                textPanel.setStrInput(Operations.printNumber(dResult));
-//                textPanel.setTextInput(textPanel.getStrInput());
-//
-//                textPanel.setSbLog("tg(" + textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
+            case "tg" ->{
+            n =StringUtils.indexOf(strInput, "tg");
 
-//        case "ln" ->{
-//            try {
-//                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//                if (dResult>0) {
-//                    dResult=Math.log(dResult);
-//                    printResult();
-//                    textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
-//                    print_SbLog_Input();
-//                }else {
-//                    System.out.println("ln");
-//                    throw new MyException("ln не существует");
-//                }
-//
-//            } catch (MyException ex) {
-//                System.out.println("перехвачено -" +ex);
-//                textPanel.setStrResult("не существует");
-//                //                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//
-//                textPanel.setStrInput(Operations.printNumber(dResult));
-//                textPanel.setTextInput(textPanel.getStrInput());
-//
-//                textPanel.setSbLog("ln(" + textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
-//        }
-//        case "lg" ->{
-//            try {
-//                dResult = calculateCurrent.calculateInput( textPanel.getTextInput().getText());
-//                if (dResult>0) {
-//                    dResult=Math.log10(dResult);
-//                    printResult();
-//                    textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
-//                    print_SbLog_Input();
-//                }else {
-//                    throw new ArithmeticException();
-//                }
-//            } catch (ArithmeticException ex) {
-//                textPanel.setStrResult("не существует");
-//                //                        textPanel.setFontBoldResult ();          //alter font
-//                textPanel.setTextRezult(textPanel.getStrResult());
-//
-//                textPanel.setStrInput(Operations.printNumber(dResult));
-//                textPanel.setTextInput(textPanel.getStrInput());
-//
-//                textPanel.setSbLog("lg(" + textPanel.getTextInput().getText().trim()+")");
-//                print_SbLog_Input();
-//            }
-//        }
-//
-//
-//
-//
+            boolean isNegative ;
+            if (strInput.charAt(n+2)=='-'){
+                isNegative = true;
+                strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+            }
+            else   isNegative = false;
+
+            hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
+            placeNumber = hashMap.keySet().stream().findFirst().get();
+            stringNumber = hashMap.get(placeNumber);
+
+            dNumber=Double.parseDouble(stringNumber);
+            if (dNumber.isInfinite() ){
+                throw new MyException("tg INFINITY");
+            }
+
+            long iRez=Math.round(dNumber);
+            if(Math.abs(iRez)>180)
+                iRez=iRez%180;
+
+            try {
+                if (Math.abs(iRez)==90){
+                    throw new ArithmeticException();
+                }else {
+                    if (isNegative)  dNumber=-dNumber;
+                    dNumber = Math.toRadians(dNumber);
+                    dNumber=Math.round(Math.tan(dNumber)*tg_scale)/tg_scale;
+
+                    System.out.println("dRez= "+dNumber);
+
+                    if (n+2+placeNumber<=strInput.length()-1)
+                        strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
+                    else
+                        strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
+                }
+            } catch (ArithmeticException ex) {
+                throw new MyException("tg не определен");
+            }
+            return strReturn;
+        }
+
+
+            case "lg" ->{
+                System.out.println("in= "+strInput);
+                n =StringUtils.indexOf(strInput, "lg");
+
+                boolean isNegative ;
+                if (strInput.charAt(n+2)=='-'){
+                    isNegative = true;
+                    strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+                }
+                else   isNegative = false;
+
+                hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                stringNumber = hashMap.get(placeNumber);
+                System.out.println("stringNumber= "+stringNumber);
+                System.out.println("length Number= "+placeNumber);
+
+                 dNumber=Double.parseDouble(stringNumber);
+                if (dNumber.isInfinite() ){
+                    throw new MyException("lg INFINITY");
+                }
+                if (isNegative)  dNumber=-dNumber;
+                System.out.println("dNumber= "+dNumber);
+
+                dNumber=Math.log10(dNumber);
+                if (dNumber.isNaN() ) {
+                    throw new MyException("lg NAN");
+                }
+                if (dNumber.isInfinite() ){
+                    throw new MyException("lg 0");
+                }
+                System.out.println("dRez= "+dNumber);
+
+                if (n+2+placeNumber<=strInput.length()-1)
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
+                else
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
+                System.out.println("out= "+strReturn);
+                System.out.println();
+                return strReturn;
+        }
+            case "ln" ->{
+                System.out.println("in= "+strInput);
+                n =StringUtils.indexOf(strInput, "ln");
+
+                boolean isNegative ;
+                if (strInput.charAt(n+2)=='-'){
+                    isNegative = true;
+                    strInput=strInput.substring(0,n+2)+strInput.substring(n+3);
+                }
+                else   isNegative = false;
+
+                hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
+                placeNumber = hashMap.keySet().stream().findFirst().get();
+                stringNumber = hashMap.get(placeNumber);
+                System.out.println("stringNumber= "+stringNumber);
+                System.out.println("length Number= "+placeNumber);
+
+                dNumber=Double.parseDouble(stringNumber);
+                if (dNumber.isInfinite() ){
+                    throw new MyException("ln INFINITY");
+                }
+                if (isNegative)  dNumber=-dNumber;
+                System.out.println("dNumber= "+dNumber);
+
+                dNumber=Math.log(dNumber);
+                if (dNumber.isNaN() ) {
+                    throw new MyException("ln NAN");
+                }
+                if (dNumber.isInfinite() ){
+                    throw new MyException("ln 0");
+                }
+                System.out.println("dRez= "+dNumber);
+
+                if (n+2+placeNumber<=strInput.length()-1)
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
+                else
+                    strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
+                System.out.println("out= "+strReturn);
+                System.out.println();
+                return strReturn;
+            }
+
+
         }
         return strReturn;
     }

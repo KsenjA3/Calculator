@@ -53,13 +53,24 @@ public class Operations {
      * @param d transforming Double number to String
      * @return String form number
      */
-    public static String printDoubleNumber (Double d) {
+    public static String printNumber (Double d) {
         String str =Double.toString(d);
-        if (str.substring(str.indexOf('.')+1).equals("0"))
-            return   str= Long.toString(d.longValue());
-        else return str;
+
+        if(str.contains("E"))
+            str = new  BigDecimal(str).toPlainString();
+
+        if(!str.contains("."))
+            return str;
+
+        int placePoint = StringUtils.indexOf(str, ".");
+        int placeLastNumber=StringUtils.lastIndexOfAny(str, "1","2","3","4","5","6","7","8","9");
+        if (placePoint>placeLastNumber)
+            str=str.substring(0,placePoint);
+        else
+            str=str.substring(0,placeLastNumber+1);
+        return str;
     }
-    public static String printStringNumber (String str) {
+    public static String printNumber (String str) {
         if(str.contains("E"))
             str = new  BigDecimal(str).toPlainString();
 

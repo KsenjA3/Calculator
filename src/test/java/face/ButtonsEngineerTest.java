@@ -1588,5 +1588,60 @@ class ButtonsEngineerTest {
         assertEquals("ln(0", panelKey.buttonsEngineer.strInput.trim());
         assertEquals("ln не определен", panelKey.buttonsEngineer.strResult);
     }
+    @Order(16) @Test //    1*(1*(1+1
+    void braces_inLogPanel()  {
+        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(25);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try{Thread.sleep(50);}catch(InterruptedException e){}
+
+//   1*(1*(1+1
+        assertEquals("1*(1*(1+1", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals(2, panelKey.buttonsEngineer.countBrace);
+    }
+
 
 }

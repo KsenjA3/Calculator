@@ -212,10 +212,19 @@ class ButtonsEngineer extends ButtonsBasic {
                         countResult = calculateCurrent.calculateInput( strInput);
                         countResult = calculateCurrent.calculateInput( "-"+countResult);
                         printResult ();
+
                         strInput="±("+textPanel.getTextInput().getText().trim()+")";
+                        for (int i=0; i<countBrace; i++)
+                            strInput=strInput+")";
                         textPanel.setTextInput(strInput);
+
                         textPanel.setSbLog(strInput);
-                        print_SbLog();
+                        textPanel.setSbLog("\n");
+                        textPanel.setSbLog(textPanel.getTextResult().getText());
+                        textPanel.setSbLog("\n");
+                        textPanel.setTextLog( textPanel.getSbLog().toString());
+
+                        countBrace=0;
                     }catch (MyException myException){
                         strResult = myException.getMessage();
                         textPanel.setTextResult(strResult);
@@ -306,6 +315,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
 // limit variable double
                 case  "³√" ->{
+                    countBrace ++;
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
@@ -317,6 +327,7 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
 
                 case "ln" ->{
+                    countBrace ++;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
@@ -327,6 +338,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     printSign("ln(");
                 }
                 case "lg" ->{
+                    countBrace ++;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
@@ -338,6 +350,7 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
 
                 case "sin" ->{
+                    countBrace ++;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
@@ -348,6 +361,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     printSign("sin(");
                 }
                 case "cos" ->{
+                    countBrace ++;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
@@ -358,6 +372,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     printSign("cos(");
                 }
                 case "tg" -> {
+                    countBrace ++;
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();

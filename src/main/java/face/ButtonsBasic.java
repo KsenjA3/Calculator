@@ -493,6 +493,7 @@ public class ButtonsBasic extends ButtonsAll{
 
                         textPanel.setTextResult(strResult);
                     }
+                    countBrace=0;
                 }
                 case " = " -> {
                     countResult= textPanel.getTextResult().getText().substring(1);
@@ -501,6 +502,7 @@ public class ButtonsBasic extends ButtonsAll{
                     printResult ();
                     strInput=countResult;
                     textPanel.setTextInput(strInput);
+                    countBrace=0;
                 }
             }
         }
@@ -612,7 +614,8 @@ public class ButtonsBasic extends ButtonsAll{
                 case "C" -> {
                     strInput=textPanel.getTextInput().getText();
                     if (strInput.length()==0) break;
-
+                    if (StringUtils.endsWith(strInput,"(")){ countBrace--; }
+                    if (StringUtils.endsWith(strInput,")")){ countBrace++; }
                     if (StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".")){
                         if (strNumber.length() > 1)          //beginning work
                             strNumber = strNumber.substring(0, strNumber.length() - 1);
@@ -693,6 +696,8 @@ public class ButtonsBasic extends ButtonsAll{
 //         countResult="0";
     }
     void print_SbLog (){
+         for (int i=0; i<countBrace; i++)
+             textPanel.setSbLog(")");
         textPanel.setSbLog("\n");
         textPanel.setSbLog(textPanel.getTextResult().getText());
         textPanel.setSbLog("\n");

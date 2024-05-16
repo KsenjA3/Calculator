@@ -11,16 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="sin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/CalculateInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculate/Operations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculate/Operations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/face/ButtonsEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateBasicInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateBasicInputTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateEngineerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/calculate/CalculateInputTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/face/ButtonsBasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsBasicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/face/ButtonsEngineerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="oldLogic" />
+        <entry key="$PROJECT_DIR$" value="engineerAll" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,7 +100,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.lg_exception_0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ButtonsEngineerTest.braces_inLogPanel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
@@ -118,7 +110,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="face" />
       <option name="MAIN_CLASS_NAME" value="face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="lg_exception_0" />
+      <option name="METHOD_NAME" value="braces_inLogPanel" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -143,10 +135,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CalculateDemo" />
+        <item itemvalue="JUnit.ButtonsEngineerTest.braces_inLogPanel" />
         <item itemvalue="JUnit.All in Calculator" />
         <item itemvalue="JUnit.ButtonsEngineerTest" />
         <item itemvalue="JUnit.ButtonsEngineerTest.ln_exception_overflow" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.lg_exception_0" />
       </list>
     </recent_temporary>
   </component>
@@ -376,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715536748999</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="pl">
+      <created>1715788665200</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1715788665200</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -391,7 +390,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testInit" />
     <MESSAGE value="CreateActionNumberButton" />
     <MESSAGE value="Rid_of_static" />
     <MESSAGE value="clean" />
@@ -416,7 +414,8 @@
     <MESSAGE value="clean_tests" />
     <MESSAGE value="cos" />
     <MESSAGE value="sin" />
-    <option name="LAST_COMMIT_MESSAGE" value="sin" />
+    <MESSAGE value="pl" />
+    <option name="LAST_COMMIT_MESSAGE" value="pl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

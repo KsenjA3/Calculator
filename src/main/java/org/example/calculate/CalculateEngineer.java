@@ -1,5 +1,7 @@
 package org.example.calculate;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.face.MyException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,6 +10,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 
 public class CalculateEngineer {
+    private static final Logger logger = LogManager.getLogger(CalculateEngineer.class);
 
     private String strReturn;
     final double threshold = 0.000000000000001;
@@ -234,6 +237,7 @@ public class CalculateEngineer {
                         strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
                 }
             } catch (ArithmeticException ex) {
+                logger.error("logger.error tg не определен: {}",strInput);
                 throw new MyException("tg не определен");
             }
             return strReturn;

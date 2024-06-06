@@ -251,6 +251,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
                     }catch (NullPointerException exception){  }
                 }catch ( ArithmeticException  ex){
+                    logger.error("logger.error ArithmeticException: {}",ex.getMessage());
                     if (ex.getMessage().equals("Division by zero")) {
                         strResult = "делить на 0 нельзя";
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
@@ -261,9 +262,8 @@ public class ButtonsBasic extends ButtonsAll{
                         }catch (NullPointerException exception){  }
                     }
                 }catch (MyException myException){
-
                     strResult = myException.getMessage();
-                    System.out.println("catch myException= "+strResult);
+                    logger.error("logger.error Exception: {}",myException.getMessage());
 
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                             b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -397,6 +397,7 @@ public class ButtonsBasic extends ButtonsAll{
                             }
 
                         }catch (MyException myException){
+                            logger.error("logger.error Exception: {}",myException.getMessage());
                             strResult = myException.getMessage();
                             blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                     b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -466,7 +467,7 @@ public class ButtonsBasic extends ButtonsAll{
 //                        System.out.println("nameSign= "+nameSign);
 //                        System.out.println("countNumber= "+countNumber);
 //найденный %
-                        countResult = calculateBasic.calculatePersent(nameSign,countResult, countNumber);
+                        countResult = calculateBasic.calculatePercent(nameSign,countResult, countNumber);
 //окончательный ответ
                         countResult=calculateCurrent.calculateInput(strBeforePersent+countResult);
 //printSign("%") отличается if, который влияет на √
@@ -483,6 +484,7 @@ public class ButtonsBasic extends ButtonsAll{
                         printResult ();
                         print_SbLog ();
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -577,6 +579,7 @@ public class ButtonsBasic extends ButtonsAll{
                                         bChageSign,braceOpen,braceClose);
                             }catch (NullPointerException exception){  }
                         }
+                        logger.error("logger.error ArithmeticException: {}",ex.getMessage());
                     }catch (MyException myException){
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -635,6 +638,7 @@ public class ButtonsBasic extends ButtonsAll{
                         bigDecimal=new BigDecimal(countResult,Operations.mathContext);
                         strResult="=" + bigDecimal;
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -643,11 +647,7 @@ public class ButtonsBasic extends ButtonsAll{
                                     bChageSign,braceOpen,braceClose);
                         }catch (NullPointerException exception){  }
                     }
-
-
                     textPanel.setTextResult(strResult);
-
-
 
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
                             b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bResult, bMemoryAdd );

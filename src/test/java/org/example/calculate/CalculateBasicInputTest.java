@@ -175,7 +175,7 @@ class CalculateBasicInputTest {
     @MethodSource("dataProvider")
     void calculatePercent(String nameSign, String dResultPercentIn, String dNumberIn, String expectedResult)
     {
-        assertEquals(expectedResult, Operations.printNumber(sut.calculatePersent(nameSign, dResultPercentIn, dNumberIn)));
+        assertEquals(expectedResult, Operations.printNumber(sut.calculatePercent(nameSign, dResultPercentIn, dNumberIn)));
     }
 
     @ParameterizedTest

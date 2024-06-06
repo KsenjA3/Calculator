@@ -150,6 +150,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult="=" + countResult;
                         unblockedAll(bPercent);       // work  % without mistakes
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                         b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -175,6 +176,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -199,6 +201,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -230,6 +233,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
 
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         textPanel.setTextResult(strResult);
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -267,6 +271,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult="=" + bigDecimal;
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch ( ArithmeticException  ex){
+                        logger.error("logger.error ArithmeticException: {}",ex.getMessage());
                         if (ex.getMessage().equals("Division by zero")) {
                             strResult = "делить на 0 нельзя";
                             blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
@@ -277,6 +282,7 @@ class ButtonsEngineer extends ButtonsBasic {
                             );
                         }
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                     strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -306,6 +312,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
+                        logger.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);

@@ -1,0 +1,2 @@
+2024-06-06 16:02:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-06-06 16:03:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала

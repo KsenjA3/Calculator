@@ -1,5 +1,8 @@
 package org.example.face;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.example.calculate.CalculateBasic;
 import org.example.calculate.CalculateInput;
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,6 +20,7 @@ public class KeyboardInput {
     protected String countResult;
     protected String str;
     private CalculateInput calculateCurrent;
+    private static final Logger logger = LogManager.getLogger(KeyboardInput.class);
 
     KeyboardInput (PanelTextLog textPanel) {
         this.textPanel=textPanel;
@@ -82,6 +86,14 @@ public class KeyboardInput {
             }catch (MyException myException){
                 str = myException.getMessage();
                 textPanel.setTextResult(str);
+                logger.error("logger.error: ошибка ввода данных через Keyboard: {}",str);
+            }catch (Exception exception){
+                str = exception.getMessage();
+                logger.error("logger.error: ошибка ввода данных через Keyboard: {}",str);
+                if (str.equals("Character array contains more than one decimal point."))
+                    str="ошибка ввода данных";
+                textPanel.setTextResult(str);
+
             }
 //            focus to visible keyPenel
 //            focusVisibleKeyPenel ();

@@ -1,5 +1,7 @@
 package org.example.face;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import org.example.fitting.*;
 
 import javax.swing.*;
@@ -8,19 +10,26 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 
+
+
 public class PanelText {
 
     private JPanel textPanel;
     /**
      * elements of Result window
      */
-    private JPanel panelRezult;
-    private JLabel textRezult;
+
+    @Getter (AccessLevel.PROTECTED)
+    private JPanel panelResult;
+    @Getter (AccessLevel.PROTECTED)
+    private JLabel textResult;
 
     /**
      * elements of Input window
      */
+    @Getter (AccessLevel.PROTECTED)
     private JScrollPane scrollinput;
+    @Getter (AccessLevel.PROTECTED)
     private JTextPane textInput;
 
     /**
@@ -33,7 +42,7 @@ public class PanelText {
      *show up Result font
      */
      void setFontBoldResult (){
-        textRezult.setFont(MyFonts.FONT_TEXT_INPUT.get());
+        textResult.setFont(MyFonts.FONT_TEXT_INPUT.get());
 
         StyleConstants.setAlignment(textInputAttributes, StyleConstants.ALIGN_RIGHT);
         StyleConstants.setFontFamily(textInputAttributes, MyFontNames.FRONT_NAME_TEXT_INPUT.get());
@@ -45,7 +54,7 @@ public class PanelText {
      *show up InputPanel font
      */
      void setFontBoldInput (){
-        textRezult.setFont(MyFonts.FONT_TEXT_RESULT.get());
+        textResult.setFont(MyFonts.FONT_TEXT_RESULT.get());
 
         StyleConstants.setAlignment(textInputAttributes, StyleConstants.ALIGN_RIGHT);
         StyleConstants.setFontFamily(textInputAttributes, MyFontNames.FRONT_NAME_TEXT_INPUT.get());
@@ -77,11 +86,11 @@ public class PanelText {
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollinput.setBorder(null);
 
-        textRezult = new JLabel("0");
-        textRezult.setFont(MyFonts.FONT_TEXT_RESULT.get());
-        panelRezult = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        panelRezult.setBackground(MyColors.COLOR_RESULT.get());
-        panelRezult.add(textRezult);
+        textResult = new JLabel("0");
+        textResult.setFont(MyFonts.FONT_TEXT_RESULT.get());
+        panelResult = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        panelResult.setBackground(MyColors.COLOR_RESULT.get());
+        panelResult.add(textResult);
     }
 
     /**
@@ -92,22 +101,10 @@ public class PanelText {
     JPanel getTextPanel (int widthSizeText) {
         textPanel.add(scrollinput);
         scrollinput.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
-        textPanel.add(panelRezult, Component.RIGHT_ALIGNMENT);
-        panelRezult.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()));
+        textPanel.add(panelResult, Component.RIGHT_ALIGNMENT);
+        panelResult.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()));
         return textPanel;
     }
-
-    /**
-     * get PanelRezult
-     * @return getPanelRezult
-     */
-    JPanel getPanelRezult () { return panelRezult; }
-
-    /**
-     * get PanelInput
-     * @return PanelInput
-     */
-    JScrollPane getScrollinput () { return scrollinput; }
 
     /**
      *get Height TextPanel
@@ -115,15 +112,20 @@ public class PanelText {
      */
     int getHeightTextPanel ()
     {               return MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()
-                        + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get();
+            + MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get();
     }
 
-     JLabel getTextResult() { return textRezult; }
-     JTextPane getTextInput() { return textInput ;}
+
+
+
+//    JPanel getPanelResult () { return panelResult; }
+//    JScrollPane getScrollinput () { return scrollinput; }
+//     JLabel getTextResult() { return textResult; }
+//     JTextPane getTextInput() { return textInput ;}
 
 
     void setTextInput(String strInput) {
         this.textInput.setText(strInput); }
     void setTextResult(String strResult) {
-        this.textRezult.setText(strResult); }
+        this.textResult.setText(strResult); }
 }

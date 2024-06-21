@@ -36,7 +36,7 @@
         </Root>
 
         <!-- Logger for specific package -->
-        <Logger name="org.example.face" level="debug"  additivity="false" >
+        <Logger name="org.calculate.face" level="debug"  additivity="false" >
             <AppenderRef ref="FileAppender_face" level="error"/>
             <AppenderRef ref="ConsoleAppender" level="info"/>
         </Logger>
@@ -46,6 +46,10 @@
             <AppenderRef ref="ConsoleAppender" level="info"/>
         </Logger>
     </Loggers>
+
+
+
+
 
 
 </Configuration>

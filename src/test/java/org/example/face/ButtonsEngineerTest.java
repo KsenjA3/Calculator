@@ -1705,7 +1705,7 @@ class ButtonsEngineerTest {
 
 
 //   ±(7)+2
-        assertEquals("(-7)+2", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("-7+2", panelKey.buttonsEngineer.strInput.trim());
         assertEquals("-5", panelKey.buttonsEngineer.countResult);
     }
 

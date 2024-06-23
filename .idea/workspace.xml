@@ -9,14 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="log4j2_simple">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/lombok/First.java" afterDir="false" />
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="lombok_getter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CalculateDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/lombok/First.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/lombok/First.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -73,7 +72,7 @@
       <recent name="face" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in Calculator">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="First" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.lombok.First" />
       <module name="Calculator" />
@@ -108,6 +107,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ButtonsBasicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.face.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.face" />
+      <option name="MAIN_CLASS_NAME" value="org.example.face.ButtonsBasicTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ButtonsEngineerTest.countSum_after_exchangeSign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
@@ -124,29 +138,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsEngineerTest.count_after_exchangeSign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.face.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.face" />
-      <option name="MAIN_CLASS_NAME" value="org.example.face.ButtonsEngineerTest" />
-      <option name="METHOD_NAME" value="count_after_exchangeSign" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ButtonsBasicTest" />
+        <item itemvalue="Application.First" />
         <item itemvalue="JUnit.All in Calculator" />
         <item itemvalue="JUnit.ButtonsEngineerTest.countSum_after_exchangeSign" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.First" />
-        <item itemvalue="JUnit.ButtonsEngineerTest.count_after_exchangeSign" />
       </list>
     </recent_temporary>
   </component>
@@ -397,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717679117551</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="lombok_getter">
+      <created>1719004365237</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1719004365237</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -412,7 +417,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clean" />
     <MESSAGE value="beginWhenExchangeTypeCalculator" />
     <MESSAGE value="Log+someEngBut" />
     <MESSAGE value="ButtonsEngineerTest" />
@@ -437,7 +441,8 @@
     <MESSAGE value="pl" />
     <MESSAGE value="unFragile_test" />
     <MESSAGE value="log4j2_simple" />
-    <option name="LAST_COMMIT_MESSAGE" value="log4j2_simple" />
+    <MESSAGE value="lombok_getter" />
+    <option name="LAST_COMMIT_MESSAGE" value="lombok_getter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -789,32 +794,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>399</line>
+          <line>401</line>
           <option name="timeStamp" value="481" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>265</line>
+          <line>267</line>
           <option name="timeStamp" value="482" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>253</line>
+          <line>255</line>
           <option name="timeStamp" value="483" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>486</line>
+          <line>488</line>
           <option name="timeStamp" value="484" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>581</line>
+          <line>583</line>
           <option name="timeStamp" value="485" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>640</line>
+          <line>642</line>
           <option name="timeStamp" value="486" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -847,8 +852,27 @@
           <line>314</line>
           <option name="timeStamp" value="492" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="496" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
+          <line>250</line>
+          <option name="timeStamp" value="498" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Calculator$CalculateTest.ic" NAME="CalculateTest Coverage Results" MODIFIED="1708281899642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -1,5 +1,6 @@
 package org.example.face;
 
+import lombok.SneakyThrows;
 import org.example.calculate.CalculateInput;
 import org.example.calculate.CalculateBasic;
 import org.example.calculate.Operations;
@@ -69,7 +70,7 @@ public class ButtonsBasic extends ButtonsAll{
         countResult="0";
         func = null;
         nameSign = "";
-        strInput="   ";;
+        strInput="   ";
         strResult="0";
                         //create object for calculation
         calculateCurrent = new CalculateInput();
@@ -249,7 +250,7 @@ public class ButtonsBasic extends ButtonsAll{
                     try {
                         unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
                                 bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
-                    }catch (NullPointerException exception){  }
+                    }catch (NullPointerException exception){    }
                 }catch ( ArithmeticException  ex){
                     logger.error("logger.error ArithmeticException: {}",ex.getMessage());
                     if (ex.getMessage().equals("Division by zero")) {

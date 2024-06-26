@@ -9,16 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="unFragile_test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFaceData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/study/SerializedJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_14_04_2024_20_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_14_04_2024_20_13__Changes_.xml" afterDir="false" />
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="xy_serialize">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calculator_calculate.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_calculate.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calculator_logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/lombok/First.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/study/LombokStudy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFaceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFaceData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyGeneral.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,17 +113,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ButtonsBasicTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.face.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.face" />
-      <option name="MAIN_CLASS_NAME" value="org.example.face.ButtonsBasicTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,10 +140,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in Calculator" />
         <item itemvalue="Application.SerializeJFrame" />
         <item itemvalue="Application.SerializedJFrame" />
         <item itemvalue="JUnit.ButtonsEngineerTest.countSum_after_exchangeSign" />
-        <item itemvalue="JUnit.ButtonsBasicTest" />
       </list>
     </recent_temporary>
   </component>
@@ -410,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719004365237</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="xy_serialize">
+      <created>1719404315715</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1719404315715</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -425,7 +423,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="beginWhenExchangeTypeCalculator" />
     <MESSAGE value="Log+someEngBut" />
     <MESSAGE value="ButtonsEngineerTest" />
     <MESSAGE value="ButtonsEngineer_Test" />
@@ -450,7 +447,8 @@
     <MESSAGE value="unFragile_test" />
     <MESSAGE value="log4j2_simple" />
     <MESSAGE value="lombok_getter" />
-    <option name="LAST_COMMIT_MESSAGE" value="lombok_getter" />
+    <MESSAGE value="xy_serialize" />
+    <option name="LAST_COMMIT_MESSAGE" value="xy_serialize" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -877,97 +875,77 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="499" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="500" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="501" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>132</line>
+          <line>169</line>
           <option name="timeStamp" value="502" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>50</line>
+          <line>55</line>
           <option name="timeStamp" value="507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>51</line>
+          <line>56</line>
           <option name="timeStamp" value="508" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>52</line>
+          <line>57</line>
           <option name="timeStamp" value="509" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>56</line>
+          <line>61</line>
           <option name="timeStamp" value="510" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>57</line>
+          <line>62</line>
           <option name="timeStamp" value="511" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>58</line>
+          <line>63</line>
           <option name="timeStamp" value="512" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="513" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>61</line>
+          <line>70</line>
           <option name="timeStamp" value="514" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>117</line>
+          <line>128</line>
           <option name="timeStamp" value="515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>119</line>
+          <line>130</line>
           <option name="timeStamp" value="516" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>118</line>
+          <line>129</line>
           <option name="timeStamp" value="517" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>120</line>
-          <option name="timeStamp" value="518" />
+          <line>64</line>
+          <option name="timeStamp" value="529" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="519" />
+          <line>65</line>
+          <option name="timeStamp" value="539" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="520" />
+          <line>168</line>
+          <option name="timeStamp" value="540" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>48</line>
+          <line>53</line>
           <properties method="windowClosing">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

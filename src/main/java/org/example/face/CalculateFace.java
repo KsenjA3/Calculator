@@ -1,5 +1,7 @@
 package org.example.face;
 
+
+import lombok.extern.log4j.Log4j2;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MySizePanel;
 
@@ -9,6 +11,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+@Log4j2
 public class CalculateFace extends JFrame {
 
 
@@ -21,7 +24,7 @@ public class CalculateFace extends JFrame {
     private final PanelKeyBasic keyPanelBasic;
     private final PanelKeyEngineer keyPanelEngineer;
     private final PanelKeyIT keyPanelIT;
-    private final PanelTextLog textPanel;
+    private  PanelTextLog textPanel;
 
     /**
      * MENU
@@ -31,8 +34,10 @@ public class CalculateFace extends JFrame {
     private JCheckBoxMenuItem jchbLog;
     private JMenuItem jmiShowLogPopup, jmiHideLogPopup, jmiClearLogPopup, jmiCopyLogPopup,
             jmiClearLog, jmiCopyLog;
+    private JRadioButtonMenuItem jmiSimple,jmiEngineer,jmiIT;
     private MakeMenuItem actionCopy, actionPaste, actionClearLog, actionCopyLog;
     int widthSize, highSize;
+    String  nameKeyPanel;
 
 
 
@@ -57,7 +62,10 @@ public class CalculateFace extends JFrame {
                     CalculateFaceData cfData = new CalculateFaceData();
                     cfData.x=frame.getLocation().x;
                     cfData.y=frame.getLocation().y;
-                    System.out.println(cfData.x);
+                    cfData.nameKeyPanel=nameKeyPanel;
+                    cfData.panelLog_isOpen=jchbLog.isSelected();
+                        log.info(nameKeyPanel);
+                        log.info(jchbLog.isSelected());
 
                     out.writeObject(cfData);
 
@@ -80,16 +88,18 @@ public class CalculateFace extends JFrame {
             // create Panels
         textPanel = new PanelTextLog();
         keyPanelBasic = new PanelKeyBasic(textPanel);
+            keyPanelBasic.setName("Basic");
         keyPanelEngineer = new PanelKeyEngineer(textPanel);
+            keyPanelEngineer.setName("Engineer");
         keyPanelIT= new PanelKeyIT(textPanel);
-
+            keyPanelIT.setName("IT");
 
         cardTypeCalc = new CardLayout();            //компоновка
         cardPanel = new JPanel(new CardLayout());   //колода
         cardPanel.setLayout(cardTypeCalc);          //компоновка колоды
-            cardPanel.add(keyPanelBasic.getKeyPanel(), "Basic");
-            cardPanel.add(keyPanelEngineer.getKeyPanel(),"Engineer");
-            cardPanel.add(keyPanelIT.getKeyPanel(),"IT");
+            cardPanel.add(keyPanelBasic.getKeyPanel(), keyPanelBasic.getName());
+            cardPanel.add(keyPanelEngineer.getKeyPanel(),keyPanelEngineer.getName());
+            cardPanel.add(keyPanelIT.getKeyPanel(),keyPanelIT.getName());
 
           new KeyboardInput(textPanel);
 
@@ -120,14 +130,35 @@ public class CalculateFace extends JFrame {
         {
             CalculateFaceData cfData = (CalculateFaceData) in.readObject();
             frame.setLocation(cfData.x,cfData.y);
-            System.out.println(cfData.x);
+            cardTypeCalc.show(cardPanel, cfData.nameKeyPanel);
+            switch (cfData.nameKeyPanel){
+                case "Basic"-> {
+                    widthSize=keyPanelBasic.getWidthKeyPanel();
+                    jmiSimple.setSelected(true);
+                }
+                case "Engineer"-> {
+                    widthSize=keyPanelEngineer.getWidthKeyPanel();
+                    jmiEngineer.setSelected(true);
+                }
+                case "IT"->{
+                    widthSize=keyPanelIT.getWidthKeyPanel();
+                    jmiIT.setSelected(true);
+                }
+            }
+
+            if (cfData.panelLog_isOpen){
+                jchbLog.setSelected(true);
+            }else{
+                jchbLog.setSelected(false);
+            }
+            panelLog_isShown();
 
         } catch (Exception exception) {
+            frame.setLocation(100,100);
+            cardTypeCalc.show(cardPanel,  "Basic");
+            widthSize=keyPanelBasic.getWidthKeyPanel();
             exception.printStackTrace();
         }
-
-        cardTypeCalc.show(cardPanel, "Basic");
-        widthSize=keyPanelBasic.getWidthKeyPanel();
 
         repack();
         frame.setVisible(true);
@@ -153,8 +184,9 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(textPanel.getTextInput().getText());
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
-                    cardTypeCalc.show(cardPanel, "Basic");
+                    cardTypeCalc.show(cardPanel, keyPanelBasic.getName());
                     widthSize=keyPanelBasic.getWidthKeyPanel();
+                    nameKeyPanel=keyPanelBasic.getName();
                     repack();
                 }
                 case "Инженерный" -> {
@@ -164,8 +196,9 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(textPanel.getTextInput().getText());
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
-                    cardTypeCalc.show(cardPanel, "Engineer");
+                    cardTypeCalc.show(cardPanel, keyPanelEngineer.getName());
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
+                    nameKeyPanel=keyPanelEngineer.getName();
                     repack();
                 }
                 case "IT" -> {
@@ -175,8 +208,9 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(textPanel.getTextInput().getText());
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
-                    cardTypeCalc.show(cardPanel, "IT");
+                    cardTypeCalc.show(cardPanel, keyPanelIT.getName());
                     widthSize = keyPanelIT.getWidthKeyPanel();
+                    nameKeyPanel=keyPanelIT.getName();
                     repack();
                 }
                 case "Копировать" -> {
@@ -217,30 +251,11 @@ public class CalculateFace extends JFrame {
                 case "Показать журнал" -> jchbLog.setSelected(true);
                 case "Скрыть журнал" -> jchbLog.setSelected(false);
             }
-
-            if(jchbLog.isSelected()) {
-                jmiClearLog.setEnabled(true);
-                jmiCopyLog.setEnabled(true);
-                jmiShowLogPopup.setVisible(false);
-                jmiHideLogPopup.setVisible(true);
-                jmiClearLogPopup.setVisible(true);
-                jmiCopyLogPopup.setVisible(true);
-
-                textPanel.getScrollLog().setVisible(true);
-                repack();
-            } else{
-                jmiClearLog.setEnabled(false);
-                jmiCopyLog.setEnabled(false);
-                jmiShowLogPopup.setVisible(true);
-                jmiHideLogPopup.setVisible(false);
-                jmiClearLogPopup.setVisible(false);
-                jmiCopyLogPopup.setVisible(false);
-
-                textPanel.getScrollLog().setVisible(false);
-                repack();
-            }
+            panelLog_isShown();
+            repack();
         }
     }
+
 
     /**
      * make View Menu
@@ -250,18 +265,18 @@ public class CalculateFace extends JFrame {
         jmView.setFont(MyFonts.FONT_MENU.get());
 
         MakeMenuItem actionSimple = new MakeMenuItem("Обычный", KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.ALT_DOWN_MASK));
-        JRadioButtonMenuItem jmiSimple = new JRadioButtonMenuItem(actionSimple);
+        jmiSimple = new JRadioButtonMenuItem(actionSimple);
         jmiSimple.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmiSimple.setSelected(true);
         jmView.add(jmiSimple);
 
         MakeMenuItem actionEngineer = new MakeMenuItem("Инженерный", KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.ALT_DOWN_MASK));
-        JRadioButtonMenuItem jmiEngineer = new JRadioButtonMenuItem(actionEngineer);
+        jmiEngineer = new JRadioButtonMenuItem(actionEngineer);
         jmiEngineer.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmView.add(jmiEngineer);
 
         MakeMenuItem actionIT = new MakeMenuItem("IT", KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.ALT_DOWN_MASK));
-        JRadioButtonMenuItem jmiIT = new JRadioButtonMenuItem(actionIT);
+        jmiIT = new JRadioButtonMenuItem(actionIT);
         jmiIT.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmView.add(jmiIT);
         jmView.addSeparator();
@@ -390,6 +405,29 @@ public class CalculateFace extends JFrame {
             if (comp.isVisible()) {
                 comp.requestFocusInWindow();
             }
+        }
+    }
+
+
+    void panelLog_isShown() {
+        if (jchbLog.isSelected()) {
+            jmiClearLog.setEnabled(true);
+            jmiCopyLog.setEnabled(true);
+            jmiShowLogPopup.setVisible(false);
+            jmiHideLogPopup.setVisible(true);
+            jmiClearLogPopup.setVisible(true);
+            jmiCopyLogPopup.setVisible(true);
+
+            textPanel.getScrollLog().setVisible(true);
+        } else {
+            jmiClearLog.setEnabled(false);
+            jmiCopyLog.setEnabled(false);
+            jmiShowLogPopup.setVisible(true);
+            jmiHideLogPopup.setVisible(false);
+            jmiClearLogPopup.setVisible(false);
+            jmiCopyLogPopup.setVisible(false);
+
+            textPanel.getScrollLog().setVisible(false);
         }
     }
 }

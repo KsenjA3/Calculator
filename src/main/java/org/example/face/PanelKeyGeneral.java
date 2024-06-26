@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-abstract class PanelKeyGeneral{
+abstract class PanelKeyGeneral extends JPanel{
 
     private JPanel keyPanelGeneral;
     protected GridBagLayout gbag;
@@ -165,5 +165,7 @@ abstract class PanelKeyGeneral{
         gbc.ipady = ipady;
         gbc.ipadx = ipadx;
     }
+
+
 
 }

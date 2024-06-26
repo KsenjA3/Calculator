@@ -1,4 +1,4 @@
-package org.lombok;
+package org.study;
 
 import lombok.*;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class First {
+public class LombokStudy {
     int number;
     public static void main(String[] args) {
-        var ob = new First();
+        var ob = new LombokStudy();
         ob.setNumber(5);
         int i= ob.number;
         int iSet= ob.getNumber();

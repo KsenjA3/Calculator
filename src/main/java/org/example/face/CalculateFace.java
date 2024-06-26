@@ -6,6 +6,8 @@ import org.example.fitting.MySizePanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class CalculateFace extends JFrame {
 
@@ -13,24 +15,25 @@ public class CalculateFace extends JFrame {
     /**
      * Components
      */
-    private JFrame frame;
-    private CardLayout cardTypeCalc;
-    private JPanel cardPanel;
-    private PanelKeyBasic keyPanelBasic;
-    protected PanelKeyEngineer keyPanelEngineer;
-    private PanelKeyIT keyPanelIT;
-    private PanelTextLog textPanel;
+    private final  JFrame frame;
+    private final CardLayout cardTypeCalc;
+    private final JPanel cardPanel;
+    private final PanelKeyBasic keyPanelBasic;
+    private final PanelKeyEngineer keyPanelEngineer;
+    private final PanelKeyIT keyPanelIT;
+    private final PanelTextLog textPanel;
 
     /**
      * MENU
      */
-    private JMenuBar jmb;
+    private final JMenuBar jmb;
     private JPopupMenu jpu;
     private JCheckBoxMenuItem jchbLog;
     private JMenuItem jmiShowLogPopup, jmiHideLogPopup, jmiClearLogPopup, jmiCopyLogPopup,
             jmiClearLog, jmiCopyLog;
     private MakeMenuItem actionCopy, actionPaste, actionClearLog, actionCopyLog;
-    int widthSize, hieghtSize;
+    int widthSize, highSize;
+
 
 
     public CalculateFace () {
@@ -38,9 +41,37 @@ public class CalculateFace extends JFrame {
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame();
         frame.setTitle("КАЛЬКУЛЯТОР");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            //create Content Pane
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+                try (
+                     var fileOut =new FileOutputStream("calculator.dat");
+                     var out = new ObjectOutputStream (fileOut)
+//                     var outStream = new OutputStreamWriter(out, "UTF-8");
+//                     var bw = new BufferedWriter(outStream)
+                ){
+                    CalculateFaceData cfData = new CalculateFaceData();
+                    cfData.x=frame.getLocation().x;
+                    cfData.y=frame.getLocation().y;
+                    System.out.println(cfData.x);
+
+                    out.writeObject(cfData);
+
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+
+                setVisible(false);
+                dispose();
+                System.exit(0); //calling the method is a must
+            }
+        });
+
+        //create Content Pane
         Container container = getContentPane();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         frame.add(Box.createVerticalGlue());
@@ -84,8 +115,20 @@ public class CalculateFace extends JFrame {
          widthSizeText = width frame and other components
          setting height textPanel (height keyPanel = const)
          */
+        try (var fileIn =new FileInputStream("calculator.dat");
+             var in = new ObjectInputStream (fileIn))
+        {
+            CalculateFaceData cfData = (CalculateFaceData) in.readObject();
+            frame.setLocation(cfData.x,cfData.y);
+            System.out.println(cfData.x);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
         cardTypeCalc.show(cardPanel, "Basic");
         widthSize=keyPanelBasic.getWidthKeyPanel();
+
         repack();
         frame.setVisible(true);
     }
@@ -337,7 +380,7 @@ public class CalculateFace extends JFrame {
     }
 
     void repack() {
-        hieghtSize = textPanel.setVisibleTextPanelLog (jchbLog.isSelected(), frame, widthSize)
+        highSize = textPanel.setVisibleTextPanelLog (jchbLog.isSelected(), frame, widthSize)
                 + MySizePanel.HIEGHT_SIZE_KEY.get();
   //      frame.setPreferredSize(new Dimension(widthSize, hieghtSize));
         frame.pack();
@@ -350,3 +393,4 @@ public class CalculateFace extends JFrame {
         }
     }
 }
+

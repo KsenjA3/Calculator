@@ -28,3 +28,18 @@
 2024-06-22 00:06:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
 2024-06-22 00:06:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
 2024-06-22 00:06:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-06-24 00:56:05 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-06-24 00:56:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-06-24 00:56:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg недозволеного большого числа
+2024-06-24 00:56:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg не определен
+2024-06-24 00:56:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln не определен
+2024-06-24 00:56:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ³√ недозволеного большого числа
+2024-06-24 00:56:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln недозволеного большого числа
+2024-06-24 00:56:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: tg недозволеного большого числа
+2024-06-24 00:56:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-06-24 00:56:11 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln не определен
+2024-06-24 00:56:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg не определен
+2024-06-24 00:56:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: tg не определен
+2024-06-24 00:56:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-06-24 00:56:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-06-24 00:56:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero

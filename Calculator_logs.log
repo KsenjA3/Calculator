@@ -86,3 +86,72 @@
 2024-06-26 17:42:21 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
 2024-06-26 17:42:29 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
 2024-06-26 17:42:29 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 01:16:31 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 01:16:31 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 01:56:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 01:56:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 01:58:50 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 01:58:50 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:02:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:02:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 02:16:54 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:16:54 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:17:09 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:17:09 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:21:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:21:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:24:14 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:24:14 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 02:26:50 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:26:50 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 02:27:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:27:57 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:31:29 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - null
+2024-06-27 02:31:29 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:35:21 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 02:35:21 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 02:35:41 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 02:35:41 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 02:36:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 02:36:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:19:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:19:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 07:20:21 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 07:20:21 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:21:01 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:21:01 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:21:48 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:21:48 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:22:51 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:22:51 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:25:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:25:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:29:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 07:29:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:32:06 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 07:32:06 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 07:45:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 07:45:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 08:22:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 08:22:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 08:25:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 08:25:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 08:41:33 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 08:41:33 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 08:41:33 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 
+2024-06-27 08:41:33 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 
+2024-06-27 08:41:33 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 0
+2024-06-27 08:42:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 08:42:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 08:42:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 88+88
+=176
+
+2024-06-27 08:42:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 176+176
+2024-06-27 08:42:00 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =352
+2024-06-27 08:45:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 08:45:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 08:45:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 88+88
+=176
+
+2024-06-27 08:45:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 176+176
+2024-06-27 08:45:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =352

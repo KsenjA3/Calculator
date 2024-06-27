@@ -2,6 +2,7 @@ package org.example.face;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFontNames;
 import org.example.fitting.MyFontSizes;
@@ -12,6 +13,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 
+@Getter(AccessLevel.PROTECTED)
  class PanelTextLog extends PanelText{
      /**
       * to safe into the memory
@@ -22,19 +24,17 @@ import java.awt.*;
      * for writing to calculator.org.example.face.PanelTextLog
      */
 
-    @Getter(AccessLevel.PROTECTED)
-    private StringBuffer sbLog;
-     @Getter (AccessLevel.PROTECTED)
-     private JTextPane  textLog;
-    @Getter (AccessLevel.PROTECTED)
-    private JScrollPane  scrollLog;
 
-    private JPanel textPanelLog;
+    private StringBuffer sbLog;
+
+     private final JTextPane  textLog;
+
+    private final JScrollPane  scrollLog;
+
 
     public PanelTextLog() {
         super();
         sbLog = new StringBuffer();
-
         textLog = new JTextPane();
         textLog.setBackground(MyColors.COLOR_BUTTON.get());
         var textLogAttributes = new SimpleAttributeSet();
@@ -85,7 +85,7 @@ import java.awt.*;
         if (state){
             frame.setPreferredSize(new Dimension(widthSizeText,getHeightTextPanel()+MySizePanel.HIEGHT_SIZE_KEY.get()));
             getPanelResult().setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()));
-            getScrollinput().setPreferredSize(new Dimension(widthSizeText,MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
+            getScrollInput().setPreferredSize(new Dimension(widthSizeText,MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
             textLog.setPreferredSize(new Dimension(widthSizeText,MySizePanel.HIEGHT_SIZE_TEXT_LOG.get()));
 
             return getHeightTextPanel ();
@@ -93,7 +93,7 @@ import java.awt.*;
         else {
             frame.setPreferredSize(new Dimension(widthSizeText,super.getHeightTextPanel()+MySizePanel.HIEGHT_SIZE_KEY.get()));
             getPanelResult().setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()));
-            getScrollinput().setPreferredSize(new Dimension(widthSizeText,MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
+            getScrollInput().setPreferredSize(new Dimension(widthSizeText,MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
 
             return super.getHeightTextPanel();
         }
@@ -103,6 +103,8 @@ import java.awt.*;
     void setSbLog(String strLog) {
         sbLog = sbLog.append(strLog);
     }
+
+
      void setTextLog(String strSbLog) {
          textLog.setText(strSbLog);
      }

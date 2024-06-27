@@ -14,28 +14,22 @@ import java.awt.*;
 
 public class PanelText {
 
-    private JPanel textPanel;
-    /**
-     * elements of Result window
-     */
+    private final JPanel textPanel;
 
     @Getter (AccessLevel.PROTECTED)
-    private JPanel panelResult;
+    private final JPanel panelResult;
     @Getter (AccessLevel.PROTECTED)
-    private JLabel textResult;
+    private final JLabel textResult;
 
-    /**
-     * elements of Input window
-     */
     @Getter (AccessLevel.PROTECTED)
-    private JScrollPane scrollinput;
+    private final JScrollPane scrollInput;
     @Getter (AccessLevel.PROTECTED)
-    private JTextPane textInput;
+    private final JTextPane textInput;
 
     /**
      * FONTs
      */
-    private  SimpleAttributeSet textInputAttributes;
+    private final SimpleAttributeSet textInputAttributes;
 
 
     /**
@@ -82,9 +76,9 @@ public class PanelText {
         StyleConstants.setFontFamily(textInputAttributes, MyFontNames.FRONT_NAME_TEXT_INPUT.get());
         StyleConstants.setFontSize(textInputAttributes,MyFontSizes.FRONT_SIZE_TEXT_INPUT.get());
         textInput.setParagraphAttributes(textInputAttributes, true);
-        scrollinput = new JScrollPane(textInput, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+        scrollInput = new JScrollPane(textInput, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollinput.setBorder(null);
+        scrollInput.setBorder(null);
 
         textResult = new JLabel("0");
         textResult.setFont(MyFonts.FONT_TEXT_RESULT.get());
@@ -99,8 +93,8 @@ public class PanelText {
      * @return TextPanel
      */
     JPanel getTextPanel (int widthSizeText) {
-        textPanel.add(scrollinput);
-        scrollinput.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
+        textPanel.add(scrollInput);
+        scrollInput.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_INPUT.get()));
         textPanel.add(panelResult, Component.RIGHT_ALIGNMENT);
         panelResult.setPreferredSize(new Dimension(widthSizeText, MySizePanel.HIEGHT_SIZE_TEXT_RESULT.get()));
         return textPanel;

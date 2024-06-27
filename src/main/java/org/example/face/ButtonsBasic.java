@@ -701,6 +701,7 @@ public class ButtonsBasic extends ButtonsAll{
              textPanel.setSbLog(")");
         textPanel.setSbLog("\n");
         textPanel.setSbLog(textPanel.getTextResult().getText());
+        System.out.println();
         textPanel.setSbLog("\n");
         textPanel.setTextLog( textPanel.getSbLog().toString());
     }

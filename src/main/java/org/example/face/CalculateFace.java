@@ -24,7 +24,7 @@ public class CalculateFace extends JFrame {
     private final PanelKeyBasic keyPanelBasic;
     private final PanelKeyEngineer keyPanelEngineer;
     private final PanelKeyIT keyPanelIT;
-    private  PanelTextLog textPanel;
+    private final PanelTextLog textPanel;
 
     /**
      * MENU
@@ -46,6 +46,7 @@ public class CalculateFace extends JFrame {
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame();
         frame.setTitle("КАЛЬКУЛЯТОР");
+        nameKeyPanel="Basic";
 
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -66,6 +67,12 @@ public class CalculateFace extends JFrame {
                     cfData.panelLog_isOpen=jchbLog.isSelected();
                         log.info(nameKeyPanel);
                         log.info(jchbLog.isSelected());
+                    cfData.textLog=textPanel.getTextLog().getText();
+                        log.info(cfData.textLog);
+                    cfData.textInput=textPanel.getTextInput().getText();
+                    log.info(cfData.textInput);
+                    cfData.textResult=textPanel.getTextResult().getText();
+                    log.info(cfData.textResult);
 
                     out.writeObject(cfData);
 
@@ -131,7 +138,8 @@ public class CalculateFace extends JFrame {
             CalculateFaceData cfData = (CalculateFaceData) in.readObject();
             frame.setLocation(cfData.x,cfData.y);
             cardTypeCalc.show(cardPanel, cfData.nameKeyPanel);
-            switch (cfData.nameKeyPanel){
+            nameKeyPanel=cfData.nameKeyPanel;
+            switch (nameKeyPanel){
                 case "Basic"-> {
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     jmiSimple.setSelected(true);
@@ -153,13 +161,21 @@ public class CalculateFace extends JFrame {
             }
             panelLog_isShown();
 
+            textPanel.getSbLog().append(cfData.textLog);
+            textPanel.setTextLog(cfData.textLog);
+            textPanel.getTextInput().setText(cfData.textInput);
+            textPanel.getTextResult().setText(cfData.textResult);
+
+        } catch (java.lang.NullPointerException nullPointerException) {
+            frame.setLocation(100,100);
+            cardTypeCalc.show(cardPanel,  "Basic");
+            widthSize=keyPanelBasic.getWidthKeyPanel();
+            nullPointerException.printStackTrace();
         } catch (Exception exception) {
             frame.setLocation(100,100);
             cardTypeCalc.show(cardPanel,  "Basic");
             widthSize=keyPanelBasic.getWidthKeyPanel();
-            exception.printStackTrace();
-        }
-
+            exception.printStackTrace();}
         repack();
         frame.setVisible(true);
     }
@@ -220,7 +236,8 @@ public class CalculateFace extends JFrame {
 
                 }
                 case "Очистить журнал" -> {
-
+                    textPanel.getSbLog().delete(0,textPanel.getSbLog().length());
+                    textPanel.setTextLog(new String());
                 }
                 case "Копировать журнал" -> {
 

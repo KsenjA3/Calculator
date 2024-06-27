@@ -181,3 +181,97 @@
 
 2024-06-27 09:32:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 100
 2024-06-27 09:32:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =100
+2024-06-27 09:34:13 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 09:34:13 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 09:34:13 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 99+1
+=100
+
+2024-06-27 09:34:13 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 100
+2024-06-27 09:34:13 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =100
+2024-06-27 15:14:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:14:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:14:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 99+1
+=100
+106+4
+=110
+
+2024-06-27 15:14:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 110
+2024-06-27 15:14:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =110
+2024-06-27 15:17:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:17:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:17:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 99+1
+=100
+106+4
+=110
+110*2
+=220
+
+2024-06-27 15:17:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 220
+2024-06-27 15:17:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =220
+2024-06-27 15:19:36 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:19:36 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:19:36 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 99+1
+=100
+106+4
+=110
+110*2
+=220
+
+2024-06-27 15:19:36 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 220
+2024-06-27 15:19:36 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =220
+2024-06-27 15:24:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:24:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:24:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 99+1
+=100
+106+4
+=110
+110*2
+=220
+
+2024-06-27 15:24:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 220
+2024-06-27 15:24:26 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =220
+2024-06-27 15:26:34 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 15:26:34 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 15:26:34 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 
+2024-06-27 15:26:34 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 
+2024-06-27 15:26:34 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 0
+2024-06-27 15:26:59 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 15:26:59 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 15:26:59 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 8+6
+=14
+
+2024-06-27 15:26:59 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 14
+2024-06-27 15:26:59 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =14
+2024-06-27 15:28:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:28:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:28:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 8+6
+=14
+14+10
+=24
+
+2024-06-27 15:28:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 24
+2024-06-27 15:28:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =24
+2024-06-27 15:29:10 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:29:10 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:29:10 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 47
+2024-06-27 15:29:10 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =47
+2024-06-27 15:29:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:29:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:29:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 47+6
+2024-06-27 15:29:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =53
+2024-06-27 15:41:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-06-27 15:41:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:41:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 53+7
+2024-06-27 15:41:40 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =60
+2024-06-27 15:42:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-06-27 15:42:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-06-27 15:42:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 53+7-8
+2024-06-27 15:42:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =52
+2024-06-27 15:43:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 15:43:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:43:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 53+7-8
+2024-06-27 15:43:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =52
+2024-06-27 15:43:46 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-06-27 15:43:46 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-06-27 15:43:46 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 53+7-8
+2024-06-27 15:43:46 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =52

@@ -40,6 +40,7 @@ public class CalculateFace extends JFrame {
     private MakeMenuItem actionCopy, actionPaste, actionClearLog, actionCopyLog;
     int widthSize, highSize;
     String  nameKeyPanel;
+    File file;
 
 
 
@@ -48,7 +49,7 @@ public class CalculateFace extends JFrame {
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame();
         frame.setTitle("КАЛЬКУЛЯТОР");
-        nameKeyPanel="Basic";
+        file=new File("src/test/resources/calculateFaceData.json");
 
 /**
  * serialize when windowClosing
@@ -59,8 +60,7 @@ public class CalculateFace extends JFrame {
         {
             public void windowClosing(WindowEvent e)
             {
-                try (
-                     var fileOut =new FileOutputStream("calculator.dat");
+                try (var fileOut =new FileOutputStream("calculator.dat");
                      var out = new ObjectOutputStream (fileOut)
 //                     var outStream = new OutputStreamWriter(out, "UTF-8");
 //                     var bw = new BufferedWriter(outStream)
@@ -78,16 +78,13 @@ public class CalculateFace extends JFrame {
 
                     log.info(nameKeyPanel);
                     log.info(jchbLog.isSelected());
-                    log.info(cfData.textLog);
                     log.info(cfData.textInput);
                     log.info(cfData.textResult);
 
                     out.writeObject(cfData);
 
-//                    ObjectMapper objectMapper = new ObjectMapper();
-//                    objectMapper.writeValue(new File("src/test/resources/calculateFaceData.json"),cfData);
-
-
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    objectMapper.writeValue(file,cfData);
 
                 } catch (Exception exception) {
                     exception.printStackTrace();
@@ -148,8 +145,11 @@ public class CalculateFace extends JFrame {
         try (var fileIn =new FileInputStream("calculator.dat");
              var in = new ObjectInputStream (fileIn))
         {
-            CalculateFaceData cfData = (CalculateFaceData) in.readObject();
-            frame.setLocation(cfData.x,cfData.y);
+//            CalculateFaceData cfData = (CalculateFaceData) in.readObject();
+            ObjectMapper objectMapper = new ObjectMapper();
+            CalculateFaceData cfData = objectMapper.readValue(file, CalculateFaceData.class);
+
+             frame.setLocation(cfData.x,cfData.y);
             cardTypeCalc.show(cardPanel, cfData.nameKeyPanel);
             nameKeyPanel=cfData.nameKeyPanel;
             switch (nameKeyPanel){

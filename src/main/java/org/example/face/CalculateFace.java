@@ -1,7 +1,9 @@
 package org.example.face;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.core.jackson.Log4jJsonObjectMapper;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MySizePanel;
 
@@ -48,6 +50,9 @@ public class CalculateFace extends JFrame {
         frame.setTitle("КАЛЬКУЛЯТОР");
         nameKeyPanel="Basic";
 
+/**
+ * serialize when windowClosing
+  */
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter()
@@ -60,21 +65,29 @@ public class CalculateFace extends JFrame {
 //                     var outStream = new OutputStreamWriter(out, "UTF-8");
 //                     var bw = new BufferedWriter(outStream)
                 ){
-                    CalculateFaceData cfData = new CalculateFaceData();
-                    cfData.x=frame.getLocation().x;
-                    cfData.y=frame.getLocation().y;
-                    cfData.nameKeyPanel=nameKeyPanel;
-                    cfData.panelLog_isOpen=jchbLog.isSelected();
-                        log.info(nameKeyPanel);
-                        log.info(jchbLog.isSelected());
-                    cfData.textLog=textPanel.getTextLog().getText();
-                        log.info(cfData.textLog);
-                    cfData.textInput=textPanel.getTextInput().getText();
+
+                    CalculateFaceData cfData =CalculateFaceData.builder()
+                        .x(frame.getLocation().x)
+                        .y(frame.getLocation().y)
+                        .nameKeyPanel( nameKeyPanel)
+                        .panelLog_isOpen( jchbLog.isSelected())
+                        .textLog (textPanel.getTextLog().getText())
+                        .textInput(textPanel.getTextInput().getText())
+                        .textResult (textPanel.getTextResult().getText())
+                        .build();
+
+                    log.info(nameKeyPanel);
+                    log.info(jchbLog.isSelected());
+                    log.info(cfData.textLog);
                     log.info(cfData.textInput);
-                    cfData.textResult=textPanel.getTextResult().getText();
                     log.info(cfData.textResult);
 
                     out.writeObject(cfData);
+
+//                    ObjectMapper objectMapper = new ObjectMapper();
+//                    objectMapper.writeValue(new File("src/test/resources/calculateFaceData.json"),cfData);
+
+
 
                 } catch (Exception exception) {
                     exception.printStackTrace();

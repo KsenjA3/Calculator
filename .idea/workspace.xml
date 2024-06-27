@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="view_serialize">
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="FuLlView_serialize">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator_logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFaceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFaceData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719413097392</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="FuLlView_serialize">
+      <created>1719467170817</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1719467170817</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,7 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ButtonsEngineerTest" />
     <MESSAGE value="ButtonsEngineer_Test" />
     <MESSAGE value="ButtonsEngineer_PI" />
     <MESSAGE value="clean_Log" />
@@ -456,7 +458,8 @@
     <MESSAGE value="lombok_getter" />
     <MESSAGE value="xy_serialize" />
     <MESSAGE value="view_serialize" />
-    <option name="LAST_COMMIT_MESSAGE" value="view_serialize" />
+    <MESSAGE value="FuLlView_serialize" />
+    <option name="LAST_COMMIT_MESSAGE" value="FuLlView_serialize" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,53 +886,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>56</line>
+          <line>61</line>
           <option name="timeStamp" value="507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>57</line>
+          <line>62</line>
           <option name="timeStamp" value="508" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>58</line>
+          <line>63</line>
           <option name="timeStamp" value="509" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>134</line>
+          <line>157</line>
           <option name="timeStamp" value="515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>136</line>
+          <line>159</line>
           <option name="timeStamp" value="516" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>135</line>
+          <line>158</line>
           <option name="timeStamp" value="517" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="547" />
+          <line>96</line>
+          <option name="timeStamp" value="558" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="549" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="550" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="557" />
+          <line>97</line>
+          <option name="timeStamp" value="559" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

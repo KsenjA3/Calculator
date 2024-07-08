@@ -190,6 +190,7 @@ public class CalculateFace extends JFrame {
             widthSize=keyPanelBasic.getWidthKeyPanel();
             exception.printStackTrace();}
         repack();
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 

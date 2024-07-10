@@ -9,12 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="fuLlView_serialize_json">
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="FuLlView_serialize">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calculator_calculate.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_calculate.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Calculator_logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_logs.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,11 +54,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "JUnit.java in Calculator.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/JavaProjects/Chat",
+    "last_opened_file_path": "D:/JavaProjects/Project1",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -112,19 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WriteServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.study.WriteServer" />
-      <module name="Calculator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.study.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <option name="PACKAGE_NAME" value="" />
@@ -133,11 +127,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="java in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Calculator" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.java in Calculator" />
         <item itemvalue="JUnit.All in Calculator" />
-        <item itemvalue="Application.WriteServer" />
         <item itemvalue="Application.SerializeJFrame" />
         <item itemvalue="Application.SerializedJFrame" />
       </list>
@@ -892,23 +894,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>62</line>
+          <line>63</line>
           <option name="timeStamp" value="507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>63</line>
+          <line>64</line>
+          <option name="timeStamp" value="508" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
+          <line>65</line>
           <option name="timeStamp" value="509" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>144</line>
+          <line>146</line>
           <option name="timeStamp" value="515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
-          <line>145</line>
+          <line>148</line>
+          <option name="timeStamp" value="516" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
+          <line>147</line>
           <option name="timeStamp" value="517" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="561" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -921,9 +938,6 @@
     <SUITE FILE_PATH="coverage/Calculator$CalculateTest.ic" NAME="CalculateTest Coverage Results" MODIFIED="1708281899642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Calculator$CalculateBasicInputTest.ic" NAME="CalculateBasicInputTest Coverage Results" MODIFIED="1709023576684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>calculate.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Calculator$WriteServer.ic" NAME="WriteServer Coverage Results" MODIFIED="1719841283419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>org.study.*</FILTER>
     </SUITE>
   </component>
 </project>

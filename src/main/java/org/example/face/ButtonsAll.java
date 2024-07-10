@@ -44,10 +44,10 @@ import javax.swing.*;
      }
 
      void replaceRepeatedSign_simple () {
-         strInput=StringUtils.removeEnd(strInput, "-");
-         strInput=StringUtils.removeEnd(strInput, "+");
-         strInput=StringUtils.removeEnd(strInput, "*");
-         strInput=StringUtils.removeEnd(strInput, "/");
+         strInput=StringUtils.removeEnd(strInput, " -");
+         strInput=StringUtils.removeEnd(strInput, " +");
+         strInput=StringUtils.removeEnd(strInput, " *");
+         strInput=StringUtils.removeEnd(strInput, " /");
      }
      void replaceRepeatedSign_exceptSimple () {
          strInput=StringUtils.removeEnd(strInput, "%");

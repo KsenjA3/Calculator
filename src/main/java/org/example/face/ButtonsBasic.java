@@ -342,28 +342,28 @@ public class ButtonsBasic extends ButtonsAll{
                     if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
-                    printSign("+");
+                    printSign(" +");
                     func = Operations::plus;
                 }
                 case " - " -> {
                     if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
-                    printSign("-");
+                    printSign(" -");
                     func = Operations::minus;
                 }
                 case " * " -> {
                     if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
-                    printSign("*");
+                    printSign(" *");
                     func = Operations::multiply;
                 }
                 case " / " -> {
                     if (strInput.trim().equals(""))  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
-                    printSign("/");
+                    printSign(" /");
                     func = Operations::divide;
                 }
                 case " % " -> {

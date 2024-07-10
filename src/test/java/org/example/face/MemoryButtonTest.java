@@ -45,7 +45,7 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryAdd.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -90,21 +90,21 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+235MR
@@ -116,42 +116,42 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b5.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+PI MR
@@ -163,28 +163,28 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPi.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        assertEquals("2+5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+2²MR
@@ -196,35 +196,35 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b2.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bx2.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 //2+2²MR
-        assertEquals("2+2²", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+2²", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("6", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2^MR
@@ -236,21 +236,21 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bxn.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 //2^MR
-        assertEquals("2^5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2^5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("32", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2 1/x MR
@@ -262,21 +262,21 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bDivX.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 //2 1/x MR
-        assertEquals("2^(-1)", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2^(-1)", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("0.5", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+(MR
@@ -288,28 +288,28 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(40);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(40);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(50);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(30);
 //2+(MR
-        assertEquals("2+(5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+(5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("7", panelKey.buttonsEngineer.countResult);
     }
     @Test   //2+(3-1)MR
@@ -321,56 +321,56 @@ public class MemoryButtonTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bPlus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b3.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMinus.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.b1.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
-        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+        txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
         bot.mouseMove(locate.x+10,locate.y+10);
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 //2+(3-1)MR
-        assertEquals("2+(3-1)*5", panelKey.buttonsEngineer.strInput.trim());
+        assertEquals("2+(3-1)*5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("12", panelKey.buttonsEngineer.countResult);
     }
 
@@ -383,7 +383,7 @@ public class MemoryButtonTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        Thread.sleep(25);
 //
-//        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+//        txt.setText(panelKey.buttonsEngineer.strInput);
 //        locate=panelKey.buttonsEngineer.bMemoryAdd.getLocationOnScreen();
 //        bot.mouseMove(locate.x+10,locate.y+10);
 //        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -399,14 +399,14 @@ public class MemoryButtonTest {
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        Thread.sleep(25);
 //
-//        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+//        txt.setText(panelKey.buttonsEngineer.strInput);
 //        locate=panelKey.buttonsEngineer.bDivide.getLocationOnScreen();
 //        bot.mouseMove(locate.x+10,locate.y+10);
 //        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 //        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 //        Thread.sleep(25);
 //
-//        txt.setText(panelKey.buttonsEngineer.strInput.trim());
+//        txt.setText(panelKey.buttonsEngineer.strInput);
 //        locate=panelKey.buttonsEngineer.bMemoryHold.getLocationOnScreen();
 //        bot.mouseMove(locate.x+10,locate.y+10);
 //        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
@@ -425,7 +425,7 @@ public class MemoryButtonTest {
 ////
 ////        assertEquals("Division by zero", ex.getMessage());
 //
-//        assertEquals("2/0", panelKey.buttonsEngineer.strInput.trim());
+//        assertEquals("2/0", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
 //        assertEquals(0, panelKey.buttonsEngineer.countResult);
 //    }
 

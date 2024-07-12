@@ -1,10 +1,11 @@
 package org.example.calculate;
 
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.example.face.MyException;
 import org.apache.commons.lang3.StringUtils;
+import org.example.fitting.MyFormatNumbers;
 
 
 /*
@@ -17,25 +18,43 @@ ORDER COUNT
 6 +, -
  */
 
-
+@Log4j2
 public class CalculateInput {
-    private static final Logger logger = LogManager.getLogger(CalculateInput.class);
+
     private final CalculateBasic calculateBasic;
     private final CalculateEngineer calculateEngineer;
+
+    @Setter
+    private String format;
 
     public CalculateInput() {
          calculateBasic = new CalculateBasic();
          calculateEngineer= new CalculateEngineer();
+         format= MyFormatNumbers.FORMAT_DEC.get();
     }
 
 
     public String calculateInput (String strInput) throws MyException {
-        logger.log(Level.INFO,"Level.INFO: выполнение расчеов calculateInput = {}",strInput);
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
         if (StringUtils.isEmpty(strInput))
             return "";
+
+        switch (format)  {
+            case "hex"-> {
+                log.info("hex");
+            }
+            case "dec"->{
+                log.info("dec");
+            }
+            case "bin"->{
+                log.info("bin");
+            }
+        }
+
+
+
 
 //Braces
         String str;
@@ -61,14 +80,14 @@ public class CalculateInput {
             strInput=strInput.substring(0, nBrace) + countResult;
         }
 
-        logger.debug("logger.debug: после расчетов скобок calculateInput: {} ",strInput);
+        log.debug("logger.debug: после расчетов скобок calculateInput: {} ",strInput);
 
         while (StringUtils.containsAny(strInput,"³√", "cos", "sin", "tg", "ln","lg")){
             if (StringUtils.contains(strInput,"³√")) {
                 try {
                     strInput = calculateEngineer.calculateEngineer(strInput, "³√");
                 } catch (MyException exc) {
-                    logger.error("logger.error ³√ недозволеного большого числа: {}",strInput);
+                    log.error("logger.error ³√ недозволеного большого числа: {}",strInput);
                     throw new MyException("³√ недозволеного большого числа");
                 }
 
@@ -78,7 +97,7 @@ public class CalculateInput {
                     strInput = calculateEngineer.calculateEngineer(strInput, "cos");
                 }
                 catch (MyException exc) {
-                    logger.error("logger.error сos недозволеного большого числа: {}",strInput);
+                    log.error("logger.error сos недозволеного большого числа: {}",strInput);
                     throw new MyException ("cos недозволеного большого числа");
                 }
             }
@@ -87,7 +106,7 @@ public class CalculateInput {
                     strInput = calculateEngineer.calculateEngineer(strInput, "sin");
                 }
                 catch (MyException exc) {
-                    logger.error("logger.error sin недозволеного большого числа: {}",strInput);
+                    log.error("logger.error sin недозволеного большого числа: {}",strInput);
                     throw new MyException ("sin недозволеного большого числа");
                 }
             }
@@ -98,11 +117,11 @@ public class CalculateInput {
                 catch (MyException exc) {
                     System.out.println("tg catch");
                     if (exc.getMessage().equals("tg INFINITY")) {
-                        logger.error("logger.error tg недозволеного большого числа: {}", strInput);
+                        log.error("logger.error tg недозволеного большого числа: {}", strInput);
                         throw new MyException("tg недозволеного большого числа");
                     }
                     if (exc.getMessage().equals("tg не определен")) {
-                        logger.error("logger.error tg не определен: {}", strInput);
+                        log.error("logger.error tg не определен: {}", strInput);
                         throw new MyException("tg не определен");
                     }
                 }
@@ -114,12 +133,12 @@ public class CalculateInput {
                 }
                 catch (MyException exc) {
                     if (exc.getMessage().equals("lg INFINITY")){
-                        logger.error("logger.error lg недозволеного большого числа: {}", strInput);
+                        log.error("logger.error lg недозволеного большого числа: {}", strInput);
                         throw new MyException ("lg недозволеного большого числа");
                     }
 
                     if (exc.getMessage().equals("lg NAN") | exc.getMessage().equals("lg 0")){
-                        logger.error("logger.error lg не определен: {}", strInput);
+                        log.error("logger.error lg не определен: {}", strInput);
                         throw new MyException ("lg не определен");
                     }
                 }
@@ -131,12 +150,12 @@ public class CalculateInput {
                 }
                 catch (MyException exc) {
                     if (exc.getMessage().equals("ln INFINITY")){
-                        logger.error("logger.error ln недозволеного большого числа: {}", strInput);
+                        log.error("logger.error ln недозволеного большого числа: {}", strInput);
                         throw new MyException ("ln недозволеного большого числа");
                     }
 
                     if (exc.getMessage().equals("ln NAN") | exc.getMessage().equals("ln 0")){
-                        logger.error("logger.error ln не определен: {}", strInput);
+                        log.error("logger.error ln не определен: {}", strInput);
                         throw new MyException ("ln не определен");
                     }
 
@@ -159,15 +178,20 @@ public class CalculateInput {
                     strInput=calculateEngineer.calculateEngineer(strInput,"!");
                 }
                 catch (NumberFormatException exc) {
-                    logger.error("logger.error неверный формат ввода факториала: {}", strInput);
+                    log.error("logger.error неверный формат ввода факториала: {}", strInput);
                     throw new MyException ("неверный формат ввода факториала");
                 }
             }
         }
-        logger.log(Level.INFO,"Level.INFO: before basic расчеов calculateInput = {}",strInput);
+
+
+
+
+
+        log.log(Level.INFO,"Level.INFO: before basic расчеов calculateInput = {}",strInput);
         countResult =calculateBasic.calculateBasicInput(strInput);
         countResult=Operations.printNumber(countResult);
-        logger.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
+        log.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
         return countResult;
     }
 

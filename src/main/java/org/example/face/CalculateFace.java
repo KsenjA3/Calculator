@@ -17,8 +17,8 @@ import java.nio.charset.StandardCharsets;
 public class CalculateFace extends JFrame {
 
 
-    /**
-     * Components
+    /**Components
+     *
      */
     private final  JFrame frame;
     private final CardLayout cardTypeCalc;
@@ -28,8 +28,8 @@ public class CalculateFace extends JFrame {
     private final PanelKeyIT keyPanelIT;
     private final PanelTextLog textPanel;
 
-    /**
-     * MENU
+    /**MENU
+     *
      */
     private final JMenuBar jmb;
     private JPopupMenu jpu;
@@ -45,14 +45,17 @@ public class CalculateFace extends JFrame {
 
 
     public CalculateFace () {
-            //create frame
+
+        /**create frame
+
+         */
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame();
         frame.setTitle("КАЛЬКУЛЯТОР");
         file=new File("src/test/resources/calculateFaceData.json");
 
-/**
- * serialize when windowClosing
+        /**serialize when windowClosing
+ *
   */
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -96,14 +99,20 @@ public class CalculateFace extends JFrame {
             }
         });
 
-        //create Content Pane
+        /**create Content Pane
+         *
+         */
         Container container = getContentPane();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         frame.add(Box.createVerticalGlue());
         frame.setContentPane(container);
 
-            // create Panels
+        /**create Panels
+         *
+          */
         textPanel = new PanelTextLog();
+        new KeyboardInput(textPanel);
+
         keyPanelBasic = new PanelKeyBasic(textPanel);
             keyPanelBasic.setName("Basic");
         keyPanelEngineer = new PanelKeyEngineer(textPanel);
@@ -112,19 +121,17 @@ public class CalculateFace extends JFrame {
             keyPanelIT.setName("IT");
 
         cardTypeCalc = new CardLayout();            //компоновка
-        cardPanel = new JPanel(new CardLayout());   //колода
+        cardPanel = new JPanel();   //колода
         cardPanel.setLayout(cardTypeCalc);          //компоновка колоды
             cardPanel.add(keyPanelBasic.getKeyPanel(), keyPanelBasic.getName());
             cardPanel.add(keyPanelEngineer.getKeyPanel(),keyPanelEngineer.getName());
             cardPanel.add(keyPanelIT.getKeyPanel(),keyPanelIT.getName());
-
-          new KeyboardInput(textPanel);
-
-
         container.add(textPanel.getTextPanel(widthSize));
         container.add(cardPanel);
-        
-        //MENU
+
+        /**MENU
+         *
+         */
         jmb = new JMenuBar();
         makeViewMenu();
         makeCorrectMenu();
@@ -136,8 +143,7 @@ public class CalculateFace extends JFrame {
         mouseListenerPopupMenu(textPanel.getTextLog(),textPanel.getTextInput(),textPanel.getTextResult());
 
 
-        /*
-         INITIAL calculation
+        /** INITIAL calculation
          chose card to init calculator
          widthSizeText = width frame and other components
          setting height textPanel (height keyPanel = const)
@@ -149,7 +155,7 @@ public class CalculateFace extends JFrame {
             ObjectMapper objectMapper = new ObjectMapper();
             CalculateFaceData cfData = objectMapper.readValue(file, CalculateFaceData.class);
 
-             frame.setLocation(cfData.x,cfData.y);
+            frame.setLocation(cfData.x,cfData.y);
             cardTypeCalc.show(cardPanel, cfData.nameKeyPanel);
             nameKeyPanel=cfData.nameKeyPanel;
             switch (nameKeyPanel){
@@ -214,30 +220,38 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextInput(textPanel.getTextInput().getText());
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
+
                     cardTypeCalc.show(cardPanel, keyPanelBasic.getName());
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     nameKeyPanel=keyPanelBasic.getName();
                     repack();
                 }
                 case "Инженерный" -> {
+
                     if (textPanel.getTextResult().equals("0.0")) {
                         textPanel.setTextInput(" ");
                     }else {
                         textPanel.setTextInput(textPanel.getTextInput().getText());
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
+
                     cardTypeCalc.show(cardPanel, keyPanelEngineer.getName());
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     nameKeyPanel=keyPanelEngineer.getName();
                     repack();
                 }
                 case "IT" -> {
-                    if (textPanel.getTextResult().equals("0.0")) {
-                        textPanel.setTextInput(" ");
-                    }else {
-                        textPanel.setTextInput(textPanel.getTextInput().getText());
-                        textPanel.setTextResult(textPanel.getTextResult().getText());
-                    }
+                    textPanel.setTextInput("   ");
+                    textPanel.setTextResult("   ");
+
+                    keyPanelIT.bDec.setSelected(true);
+                    keyPanelIT.buttonsIT.blockedAll(keyPanelIT.listButtons.get("A"), keyPanelIT.listButtons.get("B"),
+                                                    keyPanelIT.listButtons.get("C"), keyPanelIT.listButtons.get("D"),
+                                                    keyPanelIT.listButtons.get("E"), keyPanelIT.listButtons.get("F"),
+                                                    keyPanelIT.listButtons.get("And"), keyPanelIT.listButtons.get("Or"),
+                                                    keyPanelIT.listButtons.get("Xor"), keyPanelIT.listButtons.get("Not"),
+                            keyPanelIT.listButtons.get("."));
+
                     cardTypeCalc.show(cardPanel, keyPanelIT.getName());
                     widthSize = keyPanelIT.getWidthKeyPanel();
                     nameKeyPanel=keyPanelIT.getName();

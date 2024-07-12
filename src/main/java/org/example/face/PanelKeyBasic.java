@@ -10,8 +10,8 @@ public class PanelKeyBasic extends PanelKeyGeneral{
     ButtonsBasic buttonsBasic;
     private JPanel keyPanelBasic;
 
-    /**
-     * Basic PanelKey
+    /**Basic PanelKey
+     *
      */
     PanelKeyBasic(PanelTextLog textPanel) {
         this.textPanel=textPanel;
@@ -21,8 +21,7 @@ public class PanelKeyBasic extends PanelKeyGeneral{
         keyPanelBasic = makePanelGeneral(listButtons);
     }
 
-    /**
-     * get  KeyPanel
+    /**get  KeyPanel
      * @return Basic KeyPanel
      */
     JPanel getKeyPanel() {
@@ -30,8 +29,7 @@ public class PanelKeyBasic extends PanelKeyGeneral{
     }
 
 
-    /**
-     * get Width Basic KeyPanel
+    /**get Width Basic KeyPanel
      * @return Width KeyPanel
      */
     int getWidthKeyPanel () {

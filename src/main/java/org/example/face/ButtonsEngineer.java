@@ -1,5 +1,6 @@
 package org.example.face;
 
+import lombok.extern.log4j.Log4j2;
 import org.example.calculate.Operations;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
@@ -9,8 +10,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 
+@Log4j2
 class ButtonsEngineer extends ButtonsBasic {
-    private PanelTextLog textPanel;
+    private final PanelTextLog textPanel;
 
     protected ButtonsEngineer(PanelTextLog textPanel) {
         super(textPanel);
@@ -101,7 +103,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     countBrace ++;
                     str =textPanel.getTextInput().getText().trim();
 
-                    if (str.length()>=1)
+                    if (!str.isEmpty())
                         switch (str.charAt(str.length() - 1)) {
                             case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ')', '²', '³', '!' ->{
                                 unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPi,bPercent,bRadical); // after blocked x²,x³,1/x,x!
@@ -124,7 +126,7 @@ class ButtonsEngineer extends ButtonsBasic {
                 }
                 case "π" ->{
 
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                          StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".")) {
 // логика замены цифры, находящейся перед PI, на число PI
 //                        hashMap = Operations.findNumber_beforeSign(str);
@@ -150,7 +152,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult="=" + countResult;
                         unblockedAll(bPercent);       // work  % without mistakes
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("lMyException: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                         b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -162,7 +164,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case "x²" ->{
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -176,7 +178,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("MyException: {}", myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -188,7 +190,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case  "x³" ->{
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -201,7 +203,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("MyException: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -233,7 +235,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
 
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("MyException: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         textPanel.setTextResult(strResult);
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -249,7 +251,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
                 }
                 case "xⁿ" ->{
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -258,7 +260,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     func = Operations::pow;
                 }
                 case "1/x" ->{
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
@@ -271,7 +273,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult="=" + bigDecimal;
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch ( ArithmeticException  ex){
-                        logger.error("logger.error ArithmeticException: {}",ex.getMessage());
+                        log.error("logger.error ArithmeticException: {}",ex.getMessage());
                         if (ex.getMessage().equals("Division by zero")) {
                             strResult = "делить на 0 нельзя";
                             blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
@@ -282,8 +284,8 @@ class ButtonsEngineer extends ButtonsBasic {
                             );
                         }
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
-                    strResult = myException.getMessage();
+                        log.error("MyException: {}",myException.getMessage());
+                        strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
                     try {
@@ -295,7 +297,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setTextResult(strResult);
                 }
                 case "x!" ->{
-                    if (strInput.trim().equals(""))  {
+                    if (strInput.trim().isEmpty())  {
                         strInput="0";
                     }
 
@@ -312,7 +314,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -330,7 +332,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                         StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }
@@ -342,7 +344,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                             StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }
@@ -353,7 +355,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                             StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }
@@ -365,7 +367,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                             StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }
@@ -376,7 +378,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                             StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }
@@ -387,7 +389,7 @@ class ButtonsEngineer extends ButtonsBasic {
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().equals("") &&
+                    if (!strInput.trim().isEmpty() &&
                             StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
                         strInput = strInput +"*";
                     }

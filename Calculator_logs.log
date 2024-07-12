@@ -2092,3 +2092,70 @@
 2024-07-11 00:27:30 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
 2024-07-11 00:27:30 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   5 *6 +44444444444444 +88888888888 -444444444444444 +6666
 2024-07-11 00:27:30 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =-399911111104416
+2024-07-11 00:29:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-07-11 00:29:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-07-11 00:29:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg недозволеного большого числа
+2024-07-11 00:29:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg не определен
+2024-07-11 00:29:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln не определен
+2024-07-11 00:29:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ³√ недозволеного большого числа
+2024-07-11 00:29:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln недозволеного большого числа
+2024-07-11 00:29:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: tg недозволеного большого числа
+2024-07-11 00:29:11 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-07-11 00:29:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: ln не определен
+2024-07-11 00:29:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: lg не определен
+2024-07-11 00:29:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: tg не определен
+2024-07-11 00:29:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-07-11 00:29:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error Exception: неверный формат ввода факториала
+2024-07-11 00:29:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsAll - logger.error ArithmeticException: Division by zero
+2024-07-11 21:27:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-07-11 21:27:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-11 21:27:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   5 *6 +44444444444444 +88888888888 -444444444444444 +6666
+2024-07-11 21:27:03 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =-399911111104416
+2024-07-12 10:32:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 10:32:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 10:32:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99
+2024-07-12 10:32:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =174
+2024-07-12 16:49:28 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 16:49:28 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 16:49:28 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 16:49:28 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:05:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:05:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:05:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:05:38 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:05:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-07-12 20:05:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:05:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:05:52 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:06:08 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:06:08 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:06:08 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:06:08 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:07:04 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:07:04 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:07:04 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:07:04 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:07:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:07:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:07:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:07:27 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:19:56 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-07-12 20:19:56 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:19:56 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:19:56 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:23:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:23:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:23:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:23:39 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 20:33:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-12 20:33:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 20:33:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   75 +99 +5 -100
+2024-07-12 20:33:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =79
+2024-07-12 23:04:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Engineer
+2024-07-12 23:04:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 23:04:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -  
+2024-07-12 23:04:19 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -  
+2024-07-12 23:21:47 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Basic
+2024-07-12 23:21:47 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-12 23:21:47 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   66.3 +0.36
+2024-07-12 23:21:47 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =66.66

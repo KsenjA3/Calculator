@@ -14,6 +14,7 @@ abstract class PanelKeyGeneral extends JPanel{
     private JPanel keyPanelGeneral;
     protected GridBagLayout gbag;
     protected GridBagConstraints gbc;
+
     protected PanelKeyGeneral(){
          gbag = new GridBagLayout();
          gbc = new GridBagConstraints();
@@ -23,8 +24,7 @@ abstract class PanelKeyGeneral extends JPanel{
         gbc.weighty = 100;
     }
 
-    /**
-     * get General KeyPanel
+    /**get General KeyPanel
      * @return Basic KeyPanel
      */
    JPanel makePanelGeneral (HashMap<String,JButton> listButtons) {

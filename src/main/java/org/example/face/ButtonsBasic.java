@@ -1,6 +1,7 @@
 package org.example.face;
 
 import lombok.SneakyThrows;
+import lombok.extern.log4j.Log4j2;
 import org.example.calculate.CalculateInput;
 import org.example.calculate.CalculateBasic;
 import org.example.calculate.Operations;
@@ -17,13 +18,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.util.HashMap;
-
+@Log4j2
 public class ButtonsBasic extends ButtonsAll{
 
-    private PanelTextLog textPanel;
+    private final PanelTextLog textPanel;
 
-    /**
-     * restriction amount  input figures to number
+    /**restriction amount  input figures to number
+     *
      */
     protected int N;
     protected int countSqrt;        //no more than 3
@@ -48,8 +49,8 @@ public class ButtonsBasic extends ButtonsAll{
     protected String strPersentFrom;
     protected String strBeforePersent;
 
-    /**
-     * object for calculation
+    /**object for calculation
+     *
      */
     protected CalculateInput calculateCurrent;
     protected CalculateBasic calculateBasic;
@@ -154,8 +155,8 @@ public class ButtonsBasic extends ButtonsAll{
             unblockedAll(bMemoryHold);
     }
 
-    /**
-     *create Button
+    /**create Button
+     * every button is put into HashMap listButtons
      * @param bAction behavior button
      * @param name object to link InputMap with ActionMap
      * @param keyStroke name key linked with button
@@ -252,7 +253,7 @@ public class ButtonsBasic extends ButtonsAll{
                                 bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
                     }catch (NullPointerException exception){    }
                 }catch ( ArithmeticException  ex){
-                    logger.error("logger.error ArithmeticException: {}",ex.getMessage());
+                    log.error("logger.error ArithmeticException: {}",ex.getMessage());
                     if (ex.getMessage().equals("Division by zero")) {
                         strResult = "делить на 0 нельзя";
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
@@ -264,7 +265,7 @@ public class ButtonsBasic extends ButtonsAll{
                     }
                 }catch (MyException myException){
                     strResult = myException.getMessage();
-                    logger.error("logger.error Exception: {}",myException.getMessage());
+                    log.error("logger.error Exception: {}",myException.getMessage());
 
                     blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                             b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -339,35 +340,35 @@ public class ButtonsBasic extends ButtonsAll{
                     countSqrt++;
                 }
                 case " + " -> {
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign(" +");
                     func = Operations::plus;
                 }
                 case " - " -> {
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign(" -");
                     func = Operations::minus;
                 }
                 case " * " -> {
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign(" *");
                     func = Operations::multiply;
                 }
                 case " / " -> {
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     printSign(" /");
                     func = Operations::divide;
                 }
                 case " % " -> {
-                    if (strInput.trim().equals(""))  strInput="0";
+                    if (strInput.trim().isEmpty())  strInput="0";
                     unblockedAll(bPercent);       // work  % without mistakes
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
@@ -398,7 +399,7 @@ public class ButtonsBasic extends ButtonsAll{
                             }
 
                         }catch (MyException myException){
-                            logger.error("logger.error Exception: {}",myException.getMessage());
+                            log.error("logger.error Exception: {}",myException.getMessage());
                             strResult = myException.getMessage();
                             blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                     b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -485,7 +486,7 @@ public class ButtonsBasic extends ButtonsAll{
                         printResult ();
                         print_SbLog ();
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -580,7 +581,7 @@ public class ButtonsBasic extends ButtonsAll{
                                         bChageSign,braceOpen,braceClose);
                             }catch (NullPointerException exception){  }
                         }
-                        logger.error("logger.error ArithmeticException: {}",ex.getMessage());
+                        log.error("logger.error ArithmeticException: {}",ex.getMessage());
                     }catch (MyException myException){
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
@@ -617,7 +618,7 @@ public class ButtonsBasic extends ButtonsAll{
                 }
                 case "C" -> {
                     strInput=textPanel.getTextInput().getText();
-                    if (strInput.length()==0) break;
+                    if (strInput.isEmpty()) break;
                     if (StringUtils.endsWith(strInput,"(")){ countBrace--; }
                     if (StringUtils.endsWith(strInput,")")){ countBrace++; }
                     if (StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".")){
@@ -639,7 +640,7 @@ public class ButtonsBasic extends ButtonsAll{
                         bigDecimal=new BigDecimal(countResult,Operations.mathContext);
                         strResult="=" + bigDecimal;
                     }catch (MyException myException){
-                        logger.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("logger.error Exception: {}",myException.getMessage());
                         strResult = myException.getMessage();
                         blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
                                 b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
@@ -669,7 +670,7 @@ public class ButtonsBasic extends ButtonsAll{
      * block keys on panel calculator
      * @param v blocking keys
      */
-     static void blockedAll(JButton... v) {
+     void blockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(false);
     }
@@ -678,10 +679,11 @@ public class ButtonsBasic extends ButtonsAll{
      * unblock keys on panel calculator
      * @param v unblocking keys
      */
-     static void unblockedAll(JButton... v) {
+     void unblockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(true);
     }
+
      void printResult (){
          bigDecimal=new BigDecimal(countResult,Operations.mathContext);
         strResult="=" +bigDecimal;
@@ -690,7 +692,7 @@ public class ButtonsBasic extends ButtonsAll{
         textPanel.setTextResult(strResult);
 
          unblockedAll(bPercent);       // work  % without mistakes
-         strNumber = "0";              // if after = go ".
+         strNumber = "0";              // if after = go.
          N=0;
          func = null;
 //         strInput="   ";

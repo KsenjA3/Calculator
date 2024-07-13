@@ -9,8 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -170,7 +168,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          keyPanel.add(makePanelGeneral(listButtons));
 
          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
-                 buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot);
+                 buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot, buttonsIT.bPoint);
 
      }
 

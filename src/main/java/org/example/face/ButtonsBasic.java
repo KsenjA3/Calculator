@@ -9,6 +9,7 @@ import org.example.calculate.calculate;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
 import org.apache.commons.lang3.StringUtils;
+import org.example.fitting.MyFormatNumbers;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -209,39 +210,59 @@ public class ButtonsBasic extends ButtonsAll{
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = e.getActionCommand();
-
             strInput= textPanel.getTextInput().getText();
-            if (strInput.endsWith("%")   |   strInput.startsWith("±")
-                    | ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null)
-               ) strInput="   ";
-            if (strInput.endsWith(")"))
-                strInput=strInput+"*";
-
-
             textPanel.setFontBoldInput ();   //alter fonts
             countSqrt=0;
+
+            if (strInput.endsWith("%")   |   strInput.startsWith("±")  |
+               ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null))
+                        strInput="   ";
+
+            if (strInput.endsWith(")"))
+                        strInput=strInput+"*";
+
+
             if (N < 15) {
                 N++;
-
                 strNumber = strNumber + name;
-                if (strNumber.equals("0.") && name.equals(".")) {    //output in beginning
-                    strInput=strInput + strNumber;
-                }
-                else if (StringUtils.equalsAny(strNumber.trim(),"00","01","02","03","04","05","06","07","08","09") ) {
-                    strNumber = strNumber.trim().substring(1);
-                    if ( StringUtils.endsWithAny(strInput,"0", " ")) {
-                         strInput = strInput.substring(0, strInput.length() - 1) + name;
-                         N--;
-                     }else   strInput=strInput + name;
-                }
-                else{
+
+                /** IT panel binary numbers
+                 * ввод нуля вначале числа
+                 */
+                if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())){
                     strInput=strInput + name;
                 }
+                else {
+                    /**начало ввода с точки
+                     *
+                     */
+                    if (strNumber.equals("0.") && name.equals(".")) {    // in beginning
+                        strInput = strInput + strNumber;
+                    }
+                    /**исключить  ноль в начале числа
+                     *
+                     */
+                    else if (StringUtils.equalsAny(strNumber.trim(), "00", "01", "02", "03", "04", "05", "06", "07", "08", "09")) {
+                        strNumber = strNumber.trim().substring(1);
+                        if (StringUtils.endsWithAny(strInput, "0", " ")) {
+                            strInput = strInput.substring(0, strInput.length() - 1) + name;
+                            N--;
+                        } else strInput = strInput + name;
+                    }
+                    else {  strInput = strInput + name;    }
+                }
+
+                System.out.println(strNumber);
+                System.out.println(strInput);
+
 //                dNumber = Double.parseDouble(strNumber);
                 textPanel.setTextInput(strInput);
 
 
-                try {                                       // except divide for 0
+                /** divide for 0
+                 *
+                 */
+                try {
                     countResult = calculateCurrent.calculateInput(strInput);
                     bigDecimal=new BigDecimal(countResult,Operations.mathContext);
                     strResult="=" + bigDecimal;
@@ -252,7 +273,8 @@ public class ButtonsBasic extends ButtonsAll{
                         unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
                                 bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
                     }catch (NullPointerException exception){    }
-                }catch ( ArithmeticException  ex){
+                }
+                catch ( ArithmeticException  ex){
                     log.error("logger.error ArithmeticException: {}",ex.getMessage());
                     if (ex.getMessage().equals("Division by zero")) {
                         strResult = "делить на 0 нельзя";
@@ -263,7 +285,8 @@ public class ButtonsBasic extends ButtonsAll{
                                     bChageSign,braceOpen,braceClose);
                         }catch (NullPointerException exception){  }
                     }
-                }catch (MyException myException){
+                }
+                catch (MyException myException){
                     strResult = myException.getMessage();
                     log.error("logger.error Exception: {}",myException.getMessage());
 
@@ -276,7 +299,6 @@ public class ButtonsBasic extends ButtonsAll{
                 }
 
                 textPanel.setTextResult(strResult);
-
 
                 if (name.equals(".")) {
                     blockedAll(bPoint);   //two points couldn't bу in one number
@@ -315,10 +337,15 @@ public class ButtonsBasic extends ButtonsAll{
             if (strInput.endsWith("%")   |   strInput.startsWith("±"))
                 strInput=countResult;
 
-
-            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
-                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,
-                    bResult, bMemoryAdd );
+            if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get()) ||
+                    calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DEC.get()) ||
+                    calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())){
+                unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bMemoryAdd, bResult);
+                blockedAll(bPoint );
+            }
+            else
+                unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                        b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint, bResult, bMemoryAdd );
             try {
                 unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
                         bChageSign,braceOpen);
@@ -594,8 +621,16 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setTextResult(strResult);
                 }
                 case "AC" -> {
-                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
-                            b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint, bResult, bMemoryAdd );
+                    if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get()) ||
+                            calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DEC.get()) ||
+                            calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())){
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bMemoryAdd );
+                        blockedAll(bPoint );
+                    }
+                    else
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint, bResult, bMemoryAdd );
+
                     try {
                         unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3, bChageSign,braceOpen);
                     }catch (NullPointerException ex){  }
@@ -651,8 +686,17 @@ public class ButtonsBasic extends ButtonsAll{
                     }
                     textPanel.setTextResult(strResult);
 
-                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
-                            b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bResult, bMemoryAdd );
+                    if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get()) ||
+                        calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DEC.get()) ||
+                        calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())){
+                            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bMemoryAdd );
+                            blockedAll(bPoint );
+                    }
+                    else
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,    // after blocked x²,x³,1/x,x!
+                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint, bResult, bMemoryAdd );
+
+
                     try {
                         unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3, bChageSign,braceOpen,braceClose);
                     }catch (NullPointerException ex){  }

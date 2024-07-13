@@ -17,7 +17,7 @@ public class Check {
 //        System.out.println(check.stringHex_to_decimal("C8"));
 
 
-        System.out.println(0x47); //16->10
+        System.out.println(0xf0); //16->10
 
     }
 

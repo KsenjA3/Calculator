@@ -155,6 +155,7 @@ public class CalculateFace extends JFrame {
             ObjectMapper objectMapper = new ObjectMapper();
             CalculateFaceData cfData = objectMapper.readValue(file, CalculateFaceData.class);
 
+//            frame.setLocation(100,100);
             frame.setLocation(cfData.x,cfData.y);
             cardTypeCalc.show(cardPanel, cfData.nameKeyPanel);
             nameKeyPanel=cfData.nameKeyPanel;
@@ -245,12 +246,12 @@ public class CalculateFace extends JFrame {
                     textPanel.setTextResult("   ");
 
                     keyPanelIT.bDec.setSelected(true);
-                    keyPanelIT.buttonsIT.blockedAll(keyPanelIT.listButtons.get("A"), keyPanelIT.listButtons.get("B"),
-                                                    keyPanelIT.listButtons.get("C"), keyPanelIT.listButtons.get("D"),
-                                                    keyPanelIT.listButtons.get("E"), keyPanelIT.listButtons.get("F"),
-                                                    keyPanelIT.listButtons.get("And"), keyPanelIT.listButtons.get("Or"),
-                                                    keyPanelIT.listButtons.get("Xor"), keyPanelIT.listButtons.get("Not"),
-                            keyPanelIT.listButtons.get("."));
+                    keyPanelIT.buttonsIT.blockedAll(keyPanelIT.listButtons.get("."),
+                            keyPanelIT.listButtons.get("A"), keyPanelIT.listButtons.get("B"),keyPanelIT.listButtons.get("C"),
+                            keyPanelIT.listButtons.get("D"), keyPanelIT.listButtons.get("E"), keyPanelIT.listButtons.get("F"),
+                            keyPanelIT.listButtons.get("And"), keyPanelIT.listButtons.get("Or"),keyPanelIT.listButtons.get("Xor")
+//                            keyPanelIT.listButtons.get("Not"),
+                                                    );
 
                     cardTypeCalc.show(cardPanel, keyPanelIT.getName());
                     widthSize = keyPanelIT.getWidthKeyPanel();

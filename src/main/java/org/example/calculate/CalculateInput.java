@@ -1,5 +1,6 @@
 package org.example.calculate;
 
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.Level;
@@ -24,6 +25,7 @@ public class CalculateInput {
     private final CalculateBasic calculateBasic;
     private final CalculateEngineer calculateEngineer;
 
+    @Getter
     @Setter
     private String format;
 
@@ -45,8 +47,8 @@ public class CalculateInput {
             case "hex"-> {
                 log.info("hex");
             }
-            case "dec"->{
-                log.info("dec");
+            case "dec", "dec_int"->{
+                log.info("dec or int");
             }
             case "bin"->{
                 log.info("bin");

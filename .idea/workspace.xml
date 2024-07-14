@@ -9,17 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="ITpanelStructure">
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="IT_panel_face">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/calculate/CalculateITTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator_logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitting/MyFormatNumbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitting/MyFormatNumbers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/study/Check.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/study/Check.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -55,24 +50,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Check.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.java in Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/JavaProjects/Calculator&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Check.executor": "Run",
+    "Application.Main.executor": "Run",
+    "JUnit.All in Calculator.executor": "Run",
+    "JUnit.CalculateITTest.binary_to_decimal.executor": "Run",
+    "JUnit.CalculateITTest.binary_to_hex.executor": "Run",
+    "JUnit.CalculateITTest.decimal_to_binary (1).executor": "Run",
+    "JUnit.CalculateITTest.decimal_to_binary.executor": "Run",
+    "JUnit.CalculateITTest.decimal_to_hex.executor": "Run",
+    "JUnit.CalculateITTest.executor": "Run",
+    "JUnit.CalculateITTest.hex_to_binary.executor": "Run",
+    "JUnit.CalculateITTest.hex_to_decimal.executor": "Run",
+    "JUnit.java in Calculator.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/JavaProjects/Calculator",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProjects\Calculator\src\main\java" />
@@ -80,12 +83,16 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.calculate" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.calculate" />
       <recent name="calculate" />
       <recent name="face" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Check">
     <configuration name="Check" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.study.Check" />
       <module name="Calculator" />
@@ -112,42 +119,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SerializeJFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.study.SerializeJFrame" />
+    <configuration name="CalculateITTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.study.*" />
+          <option name="PATTERN" value="org.example.calculate.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.example.calculate" />
+      <option name="MAIN_CLASS_NAME" value="org.example.calculate.CalculateITTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateITTest.binary_to_hex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.calculate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.calculate" />
+      <option name="MAIN_CLASS_NAME" value="org.example.calculate.CalculateITTest" />
+      <option name="METHOD_NAME" value="binary_to_hex(java.lang.String,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in Calculator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateITTest.hex_to_binary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Calculator" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.calculate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.calculate" />
+      <option name="MAIN_CLASS_NAME" value="org.example.calculate.CalculateITTest" />
+      <option name="METHOD_NAME" value="hex_to_binary(java.lang.String,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Check" />
-        <item itemvalue="JUnit.All in Calculator" />
-        <item itemvalue="JUnit.java in Calculator" />
-        <item itemvalue="Application.SerializeJFrame" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CalculateITTest" />
+        <item itemvalue="JUnit.CalculateITTest.hex_to_binary" />
+        <item itemvalue="JUnit.CalculateITTest.binary_to_hex" />
       </list>
     </recent_temporary>
   </component>
@@ -449,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720815790003</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="IT_panel_face">
+      <option name="closed" value="true" />
+      <created>1720879682770</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1720879682770</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -464,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clean_Log" />
     <MESSAGE value="startNewLogic" />
     <MESSAGE value="calcBasic_orderCount" />
     <MESSAGE value="calc_negativ_braces" />
@@ -489,7 +521,8 @@
     <MESSAGE value="FuLlView_serialize" />
     <MESSAGE value="wrap" />
     <MESSAGE value="ITpanelStructure" />
-    <option name="LAST_COMMIT_MESSAGE" value="ITpanelStructure" />
+    <MESSAGE value="IT_panel_face" />
+    <option name="LAST_COMMIT_MESSAGE" value="IT_panel_face" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -861,22 +894,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="573" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="574" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
-          <line>99</line>
+          <line>102</line>
           <option name="timeStamp" value="575" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
-          <line>100</line>
+          <line>103</line>
           <option name="timeStamp" value="576" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -938,6 +961,40 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java</url>
           <line>252</line>
           <option name="timeStamp" value="591" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="592" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="593" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="594" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="595" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="603" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
+          <line>87</line>
+          <properties class="org.example.calculate.CalculateIT" method="exchange_format_input_numbers">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="596" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

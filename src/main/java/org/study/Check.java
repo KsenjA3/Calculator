@@ -6,18 +6,21 @@ public class Check {
     public static void main(String[] args) {
         Check check=new Check();
 
-//        System.out.println(check.decimal_to_stringBinary(200));
-//        System.out.println(check.decimal_to_intBinary(200));
+//        System.out.println(check.decimal_to_binary("200"));
+//        System.out.println(check.decimal_to_hex("200"));
 //
-//        System.out.println(check.stringBinary_to_decimal("11001000"));
-//        System.out.println(check.integerBinary_to_decimal(11001000));
-//
-//
-//        System.out.println(check.decimal_to_stringHex(200));
-//        System.out.println(check.stringHex_to_decimal("C8"));
+//        String bin,hex;
+//        System.out.println(bin=check.binary_to_decimal("11001000"));
+//        System.out.println(hex=check.hex_to_decimal("c8"));
 
+        String t="2";
+        char r='3';
+        t+=r;
+        System.out.println(t);
+        System.out.println(r);
+        System.out.println();
 
-        System.out.println(0xf0); //16->10
+//        System.out.println(0xf0); //16->10
 
     }
 
@@ -79,6 +82,38 @@ public class Check {
     Integer stringHex_to_decimal (String stringHex){
         Integer num = Integer.parseInt(stringHex, 16);
         return num;
+    }
+
+
+    String decimal_to_binary(String number){
+        String binaryNumber=Integer.toBinaryString(Integer.parseInt(number));
+        return binaryNumber;
+    }
+
+    String binary_to_decimal(String number)  {
+        int ans = 0, i, p = 0;
+        int len = number.length();                    // length of String
+
+        for (i = len - 1; i >= 0; i--) {        // Traversing the String
+            if (number.charAt(i) == '1') {
+                ans += Math.pow(2, p);          // Calculating Decimal Number
+            }
+            p++;                                // incrementing value of p
+        }
+
+        Integer num= ans;
+        return num.toString();
+    }
+
+
+    String decimal_to_hex(String number){
+        String stringHex= Integer.toString(Integer.parseInt(number), 16).toUpperCase(Locale.ROOT);
+        return stringHex;
+    }
+
+    String hex_to_decimal (String number){
+        Integer num = Integer.parseInt(number, 16);
+        return num.toString();
     }
 
 

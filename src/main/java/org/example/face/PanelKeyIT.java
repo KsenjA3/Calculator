@@ -53,11 +53,14 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                 bHex.addActionListener(new ActionListener() {
                      @Override
                      public void actionPerformed(ActionEvent e) {
+                         String oldFormatNumber= buttonsIT.calculateCurrent.getFormat();
+
                          buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_HEX.get());
                          buttonsIT.blockedAll( buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
                          buttonsIT.unblockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,
                                  buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
+
                      }
                 });
             digitPanel.add(bHex);

@@ -24,6 +24,7 @@ public class CalculateInput {
 
     private final CalculateBasic calculateBasic;
     private final CalculateEngineer calculateEngineer;
+    private final CalculateIT calculateIT;
 
     @Getter
     @Setter
@@ -32,7 +33,7 @@ public class CalculateInput {
     public CalculateInput() {
          calculateBasic = new CalculateBasic();
          calculateEngineer= new CalculateEngineer();
-         format= MyFormatNumbers.FORMAT_DEC.get();
+         calculateIT= new CalculateIT();
     }
 
 

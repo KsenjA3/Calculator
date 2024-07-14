@@ -1,14 +1,17 @@
 package org.example.calculate;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.face.MyException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class CalculateBasic {
+@Log4j2
+class CalculateBasic {
     private static final Logger logger = LogManager.getLogger(CalculateBasic.class);
     private ArrayList<BigDecimal> arrD;
     private ArrayList <calculate> arrSign;
@@ -213,17 +216,123 @@ public class CalculateBasic {
         dNSqrt = new BigDecimal(1);
     }
 
+    /**calculator Percent ready
+     *
+     */
+    String calculate_percent(String str) throws MyException {
+        int nOpenBraces= StringUtils.countMatches(str, "(");
+        int nCloseBraces= StringUtils.countMatches(str, ")");
+        int placeOpen ;
+        int placeClose;
+        boolean isSign= false;
+        String countNumber="";
+        String nameSign = "";
+        String strResult, countResult;
+        CalculateInput calculateCurrent = new CalculateInput();
+
+//countNumber and nameSign
+        if (str.endsWith(")")){
+            try {
+                placeOpen=StringUtils.lastIndexOf(str,"(");
+                countNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
+                if (placeOpen==0){
+                    nameSign="no";
+                    str="  ";
+                }else{
+                    nameSign=str.substring(placeOpen-1,placeOpen);
+                    str=str.substring(0,placeOpen-1);
+                }
+
+            }catch (MyException myException){
+                log.error("logger.error Exception: {}",myException.getMessage());
+                strResult = myException.getMessage();
+                throw new MyException(strResult);
+            }
+
+        }
+        else {
+            for (int i=str.length()-1; i>=0; i--) {
+                switch (str.charAt(i)) {
+                    case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
+                        if (i==0) {
+                            countNumber=str;
+                            nameSign="no";
+                            str="  ";
+                        }
+                    }
+                    default -> {
+                        countNumber=str.substring(i+1);
+                        nameSign=str.substring(i,i+1);
+                        str=str.substring(0,i);
+                        isSign=true;
+                    }
+                }
+                if (isSign)break;
+            }
+        }
+System.out.println("from+ before str= "+str);
+
+//вариант, когда % находится от части выражения, например 20+(200+5%)
+        String strBeforePersent=" ";
+        String strPersentFrom=str;
+
+        if (nOpenBraces>nCloseBraces){
+            if (nCloseBraces==0){
+                placeOpen=StringUtils.lastIndexOf(str,"(");
+                strBeforePersent = strPersentFrom.substring(0, placeOpen);
+                strPersentFrom=strPersentFrom.substring(placeOpen+1);
+            }
+
+
+            for (int i=1; i<=nCloseBraces;i++){
+                placeOpen=StringUtils.lastIndexOf(str,"(");
+                placeClose=StringUtils.lastIndexOf(str,")");
+                if (placeOpen>placeClose) {
+                    strBeforePersent = strPersentFrom.substring(0, placeOpen);
+                    strPersentFrom=strPersentFrom.substring(placeOpen+1);
+                    break;
+                }
+                else
+                    str=str.substring(0, placeOpen);
+            }
+        }
+
+        try {
+// от countResult находиться %
+            countResult=calculateCurrent.calculateInput(strPersentFrom);
+                        System.out.println("strBeforePersent= "+strBeforePersent);
+//                        System.out.println("strResult= "+strResult);
+                        System.out.println("countResult= "+countResult);
+                        System.out.println("nameSign= "+nameSign);
+                        System.out.println("countNumber= "+countNumber);
+//найденный %
+            countResult = calculatePercent(nameSign,countResult, countNumber);
+
+//окончательный ответ
+            countResult=calculateCurrent.calculateInput(strBeforePersent+countResult);
+//printSign("%") отличается if, который влияет на √
+
+        }catch (MyException myException){
+            log.error("logger.error Exception: {}",myException.getMessage());
+            strResult = myException.getMessage();
+            throw new MyException(strResult);
+        }
 
 
 
-    /**
-     * calculator.org.example.calculate.calculate result Percent
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("countResult= "+countResult);
+        return countResult;
+    }
+
+
+    /**calculator.org.example.calculate.calculate result Percent     *
      * @param nameSign string presentation precеding function to Percent
      * @param strResultPercentIn result before precеding function to Percent in double format
      * @param strNumberIn number between precеding function and function Percent
      * @return double result of calculation
      */
-    public String calculatePercent (String nameSign, String strResultPercentIn, String strNumberIn) {
+     String calculatePercent (String nameSign, String strResultPercentIn, String strNumberIn) {
         logger.log(Level.DEBUG,"Level.DEBUG: выполнение расчеов calculatePercent ");
 
         try {

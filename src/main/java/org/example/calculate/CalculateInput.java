@@ -34,15 +34,29 @@ public class CalculateInput {
          calculateBasic = new CalculateBasic();
          calculateEngineer= new CalculateEngineer();
          calculateIT= new CalculateIT();
+         format=MyFormatNumbers.FORMAT_DEC.get();
     }
 
 
     public String calculateInput (String strInput) throws MyException {
+        String str;
+        String countResult;
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
         if (StringUtils.isEmpty(strInput))
             return "";
+
+
+        if (StringUtils.endsWith(strInput,"%")){
+            strInput=StringUtils.removeEnd(strInput,"%");
+            countResult=calculateBasic.calculate_percent(strInput);
+            countResult=Operations.printNumber(countResult);
+            log.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
+            return countResult;
+        }
+
+
 
         switch (format)  {
             case "hex"-> {
@@ -60,8 +74,7 @@ public class CalculateInput {
 
 
 //Braces
-        String str;
-        String countResult;
+
         while (StringUtils.contains(strInput,")")){
             int nLast = StringUtils.indexOf(strInput, ")");
             str =strInput.substring(0, nLast);

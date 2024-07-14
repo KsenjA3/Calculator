@@ -5,7 +5,7 @@ import org.example.face.MyException;
 
 import java.util.Locale;
 
-public class CalculateIT {
+class CalculateIT {
 
 
     static String decimal_to_binary(String numDecimal){

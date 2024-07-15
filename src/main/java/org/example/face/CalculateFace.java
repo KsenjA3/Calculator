@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.core.jackson.Log4jJsonObjectMapper;
 import org.example.fitting.MyFonts;
+import org.example.fitting.MyFormatNumbers;
 import org.example.fitting.MySizePanel;
 
 import javax.swing.*;
@@ -222,6 +223,7 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
 
+                    keyPanelBasic.buttonsBasic.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC_INT.get());
                     cardTypeCalc.show(cardPanel, keyPanelBasic.getName());
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     nameKeyPanel=keyPanelBasic.getName();
@@ -236,6 +238,7 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextResult(textPanel.getTextResult().getText());
                     }
 
+                    keyPanelEngineer.buttonsEngineer.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC_INT.get());
                     cardTypeCalc.show(cardPanel, keyPanelEngineer.getName());
                     widthSize = keyPanelEngineer.getWidthKeyPanel();
                     nameKeyPanel=keyPanelEngineer.getName();
@@ -249,10 +252,9 @@ public class CalculateFace extends JFrame {
                     keyPanelIT.buttonsIT.blockedAll(keyPanelIT.listButtons.get("."),
                             keyPanelIT.listButtons.get("A"), keyPanelIT.listButtons.get("B"),keyPanelIT.listButtons.get("C"),
                             keyPanelIT.listButtons.get("D"), keyPanelIT.listButtons.get("E"), keyPanelIT.listButtons.get("F"),
-                            keyPanelIT.listButtons.get("And"), keyPanelIT.listButtons.get("Or"),keyPanelIT.listButtons.get("Xor")
-//                            keyPanelIT.listButtons.get("Not"),
-                                                    );
-
+                            keyPanelIT.listButtons.get("And"), keyPanelIT.listButtons.get("Or"),
+                            keyPanelIT.listButtons.get("Xor"), keyPanelIT.listButtons.get("Not") );
+                    keyPanelIT.buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                     cardTypeCalc.show(cardPanel, keyPanelIT.getName());
                     widthSize = keyPanelIT.getWidthKeyPanel();
                     nameKeyPanel=keyPanelIT.getName();

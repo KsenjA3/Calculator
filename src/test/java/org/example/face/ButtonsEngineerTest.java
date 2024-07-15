@@ -379,7 +379,6 @@ class ButtonsEngineerTest {
         Thread.sleep(20);
         bot.keyRelease(KeyEvent.VK_ADD);
 
-
         txt.setText(panelKey.buttonsEngineer.strInput);
         bot.keyPress(KeyEvent.VK_3);
         Thread.sleep(10);
@@ -460,12 +459,12 @@ class ButtonsEngineerTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(30);
 
-        txt.setText(panelKey.buttonsEngineer.strInput);
-        locate=panelKey.buttonsEngineer.bMultiply.getLocationOnScreen();
-        bot.mouseMove(locate.x+10,locate.y+10);
-        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(30);
+//        txt.setText(panelKey.buttonsEngineer.strInput);
+//        locate=panelKey.buttonsEngineer.bMultiply.getLocationOnScreen();
+//        bot.mouseMove(locate.x+10,locate.y+10);
+//        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//        Thread.sleep(30);
 
         txt.setText(panelKey.buttonsEngineer.strInput);
         locate=panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();

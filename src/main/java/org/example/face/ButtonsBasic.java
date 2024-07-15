@@ -34,35 +34,21 @@ public class ButtonsBasic extends ButtonsAll{
      * in number
      */
     protected String strNumber;
-//    protected Double dNumber;
 
     /**
      * type function
      */
     protected calculate func;
-    /**
-     * for calculator.org.example.calculate.calculate Percent
-     *  divide for 0, input number after %
-     * number after %
-     * result before former sign
-     */
-    protected String nameSign;
-    protected String strPersentFrom;
-    protected String strBeforePersent;
+
 
     /**object for calculation
      *
      */
     protected CalculateInput calculateCurrent;
-//    protected CalculateBasic calculateBasic;
     private HashMap<String,JButton> listButtons;
-//    protected Double dResult;
 
-    protected String countResult,  countNumber;
+    protected String countResult;
     protected BigDecimal bigDecimal;
-
-
-
 
     protected ButtonsBasic(PanelTextLog textPanel) {
         this.textPanel=textPanel;
@@ -71,12 +57,10 @@ public class ButtonsBasic extends ButtonsAll{
         strNumber = "0";
         countResult="0";
         func = null;
-        nameSign = "";
         strInput="   ";
         strResult="0";
                         //create object for calculation
         calculateCurrent = new CalculateInput();
-//        calculateBasic= new CalculateBasic();
         listButtons = new HashMap<>();
         makeButtons();
     }
@@ -402,12 +386,9 @@ public class ButtonsBasic extends ButtonsAll{
                     replaceRepeatedSign_exceptSimple();
                     replaceRepeatedSign_simple();
 
-
                     try {
                         countResult= calculateCurrent.calculateInput(strInput+"%");
-                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println("countResult= "+countResult);
-                        System.out.println();
+                            log.info("!!! PERCENT countResult= "+countResult);
                         bigDecimal=new BigDecimal(countResult,Operations.mathContext);
 
                         if (func==null ) {
@@ -430,143 +411,9 @@ public class ButtonsBasic extends ButtonsAll{
                         }catch (NullPointerException exception){  }
 
                         textPanel.setTextResult(strResult);
-
                     }
                     countBrace=0;
 
-
-
-
-
-//                    String str=StringUtils.deleteWhitespace(strInput);
-//System.out.println();
-//System.out.println("begin str= "+str);
-
-
-
-//                    int nOpenBraces= StringUtils.countMatches(str, "(");
-//                    int nCloseBraces= StringUtils.countMatches(str, ")");
-//                    int placeOpen ;
-//                    int placeClose;
-//                    boolean isSign= false;
-//                    countNumber="";
-////countNumber and nameSign
-//                    if (str.endsWith(")")){
-//                        try {
-//                            placeOpen=StringUtils.lastIndexOf(str,"(");
-//                            countNumber=calculateCurrent.calculateInput(str.substring(placeOpen));
-//                            if (placeOpen==0){
-//                                nameSign="no";
-//                                str="  ";
-//                            }else{
-//                                nameSign=str.substring(placeOpen-1,placeOpen);
-//                                str=str.substring(0,placeOpen-1);
-//                            }
-//
-//                        }catch (MyException myException){
-//                            log.error("logger.error Exception: {}",myException.getMessage());
-//                            strResult = myException.getMessage();
-//                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-//                                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-//                            try {
-//                                blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-//                                        bChageSign,braceOpen,braceClose);
-//                            }catch (NullPointerException exception){  }
-//
-//                            textPanel.setTextResult(strResult);
-//                            break;
-//                        }
-//
-//                    }
-//                    else {
-//                        for (int i=str.length()-1; i>=0; i--) {
-//                            switch (str.charAt(i)) {
-//                                case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' -> {
-//                                    if (i==0) {
-//                                        countNumber=str;
-//                                        nameSign="no";
-//                                        str="  ";
-//                                    }
-//                                }
-//                                default -> {
-//                                    countNumber=str.substring(i+1);
-//                                    nameSign=str.substring(i,i+1);
-//                                    str=str.substring(0,i);
-//                                    isSign=true;
-//                                }
-//                            }
-//                            if (isSign)break;
-//                        }
-//                    }
-////System.out.println("from+ before str= "+str);
-//
-////вариант, когда % находится от части выражения, например 20+(200+5%)
-//                    strBeforePersent=" ";
-//                    strPersentFrom=str;
-//
-//                    if (nOpenBraces>nCloseBraces){
-//                        if (nCloseBraces==0){
-//                            placeOpen=StringUtils.lastIndexOf(str,"(");
-//                            strBeforePersent = strPersentFrom.substring(0, placeOpen);
-//                            strPersentFrom=strPersentFrom.substring(placeOpen+1);
-//                        }
-//
-//
-//                        for (int i=1; i<=nCloseBraces;i++){
-//                            placeOpen=StringUtils.lastIndexOf(str,"(");
-//                            placeClose=StringUtils.lastIndexOf(str,")");
-//                            if (placeOpen>placeClose) {
-//                                strBeforePersent = strPersentFrom.substring(0, placeOpen);
-//                                strPersentFrom=strPersentFrom.substring(placeOpen+1);
-//                                break;
-//                            }
-//                            else
-//                                str=str.substring(0, placeOpen);
-//                        }
-//                    }
-
-
-
-
-
-//                    try {
-//// от countResult находиться %
-//                        countResult=calculateCurrent.calculateInput(strPersentFrom);
-////                        System.out.println("strBeforePersent= "+strBeforePersent);
-////                        System.out.println("strResult= "+strResult);
-////                        System.out.println("countResult= "+countResult);
-////                        System.out.println("nameSign= "+nameSign);
-////                        System.out.println("countNumber= "+countNumber);
-////найденный %
-//                        countResult = calculateBasic.calculatePercent(nameSign,countResult, countNumber);
-////окончательный ответ
-//                        countResult=calculateCurrent.calculateInput(strBeforePersent+countResult);
-////printSign("%") отличается if, который влияет на √
-//                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
-//                        if (func==null ) {
-//                            strInput=bigDecimal+ name.trim();
-//                            textPanel.setTextInput(strInput);
-//                        }else {
-//                            strInput=strInput + name.trim();
-//                            textPanel.setTextInput(strInput);
-//                        }
-//
-//                        textPanel.setSbLog(strInput.trim());
-//                        printResult ();
-//                        print_SbLog ();
-//                    }catch (MyException myException){
-//                        log.error("logger.error Exception: {}",myException.getMessage());
-//                        strResult = myException.getMessage();
-//                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-//                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-//                        try {
-//                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-//                                    bChageSign,braceOpen,braceClose);
-//                        }catch (NullPointerException exception){  }
-//
-//                        textPanel.setTextResult(strResult);
-//                    }
-//                    countBrace=0;
                 }
                 case " = " -> {
                     countResult= textPanel.getTextResult().getText().substring(1);
@@ -690,7 +537,7 @@ public class ButtonsBasic extends ButtonsAll{
                     textPanel.setTextInput( strInput);
                     func = null;
                     countResult="0";                 // sign after АС
-                    nameSign = " ";               //after sqrt
+
                     strResult="0";  // AC then =, textRez
                 }
                 case "C" -> {

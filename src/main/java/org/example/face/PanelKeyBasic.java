@@ -1,5 +1,6 @@
 package org.example.face;
 
+import org.example.fitting.MyFormatNumbers;
 import org.example.fitting.MySizePanel;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class PanelKeyBasic extends PanelKeyGeneral{
         buttonsBasic =  new ButtonsBasic (textPanel);
         HashMap<String,JButton> listButtons= buttonsBasic.getButtons();
         keyPanelBasic = makePanelGeneral(listButtons);
+        buttonsBasic.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC_INT.get());
     }
 
     /**get  KeyPanel

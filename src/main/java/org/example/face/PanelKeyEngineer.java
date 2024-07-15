@@ -1,6 +1,7 @@
 package org.example.face;
 
 import org.example.fitting.MyColors;
+import org.example.fitting.MyFormatNumbers;
 import org.example.fitting.MySizePanel;
 
 import javax.swing.*;
@@ -32,6 +33,7 @@ import java.util.Set;
          buttonsEngineer =  new ButtonsEngineer(textPanel);
           HashMap<String,JButton> listButtons= buttonsEngineer.getButtons();
           Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
+          buttonsEngineer.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC_INT.get());
 
 
          /**

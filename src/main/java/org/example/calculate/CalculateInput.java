@@ -22,16 +22,16 @@ ORDER COUNT
 @Log4j2
 public class CalculateInput {
 
-    private final CalculateBasic calculateBasic;
-    private final CalculateEngineer calculateEngineer;
-    private final CalculateIT calculateIT;
+     public CalculateBasic calculateBasic;
+     CalculateEngineer calculateEngineer;
+     CalculateIT calculateIT;
 
     @Getter
     @Setter
     private String format;
 
     public CalculateInput() {
-         calculateBasic = new CalculateBasic();
+         calculateBasic = new CalculateBasic(this);
          calculateEngineer= new CalculateEngineer();
          calculateIT= new CalculateIT();
          format=MyFormatNumbers.FORMAT_DEC.get();

@@ -23,9 +23,8 @@ class ButtonsBasicTest {
     JLabel label;
     JFrame frame;
     PanelKeyEngineer panelKey;
-
-
     Robot bot;
+    
     @Mock
     PanelTextLog textPanel;
 
@@ -38,6 +37,8 @@ class ButtonsBasicTest {
     void initFrame()  {
         panelKey.buttonsEngineer.strNumber=" ";
         txt.setText("");
+//        panelKey.buttonsEngineer.bPoint.setEnabled(true);
+
 //        frame = new JFrame();
 //        frame.setSize(new Dimension(500, 300));
 //        panelKey =new PanelKeyEngineer(textPanel);
@@ -60,6 +61,7 @@ class ButtonsBasicTest {
         txt =new JTextPane();
         label= new JLabel();
         label.setText("22");
+
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
         Mockito.doNothing().when(textPanel).setTextInput(Mockito.any());
@@ -601,9 +603,9 @@ class ButtonsBasicTest {
         //2+3% после ввод 8
         assertEquals("8", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
 
-        assertEquals("2", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("+", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
-        assertEquals("3", panelKey.buttonsEngineer.countNumber);
+        assertEquals("2", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
+        assertEquals("3", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.countNumber);
     }
 
 
@@ -1053,10 +1055,10 @@ class ButtonsBasicTest {
         Thread.sleep(25);
 
 //2+8+(9-(2-5)-(2+8)%
-        assertEquals("9-(2-5)", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("-", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
-        assertEquals("10", panelKey.buttonsEngineer.countNumber);
-        assertEquals("2+8+", panelKey.buttonsEngineer.strBeforePersent.replaceAll(" ",""));
+        assertEquals("9-(2-5)", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("-", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
+        assertEquals("10", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.countNumber);
+        assertEquals("2+8+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strBeforePersent.replaceAll(" ",""));
         assertEquals("20.8", panelKey.buttonsEngineer.countResult);
     }
 
@@ -1120,11 +1122,11 @@ class ButtonsBasicTest {
         Thread.sleep(25);
 
 // 2(7+(2*+8%
-        assertEquals("2", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("+", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
-        assertEquals("8", panelKey.buttonsEngineer.countNumber);
+        assertEquals("2", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
+        assertEquals("8", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.countNumber);
 
-        assertEquals("2*(7+", panelKey.buttonsEngineer.strBeforePersent.replaceAll(" ",""));
+        assertEquals("2*(7+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strBeforePersent.replaceAll(" ",""));
         assertEquals("18.32", panelKey.buttonsEngineer.countResult);
     }
 
@@ -1238,10 +1240,10 @@ class ButtonsBasicTest {
         Thread.sleep(25);
 
 // 2(2+(7+3)+(2*+8%
-        assertEquals("2", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("+", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
-        assertEquals("8", panelKey.buttonsEngineer.countNumber);
-        assertEquals("2*(2+(7+3)+", panelKey.buttonsEngineer.strBeforePersent.replaceAll(" ",""));
+        assertEquals("2", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
+        assertEquals("8", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.countNumber);
+        assertEquals("2*(2+(7+3)+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strBeforePersent.replaceAll(" ",""));
         assertEquals("28.32", panelKey.buttonsEngineer.countResult);
     }
 
@@ -1290,10 +1292,10 @@ class ButtonsBasicTest {
         bot.keyRelease(KeyEvent.VK_5);
 
         //200+5%+5
-        assertEquals("200", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("+", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
-        assertEquals("5", panelKey.buttonsEngineer.countNumber);
-        assertEquals("", panelKey.buttonsEngineer.strBeforePersent.replaceAll(" ",""));
+        assertEquals("200", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
+        assertEquals("5", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.countNumber);
+        assertEquals("", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strBeforePersent.replaceAll(" ",""));
         assertEquals("210+5", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("215", panelKey.buttonsEngineer.countResult);
     }
@@ -1338,10 +1340,10 @@ class ButtonsBasicTest {
         bot.keyRelease(KeyEvent.VK_5);
 
         //200+5%+5
-        assertEquals("200", panelKey.buttonsEngineer.strPersentFrom.replaceAll(" ",""));
-        assertEquals("+", panelKey.buttonsEngineer.nameSign.replaceAll(" ",""));
+        assertEquals("200", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strPersentFrom.replaceAll(" ",""));
+        assertEquals("+", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.nameSign.replaceAll(" ",""));
         assertEquals("5", panelKey.buttonsEngineer.strNumber);
-        assertEquals("", panelKey.buttonsEngineer.strBeforePersent.replaceAll(" ",""));
+        assertEquals("", panelKey.buttonsEngineer.calculateCurrent.calculateBasic.strBeforePersent.replaceAll(" ",""));
         assertEquals("5", panelKey.buttonsEngineer.countResult);
 
     }

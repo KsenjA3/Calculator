@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @Log4j2
-class CalculateBasic {
+public class CalculateBasic {
     private static final Logger logger = LogManager.getLogger(CalculateBasic.class);
     private ArrayList<BigDecimal> arrD;
     private ArrayList <calculate> arrSign;
@@ -30,7 +30,20 @@ class CalculateBasic {
     private boolean wasSqrt;
     private String stringResult;
 
+
+    public String nameSign ;
+    public String strBeforePersent;
+    public String strPersentFrom;
+    public String countNumber;
+    public String strResult, countResult;
     private boolean wasNegativeNumber;
+    CalculateInput calculateCurrent;
+
+    CalculateBasic( CalculateInput calculateCurrent){
+        this.calculateCurrent = calculateCurrent;
+    }
+
+
 
     /**
      * calculator.org.example.calculate.calculate result from string
@@ -216,7 +229,7 @@ class CalculateBasic {
         dNSqrt = new BigDecimal(1);
     }
 
-    /**calculator Percent ready
+    /**calculator Percent
      *
      */
     String calculate_percent(String str) throws MyException {
@@ -225,10 +238,9 @@ class CalculateBasic {
         int placeOpen ;
         int placeClose;
         boolean isSign= false;
-        String countNumber="";
-        String nameSign = "";
-        String strResult, countResult;
-        CalculateInput calculateCurrent = new CalculateInput();
+        countNumber="";
+        nameSign = "";
+
 
 //countNumber and nameSign
         if (str.endsWith(")")){
@@ -244,7 +256,7 @@ class CalculateBasic {
                 }
 
             }catch (MyException myException){
-                log.error("logger.error Exception: {}",myException.getMessage());
+                log.error("PERCENT Exception: {}",myException.getMessage());
                 strResult = myException.getMessage();
                 throw new MyException(strResult);
             }
@@ -270,11 +282,11 @@ class CalculateBasic {
                 if (isSign)break;
             }
         }
-System.out.println("from+ before str= "+str);
+//            log.info("PERCENT from+ before str= "+str);
 
 //вариант, когда % находится от части выражения, например 20+(200+5%)
-        String strBeforePersent=" ";
-        String strPersentFrom=str;
+         strBeforePersent=" ";
+         strPersentFrom=str;
 
         if (nOpenBraces>nCloseBraces){
             if (nCloseBraces==0){
@@ -300,11 +312,10 @@ System.out.println("from+ before str= "+str);
         try {
 // от countResult находиться %
             countResult=calculateCurrent.calculateInput(strPersentFrom);
-                        System.out.println("strBeforePersent= "+strBeforePersent);
-//                        System.out.println("strResult= "+strResult);
-                        System.out.println("countResult= "+countResult);
-                        System.out.println("nameSign= "+nameSign);
-                        System.out.println("countNumber= "+countNumber);
+                log.info("PERCENT strBeforePersent= "+strBeforePersent);
+                log.info("PERCENT countResult= "+countResult);
+                log.info("PERCENT nameSign= "+nameSign);
+                log.info("PERCENT countNumber= "+countNumber);
 //найденный %
             countResult = calculatePercent(nameSign,countResult, countNumber);
 
@@ -318,13 +329,9 @@ System.out.println("from+ before str= "+str);
             throw new MyException(strResult);
         }
 
-
-
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println("countResult= "+countResult);
+        log.info("!PERCENT countResult= "+countResult);
         return countResult;
     }
-
 
     /**calculator.org.example.calculate.calculate result Percent     *
      * @param nameSign string presentation precеding function to Percent

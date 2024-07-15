@@ -96,6 +96,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                          buttonsIT.unblockedAll(buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot);
                      }
                });
+                buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                 digitPanel.add(bBin);
                 bg.add(bBin);
 

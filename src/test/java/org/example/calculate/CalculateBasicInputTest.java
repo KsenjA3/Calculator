@@ -1,13 +1,19 @@
 package org.example.calculate;
 
+import lombok.SneakyThrows;
 import org.example.calculate.CalculateBasic;
 import org.example.calculate.Operations;
 import org.example.calculate.calculate;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
+import java.awt.event.InputEvent;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
@@ -15,12 +21,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculateBasicInputTest {
-    private static CalculateBasic sut;
+    private CalculateBasic sut;
+
+    @Mock
+    CalculateInput calculateCurrent;
 
     @BeforeAll
-     static void setCalculateBasicInput () {
-        sut = new CalculateBasic();
+     void setCalculateBasicInput () {
+        MockitoAnnotations.openMocks(this);
+        sut = new CalculateBasic(calculateCurrent);
     }
 
 
@@ -193,5 +205,42 @@ class CalculateBasicInputTest {
     void count_power  (String strInput, String expectedResult) {
         assertEquals (expectedResult,Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
+
+
+
+//    @Test  //2+3% после ввод 8
+//    @SneakyThrows(InterruptedException.class)
+//    void input_number_after_percent ()  {
+//
+//
+//        //2+3% после ввод 8
+//        assertEquals("8", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
+//
+//        assertEquals("2", panelKey.buttonsBasic.strPersentFrom.replaceAll(" ",""));
+//        assertEquals("+", panelKey.buttonsBasic.nameSign.replaceAll(" ",""));
+//        assertEquals("3", panelKey.buttonsBasic.countNumber);
+//    }
+//
+//
+//
+//    @Test        //2+8+(9-(2-5)-(2+8)%
+//    @SneakyThrows (InterruptedException.class)
+//    void percent()  {
+//
+//
+////2+8+(9-(2-5)-(2+8)%
+//        assertEquals("9-(2-5)", panelKey.buttonsBasic.strPersentFrom.replaceAll(" ",""));
+//        assertEquals("-", panelKey.buttonsBasic.nameSign.replaceAll(" ",""));
+//        assertEquals("10", panelKey.buttonsBasic.countNumber);
+//        assertEquals("2+8+", panelKey.buttonsBasic.strBeforePersent.replaceAll(" ",""));
+//        assertEquals("20.8", panelKey.buttonsBasic.countResult);
+//    }
+
+
+
+
+
+
+
 
 }

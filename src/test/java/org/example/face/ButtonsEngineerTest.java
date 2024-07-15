@@ -54,20 +54,6 @@ class ButtonsEngineerTest {
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
         Mockito.when(textPanel.getTextResult()).thenReturn(label);
-
-
-
-//        panelKey.buttonsEngineer.strNumber="0";
-//        txt.setText("   ");
-//        panelKey.buttonsEngineer.countResult="0";
-//        panelKey.buttonsEngineer.strResult="0";
-//        panelKey.buttonsEngineer.strInput="   ";
-
-        panelKey.buttonsEngineer.unblockedAll(panelKey.buttonsEngineer.b0,panelKey.buttonsEngineer.b1,panelKey.buttonsEngineer.b2,
-                panelKey.buttonsEngineer.b3,panelKey.buttonsEngineer.b4,panelKey.buttonsEngineer.b5,panelKey.buttonsEngineer.b6,
-                panelKey.buttonsEngineer.b7,panelKey.buttonsEngineer.b8,panelKey.buttonsEngineer.b9,panelKey.buttonsEngineer.bPoint,
-                panelKey.buttonsEngineer.bPi,panelKey.buttonsEngineer.bPercent,panelKey.buttonsEngineer.bRadical);
-
     }
 
 
@@ -450,6 +436,51 @@ class ButtonsEngineerTest {
         assertEquals("2*(2+3)²", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
         assertEquals("50", panelKey.buttonsEngineer.countResult);
     }
+
+    @Test //02(03
+    @SneakyThrows (InterruptedException.class)
+    void null_after_OpenBrace() {
+        locate = panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsEngineer.strInput);
+        locate = panelKey.buttonsEngineer.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsEngineer.strInput);
+        locate = panelKey.buttonsEngineer.braceOpen.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+
+        txt.setText(panelKey.buttonsEngineer.strInput);
+        locate = panelKey.buttonsEngineer.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsEngineer.strInput);
+        locate = panelKey.buttonsEngineer.b3.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        ///02(03
+        assertEquals("2*(3", panelKey.buttonsEngineer.strInput.replaceAll(" ", ""));
+    }
+
+
+
      @Test //2(2²+3²
      @SneakyThrows (InterruptedException.class)
     void x2_plus_x2_inBraces()  {

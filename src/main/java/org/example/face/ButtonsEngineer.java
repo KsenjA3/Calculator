@@ -102,6 +102,7 @@ class ButtonsEngineer extends ButtonsBasic {
                 case "(" ->{
                     countBrace ++;
                     str =textPanel.getTextInput().getText().trim();
+                    strNumber="";
 
                     if (!str.isEmpty())
                         switch (str.charAt(str.length() - 1)) {

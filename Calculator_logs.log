@@ -2934,3 +2934,65 @@
 2024-07-15 14:05:05 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
 2024-07-15 14:05:05 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
 2024-07-15 14:05:05 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-15 14:26:16 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 82.84
+2024-07-15 14:26:37 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 47.96
+2024-07-15 14:32:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-15 14:32:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-15 14:32:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - (1 +2) -44*(√8)
+2024-07-15 14:32:49 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =-121.450793488832
+2024-07-15 14:57:05 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error ArithmeticException: Division by zero
+2024-07-15 14:57:42 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 0
+2024-07-15 18:18:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 18:18:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 18:18:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg недозволеного большого числа
+2024-07-15 18:18:39 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg не определен
+2024-07-15 18:18:39 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln не определен
+2024-07-15 18:18:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ³√ недозволеного большого числа
+2024-07-15 18:18:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln недозволеного большого числа
+2024-07-15 18:18:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: tg недозволеного большого числа
+2024-07-15 18:18:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error ArithmeticException: Division by zero
+2024-07-15 18:18:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln не определен
+2024-07-15 18:18:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg не определен
+2024-07-15 18:18:45 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: tg не определен
+2024-07-15 18:18:46 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error ArithmeticException: Division by zero
+2024-07-15 18:18:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 18:18:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error ArithmeticException: Division by zero
+2024-07-15 18:18:48 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-15 18:18:48 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-15 18:18:49 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-15 18:18:50 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-15 18:18:50 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-15 18:18:50 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-15 18:41:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-15 18:41:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-15 18:41:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - (1 +2) -44*(√8)
+2024-07-15 18:41:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =-121.450793488832
+2024-07-15 18:45:24 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-15 18:45:24 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-15 18:45:24 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - (1 +2) -44*(√8)
+2024-07-15 18:45:24 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =-121.450793488832
+2024-07-15 19:34:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 19:34:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 19:34:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg недозволеного большого числа
+2024-07-15 19:34:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg не определен
+2024-07-15 19:34:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln не определен
+2024-07-15 19:34:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ³√ недозволеного большого числа
+2024-07-15 19:34:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln недозволеного большого числа
+2024-07-15 19:34:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: tg недозволеного большого числа
+2024-07-15 19:34:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error ArithmeticException: Division by zero
+2024-07-15 19:34:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: ln не определен
+2024-07-15 19:34:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: lg не определен
+2024-07-15 19:34:34 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - logger.error Exception: tg не определен
+2024-07-15 19:34:35 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error ArithmeticException: Division by zero
+2024-07-15 19:34:36 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error Exception: неверный формат ввода факториала
+2024-07-15 19:34:36 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - logger.error ArithmeticException: Division by zero
+2024-07-15 19:34:37 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-15 19:34:37 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-15 19:34:38 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-15 19:34:39 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-15 19:34:39 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-15 19:34:39 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-15 19:52:37 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-15 19:52:37 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-15 19:52:37 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -   F41D
+2024-07-15 19:52:37 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - =0

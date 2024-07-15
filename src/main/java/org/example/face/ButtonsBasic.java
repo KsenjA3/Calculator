@@ -236,9 +236,8 @@ public class ButtonsBasic extends ButtonsAll{
                     else {  strInput = strInput + name;    }
                 }
 
-                System.out.println(strNumber);
-                System.out.println(strInput);
-
+//                System.out.println(strNumber);
+//                System.out.println(strInput);
 //                dNumber = Double.parseDouble(strNumber);
                 textPanel.setTextInput(strInput);
 

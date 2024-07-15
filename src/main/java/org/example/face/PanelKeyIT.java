@@ -37,6 +37,8 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          buttonsIT =  new ButtonsIT(textPanel);
          listButtons= buttonsIT.getButtons();
          Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
+         buttonsIT.blockedAll( buttonsIT.braceClose);
+         buttonsIT.countBrace=0;
 
         /**create digitPanel format number
          *
@@ -114,10 +116,10 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                  case "And" -> {
                      makeGridBagConstraints(1, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "A"-> {
+                 }case "AA"-> {
                      makeGridBagConstraints(1, 1, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "B"-> {
+                 }case "BB"-> {
                      makeGridBagConstraints(1, 2, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
                  }
@@ -127,10 +129,10 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                  case "Or" -> {
                      makeGridBagConstraints(2, 0, 1, 1, 12, 20);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "С"-> {
+                 }case "CC"-> {
                      makeGridBagConstraints(2, 1, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "D"-> {
+                 }case "DD"-> {
                      makeGridBagConstraints(2, 2, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
                  }
@@ -140,10 +142,10 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                  case "Xor"-> {
                      makeGridBagConstraints(3, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "E"->{
+                 }case "EE"->{
                      makeGridBagConstraints(3, 1, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
-                 }case "F" -> {
+                 }case "FF" -> {
                      makeGridBagConstraints(3, 2, 1, 1, 0, 20);
                      keyPanelIT.add(button.getValue(), gbc);
                  }

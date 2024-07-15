@@ -30,6 +30,7 @@ public class ButtonsBasic extends ButtonsAll{
     protected int N;
     protected int countSqrt;        //no more than 3
     protected int countBrace;
+
     /**
      * in number
      */

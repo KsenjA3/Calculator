@@ -1,5 +1,7 @@
 package org.example.face;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MyFormatNumbers;
@@ -14,19 +16,23 @@ import java.util.Map;
 import java.util.Set;
 
 public  class PanelKeyIT extends PanelKeyGeneral{
-     private JPanel keyPanelIT, keyPanel;
-    PanelTextLog textPanel;
-    HashMap<String,JButton> listButtons;
-    ButtonsIT buttonsIT;
-    JRadioButton  bDec;
+    private final JPanel keyPanel;
+    private PanelTextLog textPanel;
+    protected HashMap<String,JButton> listButtons;
+    protected ButtonsIT buttonsIT;
+    protected JRadioButton  bDec, bHex, bBin ;
+    private String oldFormatNumber, newFormatNumber;
+    @Getter
+    @Setter
+    private String str;
+
 
      PanelKeyIT(PanelTextLog textPanel) {
          this.textPanel=textPanel;
 
-         /**create IT KeyPanel
-          *
+         /**create IT KeyPanel          *
           */
-         keyPanelIT = new JPanel();
+         JPanel keyPanelIT = new JPanel();
          keyPanelIT.setBackground(MyColors.COLOR_PANE.get());
          keyPanelIT.setPreferredSize(new Dimension(MySizePanel.WIDTH_SIZE_IT.get(), MySizePanel.HIEGHT_SIZE_KEY.get()));
          keyPanelIT.setLayout(gbag);
@@ -48,16 +54,16 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          digitPanel.setLayout(new BoxLayout(digitPanel,BoxLayout.X_AXIS));
          var bg = new ButtonGroup();
 
-            var  bHex = new JRadioButton ("Hex");
+         bHex = new JRadioButton ("Hex");
                 bHex.setBackground(MyColors.COLOR_PANE.get());
                 bHex.setFont(MyFonts.FONT_CHECKBOX.get());
                 bHex.setAlignmentX(Component.CENTER_ALIGNMENT);
                 bHex.addActionListener(new ActionListener() {
                      @Override
                      public void actionPerformed(ActionEvent e) {
-                         String oldFormatNumber= buttonsIT.calculateCurrent.getFormat();
+                         newFormatNumber= MyFormatNumbers.FORMAT_HEX.get() ;
+                         setFormat_duringShift_JRadioButton();
 
-                         buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_HEX.get());
                          buttonsIT.blockedAll( buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
                          buttonsIT.unblockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,
@@ -75,22 +81,29 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                 bDec.addActionListener(new ActionListener() {
                      @Override
                      public void actionPerformed(ActionEvent e) {
+                         newFormatNumber= MyFormatNumbers.FORMAT_DEC.get() ;
+                         setFormat_duringShift_JRadioButton();
+
                          buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
                          buttonsIT.unblockedAll( buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,
                                                  buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
+
                      }
                 });
             digitPanel.add(bDec);
             bg.add(bDec);
 
-            var  bBin = new JRadioButton ("Bin");
+            bBin = new JRadioButton ("Bin");
                 bBin.setBackground(MyColors.COLOR_PANE.get());
                 bBin.setFont(MyFonts.FONT_CHECKBOX.get());
                 bBin.addActionListener(new ActionListener() {
                      @Override
                      public void actionPerformed(ActionEvent e) {
+                         newFormatNumber= MyFormatNumbers.FORMAT_BIN.get() ;
+                         setFormat_duringShift_JRadioButton();
+
                          buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_BIN.get());
                          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,buttonsIT.bPoint,
@@ -195,5 +208,19 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          return MySizePanel.WIDTH_SIZE_BASIC.get()+MySizePanel.WIDTH_SIZE_IT.get();
      }
 
+     void setFormat_duringShift_JRadioButton() {
+         oldFormatNumber= buttonsIT.calculateCurrent.getFormat();
+         buttonsIT.calculateCurrent.setFormat(newFormatNumber);
+
+         str=textPanel.getTextResult().getText();
+         str=buttonsIT.calculateCurrent.calculateIT.shift_format_input_numbers(oldFormatNumber,newFormatNumber,str.replaceAll(" ",""));
+         textPanel.setTextResult("="+str);
+
+         str=textPanel.getTextInput().getText();
+         str=buttonsIT.calculateCurrent.calculateIT.shift_format_input_numbers(oldFormatNumber,newFormatNumber,str.replaceAll(" ",""));
+         textPanel.setTextInput(str);
+
+
+     }
 
  }

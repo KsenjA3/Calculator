@@ -61,6 +61,8 @@ class ButtonsITTest {
         Mockito.doNothing().when(textPanel).setTextResult(Mockito.any());
 
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
+
+
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
         Mockito.when(textPanel.getTextResult()).thenReturn(label);
 
@@ -90,7 +92,6 @@ class ButtonsITTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(30);
 
-
         txt.setText(panelKey.buttonsIT.strInput);
         locate = panelKey.buttonsIT.b0.getLocationOnScreen();
         bot.mouseMove(locate.x + 10, locate.y + 10);
@@ -108,5 +109,68 @@ class ButtonsITTest {
         ///0F(0C
         assertEquals("F*(C", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
     }
+
+
+    @Test
+    @SneakyThrows(InterruptedException.class)
+    void shift_format_input_numbers() {
+
+        txt.setText("955998 + 200");
+        locate = panelKey.bBin.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("1110 1001 0110 0101 1110 + 1100 1000".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+        txt.setText("(11 0111/11 1011 1011)");
+        locate = panelKey.bDec.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("(55/ 955)".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+        txt.setText("955+(55-√200");
+        locate = panelKey.bHex.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("3BB+(37-√C8".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+        txt.setText("3BB+(37- C8)+  E965E");
+        locate = panelKey.bBin.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("11 1011 1011+(11 0111-1100 1000)+1110 1001 0110 0101 1110".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+        txt.setText("11 0111-11 1011 1011%");
+        locate = panelKey.bHex.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("37- 3BB%".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+        txt.setText("3BB/(37+E965E)");
+        locate = panelKey.bDec.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+        assertEquals("955/(55+955998)".replaceAll(" ",""),
+                panelKey.getStr().replaceAll(" ",""));
+
+
+    }
+
 
 }

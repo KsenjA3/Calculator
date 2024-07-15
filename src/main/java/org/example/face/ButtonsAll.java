@@ -1,6 +1,8 @@
 package org.example.face;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +33,6 @@ import javax.swing.*;
       */
      protected JButton braceOpen, braceClose, bx2, bx3, bxn, bSqrt3, bLn, bLg,
             bFactorial, bDivX, bChageSign, bSin, bCos, bTg, bPi;
-
 
      protected String strInput, strResult;
 

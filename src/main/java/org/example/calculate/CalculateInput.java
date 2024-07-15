@@ -24,7 +24,7 @@ public class CalculateInput {
 
      public CalculateBasic calculateBasic;
      CalculateEngineer calculateEngineer;
-     CalculateIT calculateIT;
+     public CalculateIT calculateIT;
 
     @Getter
     @Setter
@@ -48,6 +48,24 @@ public class CalculateInput {
             return "";
 
 
+
+        switch (format)  {
+            case "hex"-> {
+                log.info("hex : init strInput in calculateInput:  = {}",strInput);
+                strInput= calculateIT.shift_format_input_numbers("hex","dec", strInput);
+                log.info("dec from hex: init strInput in calculateInput:  = {}",strInput);
+            }
+            case "dec", "dec_int"->{
+                log.info("dec or int : init strInput in calculateInput:  = {}",strInput);
+            }
+            case "bin"->{
+                log.info("bin: init strInput in calculateInput:  = {}",strInput);
+                strInput= calculateIT.shift_format_input_numbers("bin","dec", strInput);
+                log.info("dec from bin: init strInput in calculateInput:  = {}",strInput);
+            }
+        }
+
+
         if (StringUtils.endsWith(strInput,"%")){
             strInput=StringUtils.removeEnd(strInput,"%");
             countResult=calculateBasic.calculate_percent(strInput);
@@ -55,23 +73,6 @@ public class CalculateInput {
             log.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
             return countResult;
         }
-
-
-
-        switch (format)  {
-            case "hex"-> {
-                log.info("hex");
-            }
-            case "dec", "dec_int"->{
-                log.info("dec or int");
-            }
-            case "bin"->{
-                log.info("bin");
-            }
-        }
-
-
-
 
 //Braces
 
@@ -206,8 +207,22 @@ public class CalculateInput {
 
         log.log(Level.INFO,"Level.INFO: before basic расчеов calculateInput = {}",strInput);
         countResult =calculateBasic.calculateBasicInput(strInput);
-        countResult=Operations.printNumber(countResult);
-        log.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
+
+        switch (format)  {
+            case "hex"-> {
+                countResult= calculateIT.shift_format_input_numbers("dec", "hex",countResult);
+                log.info("hex :  after basic расчеов calculateInput:  = {}",countResult);
+            }
+            case "dec", "dec_int"->{
+                countResult=Operations.printNumber(countResult);
+                log.info("dec or int : after basic расчеов calculateInput:  = {}",countResult);
+            }
+            case "bin"->{
+                countResult= calculateIT.shift_format_input_numbers("dec", "bin",countResult);
+                log.info("bin :  after basic расчеов calculateInput:  = {}",countResult);
+            }
+        }
+
         return countResult;
     }
 

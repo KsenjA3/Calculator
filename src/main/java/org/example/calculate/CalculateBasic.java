@@ -1,5 +1,6 @@
 package org.example.calculate;
 
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Level;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 @Log4j2
 public class CalculateBasic {
     private static final Logger logger = LogManager.getLogger(CalculateBasic.class);
+    CalculateInput calculateCurrent;
     private ArrayList<BigDecimal> arrD;
     private ArrayList <calculate> arrSign;
-
     private ArrayList <String> arrNameSign;
 
     private String strNumber;      //inner number
@@ -29,15 +30,20 @@ public class CalculateBasic {
     private boolean wasNumber;
     private boolean wasSqrt;
     private String stringResult;
-
-
-    public String nameSign ;
-    public String strBeforePersent;
-    public String strPersentFrom;
-    public String countNumber;
-    public String strResult, countResult;
     private boolean wasNegativeNumber;
-    CalculateInput calculateCurrent;
+
+    @Getter
+    private String nameSign="" ;
+    @Getter
+    private String strBeforePersent;
+    @Getter
+    private String strPersentFrom;
+    @Getter
+    private String countNumber;
+    @Getter
+    private String strResult, countResult;
+
+
 
     CalculateBasic( CalculateInput calculateCurrent){
         this.calculateCurrent = calculateCurrent;

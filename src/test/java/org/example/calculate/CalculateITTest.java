@@ -1,19 +1,17 @@
 package org.example.calculate;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CalculateITTest {
-    private static CalculateIT sut;
+    private  CalculateIT sut;
 
     @BeforeAll
-    static void setCalculateBasicInput () {
+     void setCalculateBasicInput () {
         sut = new CalculateIT();
     }
 
@@ -35,7 +33,7 @@ class CalculateITTest {
             "955, 11 1011 1011"
     })
     void decimal_to_binary(String decimal, String binary) {
-        assertEquals(binary.replaceAll(" ",""), CalculateIT.decimal_to_binary(decimal));
+        assertEquals(binary.replaceAll(" ",""), sut.decimal_to_binary(decimal));
     }
 
     @ParameterizedTest
@@ -46,7 +44,7 @@ class CalculateITTest {
             "11 1011 1011, 955"
     })
     void binary_to_decimal(String binary, String decimal) {
-        assertEquals(decimal, CalculateIT.binary_to_decimal(binary.replaceAll(" ","")));
+        assertEquals(decimal, sut.binary_to_decimal(binary.replaceAll(" ","")));
     }
 
    @ParameterizedTest
@@ -57,7 +55,7 @@ class CalculateITTest {
            "955, 3BB"
    })
     void decimal_to_hex(String decimal, String hex) {
-       assertEquals(hex, CalculateIT.decimal_to_hex(decimal));
+       assertEquals(hex, sut.decimal_to_hex(decimal));
     }
 
     @ParameterizedTest
@@ -68,7 +66,7 @@ class CalculateITTest {
             "3BB,955"
     })
     void hex_to_decimal( String hex, String decimal) {
-        assertEquals(decimal, CalculateIT.hex_to_decimal(hex));
+        assertEquals(decimal, sut.hex_to_decimal(hex));
     }
 
     @ParameterizedTest
@@ -79,7 +77,7 @@ class CalculateITTest {
             "11 1011 1011, 3BB"
     })
     void binary_to_hex( String binary, String hex) {
-        assertEquals(hex,CalculateIT.binary_to_hex(binary.replaceAll(" ","")));
+        assertEquals(hex,sut.binary_to_hex(binary.replaceAll(" ","")));
     }
 
     @ParameterizedTest
@@ -90,6 +88,72 @@ class CalculateITTest {
             "3BB,11 1011 1011"
     })
     void hex_to_binary(String hex, String binary) {
-        assertEquals(binary.replaceAll(" ",""), CalculateIT.hex_to_binary(hex));
+        assertEquals(binary.replaceAll(" ",""), sut.hex_to_binary(hex));
+    }
+
+
+    @ParameterizedTest
+    @CsvSource( value = {
+            "dec, bin, 955998, 1110 1001 0110 0101 1110 ",
+            "dec, bin,200, 1100 1000",
+            "dec, bin,55, 11 0111",
+            "dec, bin,955, 11 1011 1011",
+
+            " bin, dec,1110 1001 0110 0101 1110, 955998",
+            "bin, dec,1100 1000,200",
+            "bin, dec,11 0111,55",
+            "bin, dec,11 1011 1011, 955",
+
+            "dec, hex, 955998, E965E ",
+            "dec, hex,200, C8",
+            "dec, hex,55, 37",
+            "dec, hex, 955, 3BB",
+
+            " hex, dec, E965E,955998 ",
+            "hex, dec, C8,200",
+            "hex, dec, 37,55",
+            "hex, dec, 3BB,955",
+
+            "hex, bin, E965E,1110 1001 0110 0101 1110 ",
+            "hex, bin,C8,1100 1000",
+            "hex, bin,37,11 0111",
+            "hex, bin,3BB,11 1011 1011",
+
+            "bin,hex, 1110 1001 0110 0101 1110, E965E",
+            "bin,hex,1100 1000,C8",
+            "bin,hex,11 0111,37",
+            "bin,hex,11 1011 1011, 3BB"
+
+    })
+
+    void shift_format_number( String oldFormat, String newFormat, String oldNumber, String newNumber) {
+        assertEquals(newNumber.replaceAll(" ",""),sut.shift_format_number ( oldFormat,  newFormat,  oldNumber.replaceAll(" ","")));
+    }
+
+    @ParameterizedTest
+    @CsvSource( value = {
+            "dec, bin, 955998 + 200, 1110 1001 0110 0101 1110 + 1100 1000 ",
+            "dec, bin,55/(955, 11 0111 / (11 1011 1011",
+
+            " bin, dec,1110 1001 0110 0101 1110-1100 1000, 955998-200",
+            "bin, dec,(11 0111/11 1011 1011),(55/ 955)",
+
+            "dec, hex, 955998-√200, E965E -√C8",
+            "dec, hex, 955+(55-√200, 3BB+(37-√C8",
+
+            "hex, bin, E965E*C8,1110 1001 0110 0101 1110* 1100 1000 ",
+            "hex, bin,3BB+(37- C8)+  E965E ,11 1011 1011+(11 0111-1100 1000)+1110 1001 0110 0101 1110",
+
+            "bin,hex, 1110 1001 0110 0101 1110+1100 1000, E965E+C8",
+            "bin,hex,11 0111-11 1011 1011%,37- 3BB%",
+
+            " hex, dec, E965E* C8,955998 *200",
+            "hex, dec, 3BB/(37+E965E),955/(55+955998)",
+
+
+    })
+
+    void shift_format_input_numbers( String oldFormat, String newFormat, String oldStr, String newStr) {
+        assertEquals(newStr.replaceAll(" ",""),sut.shift_format_input_numbers ( oldFormat,  newFormat,  oldStr).replaceAll(" ",""));
     }
 }

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
 
-public class CalculateEngineer {
+ class CalculateEngineer {
     private static final Logger logger = LogManager.getLogger(CalculateEngineer.class);
 
     private String strReturn;

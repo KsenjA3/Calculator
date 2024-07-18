@@ -1,5 +1,6 @@
 package org.example.calculate;
 
+import org.example.face.MyException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -153,7 +154,30 @@ class CalculateITTest {
 
     })
 
-    void shift_format_input_numbers( String oldFormat, String newFormat, String oldStr, String newStr) {
+    void shift_format_input_numbers( String oldFormat, String newFormat, String oldStr, String newStr) throws MyException {
         assertEquals(newStr.replaceAll(" ",""),sut.shift_format_input_numbers ( oldFormat,  newFormat,  oldStr).replaceAll(" ",""));
     }
+
+    @ParameterizedTest
+    @CsvSource( value =  {
+            "dec, hex, -8, Работает только с положительными числами.",
+            "dec, hex, 5.4, Формат работает только с целыми числами.",
+            "dec, bin, -8, Работает только с положительными числами.",
+            "dec, bin, 5.4, Формат работает только с целыми числами.",
+    })
+    void exceptions(String oldFormat, String newFormat, String oldString, String expected){
+        Throwable ex = assertThrows(
+                MyException.class,
+                ()->{
+                    sut.shift_format_input_numbers( oldFormat,  newFormat,  oldString);
+
+                },
+                "!!!НЕТУ!!!"
+        );
+
+        assertEquals(expected, ex.getMessage());
+
+    }
+
+
 }

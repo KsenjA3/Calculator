@@ -1214,9 +1214,16 @@ class ButtonsEngineerTest {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Thread.sleep(25);
 
+        txt.setText(panelKey.buttonsEngineer.strInput);
+        locate=panelKey.buttonsEngineer.braceClose.getLocationOnScreen();
+        bot.mouseMove(locate.x+10,locate.y+10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
         // 0^(3-4)
-        assertEquals("0^(3-4", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
-        assertEquals("делить на 0 нельзя", panelKey.buttonsEngineer.strResult);
+        assertEquals("0^(3-4)", panelKey.buttonsEngineer.strInput.replaceAll(" ",""));
+        assertEquals("Делить на 0 нельзя.", panelKey.buttonsEngineer.strResult);
     }
 
 

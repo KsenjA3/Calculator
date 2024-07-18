@@ -29,33 +29,32 @@ public class CalculateInput {
     @Getter
     @Setter
     private String format;
+    String countResult;
 
     public CalculateInput() {
          calculateBasic = new CalculateBasic(this);
          calculateEngineer= new CalculateEngineer();
          calculateIT= new CalculateIT();
-         format=MyFormatNumbers.FORMAT_DEC.get();
+         format=MyFormatNumbers.FORMAT_DOUBLE.get();
     }
 
 
     public String calculateInput (String strInput) throws MyException {
         String str;
-        String countResult;
 
 //Delete spaces
         strInput=StringUtils.deleteWhitespace(strInput);
         if (StringUtils.isEmpty(strInput))
             return "";
 
-
-
+//Format numbers  to decimal
         switch (format)  {
             case "hex"-> {
                 log.info("hex : init strInput in calculateInput:  = {}",strInput);
                 strInput= calculateIT.shift_format_input_numbers("hex","dec", strInput);
                 log.info("dec from hex: init strInput in calculateInput:  = {}",strInput);
             }
-            case "dec", "dec_int"->{
+            case "dec", "double"->{
                 log.info("dec or int : init strInput in calculateInput:  = {}",strInput);
             }
             case "bin"->{
@@ -64,18 +63,22 @@ public class CalculateInput {
                 log.info("dec from bin: init strInput in calculateInput:  = {}",strInput);
             }
         }
+        strInput=StringUtils.deleteWhitespace(strInput);
 
-
+//Percent
         if (StringUtils.endsWith(strInput,"%")){
+            String realFormat= format;
             strInput=StringUtils.removeEnd(strInput,"%");
+            format=MyFormatNumbers.FORMAT_DOUBLE.get();
             countResult=calculateBasic.calculate_percent(strInput);
-            countResult=Operations.printNumber(countResult);
-            log.log(Level.INFO,"Level.INFO: after basic расчеов calculateInput = {}",strInput);
+
+            format=realFormat;
+            format_numbers_from_decimal();
+            log.log(Level.INFO,"PERCENT = {}",strInput);
             return countResult;
         }
 
 //Braces
-
         while (StringUtils.contains(strInput,")")){
             int nLast = StringUtils.indexOf(strInput, ")");
             str =strInput.substring(0, nLast);
@@ -96,7 +99,6 @@ public class CalculateInput {
             }
             strInput=strInput.substring(0, nBrace) + countResult;
         }
-
         log.debug("logger.debug: после расчетов скобок calculateInput: {} ",strInput);
 
         while (StringUtils.containsAny(strInput,"³√", "cos", "sin", "tg", "ln","lg")){
@@ -201,19 +203,22 @@ public class CalculateInput {
             }
         }
 
-
-
-
-
         log.log(Level.INFO,"Level.INFO: before basic расчеов calculateInput = {}",strInput);
         countResult =calculateBasic.calculateBasicInput(strInput);
 
+//Format numbers  from decimal
+        format_numbers_from_decimal();
+        return countResult;
+    }
+
+//Format numbers  from decimal
+    void format_numbers_from_decimal() throws MyException {
         switch (format)  {
             case "hex"-> {
                 countResult= calculateIT.shift_format_input_numbers("dec", "hex",countResult);
                 log.info("hex :  after basic расчеов calculateInput:  = {}",countResult);
             }
-            case "dec", "dec_int"->{
+            case "dec", "double"->{
                 countResult=Operations.printNumber(countResult);
                 log.info("dec or int : after basic расчеов calculateInput:  = {}",countResult);
             }
@@ -222,9 +227,5 @@ public class CalculateInput {
                 log.info("bin :  after basic расчеов calculateInput:  = {}",countResult);
             }
         }
-
-        return countResult;
     }
-
-
 }

@@ -2,14 +2,12 @@ package org.example.face;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
-import org.example.calculate.Operations;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MyFormatNumbers;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
 
 
 @Log4j2
@@ -34,13 +32,14 @@ public class ButtonsIT extends ButtonsBasic{
         braceOpen=createButton(new CreateITButton("("),"(",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get() );
 
-        bNot=createButton(new CreateITButton("Not"),"Not",
+
+        bNot=createButton(new CreateITButton("Not"),"~",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
-        bAnd=createButton(new CreateITButton("And"),"And",
+        bAnd=createButton(new CreateITButton("And"),"&",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
-        bOr=createButton(new CreateITButton("Or"),"Or",
+        bOr=createButton(new CreateITButton("Or"),"|",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
-        bXor=createButton(new CreateITButton("Xor"),"Xor",
+        bXor=createButton(new CreateITButton("Xor"),"^",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
 
 
@@ -94,6 +93,7 @@ public class ButtonsIT extends ButtonsBasic{
                         unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
                     }
                 }
+
                 case "(" -> {
                     countBrace++;
                     str = textPanel.getTextInput().getText().trim();
@@ -102,22 +102,19 @@ public class ButtonsIT extends ButtonsBasic{
                     if (str.length() >= 1)
                         switch (str.charAt(str.length() - 1)) {
                             case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                                 ')', '²', '³', '!','A','B','C','D','E','F' -> {
-                                unblockedAll(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9,  bPercent, bRadical); // after blocked x²,x³,1/x,x!
+                                  'A','B','C','D','E','F',')' -> {
                                 strInput = str + "*" + name;
                             }
-                            case '.' -> strInput = str.substring(0, str.length() - 1) + "*" + name;
                             default -> strInput = str + name;
-
                         }
                     else strInput = str + name;
 
                     textPanel.setTextInput(strInput);
 
-                    unblockedAll(braceClose);
+                    unblockedAll(braceClose, bRadical);
                     blockedAll(bPlus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd);
-
                 }
+
                 case "A","B","C","D","E","F"-> {
                     textPanel.setFontBoldInput ();   //alter fonts
                     countSqrt=0;
@@ -161,8 +158,7 @@ public class ButtonsIT extends ButtonsBasic{
                          */
                         try {
                             countResult = calculateCurrent.calculateInput(strInput);
-                            bigDecimal=new BigDecimal(countResult, Operations.mathContext);
-                            strResult="=" + bigDecimal;
+                            strResult="=" + countResult;
 
                             unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,
                                     bResult, bMemoryAdd, braceOpen);
@@ -171,16 +167,16 @@ public class ButtonsIT extends ButtonsBasic{
                             log.error("logger.error ArithmeticException: {}",ex.getMessage());
                             if (ex.getMessage().equals("Division by zero")) {
                                 strResult = "делить на 0 нельзя";
-                                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
-                                        bResult, bMemoryAdd,braceOpen,braceClose);
+                                if (countBrace==0) {
+                                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult,
+                                            bMemoryAdd, braceOpen, braceClose);
+                                }
                             }
                         }
                         catch (MyException myException){
                             strResult = myException.getMessage();
                             log.error("MyException: {}",myException.getMessage());
-
-                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bA,bB,bC,bD,bE,bF,bPoint,braceOpen,braceClose);
+                            myExceptionBlockButtons(myException);
                         }
 
                         textPanel.setTextResult(strResult);
@@ -193,30 +189,49 @@ public class ButtonsIT extends ButtonsBasic{
 
                 }
 
-
-
-                case "And" -> {
-
+                case "And"-> {
+                    init("&");
                 }
-                case "Or" -> {
-
+                case "Or"-> {
+                    init("|");
                 }
-                case "Xor" -> {
-
+                case "Not"-> {
+                    init("~");
                 }
-                case "Not" -> {
-
+                case "Xor"-> {
+                    init("^");
                 }
+
             }
 
         }
 
 
 
+        void init(String sign){
+            strInput= textPanel.getTextInput().getText();
+
+            replaceRepeatedSign_exceptSimple ();
+            replaceRepeatedSign_simple ();
+            replaceRepeatedSign_IT ();
+            textPanel.setFontBoldInput ();      //alter fonts
+            strNumber = "0";                      //prepare to input new number
+            N = 0;
 
 
 
 
+            if (strInput.endsWith("%") )
+                strInput=countResult;
+
+            strInput=strInput+sign;
+            textPanel.setTextInput(strInput);
+
+            blockedAll(bRadical);
+
+            if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
+            else     unblockedAll(bMemoryHold,bMemoryDel);
+        }
 
     }
 }

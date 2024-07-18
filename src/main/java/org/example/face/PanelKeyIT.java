@@ -2,6 +2,7 @@ package org.example.face;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MyFormatNumbers;
@@ -24,7 +25,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
     private String oldFormatNumber, newFormatNumber;
     @Getter
     @Setter
-    private String str;
+    private String str, strRes;
 
 
      PanelKeyIT(PanelTextLog textPanel) {
@@ -66,8 +67,10 @@ public  class PanelKeyIT extends PanelKeyGeneral{
 
                          buttonsIT.blockedAll( buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
                          buttonsIT.unblockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
-                                 buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,
-                                 buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
+                                         buttonsIT.bPlus,buttonsIT.bMinus,buttonsIT.bDivide,buttonsIT.bMultiply,
+                                         buttonsIT.bRadical,buttonsIT.bPercent,buttonsIT.bResult,buttonsIT.braceOpen,
+                                         buttonsIT.b0, buttonsIT.b1,buttonsIT.b2, buttonsIT.b3, buttonsIT.b4,
+                                         buttonsIT.b5, buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
 
                      }
                 });
@@ -84,11 +87,13 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                          newFormatNumber= MyFormatNumbers.FORMAT_DEC.get() ;
                          setFormat_duringShift_JRadioButton();
 
-                         buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
-                         buttonsIT.unblockedAll( buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,
-                                                 buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
+                         buttonsIT.unblockedAll(buttonsIT.braceOpen, buttonsIT.bMemoryAdd,
+                                 buttonsIT.bPlus,buttonsIT.bMinus,buttonsIT.bDivide,buttonsIT.bMultiply,
+                                 buttonsIT.bRadical,buttonsIT.bPercent,buttonsIT.bResult,
+                                 buttonsIT.b0, buttonsIT.b1,buttonsIT.b2, buttonsIT.b3, buttonsIT.b4,
+                                 buttonsIT.b5, buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
 
                      }
                 });
@@ -104,13 +109,16 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                          newFormatNumber= MyFormatNumbers.FORMAT_BIN.get() ;
                          setFormat_duringShift_JRadioButton();
 
-                         buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_BIN.get());
                          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
                                  buttonsIT.b2, buttonsIT.b3, buttonsIT.b4, buttonsIT.b5,buttonsIT.bPoint,
                                  buttonsIT.b6, buttonsIT.b7, buttonsIT.b8, buttonsIT.b9);
-                         buttonsIT.unblockedAll(buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot);
+                         buttonsIT.unblockedAll(buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,
+                                 buttonsIT.bPlus,buttonsIT.bMinus,buttonsIT.bDivide,buttonsIT.bMultiply,
+                                 buttonsIT.bRadical,buttonsIT.bPercent,buttonsIT.bResult, buttonsIT.bMemoryAdd,
+                                 buttonsIT.b0, buttonsIT.b1,buttonsIT.braceOpen);
                      }
                });
+
                 buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                 digitPanel.add(bBin);
                 bg.add(bBin);
@@ -126,7 +134,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
              switch (button.getKey()) {
 
                  // line 2
-                 case "And" -> {
+                 case "&" -> {
                      makeGridBagConstraints(1, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
                  }case "AA"-> {
@@ -139,7 +147,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
 
 
                  // line 3
-                 case "Or" -> {
+                 case "|" -> {
                      makeGridBagConstraints(2, 0, 1, 1, 12, 20);
                      keyPanelIT.add(button.getValue(), gbc);
                  }case "CC"-> {
@@ -152,7 +160,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
 
 
                  // line 4
-                 case "Xor"-> {
+                 case "^"-> {
                      makeGridBagConstraints(3, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
                  }case "EE"->{
@@ -165,7 +173,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
 
 
                  // line 5
-                 case "Not"-> {
+                 case "~"-> {
                      makeGridBagConstraints(4, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
                  }case "("-> {
@@ -212,13 +220,36 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          oldFormatNumber= buttonsIT.calculateCurrent.getFormat();
          buttonsIT.calculateCurrent.setFormat(newFormatNumber);
 
-         str=textPanel.getTextResult().getText();
-         str=buttonsIT.calculateCurrent.calculateIT.shift_format_input_numbers(oldFormatNumber,newFormatNumber,str.replaceAll(" ",""));
-         textPanel.setTextResult("="+str);
-
          str=textPanel.getTextInput().getText();
-         str=buttonsIT.calculateCurrent.calculateIT.shift_format_input_numbers(oldFormatNumber,newFormatNumber,str.replaceAll(" ",""));
-         textPanel.setTextInput(str);
+         strRes=textPanel.getTextResult().getText();
+         textPanel.setSbLog(str.trim());
+         buttonsIT.print_SbLog ();
+
+         try {
+             strRes = buttonsIT.calculateCurrent.calculateIT.
+                     shift_format_input_numbers(oldFormatNumber, newFormatNumber, strRes.replaceAll(" ", ""));
+             textPanel.setTextResult("=" + strRes);
+         } catch (MyException e) {
+             textPanel.setTextResult(e.getMessage());
+         }
+
+
+         if(oldFormatNumber.equals("bin") && StringUtils.containsAny(str,"^","~","&","|")){
+             textPanel.setTextInput(strRes);
+         }else {
+             try {
+                 str=buttonsIT.calculateCurrent.calculateIT.
+                         shift_format_input_numbers(oldFormatNumber,newFormatNumber,str.replaceAll(" ",""));
+             } catch (MyException e) {
+                 str=e.getMessage();
+             }
+             textPanel.setTextInput(str);
+         }
+
+        buttonsIT.countResult=strRes;
+
+
+
 
 
      }

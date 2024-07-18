@@ -33,7 +33,7 @@ import java.util.Set;
          buttonsEngineer =  new ButtonsEngineer(textPanel);
           HashMap<String,JButton> listButtons= buttonsEngineer.getButtons();
           Set<Map.Entry<String,JButton>> set =listButtons.entrySet();
-          buttonsEngineer.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC_INT.get());
+          buttonsEngineer.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DOUBLE.get());
 
 
          /**

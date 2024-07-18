@@ -13,14 +13,17 @@ public class Check {
 //        System.out.println(bin=check.binary_to_decimal("11001000"));
 //        System.out.println(hex=check.hex_to_decimal("c8"));
 
-        String t="2";
-        char r='3';
-        t+=r;
-        System.out.println(t);
-        System.out.println(r);
-        System.out.println();
+//        String t="2";
+//        char r='3';
+//        t+=r;
+//        System.out.println(t);
+//        System.out.println(r);
+//        System.out.println();
 
-//        System.out.println(0xf0); //16->10
+
+        int hex1=0xf0;
+        int hex2= ~hex1+1;
+        System.out.println(hex2); //16
 
     }
 

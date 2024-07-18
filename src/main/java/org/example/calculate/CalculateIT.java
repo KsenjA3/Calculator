@@ -1,11 +1,13 @@
 package org.example.calculate;
 
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.example.face.MyException;
 
 import java.util.Locale;
 
+@Log4j2
 @NoArgsConstructor
 public class CalculateIT {
 
@@ -87,10 +89,11 @@ public class CalculateIT {
 
 
 
-    public String shift_format_input_numbers(String oldFormat, String newFormat, String oldString){
+    public String shift_format_input_numbers(String oldFormat, String newFormat, String oldString) throws MyException {
         String newString="";
         String oldNum="", newNum="";
         oldString= StringUtils.deleteWhitespace(oldString);
+//        System.out.println("!!!! oldString= "+oldString);
 
         for (int i=0; i<oldString.length(); i++){
             switch (oldString.charAt(i)){
@@ -102,27 +105,34 @@ public class CalculateIT {
                         newString=newString+newNum;
                     }
                 }
-                case '+','-','*','/','%','√', '(', ')' ->{
+                case '+','*','/','%','√', '(', ')' ->{
                     if (oldNum.isEmpty()){
-                        newString = newString +  " " + oldString.charAt(i);
+                            newString = newString +  " " + oldString.charAt(i);
                     }else {
                         newNum = shift_format_number(oldFormat, newFormat, oldNum);
                         newString = newString + newNum + " " + oldString.charAt(i);
                         oldNum = "";
                     }
                 }
+                case '-' -> {
+                    try {
+                        newNum = shift_format_number(oldFormat, newFormat, oldNum);
+                        newString = newString + newNum + " " + oldString.charAt(i);
+                        oldNum = "";
+                    } catch (NumberFormatException e) {
+                        log.error("Формат чисел не может быть отрицательным:  = {}",oldString);
+                        throw new MyException("Работает только с положительными числами.");
+                    }
+                }
+                case '.' -> {
+                    log.error("Формат чисел не может быть дробным:  = {}",oldString);
+                    throw new MyException("Формат работает только с целыми числами.");
+                }
                 case '&','^','|','~' ->{
-                    new MyException("Shift format number is band.");
+                    throw new MyException("Shift format number is band.");
                 }
             }
-
         }
-
-
-
-
-
-
         return newString;
     }
 

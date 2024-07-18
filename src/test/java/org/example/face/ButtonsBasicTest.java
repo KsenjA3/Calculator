@@ -95,6 +95,72 @@ class ButtonsBasicTest {
         assertEquals("0+2", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
 
+    @Disabled
+    @Test
+    @SneakyThrows (InterruptedException.class)
+    void point_pressFirst( ) {
+        txt.setText("0");
+        locate = panelKey.buttonsBasic.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+        assertEquals("0.2", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
+    }
+
+    @Test
+    @SneakyThrows (InterruptedException.class)
+    void null_point_pressFirst( ) {
+
+        locate = panelKey.buttonsBasic.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.bDivide.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.bPoint.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.b2.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(25);
+
+        assertEquals("5/0.2", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
+        assertEquals("25", panelKey.buttonsBasic.countResult);
+    }
+
+
 
     @Test
     @SneakyThrows (InterruptedException.class)
@@ -862,5 +928,49 @@ class ButtonsBasicTest {
         assertEquals("", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getStrBeforePersent().replaceAll(" ",""));
         assertEquals("5", panelKey.buttonsBasic.countResult);
 
+    }
+
+    @Test        //200+5%
+    @SneakyThrows (InterruptedException.class)
+    void after_200_plus_5_percent() {
+        bot.keyPress(KeyEvent.VK_2);
+        Thread.sleep(40);
+        bot.keyRelease(KeyEvent.VK_2);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        bot.keyPress(KeyEvent.VK_0);
+        Thread.sleep(20);
+        bot.keyRelease(KeyEvent.VK_0);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        bot.keyPress(KeyEvent.VK_0);
+        Thread.sleep(20);
+        bot.keyRelease(KeyEvent.VK_0);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        bot.keyPress(KeyEvent.VK_ADD);
+        Thread.sleep(40);
+        bot.keyRelease(KeyEvent.VK_ADD);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        bot.keyPress(KeyEvent.VK_5);
+        Thread.sleep(20);
+        bot.keyRelease(KeyEvent.VK_5);
+
+        txt.setText(panelKey.buttonsBasic.strInput);
+        locate = panelKey.buttonsBasic.bPercent.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(20);
+
+
+        //200+5%+5
+//        assertEquals("200", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getStrPersentFrom().replaceAll(" ",""));
+//        assertEquals("+", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getNameSign().replaceAll(" ",""));
+//        assertEquals("5", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getCountNumber());
+//        assertEquals("", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getStrBeforePersent().replaceAll(" ",""));
+        assertEquals("200+5%", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
+        assertEquals("210", panelKey.buttonsBasic.countResult);
     }
 }

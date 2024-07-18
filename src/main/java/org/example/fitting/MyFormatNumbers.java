@@ -2,7 +2,7 @@ package org.example.fitting;
 
 public enum MyFormatNumbers {
     FORMAT_DEC ("dec"),
-    FORMAT_DEC_INT ("dec_int"),
+    FORMAT_DOUBLE ("double"),
     FORMAT_HEX ("hex"),
     FORMAT_BIN ("bin");
 

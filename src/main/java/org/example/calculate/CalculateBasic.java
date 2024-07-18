@@ -235,6 +235,9 @@ public class CalculateBasic {
         dNSqrt = new BigDecimal(1);
     }
 
+
+
+
     /**calculator Percent
      *
      */
@@ -247,7 +250,7 @@ public class CalculateBasic {
         countNumber="";
         nameSign = "";
 
-
+        System.out.println("str="+str+"=");
 //countNumber and nameSign
         if (str.endsWith(")")){
             try {

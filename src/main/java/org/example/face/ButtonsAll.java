@@ -61,4 +61,11 @@ import javax.swing.*;
          strInput=StringUtils.removeEnd(strInput, "³");
          strInput=StringUtils.removeEnd(strInput, "!");
      }
+
+     void replaceRepeatedSign_IT (){
+         strInput=StringUtils.removeEnd(strInput, "^");
+         strInput=StringUtils.removeEnd(strInput, "~");
+         strInput=StringUtils.removeEnd(strInput, "|");
+         strInput=StringUtils.removeEnd(strInput, "&");
+     }
 }

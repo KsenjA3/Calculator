@@ -108,10 +108,10 @@ class ButtonsEngineer extends ButtonsBasic {
                         switch (str.charAt(str.length() - 1)) {
                             case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ')', '²', '³', '!' ->{
                                 unblockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPi,bPercent,bRadical); // after blocked x²,x³,1/x,x!
-                                strInput = str + "*" + name;
+                                strInput = str + " *" + name;
                             }
                             case '.' ->
-                                strInput = str.substring(0, str.length() - 1) + "*" + name;
+                                strInput = str.substring(0, str.length() - 1) + " *" + name;
                             default ->
                                 strInput = str + name;
 
@@ -136,13 +136,13 @@ class ButtonsEngineer extends ButtonsBasic {
 //                        str = str.substring(0, str.length() - strNumber.length());
 
 // логика перемножения цифры, находящейся перед PI, на  само число PI
-                        strInput = strInput +"*";
+                        strInput = strInput +" *";
                     }
                     if (strInput.endsWith("%")   |   strInput.startsWith("±")
                             | ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null)
                     ) strInput="   ";
                     if (strInput.endsWith(")"))
-                        strInput=strInput+"*";
+                        strInput=strInput+" *";
 
                     double dNumber = Math.PI;
                     strInput= strInput +dNumber;
@@ -155,65 +155,15 @@ class ButtonsEngineer extends ButtonsBasic {
                     }catch (MyException myException){
                         log.error("lMyException: {}",myException.getMessage());
                         strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                        b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
+                        myExceptionBlockButtons(myException);
                     }
                     textPanel.setTextResult(strResult);
                 }
                 case "x²" ->{
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_simple();
-                    replaceRepeatedSign_exceptSimple();
-                    printSign("²");
-                    try {
-                        countResult = calculateCurrent.calculateInput(strInput);
-                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
-                        strResult="=" + bigDecimal;
-                        textPanel.setFontBoldResult ();          //alter font
-
-                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
-                    }catch (MyException myException){
-                        log.error("MyException: {}", myException.getMessage());
-                        strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
-                    }
-                    textPanel.setTextResult(strResult);
+                    engineer_count_sign_init("²");
                 }
                 case  "x³" ->{
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_simple();
-                    replaceRepeatedSign_exceptSimple();
-                    printSign("³");
-                    try {
-                        countResult = calculateCurrent.calculateInput(strInput);
-                        bigDecimal=new BigDecimal(countResult,Operations.mathContext);
-                        strResult="=" + bigDecimal;
-                        textPanel.setFontBoldResult ();          //alter font
-                        blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
-                    }catch (MyException myException){
-                        log.error("MyException: {}",myException.getMessage());
-                        strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
-                    }
-                    textPanel.setTextResult(strResult);
+                    engineer_count_sign_init("³");
                 }
                 case "±"-> {
                     try {
@@ -234,22 +184,13 @@ class ButtonsEngineer extends ButtonsBasic {
 
                         countBrace=0;
 
-
                     }catch (MyException myException){
-                        log.error("MyException: {}",myException.getMessage());
+                        log.error("MyException ± : {}",myException.getMessage());
                         strResult = myException.getMessage();
                         textPanel.setTextResult(strResult);
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
+                        myExceptionBlockButtons(myException);
 
                     }
-
-
-
                 }
                 case "xⁿ" ->{
                     if (strInput.trim().isEmpty())  strInput="0";
@@ -266,7 +207,6 @@ class ButtonsEngineer extends ButtonsBasic {
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
-
                     printSign("^(-1)");
                     try {
                         countResult = calculateCurrent.calculateInput(strInput);
@@ -274,25 +214,19 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult="=" + bigDecimal;
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch ( ArithmeticException  ex){
-                        log.error("logger.error ArithmeticException: {}",ex.getMessage());
+                        log.error("ArithmeticException 1/x: {}",ex.getMessage());
                         if (ex.getMessage().equals("Division by zero")) {
                             strResult = "делить на 0 нельзя";
-                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
+                            blockedAll( bRadical, bDivX,bSqrt3,
                                     b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,
                                     bResult, bMemoryAdd, bMemoryDel, bMemoryHold,
-                                    bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
                                     bChageSign,braceOpen,braceClose
                             );
                         }
                     }catch (MyException myException){
-                        log.error("MyException: {}",myException.getMessage());
+                        log.error("MyException 1/x: {}",myException.getMessage());
                         strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                    try {
-                        blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                bChageSign,braceOpen,braceClose);
-                    }catch (NullPointerException exception){  }
+                        myExceptionBlockButtons(myException);
                 }
                     textPanel.setFontBoldResult ();          //alter font
                     textPanel.setTextResult(strResult);
@@ -301,13 +235,11 @@ class ButtonsEngineer extends ButtonsBasic {
                     if (strInput.trim().isEmpty())  {
                         strInput="0";
                     }
-
                     textPanel.setFontBoldInput ();
                     replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_exceptSimple();
                     printSign("!");
-
                     try {
                         countResult = calculateCurrent.calculateInput(strInput);
                         bigDecimal=new BigDecimal(countResult,Operations.mathContext);
@@ -315,88 +247,69 @@ class ButtonsEngineer extends ButtonsBasic {
                         textPanel.setFontBoldResult ();          //alter font
                         blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
                     }catch (MyException myException){
-                        log.error("logger.error Exception: {}",myException.getMessage());
+                        log.error("MyException factorial: {}",myException.getMessage());
                         strResult = myException.getMessage();
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
+                        myExceptionBlockButtons(myException);
                     }
                     textPanel.setTextResult(strResult);
                 }
 
 // limit variable double
                 case  "³√" ->{
-                    countBrace ++;
-                    replaceRepeatedSign_always ();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                        StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("³√(");
+                    engineer_sign_init("³√(");
                 }
-
                 case "ln" ->{
-                    countBrace ++;
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                            StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("ln(");
+                    engineer_sign_init("ln(");
                 }
                 case "lg" ->{
-                    countBrace ++;
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                            StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("lg(");
+                    engineer_sign_init("lg(");
                 }
-
                 case "sin" ->{
-                    countBrace ++;
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                            StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("sin(");
+                    engineer_sign_init("sin(");
                 }
                 case "cos" ->{
-                    countBrace ++;
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                            StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("cos(");
+                    engineer_sign_init("cos(");
                 }
                 case "tg" -> {
-                    countBrace ++;
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
-                    replaceRepeatedSign_exceptSimple();
-                    if (!strInput.trim().isEmpty() &&
-                            StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
-                        strInput = strInput +"*";
-                    }
-                    printSign("tg(");
+                    engineer_sign_init("tg(");
                 }
             }
         }
+    }
+
+
+    void engineer_sign_init (String sign){
+        countBrace ++;
+        textPanel.setFontBoldInput ();
+        replaceRepeatedSign_always ();
+        replaceRepeatedSign_exceptSimple();
+        if (!strInput.trim().isEmpty() &&
+                StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".",")")) {
+            strInput = strInput +" *";
+        }
+        printSign(sign);
+    }
+
+
+    void engineer_count_sign_init(String sign){
+        if (strInput.trim().isEmpty())  strInput="0";
+        textPanel.setFontBoldInput ();
+        replaceRepeatedSign_always ();
+        replaceRepeatedSign_simple();
+        replaceRepeatedSign_exceptSimple();
+        printSign(sign);
+        try {
+            countResult = calculateCurrent.calculateInput(strInput);
+            bigDecimal=new BigDecimal(countResult,Operations.mathContext);
+            strResult="=" + bigDecimal;
+            textPanel.setFontBoldResult ();          //alter font
+            blockedAll(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint,bPi,bPercent,bRadical,bMemoryHold);
+        }catch (MyException myException){
+            log.error("MyException x{}: {}",sign, myException.getMessage());
+            strResult = myException.getMessage();
+            myExceptionBlockButtons(myException);
+        }
+        textPanel.setTextResult(strResult);
     }
 }

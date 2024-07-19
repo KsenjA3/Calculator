@@ -253,8 +253,7 @@ public class CalculateFace extends JFrame {
                                 keyPanelIT.listButtons.get(".")
                             ,keyPanelIT.listButtons.get("AA"), keyPanelIT.listButtons.get("BB"),keyPanelIT.listButtons.get("CC")
                             ,keyPanelIT.listButtons.get("DD"), keyPanelIT.listButtons.get("EE"), keyPanelIT.listButtons.get("FF")
-                            ,keyPanelIT.listButtons.get("&"), keyPanelIT.listButtons.get("|")
-                            ,keyPanelIT.listButtons.get("^"), keyPanelIT.listButtons.get("~")
+
                     );
                     keyPanelIT.buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
                     cardTypeCalc.show(cardPanel, keyPanelIT.getName());

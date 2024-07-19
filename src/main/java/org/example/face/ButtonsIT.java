@@ -39,7 +39,7 @@ public class ButtonsIT extends ButtonsBasic{
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
         bOr=createButton(new CreateITButton("Or"),"|",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
-        bXor=createButton(new CreateITButton("Xor"),"^",
+        bXor=createButton(new CreateITButton("Xor"),"Xor",
                 MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON_BOTTOM.get() );
 
 
@@ -90,7 +90,8 @@ public class ButtonsIT extends ButtonsBasic{
 
                     if (countBrace <= 0) {
                         blockedAll(braceClose);
-                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd, bMemoryDel, bMemoryHold,
+                                        braceOpen, bNot, bXor, bOr, bAnd);
                     }
                 }
 
@@ -112,7 +113,8 @@ public class ButtonsIT extends ButtonsBasic{
                     textPanel.setTextInput(strInput);
 
                     unblockedAll(braceClose, bRadical);
-                    blockedAll(bPlus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd);
+                    blockedAll(bPlus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd,
+                            braceOpen, bXor, bOr, bAnd);
                 }
 
                 case "A","B","C","D","E","F"-> {
@@ -164,14 +166,8 @@ public class ButtonsIT extends ButtonsBasic{
                                     bResult, bMemoryAdd, braceOpen);
                         }
                         catch ( ArithmeticException  ex){
-                            log.error("logger.error ArithmeticException: {}",ex.getMessage());
-                            if (ex.getMessage().equals("Division by zero")) {
-                                strResult = "делить на 0 нельзя";
-                                if (countBrace==0) {
-                                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult,
-                                            bMemoryAdd, braceOpen, braceClose);
-                                }
-                            }
+                            log.error("When put ABCDEF ArithmeticException: {}",ex.getMessage());
+                            handleArithmeticException(ex);
                         }
                         catch (MyException myException){
                             strResult = myException.getMessage();
@@ -183,23 +179,20 @@ public class ButtonsIT extends ButtonsBasic{
 
                         if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
                         else     unblockedAll(bMemoryHold,bMemoryDel);
-
                     }
-
-
                 }
 
                 case "And"-> {
-                    init("&");
+                    init_IT_sign_button(" &");
                 }
                 case "Or"-> {
-                    init("|");
+                    init_IT_sign_button(" |");
                 }
                 case "Not"-> {
-                    init("~");
+                    init_IT_sign_button("~");
                 }
                 case "Xor"-> {
-                    init("^");
+                    init_IT_sign_button(" Xor");
                 }
 
             }
@@ -208,27 +201,32 @@ public class ButtonsIT extends ButtonsBasic{
 
 
 
-        void init(String sign){
+        void init_IT_sign_button(String sign){
             strInput= textPanel.getTextInput().getText();
+            textPanel.setFontBoldInput ();
+//            strResult=textPanel.getTextResult().getText();
+
+            if (StringUtils.endsWith(strInput, "%") )
+                strInput=countResult;
 
             replaceRepeatedSign_exceptSimple ();
             replaceRepeatedSign_simple ();
             replaceRepeatedSign_IT ();
-            textPanel.setFontBoldInput ();      //alter fonts
-            strNumber = "0";                      //prepare to input new number
-            N = 0;
 
 
+            if (StringUtils.containsAny(strInput,"/","*","-","+") ) {
+                textPanel.setSbLog(strInput.trim());
+                print_SbLog();
+                strInput = countResult;
+            }
 
-
-            if (strInput.endsWith("%") )
-                strInput=countResult;
-
-            strInput=strInput+sign;
+            if(strInput.trim().isEmpty())
+                strInput="0"+sign;
+             else
+                strInput=strInput+sign;
             textPanel.setTextInput(strInput);
 
             blockedAll(bRadical);
-
             if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
             else     unblockedAll(bMemoryHold,bMemoryDel);
         }

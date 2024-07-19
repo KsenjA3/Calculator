@@ -20,12 +20,12 @@ import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.util.HashMap;
 @Log4j2
-public class ButtonsBasic extends ButtonsAll{
+public class ButtonsBasic extends ButtonsAll {
 
     private final PanelTextLog textPanel;
 
-    /**restriction amount  input figures to number
-     *
+    /**
+     * restriction amount  input figures to number
      */
     protected int N;
     protected int countSqrt;        //no more than 3
@@ -42,25 +42,26 @@ public class ButtonsBasic extends ButtonsAll{
     protected calculate func;
 
 
-    /**object for calculation
-     *
+    /**
+     * object for calculation
      */
     protected CalculateInput calculateCurrent;
-    private HashMap<String,JButton> listButtons;
+    private HashMap<String, JButton> listButtons;
 
     protected String countResult;
     protected BigDecimal bigDecimal;
 
     protected ButtonsBasic(PanelTextLog textPanel) {
-        this.textPanel=textPanel;
+        this.textPanel = textPanel;
 
         N = 0;
         strNumber = "0";
-        countResult="0";
+        countResult = "0";
         func = null;
-        strInput="   ";
-        strResult="0";
-                        //create object for calculation
+        strInput = "   ";
+        strResult = "0";
+
+        //create object for calculation
         calculateCurrent = new CalculateInput();
         listButtons = new HashMap<>();
         makeButtons();
@@ -68,9 +69,10 @@ public class ButtonsBasic extends ButtonsAll{
 
     /**
      * get map of buttons
+     *
      * @return list of buttons with  name keys
      */
-    protected HashMap <String,JButton>  getButtons () {
+    protected HashMap<String, JButton> getButtons() {
         return listButtons;
     }
 
@@ -81,32 +83,32 @@ public class ButtonsBasic extends ButtonsAll{
 
         //SIMPLE CALCULATOR
 
-                            //Numbers
+        //Numbers
         b1 = createButton(new CreateActionNumberButton("1"),
-                "1", KeyStroke.getKeyStroke('1') , MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "1", KeyStroke.getKeyStroke('1'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b2 = createButton(new CreateActionNumberButton("2"),
-                "2", KeyStroke.getKeyStroke('2'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "2", KeyStroke.getKeyStroke('2'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b3 = createButton(new CreateActionNumberButton("3"),
-                "3", KeyStroke.getKeyStroke('3'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "3", KeyStroke.getKeyStroke('3'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b4 = createButton(new CreateActionNumberButton("4"),
-                "4", KeyStroke.getKeyStroke('4'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "4", KeyStroke.getKeyStroke('4'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b5 = createButton(new CreateActionNumberButton("5"),
-                "5", KeyStroke.getKeyStroke('5'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "5", KeyStroke.getKeyStroke('5'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b6 = createButton(new CreateActionNumberButton("6"),
-                "6", KeyStroke.getKeyStroke('6'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "6", KeyStroke.getKeyStroke('6'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b7 = createButton(new CreateActionNumberButton("7"),
-                "7", KeyStroke.getKeyStroke('7'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "7", KeyStroke.getKeyStroke('7'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b8 = createButton(new CreateActionNumberButton("8"),
-                "8", KeyStroke.getKeyStroke('8'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "8", KeyStroke.getKeyStroke('8'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b9 = createButton(new CreateActionNumberButton("9"),
-                "9", KeyStroke.getKeyStroke('9'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "9", KeyStroke.getKeyStroke('9'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         b0 = createButton(new CreateActionNumberButton("0"),
-                "0", KeyStroke.getKeyStroke('0'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                "0", KeyStroke.getKeyStroke('0'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
         bPoint = createButton(new CreateActionNumberButton("."),
-                ".", KeyStroke.getKeyStroke('.'),MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
+                ".", KeyStroke.getKeyStroke('.'), MyColors.COLOR_BUTTON.get(), MyFonts.FONT_BUTTON.get());
 
 
-                            //calculator.org.example.calculate.Operations
+        //calculator.org.example.calculate.Operations
         bPlus = createButton(new CreateSignButton(" + "),
                 " + ", KeyStroke.getKeyStroke('+'), MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
         bMinus = createButton(new CreateSignButton(" - "),
@@ -120,10 +122,10 @@ public class ButtonsBasic extends ButtonsAll{
         bResult = createButton(new CreateSignButton(" = "),
                 " = ", KeyStroke.getKeyStroke('='), MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
         bRadical = createButton(new CreateSignButton(" √ "),
-                " √ ",  MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
+                " √ ", MyColors.COLOR_SIGN.get(), MyFonts.FONT_BUTTON.get());
 
 
-                                //Delete and Memory
+        //Delete and Memory
         bClear = createButton(new CreateWorkButton("AC"),
                 "AC", KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), MyColors.COLOR_BUTTON_MEMORY.get(), MyFonts.FONT_BUTTON_MEMORY.get());
         bDel = createButton(new CreateWorkButton("C"),
@@ -141,17 +143,19 @@ public class ButtonsBasic extends ButtonsAll{
             unblockedAll(bMemoryHold);
     }
 
-    /**create Button
+    /**
+     * create Button
      * every button is put into HashMap listButtons
-     * @param bAction behavior button
-     * @param name object to link InputMap with ActionMap
+     *
+     * @param bAction   behavior button
+     * @param name      object to link InputMap with ActionMap
      * @param keyStroke name key linked with button
-     * @param color color button
-     * @param font font button
+     * @param color     color button
+     * @param font      font button
      * @return button
      */
     protected JButton createButton(Action bAction, String name,
-                                 KeyStroke keyStroke, Color color, Font font) {
+                                   KeyStroke keyStroke, Color color, Font font) {
         b = new JButton(bAction);
         b.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, name);
         b.getActionMap().put(name, bAction);
@@ -168,8 +172,9 @@ public class ButtonsBasic extends ButtonsAll{
         }
         return b;
     }
+
     protected JButton createButton(Action bAction, String name,
-                          Color color, Font font) {
+                                   Color color, Font font) {
         b = new JButton(bAction);
         b.setBackground(color);
         b.setFont(font);
@@ -181,30 +186,30 @@ public class ButtonsBasic extends ButtonsAll{
     }
 
 
-
     /**
      * behavior number Buttons
      */
     class CreateActionNumberButton extends AbstractAction {
         String name;
+
         CreateActionNumberButton(String nameButton) {
             super(nameButton);
-            name=nameButton;
+            name = nameButton;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = e.getActionCommand();
-            strInput= textPanel.getTextInput().getText();
-            textPanel.setFontBoldInput ();   //alter fonts
-            countSqrt=0;
+            strInput = textPanel.getTextInput().getText();
+            textPanel.setFontBoldInput();   //alter fonts
+            countSqrt = 0;
 
-            if (strInput.endsWith("%")   |   strInput.startsWith("±")  |
-               ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null))
-                        strInput="   ";
+            if (strInput.endsWith("%") | strInput.startsWith("±") |
+                    (strInput.trim().equals(strResult.substring(1).trim()) && strNumber.equals("0") && func == null))
+                strInput = "   ";
 
             if (strInput.endsWith(")"))
-                        strInput=strInput+"*";
+                strInput = strInput + "*";
 
 
             if (N < 15) {
@@ -214,8 +219,8 @@ public class ButtonsBasic extends ButtonsAll{
                 /** IT panel binary numbers
                  * ввод нуля вначале числа
                  */
-                if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())){
-                    strInput=strInput + name;
+                if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())) {
+                    strInput = strInput + name;
                 }
                 else {
                     /**начало ввода с точки
@@ -238,8 +243,9 @@ public class ButtonsBasic extends ButtonsAll{
                             strInput = strInput.substring(0, strInput.length() - 1) + name;
                             N--;
                         } else strInput = strInput + name;
+                    } else {
+                        strInput = strInput + name;
                     }
-                    else {  strInput = strInput + name;    }
                 }
 
                 textPanel.setTextInput(strInput);
@@ -248,50 +254,24 @@ public class ButtonsBasic extends ButtonsAll{
                  *
                  */
                 try {
-                        countResult = calculateCurrent.calculateInput(strInput);
+                    countResult = calculateCurrent.calculateInput(strInput);
+                    find_StrResult();                            //BigDecimal не работает с hex и binary
 
-                        //BigDecimal не работает с hex и binary
-                        find_StrResult();
-
-                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
-                        try {
-                            unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn, bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
-                        }catch (NullPointerException exception){    }
-
+                    unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
+                    try {
+                        unblockedAll(bSin, bCos, bTg, bLg, bLn, bx3, bx2, bxn, bChageSign, bFactorial, bDivX, bSqrt3, bPi, braceOpen);
+                    } catch (NullPointerException exception) {
                     }
-                catch ( ArithmeticException  ex){
-                        log.error("logger.error ArithmeticException: {}",ex.getMessage());
-                        if (ex.getMessage().equals("Division by zero")) {
-                            strResult = "Делить на 0 нельзя.";
-                            if (countBrace==0) {
-                                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
-                                try {
-                                    blockedAll(
-                                            bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX, bxn, bx2, bx3, bSqrt3, bChageSign,
-                                            braceOpen, braceClose, bChageSign);
-                                } catch (NullPointerException exception) {
-                                }
 
-                                try {
-                                    blockedAll(braceOpen, bNot, bXor, bOr, bAnd);
-                                } catch (NullPointerException exception) {
-                                }
-                            }
-
-
-                        }
-
-
-
-                }
-                catch (MyException myException){
+                } catch (ArithmeticException ex) {
+                    log.error("when put number ArithmeticException: {}", ex.getMessage());
+                    handleArithmeticException(ex);
+                } catch (MyException myException) {
                     strResult = myException.getMessage();
-                    log.error("MyException: {}",myException.getMessage());
+                    log.error("MyException: {}", myException.getMessage());
 
                     //blocked buttons
                     myExceptionBlockButtons(myException);
-
-
                 }
 
                 textPanel.setTextResult(strResult);
@@ -302,8 +282,8 @@ public class ButtonsBasic extends ButtonsAll{
                             bResult, bMemoryAdd, bDel, bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical);
                 }
 
-                if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
-                else     unblockedAll(bMemoryHold,bMemoryDel);
+                if (textPanel.memoryMR == null) blockedAll(bMemoryHold, bMemoryDel);
+                else unblockedAll(bMemoryHold, bMemoryDel);
 
             }
         }
@@ -323,117 +303,102 @@ public class ButtonsBasic extends ButtonsAll{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            textPanel.setFontBoldInput ();      //alter fonts
+            textPanel.setFontBoldInput();      //alter fonts
             strNumber = "0";                      //prepare to input new number
             N = 0;
 
-            strInput= textPanel.getTextInput().getText();
+            strInput = textPanel.getTextInput().getText();
 
-            if (strInput.endsWith("%")   |   strInput.startsWith("±"))
-                strInput=countResult;
+            if ( StringUtils.containsAny(strInput,"&","~","|","Xor")) {
+                textPanel.setSbLog(strInput.trim());
+                print_SbLog();
+                strInput = countResult;
+            }
 
+            if (strInput.endsWith("%") | strInput.startsWith("±") )
+                strInput = countResult;
 
             //unblocked buttons
             unblocked_buttons_appropriate_format();
-            try {
-                blockedAll(bNot,bOr,bXor,bAnd);
-            }catch (NullPointerException ex){  }
-
-
 
             switch (name) {
                 case " √ " -> {
-                    if (strInput.equals("0")) strInput="";
+                    if (strInput.equals("0")) strInput = "";
 
-                    if (countSqrt<3) {
-                        strInput=strInput + name.trim();
+                    if (countSqrt < 3) {
+                        strInput = strInput + name.trim();
                         textPanel.setTextInput(strInput);
                     }
                     countSqrt++;
                 }
                 case " + " -> {
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    replaceRepeatedSign_always ();
+                    if (strInput.trim().isEmpty()) strInput = "0";
+                    replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_IT ();
+                    replaceRepeatedSign_IT();
                     printSign(" +");
                     func = Operations::plus;
                 }
                 case " - " -> {
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    replaceRepeatedSign_always ();
+                    if (strInput.trim().isEmpty()) strInput = "0";
+                    replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_IT ();
+                    replaceRepeatedSign_IT();
                     printSign(" -");
                     func = Operations::minus;
                 }
                 case " * " -> {
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    replaceRepeatedSign_always ();
+                    if (strInput.trim().isEmpty()) strInput = "0";
+                    replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_IT ();
+                    replaceRepeatedSign_IT();
                     printSign(" *");
                     func = Operations::multiply;
                 }
                 case " / " -> {
-                    if (strInput.trim().isEmpty())  strInput="0";
-                    replaceRepeatedSign_always ();
+                    if (strInput.trim().isEmpty()) strInput = "0";
+                    replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_IT ();
+                    replaceRepeatedSign_IT();
                     printSign(" /");
                     func = Operations::divide;
                 }
                 case " % " -> {
-                    if (strInput.trim().isEmpty())  strInput="0";
+                    if (strInput.trim().isEmpty()) strInput = "0";
                     unblockedAll(bPercent);       // work  % without mistakes
-                    textPanel.setFontBoldInput ();
-                    replaceRepeatedSign_always ();
+                    textPanel.setFontBoldInput();
+                    replaceRepeatedSign_always();
                     replaceRepeatedSign_exceptSimple();
                     replaceRepeatedSign_simple();
-                    replaceRepeatedSign_IT ();
+                    replaceRepeatedSign_IT();
 
                     try {
-                        countResult= calculateCurrent.calculateInput(strInput+"%");
-                            log.info("!!! PERCENT countResult= "+countResult);
-
-                            //BigDecimal не работает с hex и binary
-                        find_StrResult();
-
-                        if (func==null ) {
-                            strInput=strResult+ name.trim();
-                            textPanel.setTextInput(strInput);
-                        }else {
-                            strInput=strInput + name.trim();
-                            textPanel.setTextInput(strInput);
-                        }
+                        countResult = calculateCurrent.calculateInput(strInput + "%");
+                        log.info("!!! PERCENT countResult= " + countResult);
+                        find_StrResult();                 //BigDecimal не работает с hex и binary
+//
+                       strInput = strInput + name.trim();
+                       textPanel.setTextInput(strInput);//
 
                         textPanel.setSbLog(strInput.trim());
-                        printResult ();
-                        print_SbLog ();
+                        printResult();
+                        print_SbLog();
                     } catch (MyException ex) {
-                        blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                                b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                        try {
-                            blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                    bChageSign,braceOpen,braceClose);
-                        }catch (NullPointerException exception){  }
-
-                        try {  blockedAll( bNot,bXor,bOr,bAnd,bA,bB,bC,bD,bE,bF );
-                        } catch (NullPointerException exception) {  }
+                        myExceptionBlockButtons(ex);
 
                         textPanel.setTextResult(strResult);
                     }
-                    countBrace=0;
+                    countBrace = 0;
 
                 }
                 case " = " -> {
-                    countResult= textPanel.getTextResult().getText().substring(1);
+                    countResult = textPanel.getTextResult().getText().substring(1);
                     textPanel.setSbLog(strInput.trim());
-                    print_SbLog ();
-                    printResult ();
-                    strInput=countResult;
+                    print_SbLog();
+                    printResult();
+                    strInput = countResult;
                     textPanel.setTextInput(strInput);
-                    countBrace=0;
+                    countBrace = 0;
                 }
             }
         }
@@ -453,7 +418,7 @@ public class ButtonsBasic extends ButtonsAll{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            strInput= textPanel.getTextInput().getText();
+            strInput = textPanel.getTextInput().getText();
 
             switch (name) {
 
@@ -466,51 +431,42 @@ public class ButtonsBasic extends ButtonsAll{
                     blockedAll(bMemoryHold);
                 }
                 case "MR" -> {
-                    strInput=textPanel.getTextInput().getText();
+                    strInput = textPanel.getTextInput().getText();
 
-                    if (StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".")){
+                    if (StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".")) {
                         boolean isFormerNumber = true;
 
                         while (isFormerNumber) {
-                            strInput=strInput.substring(0,  strInput.length() - 1);
+                            strInput = strInput.substring(0, strInput.length() - 1);
                             textPanel.setTextInput(strInput);
 
                             if (!StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."))
                                 isFormerNumber = false;
                         }
                     }
-                    if (strInput.endsWith("%")   |   strInput.startsWith("±")
-                            | ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null)
-                    ) strInput="   ";
+                    if (strInput.endsWith("%") | strInput.startsWith("±")
+                            | (strInput.trim().equals(strResult.substring(1).trim()) && strNumber.equals("0") && func == null)
+                    ) strInput = "   ";
                     if (strInput.endsWith(")"))
-                        strInput=strInput+"*";
+                        strInput = strInput + "*";
 
-                    strInput=strInput+ textPanel.memoryMR;
+                    strInput = strInput + textPanel.memoryMR;
                     textPanel.setTextInput(strInput);
 
                     try {                                       // except divide for 0
                         countResult = calculateCurrent.calculateInput(strInput);
+                        find_StrResult();                //BigDecimal не работает с hex и binary
 
-                        //BigDecimal не работает с hex и binary
-                        find_StrResult();
-
-                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent,bResult, bMemoryAdd);
+                        unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd);
                         try {
-                            unblockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,
-                                    bChageSign, bFactorial, bDivX,  bSqrt3, bPi, braceOpen);
-                        }catch (NullPointerException exception){  }
-                    }catch ( ArithmeticException  ex){
-                        if (ex.getMessage().equals("Division by zero")) {
-                            strResult = "делить на 0 нельзя";
-                            blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
-                                         bResult, bMemoryAdd, bMemoryDel, bMemoryHold);
-                            try {
-                                blockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3,
-                                        bChageSign,braceOpen,braceClose);
-                            }catch (NullPointerException exception){  }
+                            unblockedAll(bSin, bCos, bTg, bLg, bLn, bx3, bx2, bxn,
+                                    bChageSign, bFactorial, bDivX, bSqrt3, bPi, braceOpen);
+                        } catch (NullPointerException exception) {
                         }
-                        log.error("logger.error ArithmeticException: {}",ex.getMessage());
-                    }catch (MyException myException){
+                    } catch (ArithmeticException ex) {
+                        handleArithmeticException(ex);
+                        log.error("When put MR ArithmeticException: {}", ex.getMessage());
+                    } catch (MyException myException) {
                         strResult = myException.getMessage();
                         myExceptionBlockButtons(myException);
                     }
@@ -521,52 +477,91 @@ public class ButtonsBasic extends ButtonsAll{
                     // unblocked buttons
                     unblocked_buttons_appropriate_format();
 
-                    if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
-                    else     unblockedAll(bMemoryHold,bMemoryDel);
+                    if (textPanel.memoryMR == null) blockedAll(bMemoryHold, bMemoryDel);
+                    else unblockedAll(bMemoryHold, bMemoryDel);
 
                     //init
-                    countBrace=0;
+                    countBrace = 0;
                     strNumber = "0";
-                    N=0;
+                    N = 0;
                     textPanel.setTextResult("0");
-                    strInput="   ";   //number after АС
-                    textPanel.setTextInput( strInput);
+                    strInput = "   ";   //number after АС
+                    textPanel.setTextInput(strInput);
                     func = null;
-                    countResult="0";                 // sign after АС
-                    strResult="0";  // AC then =, textRez
+                    countResult = "0";                 // sign after АС
+                    strResult = "0";  // AC then =, textRez
                 }
                 case "C" -> {
-                    strInput=textPanel.getTextInput().getText();
+                    /** find strInput
+                     *
+                     */
+                    strInput = textPanel.getTextInput().getText();
                     if (strInput.isEmpty()) break;
-                    if (StringUtils.endsWith(strInput,"(")){ countBrace--; }
-                    if (StringUtils.endsWith(strInput,")")){ countBrace++; }
-                    if (StringUtils.endsWithAny(strInput,"0","1","2","3","4","5","6","7","8","9",".","A","B","C","D","E","F")){
+                    if (StringUtils.endsWith(strInput, "(")) {
+                        StringUtils.removeEnd(strInput, "(");;
+                        countBrace--;
+                    }
+                    if (StringUtils.endsWith(strInput, ")")) {
+                        StringUtils.removeEnd(strInput, ")");;
+                        countBrace++;
+                    }
+                    if (StringUtils.endsWithAny(strInput, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "A", "B", "C", "D", "E", "F")) {
                         if (strNumber.length() > 1)          //beginning work,
                             strNumber = strNumber.substring(0, strNumber.length() - 1);
+                        strInput = strInput.substring(0, strInput.length() - 1);
                         N--;
                     }
 
+                    strInput = StringUtils.removeEnd(strInput, "Xor");
+                    strInput = StringUtils.removeEnd(strInput, " |");
+                    strInput = StringUtils.removeEnd(strInput, " &");
+                    strInput = StringUtils.removeEnd(strInput, "√");
+                    strInput = StringUtils.removeEnd(strInput, "!");
+                    strInput = StringUtils.removeEnd(strInput, "³");
+                    strInput = StringUtils.removeEnd(strInput, "²");
+                    strInput = StringUtils.removeEnd(strInput, "%");
+                    strInput = StringUtils.removeEnd(strInput, " /");
+                    strInput = StringUtils.removeEnd(strInput, " *");
+                    strInput = StringUtils.removeEnd(strInput, " +");
+                    strInput = StringUtils.removeEnd(strInput, " -");
+                    strInput = StringUtils.removeEnd(strInput, "sin(");
+                    strInput = StringUtils.removeEnd(strInput, "cos(");
+                    strInput = StringUtils.removeEnd(strInput, "tg(");
+                    strInput = StringUtils.removeEnd(strInput, "ln(");
+                    strInput = StringUtils.removeEnd(strInput, "lg(");
+                    strInput = StringUtils.removeEnd(strInput, "^(-1)");
+                    strInput = StringUtils.removeEnd(strInput, "³√(");
+                    strInput = StringUtils.removeEnd(strInput, "^");
+                    strInput = StringUtils.removeEnd(strInput, "");
+
+
+
+
+//                    "~","±"
+
                     if (strResult.equals("делить на 0 нельзя")) {
                         strInput = strInput.substring(0, strInput.length() - 2);
-                        N=0;
-                        strNumber="0";
-                    } else
-                        strInput=strInput.substring(0,  strInput.length() - 1);
+                        N = 0;
+                        strNumber = "0";
+                    }
+
+
                     textPanel.setTextInput(strInput);
 
+
+                    /**find strResult
+                     *
+                     */
                     try {
                         countResult = calculateCurrent.calculateInput(strInput);
-
-                        //BigDecimal не работает с hex и binary
-                        find_StrResult();
-
-                    }catch (MyException myException){
-                        log.error("MyException in C: {}",myException.getMessage());
+                        find_StrResult();                    //BigDecimal не работает с hex и binary
+                    }
+                    catch (MyException myException) {
+                        log.error("MyException in C: {}", myException.getMessage());
                         strResult = myException.getMessage();
                         //blocked buttons
                         myExceptionBlockButtons(myException);
                     }
-
                     textPanel.setTextResult(strResult);
 
                     // unblocked buttons
@@ -578,59 +573,58 @@ public class ButtonsBasic extends ButtonsAll{
     }
 
 
-
     /**
      * block keys on panel calculator
+     *
      * @param v blocking keys
      */
-     void blockedAll(JButton... v) {
+    void blockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(false);
     }
 
     /**
      * unblock keys on panel calculator
+     *
      * @param v unblocking keys
      */
-     void unblockedAll(JButton... v) {
+    void unblockedAll(JButton... v) {
         for (JButton b : v)
             b.setEnabled(true);
     }
 
 
-     void printResult (){
-         //BigDecimal не работает с hex и binary
-            find_StrResult();
+    void printResult() {
+        textPanel.setFontBoldResult();          //alter font
 
-         textPanel.setFontBoldResult ();          //alter font
+        find_StrResult();                        //BigDecimal не работает с hex и binary
         textPanel.setTextResult(strResult);
 
-         unblockedAll(bPercent);       // work  % without mistakes
-         strNumber = "0";              // if after = go.
-         N=0;
-         func = null;
+        unblockedAll(bPercent);       // work  % without mistakes
+        strNumber = "0";              // if after = go.
+        N = 0;
+        func = null;
 //         strInput="   ";
 //         countResult="0";
     }
 
-     void print_SbLog (){
-         for (int i=0; i<countBrace; i++)
-             textPanel.setSbLog(")");
+    void print_SbLog() {
+        for (int i = 0; i < countBrace; i++)
+            textPanel.setSbLog(")");
         textPanel.setSbLog("\n");
         textPanel.setSbLog(textPanel.getTextResult().getText());
         textPanel.setSbLog("\n");
-        textPanel.setTextLog( textPanel.getSbLog().toString());
+        textPanel.setTextLog(textPanel.getSbLog().toString());
     }
 
-     void printSign (String name) {
-         //BigDecimal не работает с hex и binary
-         find_StrResult();
+    void printSign(String name) {
+        find_StrResult();               //BigDecimal не работает с hex и binary
 
-        if (func==null && strInput.equals("  ")) {
-            strInput=strResult + name;
+        if (func == null && strInput.equals("  ")) {
+            strInput = strResult + name;
             textPanel.setTextInput(strInput);
-        }else {
-            strInput=strInput + name;
+        } else {
+            strInput = strInput + name;
             textPanel.setTextInput(strInput);
         }
     }
@@ -638,78 +632,108 @@ public class ButtonsBasic extends ButtonsAll{
 
     //blocked buttons
     void myExceptionBlockButtons(MyException myException) {
-        if (countBrace==0) {
-            if(myException.getMessage().equals("Формат работает только с целыми числами.")){
-                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,bPoint);
+        if (countBrace == 0) {
+            if (myException.getMessage().equals("Формат работает только с целыми числами.")) {
+                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd, bPoint);
             }
+            else if (myException.getMessage().equals("Работает только с положительными числами.")) {
+                blockedAll(bPlus, bMinus, bMultiply, bPercent, bRadical, bResult, bMemoryAdd, bPoint);
+                try {
+                    blockedAll(bNot, bXor, bOr, bAnd);
+                } catch (NullPointerException exception) {
+                }
 
-            else if (myException.getMessage().equals("Работает только с положительными числами.")){
-                blockedAll(bPlus, bMinus, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,bPoint);
-                try {  blockedAll( bNot,bXor,bOr,bAnd );
-                } catch (NullPointerException exception) {  }
-
-            }else {
+            }
+            else {
                 blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                        b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint);
-                try {  blockedAll( bNot,bXor,bOr,bAnd,bA,bB,bC,bD,bE,bF );
-                } catch (NullPointerException exception) {  }
+                        b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bPoint);
+                try {
+                    blockedAll(bNot, bXor, bOr, bAnd, bA, bB, bC, bD, bE, bF);
+                } catch (NullPointerException exception) {
+                }
             }
 
-            try {  blockedAll(  bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX,
-                    bxn, bx2, bx3, bSqrt3, bChageSign, braceOpen, braceClose );
-            } catch (NullPointerException exception) {  }
+            try {
+                blockedAll(bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX,
+                        bxn, bx2, bx3, bSqrt3, bChageSign, braceOpen, braceClose);
+            } catch (NullPointerException exception) {
+            }
         }
     }
 
     //BigDecimal не работает с hex и binary
-    void   find_StrResult () {
-             if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())
-                     | calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())) {
-                 strResult = "=" + countResult;
-             } else {
-                 bigDecimal = new BigDecimal(countResult, Operations.mathContext);
-                 strResult = "=" + bigDecimal;
-             }
-         }
-
+    void find_StrResult() {
+        if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())
+                | calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())) {
+            strResult = "=" + countResult;
+        } else {
+            bigDecimal = new BigDecimal(countResult, Operations.mathContext);
+            strResult = "=" + bigDecimal;
+        }
+    }
 
 
     // unblocked buttons
     void unblocked_buttons_appropriate_format() {
-        if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())){
-            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,b1,b0);
+        if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())) {
+            unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd, b1, b0);
             try {
-                unblockedAll(braceOpen,bNot,bOr,bXor,bAnd);
-            }catch (NullPointerException ex){  }
+                unblockedAll(braceOpen, bNot, bOr, bXor, bAnd);
+            } catch (NullPointerException ex) {
+            }
         }
-        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DEC.get()) ){
+        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DEC.get())) {
             unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9 );
+                    b0, b1, b2, b3, b4, b5, b6, b7, b8, b9);
             try {
-                unblockedAll(braceOpen);
-            }catch (NullPointerException ex){  }
-
+                unblockedAll(bNot, bOr, bXor, bAnd, braceOpen);
+            } catch (NullPointerException ex) {
+            }
         }
-        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())){
+        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())) {
             unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9 );
+                    b0, b1, b2, b3, b4, b5, b6, b7, b8, b9);
             try {
-                unblockedAll(braceOpen,bA,bB,bC,bD,bE,bF);
-            }catch (NullPointerException ex){  }
+                unblockedAll(bNot, bOr, bXor, bAnd,braceOpen, bA, bB, bC, bD, bE, bF);
+            } catch (NullPointerException ex) {
+            }
         }
-        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DOUBLE.get())){
+        else if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_DOUBLE.get())) {
             unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical,
                     bResult, bMemoryAdd,                                                // after blocked x²,x³,1/x,x!
-                    b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bPoint );
+                    b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bPoint);
             try {
-                unblockedAll(bPi, bSin,bCos,bTg,bLg,bLn,bFactorial,bDivX,bxn,bx2,bx3,bSqrt3, bChageSign,braceOpen);
-            }catch (NullPointerException ex){  }
+                unblockedAll(bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX, bxn, bx2, bx3, bSqrt3, bChageSign, braceOpen);
+            } catch (NullPointerException ex) {
+            }
         }
 
-        if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
-        else     unblockedAll(bMemoryHold,bMemoryDel);
+        if (textPanel.memoryMR == null) blockedAll(bMemoryHold, bMemoryDel);
+        else unblockedAll(bMemoryHold, bMemoryDel);
     }
 
+    // handle ArithmeticException
+    void handleArithmeticException(ArithmeticException ex) {
 
+          if(ex.getMessage().equals("Division by zero")){
+                strResult = "Делить на 0 нельзя.";
+                if (countBrace == 0) {
+                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
+                    try {
+                        blockedAll(
+                                bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX, bxn, bx2, bx3, bSqrt3, bChageSign,
+                                braceOpen, braceClose, bChageSign);
+                    } catch (NullPointerException exception) {
+                    }
+
+                    try {
+                        blockedAll(braceOpen, bNot, bXor, bOr, bAnd);
+                    } catch (NullPointerException exception) {
+                    }
+                }
+
+
+            }
+}
 
 }

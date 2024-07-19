@@ -65,8 +65,9 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                          newFormatNumber= MyFormatNumbers.FORMAT_HEX.get() ;
                          setFormat_duringShift_JRadioButton();
 
-                         buttonsIT.blockedAll( buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
+                         buttonsIT.blockedAll( buttonsIT.bPoint);
                          buttonsIT.unblockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
+                                         buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,
                                          buttonsIT.bPlus,buttonsIT.bMinus,buttonsIT.bDivide,buttonsIT.bMultiply,
                                          buttonsIT.bRadical,buttonsIT.bPercent,buttonsIT.bResult,buttonsIT.braceOpen,
                                          buttonsIT.b0, buttonsIT.b1,buttonsIT.b2, buttonsIT.b3, buttonsIT.b4,
@@ -88,8 +89,9 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                          setFormat_duringShift_JRadioButton();
 
                          buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
-                                 buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,buttonsIT.bPoint);
+                                                buttonsIT.bPoint);
                          buttonsIT.unblockedAll(buttonsIT.braceOpen, buttonsIT.bMemoryAdd,
+                                 buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot,
                                  buttonsIT.bPlus,buttonsIT.bMinus,buttonsIT.bDivide,buttonsIT.bMultiply,
                                  buttonsIT.bRadical,buttonsIT.bPercent,buttonsIT.bResult,
                                  buttonsIT.b0, buttonsIT.b1,buttonsIT.b2, buttonsIT.b3, buttonsIT.b4,
@@ -160,7 +162,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
 
 
                  // line 4
-                 case "^"-> {
+                 case "Xor"-> {
                      makeGridBagConstraints(3, 0, 1, 1, 12, 10);
                      keyPanelIT.add(button.getValue(), gbc);
                  }case "EE"->{
@@ -194,8 +196,8 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          keyPanel.add(keyPanelIT);
          keyPanel.add(makePanelGeneral(listButtons));
 
-         buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC, buttonsIT.bD, buttonsIT.bE, buttonsIT.bF,
-                 buttonsIT.bAnd, buttonsIT.bOr, buttonsIT.bXor, buttonsIT.bNot, buttonsIT.bPoint);
+         buttonsIT.blockedAll(buttonsIT.bA, buttonsIT.bB, buttonsIT.bC,
+                 buttonsIT.bD, buttonsIT.bE, buttonsIT.bF, buttonsIT.bPoint);
 
      }
 
@@ -234,7 +236,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          }
 
 
-         if(oldFormatNumber.equals("bin") && StringUtils.containsAny(str,"^","~","&","|")){
+         if(oldFormatNumber.equals("bin") && StringUtils.containsAny(str,"Xor","~","&","|")){
              textPanel.setTextInput(strRes);
          }else {
              try {

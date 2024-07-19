@@ -4,26 +4,15 @@ import java.util.Locale;
 
 public class Check {
     public static void main(String[] args) {
-        Check check=new Check();
-
-//        System.out.println(check.decimal_to_binary("200"));
-//        System.out.println(check.decimal_to_hex("200"));
-//
-//        String bin,hex;
-//        System.out.println(bin=check.binary_to_decimal("11001000"));
-//        System.out.println(hex=check.hex_to_decimal("c8"));
-
-//        String t="2";
-//        char r='3';
-//        t+=r;
-//        System.out.println(t);
-//        System.out.println(r);
-//        System.out.println();
 
 
-        int hex1=0xf0;
-        int hex2= ~hex1+1;
-        System.out.println(hex2); //16
+
+
+        int n1=58;
+        int n2= 88;
+        int n= n1 ^ n2;
+
+        System.out.println(n);
 
     }
 

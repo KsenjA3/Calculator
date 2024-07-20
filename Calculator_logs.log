@@ -4029,3 +4029,470 @@
 2024-07-19 16:56:27 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
 2024-07-19 16:56:27 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
 2024-07-19 16:56:28 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 19:55:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 19:55:16 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 19:55:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 19:55:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-19 19:55:18 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-19 19:55:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 19:55:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 19:55:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 19:55:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 19:55:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 19:55:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-19 19:55:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 19:55:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 19:55:22 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-19 19:55:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-19 19:55:23 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-19 19:55:25 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-19 19:55:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-19 19:55:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-19 19:55:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 19:55:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 19:55:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 19:55:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-19 19:55:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 19:55:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 19:55:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 19:55:32 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 19:55:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 19:55:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 19:55:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-19 19:55:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 19:55:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 20:11:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:25 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 20:11:28 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 20:11:28 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 20:11:28 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-19 20:11:29 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-19 20:11:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 20:11:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 20:11:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 20:11:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 20:11:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 20:11:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-19 20:11:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 20:11:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 20:11:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-19 20:11:34 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-19 20:11:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-19 20:11:36 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-19 20:11:37 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-19 20:11:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-19 20:11:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 20:11:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 20:11:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 20:11:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-19 20:11:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 20:11:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 20:11:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 20:11:44 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 20:11:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 20:11:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 20:11:44 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-19 20:11:45 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 20:11:45 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 21:10:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-19 21:10:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - false
+2024-07-19 21:10:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -    
+2024-07-19 21:10:23 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -    
+2024-07-19 22:19:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:11 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 22:19:11 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-19 22:19:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 22:19:15 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 22:19:16 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-19 22:19:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-19 22:19:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-19 22:19:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 22:19:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-19 22:19:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-19 22:19:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 22:19:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 22:19:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-19 22:19:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 22:19:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 22:19:22 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-19 22:19:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-19 22:19:24 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-19 22:19:25 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-19 22:19:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-19 22:19:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-19 22:19:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 22:19:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-19 22:19:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-19 22:19:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-19 22:19:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 22:19:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-19 22:19:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-19 22:19:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 22:19:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 22:19:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-19 22:19:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-19 22:19:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-19 22:19:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:13:58 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-20 10:13:58 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-07-20 10:13:58 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -    
+2024-07-20 10:13:58 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -    
+2024-07-20 10:20:36 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:39 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:20:39 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-20 10:20:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:40 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:20:43 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:20:44 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:20:45 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 10:20:45 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 10:20:46 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:20:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:20:48 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:20:48 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:20:49 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:20:49 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 10:20:49 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:20:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:20:50 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 10:20:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 10:20:52 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 10:20:53 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 10:20:55 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 10:20:55 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 10:20:55 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:20:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:20:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:20:58 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 10:20:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:21:00 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:21:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:21:01 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:21:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:21:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:21:02 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 10:21:02 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:21:03 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:26:04 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:26:12 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:26:12 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:26:13 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 10:26:14 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 10:26:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:26:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:26:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:26:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:26:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:26:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 10:26:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:26:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:26:19 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 10:26:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 10:26:20 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 10:26:22 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 10:26:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 10:26:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 10:26:24 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:26:25 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:26:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:26:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 10:26:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:26:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:26:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:26:29 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:26:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:26:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:26:30 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 10:26:30 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:26:31 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:39:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:39:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-20 10:39:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:12 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:13 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:15 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:39:16 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:39:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:39:17 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 10:39:18 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 10:39:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:39:20 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:39:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:39:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:39:21 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:39:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 10:39:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:39:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:39:23 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 10:39:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 10:39:24 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 10:39:26 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 10:39:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 10:39:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 10:39:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:39:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:39:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:39:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 10:39:31 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:39:32 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:39:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:39:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:39:34 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:39:34 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:39:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 10:39:34 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:39:35 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:41:38 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:45 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:41:46 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:41:46 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 10:41:47 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 10:41:48 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 10:41:48 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:41:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Работает только с положительными числами.
+2024-07-20 10:41:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 10:41:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:41:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:41:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 10:41:52 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:41:52 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:41:53 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 10:41:53 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 10:41:54 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 10:41:55 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 10:41:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 10:41:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 10:41:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:41:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 10:41:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 10:42:00 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 10:42:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:42:02 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 10:42:03 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 10:42:03 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:42:03 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:42:03 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 10:42:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 10:42:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:42:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 10:50:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Работает только с положительными числами.
+2024-07-20 10:51:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException ~ : Работает только с положительными числами.
+2024-07-20 10:51:54 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException ~ : Работает только с положительными числами.
+2024-07-20 11:03:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-20 11:03:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-07-20 11:03:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Shift format number is band.
+2024-07-20 11:03:11 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - Работает только с положительными числами.
+2024-07-20 16:45:17 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - IT
+2024-07-20 16:45:17 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - true
+2024-07-20 16:45:17 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace -    
+2024-07-20 16:45:17 [AWT-EventQueue-0] INFO  org.example.face.CalculateFace - 0
+2024-07-20 16:47:04 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:07 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 16:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:09 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:10 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:12 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 16:47:12 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 16:47:13 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 16:47:13 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 16:47:14 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:16 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 16:47:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 16:47:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 16:47:17 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 16:47:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 16:47:18 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 16:47:18 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 16:47:19 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 16:47:20 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 16:47:21 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 16:47:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 16:47:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 16:47:23 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 16:47:25 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 16:47:25 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 16:47:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 16:47:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 16:47:28 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 16:47:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 16:47:29 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 16:47:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 16:47:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 16:47:30 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 16:47:30 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 16:47:31 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 23:29:37 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:29:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:41 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:42 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:44 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:46 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:29:46 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:29:47 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 23:29:47 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 23:29:48 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:29:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 23:29:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 23:29:51 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg недозволеного большого числа
+2024-07-20 23:29:52 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 23:29:52 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 23:29:52 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 18.32
+2024-07-20 23:29:53 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ³√ недозволеного большого числа
+2024-07-20 23:29:54 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 28.32
+2024-07-20 23:29:55 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 20.8
+2024-07-20 23:29:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln недозволеного большого числа
+2024-07-20 23:29:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg недозволеного большого числа
+2024-07-20 23:29:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:29:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: ln не определен
+2024-07-20 23:30:00 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: lg не определен
+2024-07-20 23:30:00 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: tg не определен
+2024-07-20 23:30:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 23:30:02 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - MyException factorial: неверный формат ввода факториала
+2024-07-20 23:30:03 [AWT-EventQueue-0] ERROR org.example.face.ButtonsEngineer - ArithmeticException 1/x: Division by zero
+2024-07-20 23:30:03 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 23:30:04 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:30:04 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:30:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 2.06
+2024-07-20 23:30:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 23:30:05 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 210
+2024-07-20 23:35:43 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:47 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:49 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:50 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:52 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:35:52 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:35:53 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 23:35:54 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 23:35:54 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:35:57 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:55 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:46:59 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:01 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:02 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:02 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:02 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:47:04 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:47:05 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 23:47:06 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 23:47:06 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:47:08 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:22 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:26 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - when put number ArithmeticException: Division by zero
+2024-07-20 23:52:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:27 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:29 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:30 [AWT-EventQueue-0] ERROR org.example.face.ButtonsBasic - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:31 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:52:32 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 1
+2024-07-20 23:52:32 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= D2
+2024-07-20 23:52:33 [AWT-EventQueue-0] INFO  org.example.face.ButtonsBasic - !!! PERCENT countResult= 11010010
+2024-07-20 23:52:33 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.
+2024-07-20 23:52:36 [AWT-EventQueue-0] ERROR org.example.face.ButtonsIT - MyException: Формат работает только с целыми числами.

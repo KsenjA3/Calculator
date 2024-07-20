@@ -212,8 +212,8 @@ public class ButtonsBasic extends ButtonsAll {
                 strInput = strInput + "*";
 
 
-            if (N < 15) {
-                N++;
+//            if (N < 15) {
+//                N++;
                 strNumber = strNumber + name;
 
                 /** IT panel binary numbers
@@ -223,28 +223,32 @@ public class ButtonsBasic extends ButtonsAll {
                     strInput = strInput + name;
                 }
                 else {
-                    /**начало ввода с точки
-                     *
-                     */
-                    if (strNumber.equals("0.") && name.equals(".")) {    // in beginning
-                        if (StringUtils.endsWithAny(strInput, "0", " ")) {
-                            strInput = strInput.substring(0, strInput.length() - 1) + strNumber;
-                            N--;
-                        } else strInput = strInput + strNumber;
+                    if (N < 15) {
+                        N++;
+
+                        /**начало ввода с точки
+                         *
+                         */
+                        if (strNumber.equals("0.") && name.equals(".")) {    // in beginning
+                            if (StringUtils.endsWithAny(strInput, "0", " ")) {
+                                strInput = strInput.substring(0, strInput.length() - 1) + strNumber;
+                                N--;
+                            } else strInput = strInput + strNumber;
 
 
-                    }
-                    /**исключить  ноль в начале числа
-                     *
-                     */
-                    else if (StringUtils.equalsAny(strNumber.trim(), "00", "01", "02", "03", "04", "05", "06", "07", "08", "09")) {
-                        strNumber = strNumber.trim().substring(1);
-                        if (StringUtils.endsWithAny(strInput, "0", " ")) {
-                            strInput = strInput.substring(0, strInput.length() - 1) + name;
-                            N--;
-                        } else strInput = strInput + name;
-                    } else {
-                        strInput = strInput + name;
+                        }
+                        /**исключить  ноль в начале числа
+                         *
+                         */
+                        else if (StringUtils.equalsAny(strNumber.trim(), "00", "01", "02", "03", "04", "05", "06", "07", "08", "09")) {
+                            strNumber = strNumber.trim().substring(1);
+                            if (StringUtils.endsWithAny(strInput, "0", " ")) {
+                                strInput = strInput.substring(0, strInput.length() - 1) + name;
+                                N--;
+                            } else strInput = strInput + name;
+                        } else {
+                            strInput = strInput + name;
+                        }
                     }
                 }
 
@@ -260,13 +264,15 @@ public class ButtonsBasic extends ButtonsAll {
                     unblockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
                     try {
                         unblockedAll(bSin, bCos, bTg, bLg, bLn, bx3, bx2, bxn, bChageSign, bFactorial, bDivX, bSqrt3, bPi, braceOpen);
-                    } catch (NullPointerException exception) {
                     }
+                    catch (NullPointerException exception) {  }
 
-                } catch (ArithmeticException ex) {
+                }
+                catch (ArithmeticException ex) {
                     log.error("when put number ArithmeticException: {}", ex.getMessage());
                     handleArithmeticException(ex);
-                } catch (MyException myException) {
+                }
+                catch (MyException myException) {
                     strResult = myException.getMessage();
                     log.error("MyException: {}", myException.getMessage());
 
@@ -285,7 +291,7 @@ public class ButtonsBasic extends ButtonsAll {
                 if (textPanel.memoryMR == null) blockedAll(bMemoryHold, bMemoryDel);
                 else unblockedAll(bMemoryHold, bMemoryDel);
 
-            }
+//            }
         }
     }
 

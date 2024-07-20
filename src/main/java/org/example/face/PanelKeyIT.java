@@ -232,6 +232,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                      shift_format_input_numbers(oldFormatNumber, newFormatNumber, strRes.replaceAll(" ", ""));
              textPanel.setTextResult("=" + strRes);
          } catch (MyException e) {
+             textPanel.setFontBoldInput();
              textPanel.setTextResult(e.getMessage());
          }
 

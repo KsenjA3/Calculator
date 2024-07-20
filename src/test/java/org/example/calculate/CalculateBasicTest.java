@@ -53,7 +53,7 @@ class CalculateBasicTest {
             "100/10*5-2*25,0"
     })
     void oderCount(String strInput, String expectedResult) {
-        System.out.println(sut.calculateBasicInput(strInput));
+//        System.out.println(sut.calculateBasicInput(strInput));
         assertEquals(expectedResult, sut.calculateBasicInput(strInput));
     }
 

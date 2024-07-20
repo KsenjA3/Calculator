@@ -126,7 +126,6 @@ class CalculateITTest {
             "bin,hex,11 1011 1011, 3BB"
 
     })
-
     void shift_format_number( String oldFormat, String newFormat, String oldNumber, String newNumber) {
         assertEquals(newNumber.replaceAll(" ",""),sut.shift_format_number ( oldFormat,  newFormat,  oldNumber.replaceAll(" ","")));
     }
@@ -150,19 +149,38 @@ class CalculateITTest {
 
             " hex, dec, E965E* C8,955998 *200",
             "hex, dec, 3BB/(37+E965E),955/(55+955998)",
-
-
     })
 
-    void shift_format_input_numbers( String oldFormat, String newFormat, String oldStr, String newStr) throws MyException {
-        assertEquals(newStr.replaceAll(" ",""),sut.shift_format_input_numbers ( oldFormat,  newFormat,  oldStr).replaceAll(" ",""));
+    void shift_format_input_numbers_positive( String oldFormat, String newFormat, String oldStr, String newStr) throws MyException {
+        assertEquals(newStr.replaceAll(" ",""),sut.shift_format_input_numbers ( oldFormat,  newFormat,  oldStr.replaceAll(" ","")).replaceAll(" ",""));
     }
 
+
+    @ParameterizedTest
+    @CsvSource( value = {
+            "dec, bin, -14, 1111 1111 1111 1111 1111 1111 1111 0010",
+            "bin, dec,      1111 1111 1111 1111 1111 1111 1111 0010,-14",
+            "hex, bin, FFFF FFF2,11111111111111111111111111110010  ",
+            "bin, hex,      1111 1111 1111 1111 1111 1111 1111 0010, FFFF FFF2  ",
+            "dec,hex ,-14, FFFF FFF2  ",
+            "hex, dec,  FFFF FFF2,-14 ",
+
+            "dec, bin, -258699, 1111 1111 1111 1100 0000 1101 0111 0101",
+            "bin, dec,          1111 1111 1111 1100 0000 1101 0111 0101,-258699",
+            "hex, bin, FFFC 0D75, 1111 1111 1111 1100 0000 1101 0111 0101 ",
+            "bin, hex,          1111 1111 1111 1100 0000 1101 0111 0101, FFFC 0D75  ",
+            "dec,hex ,-258699, FFFC 0D75  ",
+            "hex, dec,  FFFC 0D75,-258699 ",
+    })
+
+    void shift_format_input_numbers_negative( String oldFormat, String newFormat, String oldStr, String newStr) throws MyException {
+        assertEquals(newStr.replaceAll(" ",""),sut.shift_format_input_numbers ( oldFormat,  newFormat,  oldStr.replaceAll(" ","")).replaceAll(" ",""));
+    }
     @ParameterizedTest
     @CsvSource( value =  {
-            "dec, hex, -8, Работает только с положительными числами.",
+//            "dec, hex, -8, Работает только с положительными числами.",
             "dec, hex, 5.4, Формат работает только с целыми числами.",
-            "dec, bin, -8, Работает только с положительными числами.",
+//            "dec, bin, -8, Работает только с положительными числами.",
             "dec, bin, 5.4, Формат работает только с целыми числами.",
     })
     void exceptions(String oldFormat, String newFormat, String oldString, String expected){

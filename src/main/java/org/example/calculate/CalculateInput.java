@@ -47,6 +47,14 @@ public class CalculateInput {
         if (StringUtils.isEmpty(strInput))
             return "";
 
+// IT bit handling
+        if (StringUtils.containsAny(strInput,"&","|", "Xor")){
+            countResult=calculateIT.count_or_xor_and(strInput, format);
+            return countResult;
+        }
+
+
+
 //Format numbers  to decimal
         switch (format)  {
             case "hex"-> {
@@ -99,7 +107,7 @@ public class CalculateInput {
             }
             strInput=strInput.substring(0, nBrace) + countResult;
         }
-        log.debug("logger.debug: после расчетов скобок calculateInput: {} ",strInput);
+        log.debug("Debug: после расчетов скобок calculateInput: {} ",strInput);
 
         while (StringUtils.containsAny(strInput,"³√", "cos", "sin", "tg", "ln","lg")){
             if (StringUtils.contains(strInput,"³√")) {
@@ -134,7 +142,7 @@ public class CalculateInput {
                     strInput = calculateEngineer.calculateEngineer(strInput, "tg");
                 }
                 catch (MyException exc) {
-                    System.out.println("tg catch");
+//                    System.out.println("tg catch");
                     if (exc.getMessage().equals("tg INFINITY")) {
                         log.error("logger.error tg недозволеного большого числа: {}", strInput);
                         throw new MyException("tg недозволеного большого числа");
@@ -203,7 +211,7 @@ public class CalculateInput {
             }
         }
 
-        log.log(Level.INFO,"Level.INFO: before basic расчеов calculateInput = {}",strInput);
+        log.log(Level.INFO,"INFO: before basic расчеов calculateInput = {}",strInput);
         countResult =calculateBasic.calculateBasicInput(strInput);
 
 //Format numbers  from decimal

@@ -229,7 +229,7 @@ import java.util.HashMap;
                     dNumber = Math.toRadians(dNumber);
                     dNumber=Math.round(Math.tan(dNumber)*tg_scale)/tg_scale;
 
-                    System.out.println("dRez= "+dNumber);
+//                    System.out.println("dRez= "+dNumber);
 
                     if (n+2+placeNumber<=strInput.length()-1)
                         strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
@@ -245,7 +245,7 @@ import java.util.HashMap;
 
 
             case "lg" ->{
-                System.out.println("in= "+strInput);
+//                System.out.println("in= "+strInput);
                 n =StringUtils.indexOf(strInput, "lg");
 
                 boolean isNegative ;
@@ -258,15 +258,15 @@ import java.util.HashMap;
                 hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 stringNumber = hashMap.get(placeNumber);
-                System.out.println("stringNumber= "+stringNumber);
-                System.out.println("length Number= "+placeNumber);
+//                System.out.println("stringNumber= "+stringNumber);
+//                System.out.println("length Number= "+placeNumber);
 
                  dNumber=Double.parseDouble(stringNumber);
                 if (dNumber.isInfinite() ){
                     throw new MyException("lg INFINITY");
                 }
                 if (isNegative)  dNumber=-dNumber;
-                System.out.println("dNumber= "+dNumber);
+//                System.out.println("dNumber= "+dNumber);
 
                 dNumber=Math.log10(dNumber);
                 if (dNumber.isNaN() ) {
@@ -275,18 +275,18 @@ import java.util.HashMap;
                 if (dNumber.isInfinite() ){
                     throw new MyException("lg 0");
                 }
-                System.out.println("dRez= "+dNumber);
+//                System.out.println("dRez= "+dNumber);
 
                 if (n+2+placeNumber<=strInput.length()-1)
                     strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
                 else
                     strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
-                System.out.println("out= "+strReturn);
-                System.out.println();
+//                System.out.println("out= "+strReturn);
+//                System.out.println();
                 return strReturn;
         }
             case "ln" ->{
-                System.out.println("in= "+strInput);
+//                System.out.println("in= "+strInput);
                 n =StringUtils.indexOf(strInput, "ln");
 
                 boolean isNegative ;
@@ -299,15 +299,15 @@ import java.util.HashMap;
                 hashMap =Operations.findNumber_afterSign(strInput.substring(n+2));
                 placeNumber = hashMap.keySet().stream().findFirst().get();
                 stringNumber = hashMap.get(placeNumber);
-                System.out.println("stringNumber= "+stringNumber);
-                System.out.println("length Number= "+placeNumber);
+//                System.out.println("stringNumber= "+stringNumber);
+//                System.out.println("length Number= "+placeNumber);
 
                 dNumber=Double.parseDouble(stringNumber);
                 if (dNumber.isInfinite() ){
                     throw new MyException("ln INFINITY");
                 }
                 if (isNegative)  dNumber=-dNumber;
-                System.out.println("dNumber= "+dNumber);
+//                System.out.println("dNumber= "+dNumber);
 
                 dNumber=Math.log(dNumber);
                 if (dNumber.isNaN() ) {
@@ -316,14 +316,14 @@ import java.util.HashMap;
                 if (dNumber.isInfinite() ){
                     throw new MyException("ln 0");
                 }
-                System.out.println("dRez= "+dNumber);
+//                System.out.println("dRez= "+dNumber);
 
                 if (n+2+placeNumber<=strInput.length()-1)
                     strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber)+strInput.substring(n+2+placeNumber );
                 else
                     strReturn=strInput.substring(0, n)+Operations.printNumber(dNumber);
-                System.out.println("out= "+strReturn);
-                System.out.println();
+//                System.out.println("out= "+strReturn);
+//                System.out.println();
                 return strReturn;
             }
 

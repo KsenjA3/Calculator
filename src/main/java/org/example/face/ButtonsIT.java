@@ -188,15 +188,39 @@ public class ButtonsIT extends ButtonsBasic{
                 case "Or"-> {
                     init_IT_sign_button(" |");
                 }
-                case "Not"-> {
-                    init_IT_sign_button("~");
-                }
                 case "Xor"-> {
                     init_IT_sign_button(" Xor");
                 }
+                case "Not"-> {
+                    try {
+                        countResult = calculateCurrent.calculateInput( strInput);
+                        countResult = calculateCurrent.calculateIT.count_not(countResult,calculateCurrent.getFormat());
+                        printResult ();
 
+                        strInput="~("+textPanel.getTextInput().getText().trim()+")";
+                        for (int i=0; i<countBrace; i++)
+                            strInput=strInput+")";
+                        textPanel.setTextInput(strInput);
+
+                        textPanel.setSbLog(strInput);
+                        textPanel.setSbLog("\n");
+                        textPanel.setSbLog(textPanel.getTextResult().getText());
+                        textPanel.setSbLog("\n");
+                        textPanel.setTextLog( textPanel.getSbLog().toString());
+
+                        countBrace=0;
+
+                    }catch (MyException myException){
+                        log.error("MyException ~ : {}",myException.getMessage());
+                        strResult = myException.getMessage();
+                        textPanel.setTextResult(strResult);
+                        myExceptionBlockButtons(myException);
+
+                    }
+
+
+                }
             }
-
         }
 
 
@@ -214,7 +238,7 @@ public class ButtonsIT extends ButtonsBasic{
             replaceRepeatedSign_IT ();
 
 
-            if (StringUtils.containsAny(strInput,"/","*","-","+") ) {
+            if (StringUtils.containsAny(strInput,"/","*","-","+","&","|","Xor") ) {
                 textPanel.setSbLog(strInput.trim());
                 print_SbLog();
                 strInput = countResult;

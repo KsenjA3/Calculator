@@ -250,7 +250,7 @@ public class CalculateBasic {
         countNumber="";
         nameSign = "";
 
-        System.out.println("str="+str+"=");
+//        System.out.println("str="+str+"=");
 //countNumber and nameSign
         if (str.endsWith(")")){
             try {
@@ -369,7 +369,7 @@ public class CalculateBasic {
 
             switch (nameSign.trim()) {
                 case "+"-> {
-                    System.out.println("in +");
+//                    System.out.println("in +");
                     func=Operations::plus;
                     dNumber = Operations.divide(Operations.multiply(dResultPercent, dNumber),
                                                 new BigDecimal(100));
@@ -389,10 +389,10 @@ public class CalculateBasic {
                 case "/" -> {
                     func=Operations::divide;
                     dNumber = Operations.divide(dNumber, new BigDecimal(100));
-                    System.out.println("%dNumber%= "+ dNumber);
-                    System.out.println("%dResultPercent%= "+ dResultPercent);
+//                    System.out.println("%dNumber%= "+ dNumber);
+//                    System.out.println("%dResultPercent%= "+ dResultPercent);
                     dResult = Operations.result(func, dResultPercent, dNumber);
-                    System.out.println("%dResult%= "+ dResult);
+//                    System.out.println("%dResult%= "+ dResult);
                 }
                 case "no"->  dResult = Operations.divide(dNumber, new BigDecimal(100) );
             }

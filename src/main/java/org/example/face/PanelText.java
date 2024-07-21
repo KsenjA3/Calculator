@@ -2,6 +2,7 @@ package org.example.face;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import org.example.fitting.*;
 
 import javax.swing.*;
@@ -15,6 +16,13 @@ import java.awt.*;
 public class PanelText {
 
     private final JPanel textPanel;
+
+    /**for realise Digit Number
+     *
+     */
+    @Getter (AccessLevel.PROTECTED)
+    @Setter(AccessLevel.PROTECTED)
+    private boolean digitNumber;
 
     @Getter (AccessLevel.PROTECTED)
     private final JPanel panelResult;
@@ -110,16 +118,80 @@ public class PanelText {
     }
 
 
-
-
 //    JPanel getPanelResult () { return panelResult; }
 //    JScrollPane getScrollinput () { return scrollinput; }
 //     JLabel getTextResult() { return textResult; }
 //     JTextPane getTextInput() { return textInput ;}
 
 
-    void setTextInput(String strInput) {
+    void setTextInput(String format,String strInput) {
+
+        if(isDigitNumber()){
+            strInput=digitNumbers(format,strInput);
+        }
         this.textInput.setText(strInput); }
-    void setTextResult(String strResult) {
+
+
+
+    void setTextResult(String format,String strResult) {
+        if(isDigitNumber()){
+            strResult=digitNumbers(format,strResult);
+        }
         this.textResult.setText(strResult); }
+
+
+
+    protected String digitNumbers(String format, String oldString){
+        oldString=oldString.replaceAll(" ", "");
+        String newStr="";
+        StringBuffer newSB= new StringBuffer();
+        int digit=0;
+        int limitDigit=0;
+
+        if (format.equals(MyFormatNumbers.FORMAT_BIN.get()) |
+                format.equals(MyFormatNumbers.FORMAT_HEX.get())) {
+            limitDigit=4;
+        }
+        else if (format.equals(MyFormatNumbers.FORMAT_DEC.get()) |
+                format.equals(MyFormatNumbers.FORMAT_DOUBLE.get())) {
+            limitDigit=3;
+        }
+
+        for (int i=oldString.length()-1; i>=0; i--){
+            switch (oldString.charAt(i)){
+                case '0','1','2','3','4','5','6','7','8','9',
+                     'A','B','C','D','E','F'->{
+                    if (digit<limitDigit) {
+                        newSB = newSB.append(oldString.charAt(i));
+                        digit++;
+                    }
+                    else{
+                        newSB = newSB.append(" ").append(oldString.charAt(i));
+                        digit=1;
+                    }
+                }
+                case '+' ,'-','/','*','&','|','X'-> {
+                    newSB = newSB.append(oldString.charAt(i)).append(" ");
+                    digit=0;
+                }
+//                case '³' -> {
+//                    newSB = newSB.append(" ").append(oldString.charAt(i));
+//                    digit=0;
+//                }
+                default -> {
+                    newSB = newSB.append(oldString.charAt(i));
+                    digit=0;
+                }
+            }
+        }
+
+
+
+
+
+        newStr=newSB.reverse().toString();
+        return newStr;
+    }
+
+
 }

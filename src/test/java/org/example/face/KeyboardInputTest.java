@@ -30,8 +30,8 @@ class KeyboardInputTest {
         bot = new Robot();
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any(), Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any(), Mockito.any());
 
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
         Mockito.when(textPanel.getTextResult()).thenReturn(lable);

@@ -71,8 +71,8 @@ public class MemoryButtonTest {
         lable.setText("22");
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any(), Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any(), Mockito.any());
 
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);

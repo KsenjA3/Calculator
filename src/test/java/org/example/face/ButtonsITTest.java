@@ -57,8 +57,8 @@ class ButtonsITTest {
                 panelKey.buttonsIT.bC,panelKey.buttonsIT.bD,panelKey.buttonsIT.bE,panelKey.buttonsIT.bF,panelKey.buttonsIT.braceOpen,panelKey.buttonsIT.braceClose);
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any(), Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any(), Mockito.any());
 
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
 
@@ -677,7 +677,6 @@ class ButtonsITTest {
         assertEquals("100%", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
         assertEquals("=1", panelKey.buttonsIT.strResult);
     }
-
 
 
 
@@ -2130,13 +2129,6 @@ class ButtonsITTest {
     }
 
 
-
-
-
-
-
-
-
     @Test  //  27 And 4D = 5
     @SneakyThrows(InterruptedException.class)
     void hex_And () {
@@ -2293,6 +2285,177 @@ class ButtonsITTest {
 //    110 and 101 = 100
         assertEquals("110&101", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
         assertEquals("=100", panelKey.buttonsIT.strResult);
+    }
+
+
+
+
+    @Test  //  100 Not = 1111 1111 1111 1111 1111 1111 1111 1011
+    @SneakyThrows(InterruptedException.class)
+    void bin_Not1 () {
+        locate = panelKey.bBin.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        locate = panelKey.buttonsIT.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bNot.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+//    100  Not = 1111 1111 1111 1111 1111 1111 1111 1011
+        assertEquals("~(100)", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
+        assertEquals("=1111 1111 1111 1111 1111 1111 1111 1011".replaceAll(" ", ""), panelKey.buttonsIT.strResult);
+    }
+
+    @Test  //  110 And 101 Not = 1111 1111 1111 1111 1111 1111 1111 1011
+    @SneakyThrows(InterruptedException.class)
+    void bin_Not () {
+        locate = panelKey.bBin.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        locate = panelKey.buttonsIT.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bAnd.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b0.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b1.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bNot.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+//    110 and 101 Not = 1111 1111 1111 1111 1111 1111 1111 1011
+        assertEquals("~(110&101)", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
+        assertEquals("=1111 1111 1111 1111 1111 1111 1111 1011".replaceAll(" ", ""), panelKey.buttonsIT.strResult);
+    }
+
+
+    @Test  //  5 Not = -6
+    @SneakyThrows(InterruptedException.class)
+    void dec_Not () {
+        locate = panelKey.bDec.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.b5.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bNot.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+//    5  Not = -6
+        assertEquals("~(5)", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
+        assertEquals("=-6".replaceAll(" ", ""), panelKey.buttonsIT.strResult);
+    }
+
+
+    @Test  //  C Not = FFFF FFF3
+    @SneakyThrows(InterruptedException.class)
+    void hex_Not () {
+        locate = panelKey.bHex.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bC.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+        txt.setText(panelKey.buttonsIT.strInput);
+        locate = panelKey.buttonsIT.bNot.getLocationOnScreen();
+        bot.mouseMove(locate.x + 10, locate.y + 10);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(30);
+
+//    C  Not = FFFF FFF3
+        assertEquals("~(C)", panelKey.buttonsIT.strInput.replaceAll(" ", ""));
+        assertEquals("=FFFF FFF3".replaceAll(" ", ""), panelKey.buttonsIT.strResult);
     }
 
 }

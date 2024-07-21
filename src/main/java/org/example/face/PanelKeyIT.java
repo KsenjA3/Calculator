@@ -230,15 +230,15 @@ public  class PanelKeyIT extends PanelKeyGeneral{
          try {
              strRes = buttonsIT.calculateCurrent.calculateIT.
                      shift_format_input_numbers(oldFormatNumber, newFormatNumber, strRes.replaceAll(" ", ""));
-             textPanel.setTextResult("=" + strRes);
+             textPanel.setTextResult(buttonsIT.calculateCurrent.getFormat(),"=" + strRes);
          } catch (MyException e) {
              textPanel.setFontBoldInput();
-             textPanel.setTextResult(e.getMessage());
+             textPanel.setTextResult(buttonsIT.calculateCurrent.getFormat(),e.getMessage());
          }
 
 
          if(oldFormatNumber.equals("bin") && StringUtils.containsAny(str,"Xor","~","&","|")){
-             textPanel.setTextInput(strRes);
+             textPanel.setTextInput(buttonsIT.calculateCurrent.getFormat(),strRes);
          }else {
              try {
                  str=buttonsIT.calculateCurrent.calculateIT.
@@ -246,7 +246,7 @@ public  class PanelKeyIT extends PanelKeyGeneral{
              } catch (MyException e) {
                  str=e.getMessage();
              }
-             textPanel.setTextInput(str);
+             textPanel.setTextInput(buttonsIT.calculateCurrent.getFormat(),str);
          }
 
         buttonsIT.countResult=strRes;

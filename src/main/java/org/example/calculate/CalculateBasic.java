@@ -52,7 +52,7 @@ public class CalculateBasic {
 
 
     /**
-     * calculator.org.example.calculate.calculate result from string
+     * calculate result from string
      * @param strInput string with task to calculator.org.example.calculate.calculate
      * @return double result of calculation
      */
@@ -234,8 +234,6 @@ public class CalculateBasic {
         wasSqrt = false;
         dNSqrt = new BigDecimal(1);
     }
-
-
 
 
     /**calculator Percent

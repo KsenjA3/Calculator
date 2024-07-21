@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.example.face.MyException;
+import org.example.fitting.MyFormatNumbers;
 
 import java.util.Locale;
 
@@ -23,8 +24,6 @@ public class CalculateIT {
         Integer num=Integer.parseUnsignedInt(numBinary,2);
         return  num.toString();
     }
-
-
 
     String decimal_to_hex(String numDecimal){
         Integer intDecimal =Integer.parseInt(numDecimal);
@@ -86,8 +85,6 @@ public class CalculateIT {
 //        return intDec.toString();
     }
 
-
-
     String binary_to_hex(String numBinary)  {
         return decimal_to_hex( binary_to_decimal(numBinary));
     }
@@ -127,9 +124,10 @@ public class CalculateIT {
         return newNumber;
     }
 
-
-
     public String shift_format_input_numbers(String oldFormat, String newFormat, String oldString) throws MyException {
+        if (oldFormat.equals(newFormat))
+            return oldString;
+
         String newString="";
         String oldNum="", newNum="";
         oldString= StringUtils.deleteWhitespace(oldString);
@@ -175,7 +173,7 @@ public class CalculateIT {
                     log.error("Формат чисел не может быть дробным:  = {}",oldString);
                     throw new MyException("Формат работает только с целыми числами.");
                 }
-                case '&','^','|','~' ->{
+                case '&','^','|'->{
                     if (oldNum.isEmpty()){
                         newString = newString +  " " + oldString.charAt(i);
                     }else {
@@ -190,7 +188,19 @@ public class CalculateIT {
         return newString;
     }
 
-    String count_or_xor_and(String str, String format) {
+
+
+    public String count_not(String strNum, String format) throws MyException {
+        String strRes="";
+
+        Integer numRes=number_from_string_according_to_format(strNum,format);
+        numRes=~numRes;
+
+        strRes=shift_format_input_numbers(MyFormatNumbers.FORMAT_DEC.get(), format, numRes.toString());
+        return strRes;
+    }
+
+    String count_or_xor_and(String str, String format) throws MyException {
         String strRes="";
         String strNum="";
         int num1=0, num2=0, numRes=0;
@@ -203,7 +213,7 @@ public class CalculateIT {
                     strNum=strNum+str.charAt(i);
                     if(i==str.length()-1){
 
-                       num2= number_from_string_according_to_format(strNum,format);
+                        num2= number_from_string_according_to_format(strNum,format);
 
                     }
                 }
@@ -229,16 +239,10 @@ public class CalculateIT {
             numRes = num1 ^ num2;
         }
 
-        strRes=strNumber_from_Integer_according_to_format( numRes,  format);
-        return strRes;
-    }
+//        strRes=strNumber_from_Integer_according_to_format( numRes,  format);
 
-    public String count_not(String strNum, String format) {
-        String strRes="";
-
-        int numRes=number_from_string_according_to_format(strNum,format);
-        numRes=~numRes;
-        strRes=strNumber_from_Integer_according_to_format( numRes,  format);
+        Integer numResI=(Integer) numRes;
+        strRes=shift_format_input_numbers (MyFormatNumbers.FORMAT_DEC.get(), format, numResI.toString());
         return strRes;
     }
 
@@ -258,20 +262,4 @@ public class CalculateIT {
         return num;
     }
 
-    String strNumber_from_Integer_according_to_format(Integer number, String format){
-        String strNumber="";
-        switch (format){
-            case"dec"->{
-                strNumber=Integer.toString(number);
-            }
-            case"hex"->{
-                strNumber=Integer.toString(number,16).toUpperCase();
-            }
-            case"bin"->{
-                strNumber=Integer.toString(number,2);
-            }
-        }
-
-        return strNumber;
-    }
 }

@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 
 @Log4j2
 public class CalculateFace extends JFrame {
-
+    private String format;
 
     /**Components
      *
@@ -38,6 +38,7 @@ public class CalculateFace extends JFrame {
     private JMenuItem jmiShowLogPopup, jmiHideLogPopup, jmiClearLogPopup, jmiCopyLogPopup,
             jmiClearLog, jmiCopyLog;
     private JRadioButtonMenuItem jmiSimple,jmiEngineer,jmiIT;
+    private JCheckBoxMenuItem jchbGroupDigit;
     private MakeMenuItem actionCopy, actionPaste, actionClearLog, actionCopyLog;
     int widthSize, highSize;
     String  nameKeyPanel;
@@ -164,14 +165,17 @@ public class CalculateFace extends JFrame {
                 case "Basic"-> {
                     widthSize=keyPanelBasic.getWidthKeyPanel();
                     jmiSimple.setSelected(true);
+                    format=MyFormatNumbers.FORMAT_DOUBLE.get();
                 }
                 case "Engineer"-> {
                     widthSize=keyPanelEngineer.getWidthKeyPanel();
                     jmiEngineer.setSelected(true);
+                    format=MyFormatNumbers.FORMAT_DOUBLE.get();
                 }
                 case "IT"->{
                     widthSize=keyPanelIT.getWidthKeyPanel();
                     jmiIT.setSelected(true);
+                    format=MyFormatNumbers.FORMAT_DEC.get();
                 }
             }
 
@@ -183,16 +187,18 @@ public class CalculateFace extends JFrame {
             panelLog_isShown();
 
             textPanel.getSbLog().append(cfData.textLog);
-            textPanel.setTextLog(cfData.textLog);
+            textPanel.setTextLog(format,cfData.textLog);
             textPanel.getTextInput().setText(cfData.textInput);
             textPanel.getTextResult().setText(cfData.textResult);
 
-        } catch (java.lang.NullPointerException nullPointerException) {
+        }
+        catch (NullPointerException nullPointerException) {
             frame.setLocation(100,100);
             cardTypeCalc.show(cardPanel,  "Basic");
             widthSize=keyPanelBasic.getWidthKeyPanel();
             nullPointerException.printStackTrace();
-        } catch (Exception exception) {
+        }
+        catch (Exception exception) {
             frame.setLocation(100,100);
             cardTypeCalc.show(cardPanel,  "Basic");
             widthSize=keyPanelBasic.getWidthKeyPanel();
@@ -207,6 +213,10 @@ public class CalculateFace extends JFrame {
      * behavior MenuItem
      */
     class MakeMenuItem extends AbstractAction {
+        MakeMenuItem(String name) {
+            super(name);
+        }
+
         MakeMenuItem(String name, KeyStroke accel) {
             super(name);
             putValue(ACCELERATOR_KEY, accel);
@@ -216,11 +226,12 @@ public class CalculateFace extends JFrame {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Обычный" -> {
+                    format= keyPanelBasic.buttonsBasic.calculateCurrent.getFormat();
                     if (textPanel.getTextResult().equals("0.0")) {
-                        textPanel.setTextInput(" ");
+                        textPanel.setTextInput(format, " ");
                     }else {
-                        textPanel.setTextInput(textPanel.getTextInput().getText());
-                        textPanel.setTextResult(textPanel.getTextResult().getText());
+                        textPanel.setTextInput(format,textPanel.getTextInput().getText());
+                        textPanel.setTextResult(format,textPanel.getTextResult().getText());
                     }
 
                     keyPanelBasic.buttonsBasic.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DOUBLE.get());
@@ -230,12 +241,12 @@ public class CalculateFace extends JFrame {
                     repack();
                 }
                 case "Инженерный" -> {
-
+                    format= keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat();
                     if (textPanel.getTextResult().equals("0.0")) {
-                        textPanel.setTextInput(" ");
+                        textPanel.setTextInput(format, " ");
                     }else {
-                        textPanel.setTextInput(textPanel.getTextInput().getText());
-                        textPanel.setTextResult(textPanel.getTextResult().getText());
+                        textPanel.setTextInput(format, textPanel.getTextInput().getText());
+                        textPanel.setTextResult(format, textPanel.getTextResult().getText());
                     }
 
                     keyPanelEngineer.buttonsEngineer.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DOUBLE.get());
@@ -245,8 +256,9 @@ public class CalculateFace extends JFrame {
                     repack();
                 }
                 case "IT" -> {
-                    textPanel.setTextInput("   ");
-                    textPanel.setTextResult("   ");
+                    format= keyPanelIT.buttonsIT.calculateCurrent.getFormat();
+                    textPanel.setTextInput(format,"   ");
+                    textPanel.setTextResult(format,"   ");
 
                     keyPanelIT.bDec.setSelected(true);
                     keyPanelIT.buttonsIT.blockedAll(
@@ -259,6 +271,7 @@ public class CalculateFace extends JFrame {
                     cardTypeCalc.show(cardPanel, keyPanelIT.getName());
                     widthSize = keyPanelIT.getWidthKeyPanel();
                     nameKeyPanel=keyPanelIT.getName();
+                    keyPanelIT.buttonsIT.N=0;                   // length number after shift keyPanel
                     repack();
                 }
                 case "Копировать" -> {
@@ -269,13 +282,26 @@ public class CalculateFace extends JFrame {
                 }
                 case "Очистить журнал" -> {
                     textPanel.getSbLog().delete(0,textPanel.getSbLog().length());
-                    textPanel.setTextLog(new String());
+                    textPanel.setTextLog(format, new String());
                 }
                 case "Копировать журнал" -> {
 
                 }
                 case "Числовые разряды" -> {
-
+                    textPanel.setDigitNumber(jchbGroupDigit.isSelected());
+                    if (jmiSimple.isSelected()){
+                        textPanel.setTextLog(keyPanelBasic.buttonsBasic.calculateCurrent.getFormat(), textPanel.getTextLog().getText());
+                        textPanel.setTextInput(keyPanelBasic.buttonsBasic.calculateCurrent.getFormat(),textPanel.getTextInput().getText());
+                        textPanel.setTextResult(keyPanelBasic.buttonsBasic.calculateCurrent.getFormat(),textPanel.getTextResult().getText());
+                    } else if (jmiEngineer.isSelected()) {
+                        textPanel.setTextLog(keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat(), textPanel.getTextLog().getText());
+                        textPanel.setTextInput(keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat(),textPanel.getTextInput().getText());
+                        textPanel.setTextResult(keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat(),textPanel.getTextResult().getText());
+                    } else if (jmiIT.isSelected()) {
+                        textPanel.setTextLog(keyPanelIT.buttonsIT.calculateCurrent.getFormat(), textPanel.getTextLog().getText());
+                        textPanel.setTextInput(keyPanelIT.buttonsIT.calculateCurrent.getFormat(),textPanel.getTextInput().getText());
+                        textPanel.setTextResult(keyPanelIT.buttonsIT.calculateCurrent.getFormat(),textPanel.getTextResult().getText());
+                    }
                 }
                 case "Посмотреть справку" -> {
 
@@ -341,7 +367,8 @@ public class CalculateFace extends JFrame {
         jchbLog.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmView.add(jchbLog);
 
-        var jchbGroupDigit = new JCheckBoxMenuItem("Числовые разряды");
+        MakeMenuItem actionDigit = new MakeMenuItem("Числовые разряды");
+        jchbGroupDigit = new JCheckBoxMenuItem(actionDigit);
         jchbGroupDigit.setFont(MyFonts.FONT_MENU_ITEM.get());
         jchbGroupDigit.setToolTipText("Группировка цифр по разрядам");
         jmView.add(jchbGroupDigit);
@@ -420,6 +447,8 @@ public class CalculateFace extends JFrame {
         jpu.add (jmiCopyLogPopup);
     }
 
+
+
     /**
      * mouseListener for PopupMenu
      * @param compVal list of components with PopupMenu
@@ -456,7 +485,6 @@ public class CalculateFace extends JFrame {
             }
         }
     }
-
 
     void panelLog_isShown() {
         if (jchbLog.isSelected()) {

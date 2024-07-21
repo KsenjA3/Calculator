@@ -19,6 +19,7 @@ public class KeyboardInput {
     protected String countResult;
     protected String str;
     private CalculateInput calculateCurrent;
+    private ButtonsBasic buttonsBasic;
     private static final Logger logger = LogManager.getLogger(KeyboardInput.class);
 
     KeyboardInput (PanelTextLog textPanel) {
@@ -71,27 +72,28 @@ public class KeyboardInput {
 
             //Change FONT
             textPanel.setFontBoldResult();
-            textPanel.setTextInput(str.trim());
+            textPanel.setTextInput(calculateCurrent.getFormat(),str.trim());
 
             try {
                 countResult = calculateCurrent.calculateInput(str);
-                textPanel.setTextResult("=" + countResult);
+
+                textPanel.setTextResult(calculateCurrent.getFormat(),"=" + countResult);
 
                 textPanel.setSbLog(textPanel.getTextInput().getText());
                 textPanel.setSbLog("\n");
                 textPanel.setSbLog(textPanel.getTextResult().getText());
                 textPanel.setSbLog("\n");
-                textPanel.setTextLog( textPanel.getSbLog().toString());
+                textPanel.setTextLog(calculateCurrent.getFormat(), textPanel.getSbLog().toString());
             }catch (MyException myException){
                 str = myException.getMessage();
-                textPanel.setTextResult(str);
+                textPanel.setTextResult(calculateCurrent.getFormat(),str);
                 logger.error("logger.error: ошибка ввода данных через Keyboard: {}",str);
             }catch (Exception exception){
                 str = exception.getMessage();
                 logger.error("logger.error: ошибка ввода данных через Keyboard: {}",str);
                 if (str.equals("Character array contains more than one decimal point."))
                     str="ошибка ввода данных";
-                textPanel.setTextResult(str);
+                textPanel.setTextResult(calculateCurrent.getFormat(),str);
 
             }
 //            focus to visible keyPenel

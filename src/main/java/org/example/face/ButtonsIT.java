@@ -84,7 +84,7 @@ public class ButtonsIT extends ButtonsBasic{
                         case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ')', '²', '³', '!' -> {
                             countBrace--;
                             strInput = strInput + name;
-                            textPanel.setTextInput(strInput);
+                            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                         }
                     }
 
@@ -110,7 +110,7 @@ public class ButtonsIT extends ButtonsBasic{
                         }
                     else strInput = str + name;
 
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                     unblockedAll(braceClose, bRadical);
                     blockedAll(bPlus, bDivide, bMultiply, bPercent, bResult, bMemoryAdd,
@@ -153,7 +153,7 @@ public class ButtonsIT extends ButtonsBasic{
                             else {  strInput = strInput + name;    }
                         }
 
-                        textPanel.setTextInput(strInput);
+                        textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                         /** divide for 0
                          *
@@ -175,7 +175,7 @@ public class ButtonsIT extends ButtonsBasic{
                             myExceptionBlockButtons(myException);
                         }
 
-                        textPanel.setTextResult(strResult);
+                        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
 
                         if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
                         else     unblockedAll(bMemoryHold,bMemoryDel);
@@ -200,20 +200,20 @@ public class ButtonsIT extends ButtonsBasic{
                         strInput="~("+textPanel.getTextInput().getText().trim()+")";
                         for (int i=0; i<countBrace; i++)
                             strInput=strInput+")";
-                        textPanel.setTextInput(strInput);
+                        textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                         textPanel.setSbLog(strInput);
                         textPanel.setSbLog("\n");
                         textPanel.setSbLog(textPanel.getTextResult().getText());
                         textPanel.setSbLog("\n");
-                        textPanel.setTextLog( textPanel.getSbLog().toString());
+                        textPanel.setTextLog( calculateCurrent.getFormat(),textPanel.getSbLog().toString());
 
                         countBrace=0;
 
                     }catch (MyException myException){
                         log.error("MyException ~ : {}",myException.getMessage());
                         strResult = myException.getMessage();
-                        textPanel.setTextResult(strResult);
+                        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                         myExceptionBlockButtons(myException);
 
                     }
@@ -248,7 +248,7 @@ public class ButtonsIT extends ButtonsBasic{
                 strInput="0"+sign;
              else
                 strInput=strInput+sign;
-            textPanel.setTextInput(strInput);
+            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
             blockedAll(bRadical);
             if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);

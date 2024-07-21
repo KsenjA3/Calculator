@@ -1,7 +1,11 @@
 package org.example.face;
 
 import lombok.SneakyThrows;
+import org.example.calculate.Operations;
+import org.example.fitting.MyFormatNumbers;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -47,6 +51,7 @@ class ButtonsBasicTest {
 //        frame.setVisible(true);
 
     }
+
     @BeforeAll
     void init() throws AWTException {
         MockitoAnnotations.openMocks(this);
@@ -64,8 +69,8 @@ class ButtonsBasicTest {
 
 
         Mockito.doNothing().when(textPanel).setSbLog(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any());
-        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextInput(Mockito.any(),Mockito.any());
+        Mockito.doNothing().when(textPanel).setTextResult(Mockito.any(),Mockito.any());
 
         Mockito.when(textPanel.getSbLog()).thenReturn(new StringBuffer(" "));
         Mockito.when(textPanel.getTextInput()).thenReturn(txt);
@@ -159,8 +164,6 @@ class ButtonsBasicTest {
         assertEquals("5/0.2", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
         assertEquals("25", panelKey.buttonsBasic.countResult);
     }
-
-
 
     @Test
     @SneakyThrows (InterruptedException.class)
@@ -261,7 +264,6 @@ class ButtonsBasicTest {
         assertEquals("0.", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
 
-
     @Test  //2+3.0003
     @SneakyThrows (InterruptedException.class)
     void input_number_double ()  {
@@ -324,6 +326,7 @@ class ButtonsBasicTest {
         assertEquals("2+3.0003", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
         assertEquals("5.0003", panelKey.buttonsBasic.countResult);
     }
+
     @Test  //200.5+5.0003
     @SneakyThrows (InterruptedException.class)
     void input_ZIRO_inCentre_double ()  {
@@ -592,8 +595,6 @@ class ButtonsBasicTest {
         assertEquals("5.3", panelKey.buttonsBasic.countResult);
     }
 
-
-
     @Test  //2+3= после ввод 8
     @SneakyThrows (InterruptedException.class)
     void input_number_after_result ()  {
@@ -633,6 +634,7 @@ class ButtonsBasicTest {
 
         assertEquals("8", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
+
     @Test  //2+3% после ввод 8
     @SneakyThrows (InterruptedException.class)
     void input_number_after_percent ()  {
@@ -679,11 +681,6 @@ class ButtonsBasicTest {
         assertEquals("3", panelKey.buttonsBasic.calculateCurrent.calculateBasic.getCountNumber());
     }
 
-
-
-
-
-
     @Test // 7√√√+ == 7+
     @SneakyThrows (InterruptedException.class)
     void exchange_fewSqrt_to_plus()  {
@@ -723,6 +720,7 @@ class ButtonsBasicTest {
 
         assertEquals("7+", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
+
     @Test  //2-+5
     @SneakyThrows (InterruptedException.class)
     void fewSign_OneByOne ()  {
@@ -755,6 +753,7 @@ class ButtonsBasicTest {
 
         assertEquals("2+5", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
+
     @Test //8-+/*3
     @SneakyThrows (InterruptedException.class)
     void fourSign_OneByOne_keyBoard ()  {
@@ -789,6 +788,7 @@ class ButtonsBasicTest {
 
         assertEquals("8*3", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
     }
+
     @Test //8√√√
     @SneakyThrows (InterruptedException.class)
     void fiveSqrt_OneByOne ()  {
@@ -973,4 +973,13 @@ class ButtonsBasicTest {
         assertEquals("200+5%", panelKey.buttonsBasic.strInput.replaceAll(" ",""));
         assertEquals("210", panelKey.buttonsBasic.countResult);
     }
+
+
+
+
+
+
+
+
+
 }

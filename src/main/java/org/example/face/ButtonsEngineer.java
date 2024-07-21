@@ -89,7 +89,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         case '0','1','2','3','4','5','6','7','8','9',')','²', '³', '!' -> {
                             countBrace--;
                             strInput=strInput + name;
-                            textPanel.setTextInput(strInput);
+                            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                         }
                     }
 
@@ -118,11 +118,11 @@ class ButtonsEngineer extends ButtonsBasic {
                         }
                     else strInput= str +name;
 
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                     unblockedAll(braceClose);
                     blockedAll(bPlus,  bDivide, bMultiply, bPercent,bResult, bMemoryAdd);
-                    blockedAll(bSin, bCos, bTg, bLg, bLn,bx3, bx2, bxn,bChageSign, bFactorial, bDivX,  bSqrt3);
+                    blockedAll(bx3, bx2, bxn,bChageSign, bFactorial, bDivX);
 
                 }
                 case "π" ->{
@@ -146,7 +146,7 @@ class ButtonsEngineer extends ButtonsBasic {
 
                     double dNumber = Math.PI;
                     strInput= strInput +dNumber;
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                     try {
                         countResult = calculateCurrent.calculateInput(strInput);
@@ -157,11 +157,10 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult = myException.getMessage();
                         myExceptionBlockButtons(myException);
                     }
-                    textPanel.setTextResult(strResult);
+                    textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                 }
                 case "x²" ->{
-                    engineer_count_sign_init("²");
-                }
+                    engineer_count_sign_init("²");                }
                 case  "x³" ->{
                     engineer_count_sign_init("³");
                 }
@@ -174,20 +173,20 @@ class ButtonsEngineer extends ButtonsBasic {
                         strInput="±("+textPanel.getTextInput().getText().trim()+")";
                         for (int i=0; i<countBrace; i++)
                             strInput=strInput+")";
-                        textPanel.setTextInput(strInput);
+                        textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                         textPanel.setSbLog(strInput);
                         textPanel.setSbLog("\n");
                         textPanel.setSbLog(textPanel.getTextResult().getText());
                         textPanel.setSbLog("\n");
-                        textPanel.setTextLog( textPanel.getSbLog().toString());
+                        textPanel.setTextLog( calculateCurrent.getFormat(),textPanel.getSbLog().toString());
 
                         countBrace=0;
 
                     }catch (MyException myException){
                         log.error("MyException ± : {}",myException.getMessage());
                         strResult = myException.getMessage();
-                        textPanel.setTextResult(strResult);
+                        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                         myExceptionBlockButtons(myException);
 
                     }
@@ -229,7 +228,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         myExceptionBlockButtons(myException);
                 }
                     textPanel.setFontBoldResult ();          //alter font
-                    textPanel.setTextResult(strResult);
+                    textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                 }
                 case "x!" ->{
                     if (strInput.trim().isEmpty())  {
@@ -251,7 +250,7 @@ class ButtonsEngineer extends ButtonsBasic {
                         strResult = myException.getMessage();
                         myExceptionBlockButtons(myException);
                     }
-                    textPanel.setTextResult(strResult);
+                    textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                 }
 
 // limit variable double
@@ -280,7 +279,8 @@ class ButtonsEngineer extends ButtonsBasic {
 
 
     void engineer_sign_init (String sign){
-        countBrace ++;
+        countBrace++;
+        unblockedAll(braceClose);
         textPanel.setFontBoldInput ();
         replaceRepeatedSign_always ();
         replaceRepeatedSign_exceptSimple();
@@ -310,6 +310,6 @@ class ButtonsEngineer extends ButtonsBasic {
             strResult = myException.getMessage();
             myExceptionBlockButtons(myException);
         }
-        textPanel.setTextResult(strResult);
+        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
     }
 }

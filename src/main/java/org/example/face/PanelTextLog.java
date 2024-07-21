@@ -3,10 +3,7 @@ package org.example.face;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.fitting.MyColors;
-import org.example.fitting.MyFontNames;
-import org.example.fitting.MyFontSizes;
-import org.example.fitting.MySizePanel;
+import org.example.fitting.*;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -15,20 +12,18 @@ import java.awt.*;
 
 @Getter(AccessLevel.PROTECTED)
  class PanelTextLog extends PanelText{
+
      /**
       * to safe into the memory
       */
      protected String memoryMR;
 
+
     /**
      * for writing to calculator.org.example.face.PanelTextLog
      */
-
-
     private StringBuffer sbLog;
-
-     private final JTextPane  textLog;
-
+    private final JTextPane  textLog;
     private final JScrollPane  scrollLog;
 
 
@@ -105,9 +100,14 @@ import java.awt.*;
     }
 
 
-     void setTextLog(String strSbLog) {
+     void setTextLog(String format, String strSbLog) {
+         if(isDigitNumber()){
+             strSbLog=digitNumbers(format,strSbLog);
+         }
          textLog.setText(strSbLog);
      }
+
+
 
 //    StringBuffer getSbLog () {    return  sbLog;    }
 //    JTextPane getTextLog() { return textLog; }

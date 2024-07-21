@@ -29,7 +29,7 @@ public class ButtonsBasic extends ButtonsAll {
      */
     protected int N;
     protected int countSqrt;        //no more than 3
-    protected int countBrace;
+
 
     /**
      * in number
@@ -53,7 +53,6 @@ public class ButtonsBasic extends ButtonsAll {
 
     protected ButtonsBasic(PanelTextLog textPanel) {
         this.textPanel = textPanel;
-
         N = 0;
         strNumber = "0";
         countResult = "0";
@@ -251,8 +250,7 @@ public class ButtonsBasic extends ButtonsAll {
                         }
                     }
                 }
-
-                textPanel.setTextInput(strInput);
+                textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                 /** divide for 0
                  *
@@ -280,7 +278,7 @@ public class ButtonsBasic extends ButtonsAll {
                     myExceptionBlockButtons(myException);
                 }
 
-                textPanel.setTextResult(strResult);
+                textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
 
                 if (name.equals(".")) {
                     blockedAll(bPoint);   //two points couldn't bу in one number
@@ -333,7 +331,7 @@ public class ButtonsBasic extends ButtonsAll {
 
                     if (countSqrt < 3) {
                         strInput = strInput + name.trim();
-                        textPanel.setTextInput(strInput);
+                        textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                     }
                     countSqrt++;
                 }
@@ -384,7 +382,7 @@ public class ButtonsBasic extends ButtonsAll {
                         find_StrResult();                 //BigDecimal не работает с hex и binary
 //
                        strInput = strInput + name.trim();
-                       textPanel.setTextInput(strInput);//
+                       textPanel.setTextInput(calculateCurrent.getFormat(),strInput);//
 
                         textPanel.setSbLog(strInput.trim());
                         printResult();
@@ -392,7 +390,7 @@ public class ButtonsBasic extends ButtonsAll {
                     } catch (MyException ex) {
                         myExceptionBlockButtons(ex);
 
-                        textPanel.setTextResult(strResult);
+                        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                     }
                     countBrace = 0;
 
@@ -403,7 +401,7 @@ public class ButtonsBasic extends ButtonsAll {
                     print_SbLog();
                     printResult();
                     strInput = countResult;
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                     countBrace = 0;
                 }
             }
@@ -444,7 +442,7 @@ public class ButtonsBasic extends ButtonsAll {
 
                         while (isFormerNumber) {
                             strInput = strInput.substring(0, strInput.length() - 1);
-                            textPanel.setTextInput(strInput);
+                            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                             if (!StringUtils.endsWithAny(strInput.trim(), "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."))
                                 isFormerNumber = false;
@@ -457,7 +455,7 @@ public class ButtonsBasic extends ButtonsAll {
                         strInput = strInput + "*";
 
                     strInput = strInput + textPanel.memoryMR;
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
                     try {                                       // except divide for 0
                         countResult = calculateCurrent.calculateInput(strInput);
@@ -476,7 +474,8 @@ public class ButtonsBasic extends ButtonsAll {
                         strResult = myException.getMessage();
                         myExceptionBlockButtons(myException);
                     }
-                    textPanel.setTextResult(strResult);
+
+                    textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                 }
                 case "AC" -> {
 
@@ -490,9 +489,9 @@ public class ButtonsBasic extends ButtonsAll {
                     countBrace = 0;
                     strNumber = "0";
                     N = 0;
-                    textPanel.setTextResult("0");
+                    textPanel.setTextResult(calculateCurrent.getFormat(),"0");
                     strInput = "   ";   //number after АС
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                     func = null;
                     countResult = "0";                 // sign after АС
                     strResult = "0";  // AC then =, textRez
@@ -552,7 +551,7 @@ public class ButtonsBasic extends ButtonsAll {
                     }
 
 
-                    textPanel.setTextInput(strInput);
+                    textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
 
                     /**find strResult
@@ -568,113 +567,14 @@ public class ButtonsBasic extends ButtonsAll {
                         //blocked buttons
                         myExceptionBlockButtons(myException);
                     }
-                    textPanel.setTextResult(strResult);
+
+                    textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
 
                     // unblocked buttons
                     unblocked_buttons_appropriate_format();
 
                 }
             }
-        }
-    }
-
-
-    /**
-     * block keys on panel calculator
-     *
-     * @param v blocking keys
-     */
-    void blockedAll(JButton... v) {
-        for (JButton b : v)
-            b.setEnabled(false);
-    }
-
-    /**
-     * unblock keys on panel calculator
-     *
-     * @param v unblocking keys
-     */
-    void unblockedAll(JButton... v) {
-        for (JButton b : v)
-            b.setEnabled(true);
-    }
-
-
-    void printResult() {
-        textPanel.setFontBoldResult();          //alter font
-
-        find_StrResult();                        //BigDecimal не работает с hex и binary
-        textPanel.setTextResult(strResult);
-
-        unblockedAll(bPercent);       // work  % without mistakes
-        strNumber = "0";              // if after = go.
-        N = 0;
-        func = null;
-//         strInput="   ";
-//         countResult="0";
-    }
-
-    void print_SbLog() {
-        for (int i = 0; i < countBrace; i++)
-            textPanel.setSbLog(")");
-        textPanel.setSbLog("\n");
-        textPanel.setSbLog(textPanel.getTextResult().getText());
-        textPanel.setSbLog("\n");
-        textPanel.setTextLog(textPanel.getSbLog().toString());
-    }
-
-    void printSign(String name) {
-        find_StrResult();               //BigDecimal не работает с hex и binary
-
-        if (func == null && strInput.equals("  ")) {
-            strInput = strResult + name;
-            textPanel.setTextInput(strInput);
-        } else {
-            strInput = strInput + name;
-            textPanel.setTextInput(strInput);
-        }
-    }
-
-
-    //blocked buttons
-    void myExceptionBlockButtons(MyException myException) {
-        if (countBrace == 0) {
-            if (myException.getMessage().equals("Формат работает только с целыми числами.")) {
-                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd, bPoint);
-            }
-            else if (myException.getMessage().equals("Работает только с положительными числами.")) {
-                blockedAll(bPlus, bMinus, bMultiply, bPercent, bRadical, bResult, bMemoryAdd, bPoint);
-                try {
-                    blockedAll(bNot, bXor, bOr, bAnd);
-                } catch (NullPointerException exception) {
-                }
-
-            }
-            else {
-                blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd,
-                        b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, bPoint);
-                try {
-                    blockedAll(bNot, bXor, bOr, bAnd, bA, bB, bC, bD, bE, bF);
-                } catch (NullPointerException exception) {
-                }
-            }
-
-            try {
-                blockedAll(bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX,
-                        bxn, bx2, bx3, bSqrt3, bChageSign, braceOpen, braceClose);
-            } catch (NullPointerException exception) {
-            }
-        }
-    }
-
-    //BigDecimal не работает с hex и binary
-    void find_StrResult() {
-        if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())
-                | calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())) {
-            strResult = "=" + countResult;
-        } else {
-            bigDecimal = new BigDecimal(countResult, Operations.mathContext);
-            strResult = "=" + bigDecimal;
         }
     }
 
@@ -718,28 +618,53 @@ public class ButtonsBasic extends ButtonsAll {
         else unblockedAll(bMemoryHold, bMemoryDel);
     }
 
-    // handle ArithmeticException
-    void handleArithmeticException(ArithmeticException ex) {
-
-          if(ex.getMessage().equals("Division by zero")){
-                strResult = "Делить на 0 нельзя.";
-                if (countBrace == 0) {
-                    blockedAll(bPlus, bMinus, bDivide, bMultiply, bPercent, bRadical, bResult, bMemoryAdd);
-                    try {
-                        blockedAll(
-                                bPi, bSin, bCos, bTg, bLg, bLn, bFactorial, bDivX, bxn, bx2, bx3, bSqrt3, bChageSign,
-                                braceOpen, braceClose, bChageSign);
-                    } catch (NullPointerException exception) {
-                    }
-
-                    try {
-                        blockedAll(braceOpen, bNot, bXor, bOr, bAnd);
-                    } catch (NullPointerException exception) {
-                    }
-                }
+    //BigDecimal не работает с hex и binary
+    void find_StrResult() {
+        if (calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_BIN.get())
+                | calculateCurrent.getFormat().equals(MyFormatNumbers.FORMAT_HEX.get())) {
+            strResult = "=" + countResult;
+        } else {
+            bigDecimal = new BigDecimal(countResult, Operations.mathContext);
+            strResult = "=" + bigDecimal;
+        }
+    }
 
 
-            }
-}
+    void printResult() {
+        textPanel.setFontBoldResult();          //alter font
+        find_StrResult();                        //BigDecimal не работает с hex и binary
+
+        textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
+
+        unblockedAll(bPercent);       // work  % without mistakes
+        strNumber = "0";              // if after = go.
+        N = 0;
+        func = null;
+//         strInput="   ";
+//         countResult="0";
+    }
+
+    void print_SbLog() {
+        for (int i = 0; i < countBrace; i++)
+            textPanel.setSbLog(")");
+        textPanel.setSbLog("\n");
+        textPanel.setSbLog(textPanel.getTextResult().getText());
+        textPanel.setSbLog("\n");
+        String strLog=textPanel.getSbLog().toString();
+        textPanel.setTextLog(calculateCurrent.getFormat(),strLog);
+    }
+
+    void printSign(String name) {
+        find_StrResult();               //BigDecimal не работает с hex и binary
+
+        if (func == null && strInput.equals("  ")) {
+            strInput = strResult + name;
+            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
+        } else {
+            strInput = strInput + name;
+            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
+        }
+    }
+
 
 }

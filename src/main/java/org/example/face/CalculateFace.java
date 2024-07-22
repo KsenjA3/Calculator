@@ -10,6 +10,8 @@ import org.example.fitting.MySizePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -17,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 @Log4j2
 public class CalculateFace extends JFrame {
     private String format;
+    private String stRes;
 
     /**Components
      *
@@ -275,17 +278,28 @@ public class CalculateFace extends JFrame {
                     repack();
                 }
                 case "Копировать" -> {
-
+                    stRes=textPanel.getTextResult().getText().substring(1);
+                    copy_toSystem( stRes);
                 }
                 case "Вставить" -> {
-
+                    if (jmiSimple.isSelected()){
+                        textPanel.setTextInput(keyPanelBasic.buttonsBasic.calculateCurrent.getFormat(),stRes);
+                        textPanel.setTextResult(keyPanelBasic.buttonsBasic.calculateCurrent.getFormat(),"="+stRes);
+                    } else if (jmiEngineer.isSelected()) {
+                        textPanel.setTextInput(keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat(),stRes);
+                        textPanel.setTextResult(keyPanelEngineer.buttonsEngineer.calculateCurrent.getFormat(),"="+stRes);
+                    } else if (jmiIT.isSelected()) {
+                        textPanel.setTextInput(keyPanelIT.buttonsIT.calculateCurrent.getFormat(),stRes);
+                        textPanel.setTextResult(keyPanelIT.buttonsIT.calculateCurrent.getFormat(),"="+stRes);
+                    }
                 }
                 case "Очистить журнал" -> {
                     textPanel.getSbLog().delete(0,textPanel.getSbLog().length());
                     textPanel.setTextLog(format, new String());
                 }
                 case "Копировать журнал" -> {
-
+                    String strLog=textPanel.getTextLog().getText();
+                    copy_toSystem( strLog);
                 }
                 case "Числовые разряды" -> {
                     textPanel.setDigitNumber(jchbGroupDigit.isSelected());
@@ -383,12 +397,12 @@ public class CalculateFace extends JFrame {
         JMenu jmCorrect = new JMenu("Правка");
         jmCorrect.setFont(MyFonts.FONT_MENU.get());
 
-        actionCopy = new MakeMenuItem("Копировать", KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
+        actionCopy = new MakeMenuItem("Копировать", KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.ALT_DOWN_MASK));
         var jmiCopy = new JMenuItem(actionCopy);
         jmiCopy.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmCorrect.add(jmiCopy);
 
-        actionPaste = new MakeMenuItem("Вставить", KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK));
+        actionPaste = new MakeMenuItem("Вставить", KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.ALT_DOWN_MASK));
         var jmiPaste = new JMenuItem(actionPaste);
         jmiPaste.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmCorrect.add(jmiPaste);
@@ -397,11 +411,13 @@ public class CalculateFace extends JFrame {
         var jmiLog = new JMenu("Журнал");
         jmiLog.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmCorrect.add(jmiLog);
+
         actionClearLog = new MakeMenuItem("Очистить журнал", KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, InputEvent.ALT_DOWN_MASK));
         jmiClearLog = new JMenuItem(actionClearLog);
         jmiClearLog.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmiLog.add(jmiClearLog) ;
-        actionCopyLog = new MakeMenuItem("Копировать журнал", KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.ALT_DOWN_MASK));
+
+        actionCopyLog = new MakeMenuItem("Копировать журнал", KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.ALT_DOWN_MASK));
         jmiCopyLog = new JMenuItem(actionCopyLog);
         jmiCopyLog.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmiLog.add(jmiCopyLog) ;
@@ -506,6 +522,13 @@ public class CalculateFace extends JFrame {
 
             textPanel.getScrollLog().setVisible(false);
         }
+    }
+
+
+    void copy_toSystem(String strCopy){
+        StringSelection stringSelection = new StringSelection (strCopy);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard ();
+        clpbrd.setContents (stringSelection, null);
     }
 }
 

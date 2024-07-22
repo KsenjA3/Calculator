@@ -1,9 +1,7 @@
 package org.example.face;
 
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.example.calculate.CalculateInput;
-//import org.example.calculate.CalculateBasic;
 import org.example.calculate.Operations;
 import org.example.calculate.calculate;
 import org.example.fitting.MyColors;

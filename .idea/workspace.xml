@@ -9,30 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="gitignore">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/face/PanelTextTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator_calculate.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_calculate.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calculator_logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/Calculator_logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calculator.dat" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsAll.java" afterDir="false" />
+    <list default="true" id="3d00f53b-7b7d-4d24-9786-343915f01f2e" name="Changes" comment="gitignore_ITcheck_digitNumber">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsEngineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsEngineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/ButtonsIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/CalculateFace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/KeyboardInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/KeyboardInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelKeyIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/face/PanelTextLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsBasicTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsEngineerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsITTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/ButtonsITTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/KeyboardInputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/KeyboardInputTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/MemoryButtonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/calculateFaceData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/face/PanelTextTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/face/PanelTextTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -489,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721513184398</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="gitignore_ITcheck_digitNumber">
+      <option name="closed" value="true" />
+      <created>1721583873445</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1721583873445</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -504,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ButtonsEngineer_PI" />
     <MESSAGE value="clean_Log" />
     <MESSAGE value="startNewLogic" />
     <MESSAGE value="calcBasic_orderCount" />
@@ -529,7 +515,8 @@
     <MESSAGE value="view_serialize" />
     <MESSAGE value="FuLlView_serialize" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="gitignore_ITcheck_digitNumber" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore_ITcheck_digitNumber" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -876,27 +863,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>377</line>
+          <line>375</line>
           <option name="timeStamp" value="481" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>275</line>
+          <line>273</line>
           <option name="timeStamp" value="482" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>264</line>
+          <line>262</line>
           <option name="timeStamp" value="483" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>470</line>
+          <line>468</line>
           <option name="timeStamp" value="485" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>565</line>
+          <line>563</line>
           <option name="timeStamp" value="486" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -916,7 +903,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/face/ButtonsBasic.java</url>
-          <line>263</line>
+          <line>261</line>
           <option name="timeStamp" value="498" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -971,32 +958,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="595" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>202</line>
-          <option name="timeStamp" value="596" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>204</line>
-          <option name="timeStamp" value="597" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="598" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>209</line>
-          <option name="timeStamp" value="599" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/calculate/CalculateIT.java</url>
-          <line>252</line>
+          <line>241</line>
           <option name="timeStamp" value="605" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">

@@ -14,6 +14,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
 @Log4j2
@@ -228,7 +230,7 @@ public class CalculateFace extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
-                case "Обычный" -> {
+                case "Простой" -> {
                     format= keyPanelBasic.buttonsBasic.calculateCurrent.getFormat();
                     if (textPanel.getTextResult().equals("0.0")) {
                         textPanel.setTextInput(format, " ");
@@ -317,8 +319,14 @@ public class CalculateFace extends JFrame {
                         textPanel.setTextResult(keyPanelIT.buttonsIT.calculateCurrent.getFormat(),textPanel.getTextResult().getText());
                     }
                 }
-                case "Посмотреть справку" -> {
-
+                case "Посмотреть справку"->{
+                    try {
+                        Desktop.getDesktop().browse(new URI("Brief.html"));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (URISyntaxException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
 
@@ -339,6 +347,7 @@ public class CalculateFace extends JFrame {
             switch (e.getActionCommand()) {
                 case "Показать журнал" -> jchbLog.setSelected(true);
                 case "Скрыть журнал" -> jchbLog.setSelected(false);
+
             }
             panelLog_isShown();
             repack();
@@ -353,7 +362,7 @@ public class CalculateFace extends JFrame {
         JMenu jmView = new JMenu("Вид");
         jmView.setFont(MyFonts.FONT_MENU.get());
 
-        MakeMenuItem actionSimple = new MakeMenuItem("Обычный", KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.ALT_DOWN_MASK));
+        MakeMenuItem actionSimple = new MakeMenuItem("Простой", KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.ALT_DOWN_MASK));
         jmiSimple = new JRadioButtonMenuItem(actionSimple);
         jmiSimple.setFont(MyFonts.FONT_MENU_ITEM.get());
         jmiSimple.setSelected(true);

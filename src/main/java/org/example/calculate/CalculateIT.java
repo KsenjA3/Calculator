@@ -192,6 +192,8 @@ public class CalculateIT {
 
     public String count_not(String strNum, String format) throws MyException {
         String strRes="";
+        if (StringUtils.contains(strNum, "."))
+            throw new MyException("Формат работает только с целыми числами.");
 
         Integer numRes=number_from_string_according_to_format(strNum,format);
         numRes=~numRes;

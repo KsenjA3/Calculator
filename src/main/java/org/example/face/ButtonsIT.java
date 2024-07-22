@@ -213,6 +213,7 @@ public class ButtonsIT extends ButtonsBasic{
                     }catch (MyException myException){
                         log.error("MyException ~ : {}",myException.getMessage());
                         strResult = myException.getMessage();
+                        textPanel.setFontBoldInput();
                         textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
                         myExceptionBlockButtons(myException);
 

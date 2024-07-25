@@ -239,7 +239,7 @@ public class CalculateBasic {
     /**calculator Percent
      *
      */
-    String calculate_percent(String str) throws MyException {
+    public String calculate_percent(String str) throws MyException {
         int nOpenBraces= StringUtils.countMatches(str, "(");
         int nCloseBraces= StringUtils.countMatches(str, ")");
         int placeOpen ;
@@ -248,8 +248,7 @@ public class CalculateBasic {
         countNumber="";
         nameSign = "";
 
-//        System.out.println("str="+str+"=");
-//countNumber and nameSign
+//countNumber and nameS ign
         if (str.endsWith(")")){
             try {
                 placeOpen=StringUtils.lastIndexOf(str,"(");
@@ -318,6 +317,7 @@ public class CalculateBasic {
 
         try {
 // от countResult находиться %
+            log.info("PERCENT strPersentFrom= "+strPersentFrom);
             countResult=calculateCurrent.calculateInput(strPersentFrom);
                 log.info("PERCENT strBeforePersent= "+strBeforePersent);
                 log.info("PERCENT countResult= "+countResult);
@@ -360,14 +360,8 @@ public class CalculateBasic {
             else
                 dResultPercent = new BigDecimal(strResultPercentIn);
 
-//        System.out.println();
-//        System.out.println(dResultPercent);
-//        System.out.println(nameSign);
-//        System.out.println(dNumber);
-
             switch (nameSign.trim()) {
                 case "+"-> {
-//                    System.out.println("in +");
                     func=Operations::plus;
                     dNumber = Operations.divide(Operations.multiply(dResultPercent, dNumber),
                                                 new BigDecimal(100));
@@ -395,11 +389,13 @@ public class CalculateBasic {
                 case "no"->  dResult = Operations.divide(dNumber, new BigDecimal(100) );
             }
 
-            stringResult = dResult.toString();
-            logger.debug("logger.debug: успешное выполнение расчеов calculatePercent = {}", stringResult);
+            stringResult = Operations.printNumber(dResult.toString());
+
+
+            logger.debug("успешное выполнение расчеов calculatePercent = {}", stringResult);
             return stringResult;
         } catch (Exception e) {
-            logger.error("logger.error: ошибка ввода данных в метод calculatePercent");
+            logger.error("ошибка ввода данных в метод calculatePercent");
             return "ошибка ввода данных";
         }
     }

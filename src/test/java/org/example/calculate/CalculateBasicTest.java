@@ -1,11 +1,13 @@
 package org.example.calculate;
 
+import org.example.face.MyException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 
@@ -197,6 +199,9 @@ class CalculateBasicTest {
     void count_power(String strInput, String expectedResult) {
         assertEquals(expectedResult, Operations.printNumber(sut.calculateBasicInput(strInput)));
     }
+
+
+
 
 
 }

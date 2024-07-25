@@ -5,6 +5,7 @@ import org.example.face.MyException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +16,6 @@ class CalculateInputTest {
     static void setCalculateBasicInput () {
         sut = new CalculateInput();
     }
-
 
     @ParameterizedTest
     @CsvSource( value =  {
@@ -441,7 +441,19 @@ class CalculateInputTest {
                 "!!!НЕТУ!!!"
         );
         assertEquals(name+" недозволеного большого числа", ex.getMessage());
+    }
 
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            " 5,  0.05",
+            " 200+5,  210",
+            " 200-5,  190",
+            " 200*5,  10",
+            " 200/5,  4000",
+    })
+    void count_percent(String strInput, String expectedResult) throws MyException {
+        assertEquals(expectedResult, sut.calculateBasic.calculate_percent(strInput));
     }
 
 }

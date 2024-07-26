@@ -37,7 +37,6 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea
-/calculator.dat
 /Calculator_calculate.log
 /Calculator_logs.log
 /Calculator_face.log

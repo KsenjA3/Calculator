@@ -72,9 +72,16 @@ public class CalculateFace extends JFrame {
             {
                 try (var fileOut =new FileOutputStream("calculator.dat");
                      var out = new ObjectOutputStream (fileOut)
-//                     var outStream = new OutputStreamWriter(out, "UTF-8");
-//                     var bw = new BufferedWriter(outStream)
                 ){
+                    switch (nameKeyPanel){
+                        case "Basic", "Engineer" -> {
+                            format=MyFormatNumbers.FORMAT_DOUBLE.get();
+                        }
+                        case "IT"->{
+                            format=keyPanelIT.buttonsIT.calculateCurrent.getFormat();
+                        }
+                    }
+
 
                     CalculateFaceData cfData =CalculateFaceData.builder()
                         .x(frame.getLocation().x)
@@ -84,6 +91,7 @@ public class CalculateFace extends JFrame {
                         .textLog (textPanel.getTextLog().getText())
                         .textInput(textPanel.getTextInput().getText())
                         .textResult (textPanel.getTextResult().getText())
+                        .formatNumber(format)
                         .build();
 
                     log.info(nameKeyPanel);
@@ -180,7 +188,22 @@ public class CalculateFace extends JFrame {
                 case "IT"->{
                     widthSize=keyPanelIT.getWidthKeyPanel();
                     jmiIT.setSelected(true);
-                    format=MyFormatNumbers.FORMAT_DEC.get();
+
+                    format=cfData.formatNumber;
+                    switch(format){
+                        case "hex"-> {
+                            keyPanelIT.buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_HEX.get());
+                            keyPanelIT.bHex.setSelected(true);
+                        }
+                        case "dec"->{
+                            keyPanelIT.buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
+                            keyPanelIT.bDec.setSelected(true);
+                        }
+                        case "bin"->{
+                            keyPanelIT.buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_BIN.get());
+                            keyPanelIT.bBin.setSelected(true);
+                        }
+                    }
                 }
             }
 
@@ -195,7 +218,6 @@ public class CalculateFace extends JFrame {
             textPanel.setTextLog(format,cfData.textLog);
             textPanel.getTextInput().setText(cfData.textInput);
             textPanel.getTextResult().setText(cfData.textResult);
-
         }
         catch (NullPointerException nullPointerException) {
             frame.setLocation(100,100);
@@ -266,6 +288,7 @@ public class CalculateFace extends JFrame {
                     textPanel.setTextResult(format,"   ");
 
                     keyPanelIT.bDec.setSelected(true);
+
                     keyPanelIT.buttonsIT.blockedAll(
                                 keyPanelIT.listButtons.get(".")
                             ,keyPanelIT.listButtons.get("AA"), keyPanelIT.listButtons.get("BB"),keyPanelIT.listButtons.get("CC")
@@ -472,8 +495,6 @@ public class CalculateFace extends JFrame {
         jpu.add (jmiCopyLogPopup);
     }
 
-
-
     /**
      * mouseListener for PopupMenu
      * @param compVal list of components with PopupMenu
@@ -533,11 +554,16 @@ public class CalculateFace extends JFrame {
         }
     }
 
-
     void copy_toSystem(String strCopy){
         StringSelection stringSelection = new StringSelection (strCopy);
         Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard ();
         clpbrd.setContents (stringSelection, null);
+    }
+
+    void set_IT_formatNumber(String formatIT) {
+        switch (formatIT){
+
+        }
     }
 }
 

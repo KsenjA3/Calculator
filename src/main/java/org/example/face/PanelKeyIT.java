@@ -3,6 +3,7 @@ package org.example.face;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.example.calculate.Operations;
 import org.example.fitting.MyColors;
 import org.example.fitting.MyFonts;
 import org.example.fitting.MyFormatNumbers;
@@ -121,7 +122,22 @@ public  class PanelKeyIT extends PanelKeyGeneral{
                      }
                });
 
-                buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
+                switch(buttonsIT.calculateCurrent.getFormat()){
+                    case "hex"-> {
+                        buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_HEX.get());
+                        bHex.setSelected(true);
+                    }
+                    case "dec"->{
+                        buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_DEC.get());
+                        bDec.setSelected(true);
+                    }
+                    case "bin"->{
+                        buttonsIT.calculateCurrent.setFormat(MyFormatNumbers.FORMAT_BIN.get());
+                        bBin.setSelected(true);
+                    }
+                }
+
+
                 digitPanel.add(bBin);
                 bg.add(bBin);
 

@@ -68,7 +68,7 @@ public class ButtonsIT extends ButtonsBasic{
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e)  {
             if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
             else     unblockedAll(bMemoryHold,bMemoryDel);
 
@@ -120,6 +120,7 @@ public class ButtonsIT extends ButtonsBasic{
                 case "A","B","C","D","E","F"-> {
                     textPanel.setFontBoldInput ();   //alter fonts
                     countSqrt=0;
+                    N=0;
 
                     if (strInput.endsWith("%")   |   strInput.startsWith("±")  |
                             ( strInput.trim().equals(strResult.substring(1).trim()) &&  strNumber.equals("0")  && func==null))
@@ -183,13 +184,25 @@ public class ButtonsIT extends ButtonsBasic{
                 }
 
                 case "And"-> {
-                    init_IT_sign_button(" &");
+                    try {
+                        init_IT_sign_button(" &");
+                    } catch (MyException myException) {
+                        handle_myExceptions(  myException);
+                    }
                 }
                 case "Or"-> {
-                    init_IT_sign_button(" |");
+                    try {
+                        init_IT_sign_button(" |");
+                    } catch (MyException myException) {
+                        handle_myExceptions(  myException);
+                    }
                 }
                 case "Xor"-> {
-                    init_IT_sign_button(" Xor");
+                    try {
+                        init_IT_sign_button(" Xor");
+                    } catch (MyException myException) {
+                        handle_myExceptions(  myException);
+                    }
                 }
                 case "Not"-> {
                     try {
@@ -226,18 +239,20 @@ public class ButtonsIT extends ButtonsBasic{
 
 
 
-        void init_IT_sign_button(String sign){
+        void init_IT_sign_button(String sign) throws MyException {
             strInput= textPanel.getTextInput().getText();
-            textPanel.setFontBoldInput ();
-//            strResult=textPanel.getTextResult().getText();
+            strResult= textPanel.getTextResult().getText();
+            if( StringUtils.contains(strResult,".")) {
+                throw new MyException("Формат работает только с целыми числами.");
+            }
 
+            textPanel.setFontBoldInput ();
             if (StringUtils.endsWith(strInput, "%") )
                 strInput=countResult;
 
             replaceRepeatedSign_exceptSimple ();
             replaceRepeatedSign_simple ();
             replaceRepeatedSign_IT ();
-
 
             if (StringUtils.containsAny(strInput,"/","*","-","+","&","|","Xor") ) {
                 textPanel.setSbLog(strInput.trim());
@@ -249,11 +264,25 @@ public class ButtonsIT extends ButtonsBasic{
                 strInput="0"+sign;
              else
                 strInput=strInput+sign;
-            textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
 
+            textPanel.setTextInput( calculateCurrent.getFormat(),strInput);
             blockedAll(bRadical);
             if (textPanel.memoryMR == null)   blockedAll(bMemoryHold, bMemoryDel);
             else     unblockedAll(bMemoryHold,bMemoryDel);
+        }
+
+        void handle_myExceptions( MyException myException){
+            textPanel.setSbLog(strInput.trim());
+            print_SbLog();
+
+            textPanel.setTextInput(calculateCurrent.getFormat(), strResult.substring(1));
+
+            strResult = myException.getMessage();
+            textPanel.setTextResult(calculateCurrent.getFormat(),strResult);
+
+            //blocked buttons
+            myExceptionBlockButtons(myException);
+            log.error("MyException: {}", myException.getMessage());
         }
 
     }

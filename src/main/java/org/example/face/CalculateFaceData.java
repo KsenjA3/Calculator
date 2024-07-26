@@ -19,4 +19,5 @@ public class CalculateFaceData implements Serializable {
     String textLog;
     String textInput;
     String textResult;
+    String formatNumber;
 }

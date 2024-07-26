@@ -311,11 +311,7 @@ public class ButtonsBasic extends ButtonsAll {
 
             strInput = textPanel.getTextInput().getText();
 
-            if ( StringUtils.containsAny(strInput,"&","~","|","Xor")) {
-                textPanel.setSbLog(strInput.trim());
-                print_SbLog();
-                strInput = countResult;
-            }
+
 
             if (strInput.endsWith("%") | strInput.startsWith("±") )
                 strInput = countResult;
@@ -326,7 +322,7 @@ public class ButtonsBasic extends ButtonsAll {
             switch (name) {
                 case " √ " -> {
                     if (strInput.equals("0")) strInput = "";
-
+                    make_log_result();
                     if (countSqrt < 3) {
                         strInput = strInput + name.trim();
                         textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
@@ -334,6 +330,7 @@ public class ButtonsBasic extends ButtonsAll {
                     countSqrt++;
                 }
                 case " + " -> {
+                    make_log_result();
                     if (strInput.trim().isEmpty()) strInput = "0";
                     replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
@@ -342,6 +339,7 @@ public class ButtonsBasic extends ButtonsAll {
                     func = Operations::plus;
                 }
                 case " - " -> {
+                    make_log_result();
                     if (strInput.trim().isEmpty()) strInput = "0";
                     replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
@@ -350,6 +348,7 @@ public class ButtonsBasic extends ButtonsAll {
                     func = Operations::minus;
                 }
                 case " * " -> {
+                    make_log_result();
                     if (strInput.trim().isEmpty()) strInput = "0";
                     replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
@@ -358,6 +357,7 @@ public class ButtonsBasic extends ButtonsAll {
                     func = Operations::multiply;
                 }
                 case " / " -> {
+                    make_log_result();
                     if (strInput.trim().isEmpty()) strInput = "0";
                     replaceRepeatedSign_always();
                     replaceRepeatedSign_simple();
@@ -366,6 +366,7 @@ public class ButtonsBasic extends ButtonsAll {
                     func = Operations::divide;
                 }
                 case " % " -> {
+
                     if (strInput.trim().isEmpty()) strInput = "0";
                     unblockedAll(bPercent);       // work  % without mistakes
                     textPanel.setFontBoldInput();
@@ -374,14 +375,14 @@ public class ButtonsBasic extends ButtonsAll {
                     replaceRepeatedSign_simple();
                     replaceRepeatedSign_IT();
 
+                    make_log_result();
                     try {
                         countResult = calculateCurrent.calculateInput(strInput + "%");
                         log.info("!!! PERCENT countResult= " + countResult);
                         find_StrResult();                 //BigDecimal не работает с hex и binary
 //
                        strInput = strInput + name.trim();
-                       textPanel.setTextInput(calculateCurrent.getFormat(),strInput);//
-
+                       textPanel.setTextInput(calculateCurrent.getFormat(),strInput);
                         textPanel.setSbLog(strInput.trim());
                         printResult();
                         print_SbLog();
@@ -405,6 +406,14 @@ public class ButtonsBasic extends ButtonsAll {
             }
         }
     }
+
+     void make_log_result() {
+         if (StringUtils.containsAny(strInput, "&", "~", "|", "Xor")) {
+             textPanel.setSbLog(strInput.trim());
+             print_SbLog();
+             strInput = countResult;
+         }
+     }
 
 
     /**

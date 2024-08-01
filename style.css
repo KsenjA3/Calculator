@@ -6,81 +6,10 @@ frameset.brief {
 	background-repewat: no-repeat;	
 }
 
-ul.matter {	
-	list-style-position:inside;
-	list-style-type: disc;
+div.myIndent {
 	font-size: 14pt; 	 
 	color: black; 
 	font-family: "Arial" ;
-	text-indent: 25mm;
-	
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 1em;
-	padding-bottom: 0em;
-	line-height:1;	
-}
-ul.matter_margin0 {	
-	list-style-position:inside;
-	list-style-type: disc;
-	font-size: 14pt; 	 
-	color: black; 
-	font-family: "Arial" ;
-	text-indent: 25mm;
-	
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 0em;
-	padding-bottom: 0em;
-	line-height:1;	
-}
-
-ol.matter {	
-	list-style-position:inside;
-	font-size: 14pt; 	 
-	color: black; 
-	font-family: "Arial" ;
-	text-indent: 25mm;
-	
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 1em;
-	padding-bottom: 0em;
-	line-height:1;
-	}
-
-li.matter { 
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 0em;
-	padding-bottom: 0em;
-	line-height:1;
-}
-li.matterLine { 
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 0em;
-	padding-bottom: 0em;
-	line-height:1.2;
-}
-li.matterNone { 
-	margin-top: 0em; 
-	padding-top: 0em; 
-	margin-bottom: 0em;
-	padding-bottom: 0em;
-	line-height:1.2;
-	list-style-type: none;
-}
-
-ol.contents {	
-	list-style-position:inside;
-	font-size: 12pt; 	 
-	color: black; 
-	font-family: "Arial" ;
-	padding-left: 10%;
-}
-
-.myIndent {
 	text-indent: 20mm;	
 	margin-top: 0em; 
 	padding-top: 0em; 
@@ -89,30 +18,72 @@ ol.contents {
 	line-height:1.2;
 }
 
-font.myBasic{ 
-	 font-size: 14pt; 	 
-	 color: black; 
-	 font-family: "Arial" ;
-}
-
 font.myBold { 	
-	font-size: 14pt ;
-	font-weight: 700;
-	color: black; 
-	font-family: "Arial" ;
+	font-weight: 700;	
 /**	text-decoration: underline;*/
 }
 
-.myItalic { 
-	 font-size: 19pt; 
-	 color: black; 
-	 font-family: "Arial"; 
-	 font-style: "italic";
+
+
+ul {	
+	list-style-position:inside;
+	list-style-type: disc;	
+	text-indent: 25mm;	
+	margin-top: 0em; 
+	padding-top: 0em; 	
+	padding-bottom: 0em;
+	line-height:1;	
 }
 
-.myColor { 
-	 font-size: 16pt; 
-	 color: blue; 
-	 font-family: "Arial" ;
+ul.matter {		
+	margin-bottom: 1em;
 }
+ul.matter_margin0 {		
+	margin-bottom: 0em;
+}
+
+ol{
+	list-style-position:inside;
+}
+
+ol.contents {		
+	font-size: 12pt; 	 
+	color: black; 
+	font-family: "Arial" ;
+	padding-left: 10%;
+}
+
+ol.matter {	
+	text-indent: 25mm;	
+	margin-top: 0em; 
+	padding-top: 0em; 
+	margin-bottom: 1em;
+	padding-bottom: 0em;
+	line-height:1;
+	}
+	
+li{
+	margin-top: 0em; 
+	padding-top: 0em; 
+	margin-bottom: 0em;
+	padding-bottom: 0em;
+}
+	
+
+li.matter { 	
+	line-height:1;
+}
+li.matterLine { 
+	line-height:1.2;}
+li.matterNone { 
+	line-height:1.2;
+	list-style-type: none;
+}
+
+
+
+
+
+
+
 
